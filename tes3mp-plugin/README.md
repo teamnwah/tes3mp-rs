@@ -10,7 +10,7 @@ Because Rust won't allow you to re-export symbols from other crates, this crate 
 cd crate-dir
 git status || git init
 mkdir extern
-git submodule add https://git.cijber.net/teamnwah/tes3mp-rs extern/tes3mp-plugin
+git submodule add https://git.cijber.net/teamnwah/tes3mp-rs.git extern/tes3mp-rs
 ln -s extern/tes3mp-rs/tes3mp-plugin/src/plugin src/plugin
 ```
 
