@@ -1,0 +1,5 @@
+[workspace]
+members = [
+	"tes3mp-plugin",
+	"tes3mp-test"
+]

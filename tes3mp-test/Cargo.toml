@@ -1,0 +1,11 @@
+[package]
+name = "tes3mp-test"
+version = "0.1.0"
+authors = ["eater <=@eater.me>"]
+edition = "2018"
+
+[lib]
+crate-type = ["staticlib", "cdylib"]
+
+[profile.dev]
+panic = "abort"
