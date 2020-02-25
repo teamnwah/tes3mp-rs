@@ -3,5 +3,6 @@ name = "tes3mp-plugin"
 description = "Stubs for creating a TES3MP server plugin"
 homepage = "https://git.cijber.net/teamnwah/tes3mp-rs"
 version = "0.1.0"
+license = "AGPL-3.0-or-later"
 authors = ["eater <=@eater.me>"]
 edition = "2018"
