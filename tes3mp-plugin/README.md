@@ -11,7 +11,7 @@ cd crate-dir
 git status || git init
 mkdir extern
 git submodule add https://git.cijber.net/teamnwah/tes3mp-rs.git extern/tes3mp-rs
-ln -s extern/tes3mp-rs/tes3mp-plugin/src/plugin src/plugin
+ln -s ../extern/tes3mp-rs/tes3mp-plugin/src/plugin src/plugin
 ```
 
 This will make the `plugin` like it's part of your crate, which allows us to export the C symbols
