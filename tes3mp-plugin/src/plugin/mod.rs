@@ -10,8 +10,50 @@ pub const LOG_WARN: u16 = 2;
 pub const LOG_ERROR: u16 = 3;
 pub const LOG_FATAL: u16 = 4;
 
+pub const REGULAR: u16 = 0;
+pub const IMPERIAL_SHRINE: u16 = 1;
+pub const TRIBUNAL_TEMPLE: u16 = 2;
+
+pub const CLIENT_GAMEPLAY: u8 = 0;
+pub const CLIENT_CONSOLE: u8 = 1;
+pub const CLIENT_DIALOGUE: u8 = 2;
+pub const CLIENT_SCRIPT_LOCAL: u8 = 3;
+pub const CLIENT_SCRIPT_GLOBAL: u8 = 4;
+pub const SERVER_SCRIPT: u8 = 5;
+
+pub const NONE: u8 = 0;
+pub const DRAG: u8 = 1;
+pub const DROP: u8 = 2;
+pub const TAKE_ALL: u8 = 3;
+
+pub const ITEM: u16 = 0;
+pub const ITEM_MAGIC: u16 = 1;
+pub const MAGIC: u16 = 2;
+pub const UNASSIGNED: u16 = 3;
+
+pub const SET: u8 = 0;
+pub const ADD: u8 = 1;
+pub const REMOVE: u8 = 2;
+pub const REQUEST: u8 = 3;
+
+pub const LOAD: u16 = 0;
+pub const UNLOAD: u16 = 1;
+
+pub const RANK: u8 = 0;
+pub const EXPULSION: u8 = 1;
+pub const REPUTATION: u8 = 3;
+
+pub const ENTRY: i16 = 0;
+pub const INDEX: i16 = 1;
+
+pub const SPELL: u16 = 0;
+pub const POTION: u16 = 1;
+pub const ENCHANTMENT: u16 = 2;
+pub const NPC: u16 = 3;
+
+/// Calls a function on `EVENTS_INSTANCE` with given parameters
 #[macro_export]
-macro_rules! instance {
+macro_rules! call_instance {
     ($call:tt, $($argument:expr),+) => {
         let instance = unsafe {
             EVENTS_INSTANCE
@@ -19,6 +61,7 @@ macro_rules! instance {
                 .expect(format!("No events instance created: {}\n", stringify!($call)).as_str())
         };
         instance.$call($($argument),+);
+        instance.on_any(stringify!($call));
     };
 
     ($call:tt) => {
@@ -28,9 +71,13 @@ macro_rules! instance {
                 .expect(format!("No events instance created: {}\n", stringify!($call)).as_str())
         };
         instance.$call();
+        instance.on_any(stringify!($call));
     };
 }
 
+///
+/// create and bind C symbols to given struct, should implement Events
+///
 #[macro_export]
 macro_rules! use_events {
     ($events:ident) => {
@@ -47,25 +94,25 @@ macro_rules! use_events {
                 }
             }
 
-            instance!(on_server_init);
+            call_instance!(on_server_init);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnServerPostInit() {
-            instance!(on_server_post_init);
+            call_instance!(on_server_post_init);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnServerExit(is_error: bool) {
-            instance!(on_server_exit, is_error);
+            call_instance!(on_server_exit, is_error);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnActorAI(player_id: u16, description: *const i8) {
-            instance!(on_actor_ai, player_id, unsafe {
+            call_instance!(on_actor_ai, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -73,7 +120,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnActorCellChange(player_id: u16, description: *const i8) {
-            instance!(on_actor_cell_change, player_id, unsafe {
+            call_instance!(on_actor_cell_change, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -81,7 +128,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnActorDeath(player_id: u16, description: *const i8) {
-            instance!(on_actor_death, player_id, unsafe {
+            call_instance!(on_actor_death, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -89,7 +136,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnActorEquipment(player_id: u16, description: *const i8) {
-            instance!(on_actor_equipment, player_id, unsafe {
+            call_instance!(on_actor_equipment, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -97,7 +144,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnActorList(player_id: u16, description: *const i8) {
-            instance!(on_actor_list, player_id, unsafe {
+            call_instance!(on_actor_list, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -105,7 +152,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnActorTest(player_id: u16, description: *const i8) {
-            instance!(on_actor_test, player_id, unsafe {
+            call_instance!(on_actor_test, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -113,7 +160,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnCellDeletion(description: *const i8) {
-            instance!(on_cell_deletion, unsafe {
+            call_instance!(on_cell_deletion, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -121,7 +168,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnCellLoad(description: *const i8) {
-            instance!(on_cell_load, unsafe {
+            call_instance!(on_cell_load, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -129,7 +176,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnCellUnload(description: *const i8) {
-            instance!(on_cell_unload, unsafe {
+            call_instance!(on_cell_unload, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -137,7 +184,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnContainer(player_id: u16, description: *const i8) {
-            instance!(on_container, player_id, unsafe {
+            call_instance!(on_container, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -145,7 +192,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnDoorState(player_id: u16, description: *const i8) {
-            instance!(on_door_state, player_id, unsafe {
+            call_instance!(on_door_state, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -153,7 +200,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnGUIAction(player_id: u16, message_box_id: i16, data: *const i8) {
-            instance!(on_gui_action, player_id, message_box_id, unsafe {
+            call_instance!(on_gui_action, player_id, message_box_id, unsafe {
                 CStr::from_ptr(data).to_str().unwrap_or_default()
             });
         }
@@ -161,13 +208,13 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnMpNumIncrement(current_mp_num: i16) {
-            instance!(on_mp_num_increment, current_mp_num);
+            call_instance!(on_mp_num_increment, current_mp_num);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnObjectActivate(player_id: u16, description: *const i8) {
-            instance!(on_object_activate, player_id, unsafe {
+            call_instance!(on_object_activate, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -175,7 +222,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnObjectDelete(player_id: u16, description: *const i8) {
-            instance!(on_object_delete, player_id, unsafe {
+            call_instance!(on_object_delete, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -183,7 +230,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnObjectLock(player_id: u16, description: *const i8) {
-            instance!(on_object_lock, player_id, unsafe {
+            call_instance!(on_object_lock, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -191,7 +238,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnObjectPlace(player_id: u16, description: *const i8) {
-            instance!(on_object_place, player_id, unsafe {
+            call_instance!(on_object_place, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -199,7 +246,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnObjectScale(player_id: u16, description: *const i8) {
-            instance!(on_object_scale, player_id, unsafe {
+            call_instance!(on_object_scale, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -207,7 +254,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnObjectSpawn(player_id: u16, description: *const i8) {
-            instance!(on_object_spawn, player_id, unsafe {
+            call_instance!(on_object_spawn, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -215,7 +262,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnObjectState(player_id: u16, description: *const i8) {
-            instance!(on_object_state, player_id, unsafe {
+            call_instance!(on_object_state, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -223,7 +270,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnObjectTrap(player_id: u16, description: *const i8) {
-            instance!(on_object_trap, player_id, unsafe {
+            call_instance!(on_object_trap, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -231,133 +278,133 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerAttribute(player_id: u16) {
-            instance!(on_player_attribute, player_id);
+            call_instance!(on_player_attribute, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerBook(player_id: u16) {
-            instance!(on_player_book, player_id);
+            call_instance!(on_player_book, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerBounty(player_id: u16) {
-            instance!(on_player_bounty, player_id);
+            call_instance!(on_player_bounty, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerCellChange(player_id: u16) {
-            instance!(on_player_cell_change, player_id);
+            call_instance!(on_player_cell_change, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerConnect(player_id: u16) {
-            instance!(on_player_connect, player_id);
+            call_instance!(on_player_connect, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerDeath(player_id: u16) {
-            instance!(on_player_death, player_id);
+            call_instance!(on_player_death, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerDisconnect(player_id: u16) {
-            instance!(on_player_disconnect, player_id);
+            call_instance!(on_player_disconnect, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerDisposition(player_id: u16) {
-            instance!(on_player_disposition, player_id);
+            call_instance!(on_player_disposition, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerEndCharGen(player_id: u16) {
-            instance!(on_player_end_char_gen, player_id);
+            call_instance!(on_player_end_char_gen, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerEquipment(player_id: u16) {
-            instance!(on_player_equipment, player_id);
+            call_instance!(on_player_equipment, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerFaction(player_id: u16) {
-            instance!(on_player_faction, player_id);
+            call_instance!(on_player_faction, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerInput(player_id: u16) {
-            instance!(on_player_input, player_id);
+            call_instance!(on_player_input, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerInventory(player_id: u16) {
-            instance!(on_player_inventory, player_id);
+            call_instance!(on_player_inventory, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerItemUse(player_id: u16) {
-            instance!(on_player_item_use, player_id);
+            call_instance!(on_player_item_use, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerJournal(player_id: u16) {
-            instance!(on_player_journal, player_id);
+            call_instance!(on_player_journal, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerLevel(player_id: u16) {
-            instance!(on_player_level, player_id);
+            call_instance!(on_player_level, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerMiscellaneous(player_id: u16) {
-            instance!(on_player_miscellaneous, player_id);
+            call_instance!(on_player_miscellaneous, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerQuickKeys(player_id: u16) {
-            instance!(on_player_quick_keys, player_id);
+            call_instance!(on_player_quick_keys, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerReputation(player_id: u16) {
-            instance!(on_player_reputation, player_id);
+            call_instance!(on_player_reputation, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerRest(player_id: u16) {
-            instance!(on_player_rest, player_id);
+            call_instance!(on_player_rest, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerResurrect(player_id: u16) {
-            instance!(on_player_resurrect, player_id);
+            call_instance!(on_player_resurrect, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerSendMessage(player_id: u16, message: *const i8) {
-            instance!(on_player_send_message, player_id, unsafe {
+            call_instance!(on_player_send_message, player_id, unsafe {
                 CStr::from_ptr(message).to_str().unwrap_or_default()
             });
         }
@@ -365,49 +412,49 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerShapeshift(player_id: u16) {
-            instance!(on_player_shapeshift, player_id);
+            call_instance!(on_player_shapeshift, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerSkill(player_id: u16) {
-            instance!(on_player_skill, player_id);
+            call_instance!(on_player_skill, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerSpellbook(player_id: u16) {
-            instance!(on_player_spellbook, player_id);
+            call_instance!(on_player_spellbook, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnPlayerTopic(player_id: u16) {
-            instance!(on_player_topic, player_id);
+            call_instance!(on_player_topic, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnRecordDynamic(player_id: u16) {
-            instance!(on_record_dynamic, player_id);
+            call_instance!(on_record_dynamic, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnRequestDataFileList() {
-            instance!(on_request_data_file_list);
+            call_instance!(on_request_data_file_list);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnScriptGlobalShort(player_id: u16) {
-            instance!(on_script_global_short, player_id);
+            call_instance!(on_script_global_short, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnServerScriptCrash(error: *const i8) {
-            instance!(on_server_script_crash, unsafe {
+            call_instance!(on_server_script_crash, unsafe {
                 CStr::from_ptr(error).to_str().unwrap_or_default()
             });
         }
@@ -415,7 +462,7 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnVideoPlay(player_id: u16, description: *const i8) {
-            instance!(on_video_play, player_id, unsafe {
+            call_instance!(on_video_play, player_id, unsafe {
                 CStr::from_ptr(description).to_str().unwrap_or_default()
             });
         }
@@ -423,25 +470,27 @@ macro_rules! use_events {
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnWorldKillCount(player_id: u16) {
-            instance!(on_world_kill_count, player_id);
+            call_instance!(on_world_kill_count, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnWorldMap(player_id: u16) {
-            instance!(on_world_map, player_id);
+            call_instance!(on_world_map, player_id);
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
         pub fn OnWorldWeather(player_id: u16) {
-            instance!(on_world_weather, player_id);
+            call_instance!(on_world_weather, player_id);
         }
     };
 }
 
+/// Trait implementing all known events TES3MP server can trigger
 pub trait Events: Sized {
     fn new() -> Self;
+    fn on_any(&self, event_name: &str) {}
 
     fn on_actor_ai(&self, player_id: u16, description: &str) {}
     fn on_actor_cell_change(&self, player_id: u16, description: &str) {}
