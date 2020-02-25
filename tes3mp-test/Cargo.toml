@@ -3,6 +3,7 @@ name = "tes3mp-test"
 version = "0.1.0"
 authors = ["eater <=@eater.me>"]
 edition = "2018"
+publish = false
 
 [lib]
 crate-type = ["staticlib", "cdylib"]
