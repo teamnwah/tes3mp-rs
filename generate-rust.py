@@ -161,7 +161,7 @@ TYPE_TRANSLATION = {
 PREFIX = 'rust'
 
 RE_COMMENT_PREFIX = regex.compile(r'^([\\/\*]*)(.*)')
-RE_PARAM_PREFIX = regex.compile(r'\\param ([a-zA-Z_-]+)')
+RE_PARAM_PREFIX = regex.compile(r'[\\@]param ([a-zA-Z_-]+)')
 RE_BRIEF = regex.compile(r'\\brief\s+')
 RE_RETURN = regex.compile(r'\s+[\\@]returns? ([a-zA-Z])')
 
@@ -241,13 +241,14 @@ def main():
             comment = regex.sub(RE_BRIEF, '', comment)
 
             def replace_param(m):
-                return f"[`{normalize_var(m[1])}`]"
+                return f"`{normalize_var(m[1])}`"
 
             def replace_return(m):
                 return f"\n///  Returns {m[1].lower()}"
 
             comment = regex.sub(RE_PARAM_PREFIX, replace_param, comment)
             comment = regex.sub(RE_RETURN, replace_return, comment)
+            comment = regex.subf(r'([^\/])\n\/\/\/([^\n])', '{1}  \n///{2}', comment)
             comment = comment.replace('"[Script]:"', '`[Script]:`')
 
             fancy += comment

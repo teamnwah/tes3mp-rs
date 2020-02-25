@@ -1275,8 +1275,8 @@ pub mod raw {
 ///
 ///  Create a timer that will run a script function after a certain interval.
 ///
-///  [`callback`] The Lua script function.
-///  [`msec`] The interval in miliseconds.
+///  `callback` The Lua script function.  
+///  `msec` The interval in miliseconds.
 ///
 ///  Returns the ID of the timer thus created.
 ///
@@ -1295,7 +1295,7 @@ pub fn make_public(public: fn(), name: &str, ret_type: i8, def: &str) {
 ///
 ///  Start the timer with a certain ID.
 ///
-///  [`timer_id`] The timer ID.
+///  `timer_id` The timer ID.
 ///
 ///  Returns void
 ///
@@ -1308,7 +1308,7 @@ pub fn start_timer(timer_id: i16) {
 ///
 ///  Stop the timer with a certain ID.
 ///
-///  [`timer_id`] The timer ID.
+///  `timer_id` The timer ID.
 ///
 ///  Returns void
 ///
@@ -1321,8 +1321,8 @@ pub fn stop_timer(timer_id: i16) {
 ///
 ///  Restart the timer with a certain ID for a certain interval.
 ///
-///  [`timer_id`] The timer ID.
-///  [`msec`] The interval in miliseconds.
+///  `timer_id` The timer ID.  
+///  `msec` The interval in miliseconds.
 ///
 ///  Returns void
 ///
@@ -1335,7 +1335,7 @@ pub fn restart_timer(timer_id: i16, msec: i16) {
 ///
 ///  Free the timer with a certain ID.
 ///
-///  [`timer_id`] The timer ID.
+///  `timer_id` The timer ID.
 ///
 ///  Returns void
 ///
@@ -1348,7 +1348,7 @@ pub fn free_timer(timer_id: i16) {
 ///
 ///  Check whether a timer is elapsed.
 ///
-///  [`timer_id`] The timer ID.
+///  `timer_id` The timer ID.
 ///
 ///  Returns whether the timer is elapsed.
 ///
@@ -1373,10 +1373,10 @@ pub fn read_received_actor_list() {
 ///
 ///  Use the temporary actor list stored for a cell as the one being read.
 ///
-///  This type of actor list is used to store actor positions and dynamic stats and is deleted
+///  This type of actor list is used to store actor positions and dynamic stats and is deleted  
 ///  when the cell is unloaded.
 ///
-///  [`cell_description`] The description of the cell whose actor list should be read.
+///  `cell_description` The description of the cell whose actor list should be read.
 ///
 ///  Returns void
 ///
@@ -1401,7 +1401,7 @@ pub fn clear_actor_list() {
 ///
 ///  Set the pid attached to the ActorList.
 ///
-///  [`pid`] The player ID to whom the actor list should be attached.
+///  `pid` The player ID to whom the actor list should be attached.
 ///
 ///  Returns void
 ///
@@ -1412,8 +1412,8 @@ pub fn set_actor_list_pid(pid: u16) {
 }
 
 ///
-///  Take the contents of the read-only actor list last received by the
-///         server from a player and move its contents to the stored object list
+///  Take the contents of the read-only actor list last received by the  
+///         server from a player and move its contents to the stored object list  
 ///         that can be sent by the server.
 ///
 ///
@@ -1452,7 +1452,7 @@ pub fn get_actor_list_action() -> u8 {
 ///
 ///  Get the cell description of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the cell description.
 ///
@@ -1468,7 +1468,7 @@ pub fn get_actor_cell(index: u16) -> String {
 ///
 ///  Get the refId of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the refId.
 ///
@@ -1484,7 +1484,7 @@ pub fn get_actor_ref_id(index: u16) -> String {
 ///
 ///  Get the refNum of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the refNum.
 ///
@@ -1497,7 +1497,7 @@ pub fn get_actor_ref_num(index: u16) -> u16 {
 ///
 ///  Get the mpNum of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the mpNum.
 ///
@@ -1510,7 +1510,7 @@ pub fn get_actor_mp_num(index: u16) -> u16 {
 ///
 ///  Get the X position of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the X position.
 ///
@@ -1523,7 +1523,7 @@ pub fn get_actor_pos_x(index: u16) -> f64 {
 ///
 ///  Get the Y position of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the Y position.
 ///
@@ -1536,7 +1536,7 @@ pub fn get_actor_pos_y(index: u16) -> f64 {
 ///
 ///  Get the Z position of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the Z position.
 ///
@@ -1549,7 +1549,7 @@ pub fn get_actor_pos_z(index: u16) -> f64 {
 ///
 ///  Get the X rotation of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the X rotation.
 ///
@@ -1562,7 +1562,7 @@ pub fn get_actor_rot_x(index: u16) -> f64 {
 ///
 ///  Get the Y rotation of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the Y rotation.
 ///
@@ -1575,7 +1575,7 @@ pub fn get_actor_rot_y(index: u16) -> f64 {
 ///
 ///  Get the Z rotation of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the Z rotation.
 ///
@@ -1588,7 +1588,7 @@ pub fn get_actor_rot_z(index: u16) -> f64 {
 ///
 ///  Get the base health of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the base health.
 ///
@@ -1601,7 +1601,7 @@ pub fn get_actor_health_base(index: u16) -> f64 {
 ///
 ///  Get the current health of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the current health.
 ///
@@ -1614,7 +1614,7 @@ pub fn get_actor_health_current(index: u16) -> f64 {
 ///
 ///  Get the modified health of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the modified health.
 ///
@@ -1627,7 +1627,7 @@ pub fn get_actor_health_modified(index: u16) -> f64 {
 ///
 ///  Get the base magicka of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the base magicka.
 ///
@@ -1640,7 +1640,7 @@ pub fn get_actor_magicka_base(index: u16) -> f64 {
 ///
 ///  Get the current magicka of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the current magicka.
 ///
@@ -1653,7 +1653,7 @@ pub fn get_actor_magicka_current(index: u16) -> f64 {
 ///
 ///  Get the modified magicka of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the modified magicka.
 ///
@@ -1666,7 +1666,7 @@ pub fn get_actor_magicka_modified(index: u16) -> f64 {
 ///
 ///  Get the base fatigue of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the base fatigue.
 ///
@@ -1679,7 +1679,7 @@ pub fn get_actor_fatigue_base(index: u16) -> f64 {
 ///
 ///  Get the current fatigue of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the current fatigue.
 ///
@@ -1692,7 +1692,7 @@ pub fn get_actor_fatigue_current(index: u16) -> f64 {
 ///
 ///  Get the modified fatigue of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the modified fatigue.
 ///
@@ -1703,11 +1703,11 @@ pub fn get_actor_fatigue_modified(index: u16) -> f64 {
 }
 
 ///
-///  Get the refId of the item in a certain slot of the equipment of the actor at a
+///  Get the refId of the item in a certain slot of the equipment of the actor at a  
 ///  certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
-///  [`slot`] The slot of the equipment item.
+///  `index` The index of the actor.  
+///  `slot` The slot of the equipment item.
 ///
 ///  Returns the refId.
 ///
@@ -1721,11 +1721,11 @@ pub fn get_actor_equipment_item_ref_id(index: u16, slot: u16) -> String {
 }
 
 ///
-///  Get the count of the item in a certain slot of the equipment of the actor at a
+///  Get the count of the item in a certain slot of the equipment of the actor at a  
 ///  certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
-///  [`slot`] The slot of the equipment item.
+///  `index` The index of the actor.  
+///  `slot` The slot of the equipment item.
 ///
 ///  Returns the item count.
 ///
@@ -1736,11 +1736,11 @@ pub fn get_actor_equipment_item_count(index: u16, slot: u16) -> i16 {
 }
 
 ///
-///  Get the charge of the item in a certain slot of the equipment of the actor at a
+///  Get the charge of the item in a certain slot of the equipment of the actor at a  
 ///  certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
-///  [`slot`] The slot of the equipment item.
+///  `index` The index of the actor.  
+///  `slot` The slot of the equipment item.
 ///
 ///  Returns the charge.
 ///
@@ -1751,11 +1751,11 @@ pub fn get_actor_equipment_item_charge(index: u16, slot: u16) -> i16 {
 }
 
 ///
-///  Get the enchantment charge of the item in a certain slot of the equipment of the actor at a
+///  Get the enchantment charge of the item in a certain slot of the equipment of the actor at a  
 ///  certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
-///  [`slot`] The slot of the equipment item.
+///  `index` The index of the actor.  
+///  `slot` The slot of the equipment item.
 ///
 ///  Returns the enchantment charge.
 ///
@@ -1768,7 +1768,7 @@ pub fn get_actor_equipment_item_enchantment_charge(index: u16, slot: u16) -> f64
 ///
 ///  Check whether the killer of the actor at a certain index in the read actor list is a player.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns whether the actor was killed by a player.
 ///
@@ -1781,7 +1781,7 @@ pub fn does_actor_have_player_killer(index: u16) -> bool {
 ///
 ///  Get the player ID of the killer of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the player ID of the killer.
 ///
@@ -1794,7 +1794,7 @@ pub fn get_actor_killer_pid(index: u16) -> i16 {
 ///
 ///  Get the refId of the actor killer of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the refId of the killer.
 ///
@@ -1810,7 +1810,7 @@ pub fn get_actor_killer_ref_id(index: u16) -> String {
 ///
 ///  Get the refNum of the actor killer of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the refNum of the killer.
 ///
@@ -1823,7 +1823,7 @@ pub fn get_actor_killer_ref_num(index: u16) -> u16 {
 ///
 ///  Get the mpNum of the actor killer of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the mpNum of the killer.
 ///
@@ -1836,7 +1836,7 @@ pub fn get_actor_killer_mp_num(index: u16) -> u16 {
 ///
 ///  Get the name of the actor killer of the actor at a certain index in the read actor list.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns the name of the killer.
 ///
@@ -1850,12 +1850,12 @@ pub fn get_actor_killer_name(index: u16) -> String {
 }
 
 ///
-///  Check whether there is any positional data for the actor at a certain index in
+///  Check whether there is any positional data for the actor at a certain index in  
 ///  the read actor list.
 ///
 ///  This is only useful when reading the actor list data recorded for a particular cell.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns whether the read actor list contains positional data.
 ///
@@ -1866,12 +1866,12 @@ pub fn does_actor_have_position(index: u16) -> bool {
 }
 
 ///
-///  Check whether there is any dynamic stats data for the actor at a certain index in
+///  Check whether there is any dynamic stats data for the actor at a certain index in  
 ///  the read actor list.
 ///
 ///  This is only useful when reading the actor list data recorded for a particular cell.
 ///
-///  [`index`] The index of the actor.
+///  `index` The index of the actor.
 ///
 ///  Returns whether the read actor list contains dynamic stats data.
 ///
@@ -1884,10 +1884,10 @@ pub fn does_actor_have_stats_dynamic(index: u16) -> bool {
 ///
 ///  Set the cell of the temporary actor list stored on the server.
 ///
-///  The cell is determined to be an exterior cell if it fits the pattern of a number followed
+///  The cell is determined to be an exterior cell if it fits the pattern of a number followed  
 ///  by a comma followed by another number.
 ///
-///  [`cell_description`] The description of the cell.
+///  `cell_description` The description of the cell.
 ///
 ///  Returns void
 ///
@@ -1900,7 +1900,7 @@ pub fn set_actor_list_cell(cell_description: &str) {
 ///
 ///  Set the action type of the temporary actor list stored on the server.
 ///
-///  [`action`] The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
+///  `action` The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
 ///
 ///  Returns void
 ///
@@ -1913,13 +1913,13 @@ pub fn set_actor_list_action(action: u8) {
 ///
 ///  Set the cell of the temporary actor stored on the server.
 ///
-///  Used for ActorCellChange packets, where a specific actor's cell now differs from that of the
+///  Used for ActorCellChange packets, where a specific actor's cell now differs from that of the  
 ///  actor list.
 ///
-///  The cell is determined to be an exterior cell if it fits the pattern of a number followed
+///  The cell is determined to be an exterior cell if it fits the pattern of a number followed  
 ///  by a comma followed by another number.
 ///
-///  [`cell_description`] The description of the cell.
+///  `cell_description` The description of the cell.
 ///
 ///  Returns void
 ///
@@ -1932,7 +1932,7 @@ pub fn set_actor_cell(cell_description: &str) {
 ///
 ///  Set the refId of the temporary actor stored on the server.
 ///
-///  [`ref_id`] The refId.
+///  `ref_id` The refId.
 ///
 ///  Returns void
 ///
@@ -1945,7 +1945,7 @@ pub fn set_actor_ref_id(ref_id: &str) {
 ///
 ///  Set the refNum of the temporary actor stored on the server.
 ///
-///  [`ref_num`] The refNum.
+///  `ref_num` The refNum.
 ///
 ///  Returns void
 ///
@@ -1958,7 +1958,7 @@ pub fn set_actor_ref_num(ref_num: i16) {
 ///
 ///  Set the mpNum of the temporary actor stored on the server.
 ///
-///  [`mp_num`] The mpNum.
+///  `mp_num` The mpNum.
 ///
 ///  Returns void
 ///
@@ -1971,9 +1971,9 @@ pub fn set_actor_mp_num(mp_num: i16) {
 ///
 ///  Set the position of the temporary actor stored on the server.
 ///
-///  [`x`] The X position.
-///  [`y`] The Y position.
-///  [`z`] The Z position.
+///  `x` The X position.  
+///  `y` The Y position.  
+///  `z` The Z position.
 ///
 ///  Returns void
 ///
@@ -1986,9 +1986,9 @@ pub fn set_actor_position(x: f64, y: f64, z: f64) {
 ///
 ///  Set the rotation of the temporary actor stored on the server.
 ///
-///  [`x`] The X rotation.
-///  [`y`] The Y rotation.
-///  [`z`] The Z rotation.
+///  `x` The X rotation.  
+///  `y` The Y rotation.  
+///  `z` The Z rotation.
 ///
 ///  Returns void
 ///
@@ -2001,7 +2001,7 @@ pub fn set_actor_rotation(x: f64, y: f64, z: f64) {
 ///
 ///  Set the base health of the temporary actor stored on the server.
 ///
-///  [`value`] The new value.
+///  `value` The new value.
 ///
 ///  Returns void
 ///
@@ -2014,7 +2014,7 @@ pub fn set_actor_health_base(value: f64) {
 ///
 ///  Set the current health of the temporary actor stored on the server.
 ///
-///  [`value`] The new value.
+///  `value` The new value.
 ///
 ///  Returns void
 ///
@@ -2027,7 +2027,7 @@ pub fn set_actor_health_current(value: f64) {
 ///
 ///  Set the modified health of the temporary actor stored on the server.
 ///
-///  [`value`] The new value.
+///  `value` The new value.
 ///
 ///  Returns void
 ///
@@ -2040,7 +2040,7 @@ pub fn set_actor_health_modified(value: f64) {
 ///
 ///  Set the base magicka of the temporary actor stored on the server.
 ///
-///  [`value`] The new value.
+///  `value` The new value.
 ///
 ///  Returns void
 ///
@@ -2053,7 +2053,7 @@ pub fn set_actor_magicka_base(value: f64) {
 ///
 ///  Set the current magicka of the temporary actor stored on the server.
 ///
-///  [`value`] The new value.
+///  `value` The new value.
 ///
 ///  Returns void
 ///
@@ -2066,7 +2066,7 @@ pub fn set_actor_magicka_current(value: f64) {
 ///
 ///  Set the modified magicka of the temporary actor stored on the server.
 ///
-///  [`value`] The new value.
+///  `value` The new value.
 ///
 ///  Returns void
 ///
@@ -2079,7 +2079,7 @@ pub fn set_actor_magicka_modified(value: f64) {
 ///
 ///  Set the base fatigue of the temporary actor stored on the server.
 ///
-///  [`value`] The new value.
+///  `value` The new value.
 ///
 ///  Returns void
 ///
@@ -2092,7 +2092,7 @@ pub fn set_actor_fatigue_base(value: f64) {
 ///
 ///  Set the current fatigue of the temporary actor stored on the server.
 ///
-///  [`value`] The new value.
+///  `value` The new value.
 ///
 ///  Returns void
 ///
@@ -2105,7 +2105,7 @@ pub fn set_actor_fatigue_current(value: f64) {
 ///
 ///  Set the modified fatigue of the temporary actor stored on the server.
 ///
-///  [`value`] The new value.
+///  `value` The new value.
 ///
 ///  Returns void
 ///
@@ -2118,7 +2118,7 @@ pub fn set_actor_fatigue_modified(value: f64) {
 ///
 ///  Set the sound of the temporary actor stored on the server.
 ///
-///  [`sound`] The sound.
+///  `sound` The sound.
 ///
 ///  Returns void
 ///
@@ -2131,7 +2131,7 @@ pub fn set_actor_sound(sound: &str) {
 ///
 ///  Set the AI action of the temporary actor stored on the server.
 ///
-///  [`action`] The new action.
+///  `action` The new action.
 ///
 ///  Returns void
 ///
@@ -2144,7 +2144,7 @@ pub fn set_actor_ai_action(action: u16) {
 ///
 ///  Set a player as the AI target of the temporary actor stored on the server.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -2157,8 +2157,8 @@ pub fn set_actor_ai_target_to_player(pid: u16) {
 ///
 ///  Set another object as the AI target of the temporary actor stored on the server.
 ///
-///  [`ref_num`] The refNum of the target object.
-///  [`mp_num`] The mpNum of the target object.
+///  `ref_num` The refNum of the target object.  
+///  `mp_num` The mpNum of the target object.
 ///
 ///  Returns void
 ///
@@ -2171,9 +2171,9 @@ pub fn set_actor_ai_target_to_object(ref_num: i16, mp_num: i16) {
 ///
 ///  Set the coordinates for the AI package associated with the current AI action.
 ///
-///  [`x`] The X coordinate.
-///  [`y`] The Y coordinate.
-///  [`z`] The Z coordinate.
+///  `x` The X coordinate.  
+///  `y` The Y coordinate.  
+///  `z` The Z coordinate.
 ///
 ///  Returns void
 ///
@@ -2186,7 +2186,7 @@ pub fn set_actor_ai_coordinates(x: f64, y: f64, z: f64) {
 ///
 ///  Set the distance of the AI package associated with the current AI action.
 ///
-///  [`duration`] The distance of the package.
+///  `duration` The distance of the package.
 ///
 ///  Returns void
 ///
@@ -2199,7 +2199,7 @@ pub fn set_actor_ai_distance(distance: u16) {
 ///
 ///  Set the duration of the AI package associated with the current AI action.
 ///
-///  [`duration`] The duration of the package.
+///  `duration` The duration of the package.
 ///
 ///  Returns void
 ///
@@ -2214,7 +2214,7 @@ pub fn set_actor_ai_duration(duration: u16) {
 ///
 ///  Note: This only has an effect on the WANDER package.
 ///
-///  [`should_repeat`] Whether the package should be repeated.
+///  `should_repeat` Whether the package should be repeated.
 ///
 ///  Returns void
 ///
@@ -2225,14 +2225,14 @@ pub fn set_actor_ai_repetition(should_repeat: bool) {
 }
 
 ///
-///  Equip an item in a certain slot of the equipment of the temporary actor stored
+///  Equip an item in a certain slot of the equipment of the temporary actor stored  
 ///  on the server.
 ///
-///  [`slot`] The equipment slot.
-///  [`ref_id`] The refId of the item.
-///  [`count`] The count of the item.
-///  [`charge`] The charge of the item.
-///  [`enchantment_charge`] The enchantment charge of the item.
+///  `slot` The equipment slot.  
+///  `ref_id` The refId of the item.  
+///  `count` The count of the item.  
+///  `charge` The charge of the item.  
+///  `enchantment_charge` The enchantment charge of the item.
 ///
 ///  Returns void
 ///
@@ -2243,10 +2243,10 @@ pub fn equip_actor_item(slot: u16, ref_id: &str, count: u16, charge: i16, enchan
 }
 
 ///
-///  Unequip the item in a certain slot of the equipment of the temporary actor stored
+///  Unequip the item in a certain slot of the equipment of the temporary actor stored  
 ///  on the server.
 ///
-///  [`slot`] The equipment slot.
+///  `slot` The equipment slot.
 ///
 ///  Returns void
 ///
@@ -2259,7 +2259,7 @@ pub fn unequip_actor_item(slot: u16) {
 ///
 ///  Add a copy of the server's temporary actor to the server's temporary actor list.
 ///
-///  In the process, the server's temporary actor will automatically be cleared so a new
+///  In the process, the server's temporary actor will automatically be cleared so a new  
 ///  one can be set up.
 ///
 ///
@@ -2288,7 +2288,7 @@ pub fn send_actor_list() {
 ///
 ///  Send an ActorAuthority packet.
 ///
-///  The player for whom the current actor list was initialized is recorded in the server memory
+///  The player for whom the current actor list was initialized is recorded in the server memory  
 ///  as the new actor authority for the actor list's cell.
 ///
 ///  The packet is sent to that player as well as all other players who have the cell loaded.
@@ -2305,9 +2305,9 @@ pub fn send_actor_authority() {
 ///
 ///  Send an ActorPosition packet.
 ///
-///  [`send_to_other_visitors`] Whether this packet should be sent to cell visitors other
-///                             than the player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_visitors` Whether this packet should be sent to cell visitors other  
+///                             than the player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///
@@ -2322,9 +2322,9 @@ pub fn send_actor_position(send_to_other_visitors: bool, skip_attached_player: b
 ///
 ///  Send an ActorStatsDynamic packet.
 ///
-///  [`send_to_other_visitors`] Whether this packet should be sent to cell visitors other
-///                             than the player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_visitors` Whether this packet should be sent to cell visitors other  
+///                             than the player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///
@@ -2339,9 +2339,9 @@ pub fn send_actor_stats_dynamic(send_to_other_visitors: bool, skip_attached_play
 ///
 ///  Send an ActorEquipment packet.
 ///
-///  [`send_to_other_visitors`] Whether this packet should be sent to cell visitors other
-///                             than the player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_visitors` Whether this packet should be sent to cell visitors other  
+///                             than the player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///
@@ -2356,9 +2356,9 @@ pub fn send_actor_equipment(send_to_other_visitors: bool, skip_attached_player: 
 ///
 ///  Send an ActorSpeech packet.
 ///
-///  [`send_to_other_visitors`] Whether this packet should be sent to cell visitors other
-///                             than the player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_visitors` Whether this packet should be sent to cell visitors other  
+///                             than the player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -2372,9 +2372,9 @@ pub fn send_actor_speech(send_to_other_visitors: bool, skip_attached_player: boo
 ///
 ///  Send an ActorAI packet.
 ///
-///  [`send_to_other_visitors`] Whether this packet should be sent to cell visitors other
-///                             than the player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_visitors` Whether this packet should be sent to cell visitors other  
+///                             than the player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -2388,9 +2388,9 @@ pub fn send_actor_ai(send_to_other_visitors: bool, skip_attached_player: bool) {
 ///
 ///  Send an ActorCellChange packet.
 ///
-///  [`send_to_other_visitors`] Whether this packet should be sent to cell visitors other
-///                             than the player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_visitors` Whether this packet should be sent to cell visitors other  
+///                             than the player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///
@@ -2443,7 +2443,7 @@ pub fn set_actor_ref_num_index(ref_num: i16) {
 ///
 ///  This is used to initialize the sending of new PlayerBook packets.
 ///
-///  [`pid`] The player ID whose book changes should be used.
+///  `pid` The player ID whose book changes should be used.
 ///
 ///  Returns void
 ///
@@ -2456,7 +2456,7 @@ pub fn clear_book_changes(pid: u16) {
 ///
 ///  Get the number of indexes in a player's latest book changes.
 ///
-///  [`pid`] The player ID whose book changes should be used.
+///  `pid` The player ID whose book changes should be used.
 ///
 ///  Returns the number of indexes.
 ///
@@ -2469,8 +2469,8 @@ pub fn get_book_changes_size(pid: u16) -> u16 {
 ///
 ///  Add a new book to the book changes for a player.
 ///
-///  [`pid`] The player ID whose book changes should be used.
-///  [`book_id`] The bookId of the book.
+///  `pid` The player ID whose book changes should be used.  
+///  `book_id` The bookId of the book.
 ///
 ///  Returns void
 ///
@@ -2483,8 +2483,8 @@ pub fn add_book(pid: u16, book_id: &str) {
 ///
 ///  Get the bookId at a certain index in a player's latest book changes.
 ///
-///  [`pid`] The player ID whose book changes should be used.
-///  [`index`] The index of the book.
+///  `pid` The player ID whose book changes should be used.  
+///  `index` The index of the book.
 ///
 ///  Returns the bookId.
 ///
@@ -2500,10 +2500,10 @@ pub fn get_book_id(pid: u16, index: u16) -> String {
 ///
 ///  Send a PlayerBook packet with a player's recorded book changes.
 ///
-///  [`pid`] The player ID whose book changes should be used.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID whose book changes should be used.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -2523,7 +2523,7 @@ pub fn initialize_book_changes(pid: u16) {
 ///
 ///  Get the number of indexes in a player's latest cell state changes.
 ///
-///  [`pid`] The player ID whose cell state changes should be used.
+///  `pid` The player ID whose cell state changes should be used.
 ///
 ///  Returns the number of indexes.
 ///
@@ -2536,8 +2536,8 @@ pub fn get_cell_state_changes_size(pid: u16) -> u16 {
 ///
 ///  Get the cell state type at a certain index in a player's latest cell state changes.
 ///
-///  [`pid`] The player ID whose cell state changes should be used.
-///  [`index`] The index of the cell state.
+///  `pid` The player ID whose cell state changes should be used.  
+///  `index` The index of the cell state.
 ///
 ///  Returns the cell state type (0 for LOAD, 1 for UNLOAD).
 ///
@@ -2550,8 +2550,8 @@ pub fn get_cell_state_type(pid: u16, index: u16) -> u16 {
 ///
 ///  Get the cell description at a certain index in a player's latest cell state changes.
 ///
-///  [`pid`] The player ID whose cell state changes should be used.
-///  [`index`] The index of the cell state.
+///  `pid` The player ID whose cell state changes should be used.  
+///  `index` The index of the cell state.
 ///
 ///  Returns the cell description.
 ///
@@ -2567,7 +2567,7 @@ pub fn get_cell_state_description(pid: u16, index: u16) -> String {
 ///
 ///  Get the cell description of a player's cell.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the cell description.
 ///
@@ -2583,7 +2583,7 @@ pub fn get_cell(pid: u16) -> String {
 ///
 ///  Get the X coordinate of the player's exterior cell.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the X coordinate of the cell.
 ///
@@ -2596,7 +2596,7 @@ pub fn get_exterior_x(pid: u16) -> i16 {
 ///
 ///  Get the Y coordinate of the player's exterior cell.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the Y coordinate of the cell.
 ///
@@ -2609,7 +2609,7 @@ pub fn get_exterior_y(pid: u16) -> i16 {
 ///
 ///  Check whether the player is in an exterior cell or not.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns whether the player is in an exterior cell.
 ///
@@ -2624,7 +2624,7 @@ pub fn is_in_exterior(pid: u16) -> bool {
 ///
 ///  A blank value will be returned if the player is in an interior.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the region.
 ///
@@ -2640,7 +2640,7 @@ pub fn get_region(pid: u16) -> String {
 ///
 ///  Check whether the player's last cell change has involved a region change.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns whether the player has changed their region.
 ///
@@ -2653,14 +2653,14 @@ pub fn is_changing_region(pid: u16) -> bool {
 ///
 ///  Set the cell of a player.
 ///
-///  This changes the cell recorded for that player in the server memory, but does not by itself
+///  This changes the cell recorded for that player in the server memory, but does not by itself  
 ///  send a packet.
 ///
-///  The cell is determined to be an exterior cell if it fits the pattern of a number followed
+///  The cell is determined to be an exterior cell if it fits the pattern of a number followed  
 ///  by a comma followed by another number.
 ///
-///  [`pid`] The player ID.
-///  [`cell_description`] The cell description.
+///  `pid` The player ID.  
+///  `cell_description` The cell description.
 ///
 ///  Returns void
 ///
@@ -2673,12 +2673,12 @@ pub fn set_cell(pid: u16, cell_description: &str) {
 ///
 ///  Set the cell of a player to an exterior cell.
 ///
-///  This changes the cell recorded for that player in the server memory, but does not by itself
+///  This changes the cell recorded for that player in the server memory, but does not by itself  
 ///  send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`x`] The X coordinate of the cell.
-///  [`y`] The Y coordinate of the cell.
+///  `pid` The player ID.  
+///  `x` The X coordinate of the cell.  
+///  `y` The Y coordinate of the cell.
 ///
 ///  Returns void
 ///
@@ -2693,7 +2693,7 @@ pub fn set_exterior_cell(pid: u16, x: i16, y: i16) {
 ///
 ///  It is only sent to the affected player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -2706,7 +2706,7 @@ pub fn send_cell(pid: u16) {
 ///
 ///  Get the default class used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the ID of the default class.
 ///
@@ -2722,7 +2722,7 @@ pub fn get_default_class(pid: u16) -> String {
 ///
 ///  Get the name of the custom class used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the name of the custom class.
 ///
@@ -2738,7 +2738,7 @@ pub fn get_class_name(pid: u16) -> String {
 ///
 ///  Get the description of the custom class used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the description of the custom class.
 ///
@@ -2754,8 +2754,8 @@ pub fn get_class_desc(pid: u16) -> String {
 ///
 ///  Get the ID of one of the two major attributes of a custom class used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the major attribute (0 or 1).
+///  `pid` The player ID.  
+///  `slot` The slot of the major attribute (0 or 1).
 ///
 ///  Returns the ID of the major attribute.
 ///
@@ -2768,7 +2768,7 @@ pub fn get_class_major_attribute(pid: u16, slot: u8) -> i16 {
 ///
 ///  Get the specialization ID of the custom class used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the specialization ID of the custom class (0 for Combat, 1 for Magic, 2 for Stealth).
 ///
@@ -2781,8 +2781,8 @@ pub fn get_class_specialization(pid: u16) -> i16 {
 ///
 ///  Get the ID of one of the five major skills of a custom class used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the major skill (0 to 4).
+///  `pid` The player ID.  
+///  `slot` The slot of the major skill (0 to 4).
 ///
 ///  Returns the ID of the major skill.
 ///
@@ -2795,8 +2795,8 @@ pub fn get_class_major_skill(pid: u16, slot: u8) -> i16 {
 ///
 ///  Get the ID of one of the five minor skills of a custom class used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the minor skill (0 to 4).
+///  `pid` The player ID.  
+///  `slot` The slot of the minor skill (0 to 4).
 ///
 ///  Returns the ID of the minor skill.
 ///
@@ -2809,7 +2809,7 @@ pub fn get_class_minor_skill(pid: u16, slot: u8) -> i16 {
 ///
 ///  Check whether the player is using a default class instead of a custom one.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns whether the player is using a default class.
 ///
@@ -2824,8 +2824,8 @@ pub fn is_class_default(pid: u16) -> i16 {
 ///
 ///  If this is left blank, the custom class data set for the player will be used instead.
 ///
-///  [`pid`] The player ID.
-///  [`id`] The ID of the default class.
+///  `pid` The player ID.  
+///  `id` The ID of the default class.
 ///
 ///  Returns void
 ///
@@ -2838,8 +2838,8 @@ pub fn set_default_class(pid: u16, id: &str) {
 ///
 ///  Set the name of the custom class used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`name`] The name of the custom class.
+///  `pid` The player ID.  
+///  `name` The name of the custom class.
 ///
 ///  Returns void
 ///
@@ -2852,8 +2852,8 @@ pub fn set_class_name(pid: u16, name: &str) {
 ///
 ///  Set the description of the custom class used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`desc`] The description of the custom class.
+///  `pid` The player ID.  
+///  `desc` The description of the custom class.
 ///
 ///  Returns void
 ///
@@ -2866,9 +2866,9 @@ pub fn set_class_desc(pid: u16, desc: &str) {
 ///
 ///  Set the ID of one of the two major attributes of the custom class used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the major attribute (0 or 1).
-///  [`attr_id`] The ID to use for the attribute.
+///  `pid` The player ID.  
+///  `slot` The slot of the major attribute (0 or 1).  
+///  `attr_id` The ID to use for the attribute.
 ///
 ///  Returns void
 ///
@@ -2881,8 +2881,8 @@ pub fn set_class_major_attribute(pid: u16, slot: u8, attr_id: i16) {
 ///
 ///  Set the specialization of the custom class used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`spec`] The specialization ID to use (0 for Combat, 1 for Magic, 2 for Stealth).
+///  `pid` The player ID.  
+///  `spec` The specialization ID to use (0 for Combat, 1 for Magic, 2 for Stealth).
 ///
 ///  Returns void
 ///
@@ -2895,9 +2895,9 @@ pub fn set_class_specialization(pid: u16, spec: i16) {
 ///
 ///  Set the ID of one of the five major skills of the custom class used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the major skill (0 to 4).
-///  [`skill_id`] The ID to use for the skill.
+///  `pid` The player ID.  
+///  `slot` The slot of the major skill (0 to 4).  
+///  `skill_id` The ID to use for the skill.
 ///
 ///  Returns void
 ///
@@ -2910,9 +2910,9 @@ pub fn set_class_major_skill(pid: u16, slot: u8, skill_id: i16) {
 ///
 ///  Set the ID of one of the five minor skills of the custom class used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the minor skill (0 to 4).
-///  [`skill_id`] The ID to use for the skill.
+///  `pid` The player ID.  
+///  `slot` The slot of the minor skill (0 to 4).  
+///  `skill_id` The ID to use for the skill.
 ///
 ///  Returns void
 ///
@@ -2927,7 +2927,7 @@ pub fn set_class_minor_skill(pid: u16, slot: u8, skill_id: i16) {
 ///
 ///  It is only sent to the affected player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -2940,11 +2940,11 @@ pub fn send_class(pid: u16) {
 ///
 ///  Send a message to a certain player.
 ///
-///  [`pid`] The player ID.
-///  [`message`] The contents of the message.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID.  
+///  `message` The contents of the message.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -2970,7 +2970,7 @@ pub fn clean_chat_for_pid() {
 ///
 ///  Remove all messages from chat for a certain player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -2985,7 +2985,7 @@ pub fn clean_chat(pid: u16) {
 ///
 ///  This is used to initialize the sending of new PlayerTopic packets.
 ///
-///  [`pid`] The player ID whose topic changes should be used.
+///  `pid` The player ID whose topic changes should be used.
 ///
 ///  Returns void
 ///
@@ -2998,7 +2998,7 @@ pub fn clear_topic_changes(pid: u16) {
 ///
 ///  Get the number of indexes in a player's latest topic changes.
 ///
-///  [`pid`] The player ID whose topic changes should be used.
+///  `pid` The player ID whose topic changes should be used.
 ///
 ///  Returns the number of indexes.
 ///
@@ -3011,8 +3011,8 @@ pub fn get_topic_changes_size(pid: u16) -> u16 {
 ///
 ///  Add a new topic to the topic changes for a player.
 ///
-///  [`pid`] The player ID whose topic changes should be used.
-///  [`topic_id`] The topicId of the topic.
+///  `pid` The player ID whose topic changes should be used.  
+///  `topic_id` The topicId of the topic.
 ///
 ///  Returns void
 ///
@@ -3025,8 +3025,8 @@ pub fn add_topic(pid: u16, topic_id: &str) {
 ///
 ///  Get the topicId at a certain index in a player's latest topic changes.
 ///
-///  [`pid`] The player ID whose topic changes should be used.
-///  [`index`] The index of the topic.
+///  `pid` The player ID whose topic changes should be used.  
+///  `index` The index of the topic.
 ///
 ///  Returns the topicId.
 ///
@@ -3042,10 +3042,10 @@ pub fn get_topic_id(pid: u16, index: u16) -> String {
 ///
 ///  Send a PlayerTopic packet with a player's recorded topic changes.
 ///
-///  [`pid`] The player ID whose topic changes should be used.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID whose topic changes should be used.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -3057,14 +3057,14 @@ pub fn send_topic_changes(pid: u16, send_to_other_players: bool, skip_attached_p
 }
 
 ///
-///  Play a certain animation on a player's character by sending a PlayerAnimation
+///  Play a certain animation on a player's character by sending a PlayerAnimation  
 ///         packet.
 ///
-///  [`pid`] The player ID of the character playing the animation.
-///  [`groupname`] The groupname of the animation.
-///  [`mode`] The mode of the animation.
-///  [`count`] The number of times the animation should be played.
-///  [`bool`] Whether the animation should persist or not.
+///  `pid` The player ID of the character playing the animation.  
+///  `groupname` The groupname of the animation.  
+///  `mode` The mode of the animation.  
+///  `count` The number of times the animation should be played.  
+///  `bool` Whether the animation should persist or not.
 ///
 ///  Returns void
 ///
@@ -3075,11 +3075,11 @@ pub fn play_animation(pid: u16, groupname: &str, mode: i16, count: i16, persist:
 }
 
 ///
-///  Play a certain sound for a player as spoken by their character by sending
+///  Play a certain sound for a player as spoken by their character by sending  
 ///         a PlayerSpeech packet.
 ///
-///  [`pid`] The player ID of the character playing the sound.
-///  [`sound`] The path of the sound file.
+///  `pid` The player ID of the character playing the sound.  
+///  `sound` The path of the sound file.
 ///
 ///  Returns void
 ///
@@ -3100,7 +3100,7 @@ pub fn initialize_topic_changes(pid: u16) {
 ///
 ///  This is used to initialize the sending of new PlayerFaction packets.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
+///  `pid` The player ID whose faction changes should be used.
 ///
 ///  Returns void
 ///
@@ -3113,7 +3113,7 @@ pub fn clear_faction_changes(pid: u16) {
 ///
 ///  Get the number of indexes in a player's latest faction changes.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
+///  `pid` The player ID whose faction changes should be used.
 ///
 ///  Returns the number of indexes.
 ///
@@ -3126,7 +3126,7 @@ pub fn get_faction_changes_size(pid: u16) -> u16 {
 ///
 ///  Get the action type used in a player's latest faction changes.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
+///  `pid` The player ID whose faction changes should be used.
 ///
 ///  Returns the action type (0 for RANK, 1 for EXPULSION, 2 for REPUTATION).
 ///
@@ -3139,8 +3139,8 @@ pub fn get_faction_changes_action(pid: u16) -> u8 {
 ///
 ///  Get the factionId at a certain index in a player's latest faction changes.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
-///  [`index`] The index of the faction.
+///  `pid` The player ID whose faction changes should be used.  
+///  `index` The index of the faction.
 ///
 ///  Returns the factionId.
 ///
@@ -3156,8 +3156,8 @@ pub fn get_faction_id(pid: u16, index: u16) -> String {
 ///
 ///  Get the rank at a certain index in a player's latest faction changes.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
-///  [`index`] The index of the faction.
+///  `pid` The player ID whose faction changes should be used.  
+///  `index` The index of the faction.
 ///
 ///  Returns the rank.
 ///
@@ -3170,8 +3170,8 @@ pub fn get_faction_rank(pid: u16, index: u16) -> i16 {
 ///
 ///  Get the expulsion state at a certain index in a player's latest faction changes.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
-///  [`index`] The index of the faction.
+///  `pid` The player ID whose faction changes should be used.  
+///  `index` The index of the faction.
 ///
 ///  Returns the expulsion state.
 ///
@@ -3184,8 +3184,8 @@ pub fn get_faction_expulsion_state(pid: u16, index: u16) -> bool {
 ///
 ///  Get the reputation at a certain index in a player's latest faction changes.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
-///  [`index`] The index of the faction.
+///  `pid` The player ID whose faction changes should be used.  
+///  `index` The index of the faction.
 ///
 ///  Returns the reputation.
 ///
@@ -3198,8 +3198,8 @@ pub fn get_faction_reputation(pid: u16, index: u16) -> i16 {
 ///
 ///  Set the action type in a player's faction changes.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
-///  [`action`] The action (0 for RANK, 1 for EXPULSION, 2 for REPUTATION).
+///  `pid` The player ID whose faction changes should be used.  
+///  `action` The action (0 for RANK, 1 for EXPULSION, 2 for REPUTATION).
 ///
 ///  Returns void
 ///
@@ -3212,7 +3212,7 @@ pub fn set_faction_changes_action(pid: u16, action: u8) {
 ///
 ///  Set the factionId of the temporary faction stored on the server.
 ///
-///  [`faction_id`] The factionId.
+///  `faction_id` The factionId.
 ///
 ///  Returns void
 ///
@@ -3225,7 +3225,7 @@ pub fn set_faction_id(faction_id: &str) {
 ///
 ///  Set the rank of the temporary faction stored on the server.
 ///
-///  [`rank`] The rank.
+///  `rank` The rank.
 ///
 ///  Returns void
 ///
@@ -3238,7 +3238,7 @@ pub fn set_faction_rank(rank: u16) {
 ///
 ///  Set the expulsion state of the temporary faction stored on the server.
 ///
-///  [`expulsion_state`] The expulsion state.
+///  `expulsion_state` The expulsion state.
 ///
 ///  Returns void
 ///
@@ -3251,7 +3251,7 @@ pub fn set_faction_expulsion_state(expulsion_state: bool) {
 ///
 ///  Set the reputation of the temporary faction stored on the server.
 ///
-///  [`reputation`] The reputation.
+///  `reputation` The reputation.
 ///
 ///  Returns void
 ///
@@ -3264,10 +3264,10 @@ pub fn set_faction_reputation(reputation: i16) {
 ///
 ///  Add the server's temporary faction to the faction changes for a player.
 ///
-///  In the process, the server's temporary faction will automatically be cleared so a new one
+///  In the process, the server's temporary faction will automatically be cleared so a new one  
 ///  can be set up.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
+///  `pid` The player ID whose faction changes should be used.
 ///
 ///  Returns void
 ///
@@ -3280,10 +3280,10 @@ pub fn add_faction(pid: u16) {
 ///
 ///  Send a PlayerFaction packet with a player's recorded faction changes.
 ///
-///  [`pid`] The player ID whose faction changes should be used.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID whose faction changes should be used.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -3301,12 +3301,12 @@ pub fn initialize_faction_changes(pid: u16) {
 }
 
 ///
-///  Display an interactive messagebox at the center of the screen that
+///  Display an interactive messagebox at the center of the screen that  
 ///         vanishes only when one of its buttons is clicked.
 ///
-///  [`pid`] The player ID for whom the messagebox should appear.
-///  [`id`] The numerical ID of the messagebox.
-///  [`label`] The text in the messagebox.
+///  `pid` The player ID for whom the messagebox should appear.  
+///  `id` The numerical ID of the messagebox.  
+///  `label` The text in the messagebox.  
 ///  \parm buttons The captions of the buttons, separated by semicolons (e.g. "Yes;No;Maybe").
 ///
 ///  Returns void
@@ -3320,9 +3320,9 @@ pub fn custom_message_box(pid: u16, id: i16, label: &str, buttons: &str) {
 ///
 ///  Display an input dialog at the center of the screen.
 ///
-///  [`pid`] The player ID for whom the input dialog should appear.
-///  [`id`] The numerical ID of the input dialog.
-///  [`label`] The text at the top of the input dialog.
+///  `pid` The player ID for whom the input dialog should appear.  
+///  `id` The numerical ID of the input dialog.  
+///  `label` The text at the top of the input dialog.  
 ///  \parm note The text at the bottom of the input dialog.
 ///
 ///  Returns void
@@ -3336,12 +3336,12 @@ pub fn input_dialog(pid: u16, id: i16, label: &str, note: &str) {
 ///
 ///  Display a password dialog at the center of the screen.
 ///
-///  Although similar to an input dialog, the password dialog replaces all
+///  Although similar to an input dialog, the password dialog replaces all  
 ///  input characters with asterisks.
 ///
-///  [`pid`] The player ID for whom the password dialog should appear.
-///  [`id`] The numerical ID of the password dialog.
-///  [`label`] The text at the top of the password dialog.
+///  `pid` The player ID for whom the password dialog should appear.  
+///  `id` The numerical ID of the password dialog.  
+///  `label` The text at the top of the password dialog.  
 ///  \parm note The text at the bottom of the password dialog.
 ///
 ///  Returns void
@@ -3353,13 +3353,13 @@ pub fn password_dialog(pid: u16, id: i16, label: &str, note: &str) {
 }
 
 ///
-///  Display a listbox at the center of the screen where each item takes up
-///         a row and is selectable, with the listbox only vanishing once the Ok button
+///  Display a listbox at the center of the screen where each item takes up  
+///         a row and is selectable, with the listbox only vanishing once the Ok button  
 ///         is pressed.
 ///
-///  [`pid`] The player ID for whom the listbox should appear.
-///  [`id`] The numerical ID of the listbox.
-///  [`label`] The text at the top of the listbox.
+///  `pid` The player ID for whom the listbox should appear.  
+///  `id` The numerical ID of the listbox.  
+///  `label` The text at the top of the listbox.  
 ///  \parm items The items in the listbox, separated by newlines (e.g. "Item 1\nItem 2").
 ///
 ///  Returns void
@@ -3375,7 +3375,7 @@ pub fn list_box(pid: u16, id: i16, label: &str, items: &str) {
 ///
 ///  This is used to initialize the sending of new PlayerQuickKeys packets.
 ///
-///  [`pid`] The player ID whose quick key changes should be used.
+///  `pid` The player ID whose quick key changes should be used.
 ///
 ///  Returns void
 ///
@@ -3388,7 +3388,7 @@ pub fn clear_quick_key_changes(pid: u16) {
 ///
 ///  Get the number of indexes in a player's latest quick key changes.
 ///
-///  [`pid`] The player ID whose quick key changes should be used.
+///  `pid` The player ID whose quick key changes should be used.
 ///
 ///  Returns the number of indexes.
 ///
@@ -3401,8 +3401,8 @@ pub fn get_quick_key_changes_size(pid: u16) -> u16 {
 ///
 ///  Get the slot of the quick key at a certain index in a player's latest quick key changes.
 ///
-///  [`pid`] The player ID whose quick key changes should be used.
-///  [`index`] The index of the quick key in the quick key changes vector.
+///  `pid` The player ID whose quick key changes should be used.  
+///  `index` The index of the quick key in the quick key changes vector.
 ///
 ///  Returns the slot.
 ///
@@ -3415,8 +3415,8 @@ pub fn get_quick_key_slot(pid: u16, index: u16) -> i16 {
 ///
 ///  Get the type of the quick key at a certain index in a player's latest quick key changes.
 ///
-///  [`pid`] The player ID whose quick key changes should be used.
-///  [`index`] The index of the quick key in the quick key changes vector.
+///  `pid` The player ID whose quick key changes should be used.  
+///  `index` The index of the quick key in the quick key changes vector.
 ///
 ///  Returns the quick key type.
 ///
@@ -3429,8 +3429,8 @@ pub fn get_quick_key_type(pid: u16, index: u16) -> i16 {
 ///
 ///  Get the itemId at a certain index in a player's latest quick key changes.
 ///
-///  [`pid`] The player ID whose quick key changes should be used.
-///  [`index`] The index of the quick key in the quick key changes vector.
+///  `pid` The player ID whose quick key changes should be used.  
+///  `index` The index of the quick key in the quick key changes vector.
 ///
 ///  Returns the itemId.
 ///
@@ -3446,10 +3446,10 @@ pub fn get_quick_key_item_id(pid: u16, index: u16) -> String {
 ///
 ///  Add a new quick key to the quick key changes for a player.
 ///
-///  [`pid`] The player ID whose quick key changes should be used.
-///  [`slot`] The slot to be used.
-///  [`slot`] The type of the quick key (0 for ITEM, 1 for ITEM_MAGIC, 2 for MAGIC, 3 for UNASSIGNED).
-///  [`item_id`] The itemId of the item.
+///  `pid` The player ID whose quick key changes should be used.  
+///  `slot` The slot to be used.  
+///  `slot` The type of the quick key (0 for ITEM, 1 for ITEM_MAGIC, 2 for MAGIC, 3 for UNASSIGNED).  
+///  `item_id` The itemId of the item.
 ///
 ///  Returns void
 ///
@@ -3462,7 +3462,7 @@ pub fn add_quick_key(pid: u16, slot: u16, _type: i16, item_id: &str) {
 ///
 ///  Send a PlayerQuickKeys packet with a player's recorded quick key changes.
 ///
-///  [`pid`] The player ID whose quick key changes should be used.
+///  `pid` The player ID whose quick key changes should be used.
 ///
 ///  Returns void
 ///
@@ -3477,9 +3477,9 @@ pub fn send_quick_key_changes(pid: u16) {
 ///
 ///  Note: This currently has no effect, and is just an unimplemented stub.
 ///
-///  [`target_pid`] The player ID whose map marker should be hidden or revealed.
-///  [`affected_pid`] The player ID for whom the map marker will be hidden or revealed.
-///  [`state`] The state of the map marker (false to hide, true to reveal).
+///  `target_pid` The player ID whose map marker should be hidden or revealed.  
+///  `affected_pid` The player ID for whom the map marker will be hidden or revealed.  
+///  `state` The state of the map marker (false to hide, true to reveal).
 ///
 ///  Returns void
 ///
@@ -3494,8 +3494,8 @@ pub fn set_map_visibility(target_pid: u16, affected_pid: u16, state: u16) {
 ///
 ///  Note: This currently has no effect, and is just an unimplemented stub.
 ///
-///  [`target_pid`] The player ID whose map marker should be hidden or revealed.
-///  [`state`] The state of the map marker (false to hide, true to reveal).
+///  `target_pid` The player ID whose map marker should be hidden or revealed.  
+///  `state` The state of the map marker (false to hide, true to reveal).
 ///
 ///  Returns void
 ///
@@ -3516,7 +3516,7 @@ pub fn initialize_quick_key_changes(pid: u16) {
 ///
 ///  This is used to initialize the sending of new PlayerInventory packets.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
+///  `pid` The player ID whose inventory changes should be used.
 ///
 ///  Returns void
 ///
@@ -3543,7 +3543,7 @@ pub fn get_equipment_size() -> i16 {
 ///
 ///  Get the number of indexes in a player's latest inventory changes.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
+///  `pid` The player ID whose inventory changes should be used.
 ///
 ///  Returns the number of indexes.
 ///
@@ -3556,7 +3556,7 @@ pub fn get_inventory_changes_size(pid: u16) -> u16 {
 ///
 ///  Get the action type used in a player's latest inventory changes.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
+///  `pid` The player ID whose inventory changes should be used.
 ///
 ///  Returns the action type (0 for SET, 1 for ADD, 2 for REMOVE).
 ///
@@ -3569,8 +3569,8 @@ pub fn get_inventory_changes_action(pid: u16) -> u16 {
 ///
 ///  Set the action type in a player's inventory changes.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
-///  [`action`] The action (0 for SET, 1 for ADD, 2 for REMOVE).
+///  `pid` The player ID whose inventory changes should be used.  
+///  `action` The action (0 for SET, 1 for ADD, 2 for REMOVE).
 ///
 ///  Returns void
 ///
@@ -3583,12 +3583,12 @@ pub fn set_inventory_changes_action(pid: u16, action: u8) {
 ///
 ///  Equip an item in a certain slot of the equipment of a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The equipment slot.
-///  [`ref_id`] The refId of the item.
-///  [`count`] The count of the item.
-///  [`charge`] The charge of the item.
-///  [`enchantment_charge`] The enchantment charge of the item.
+///  `pid` The player ID.  
+///  `slot` The equipment slot.  
+///  `ref_id` The refId of the item.  
+///  `count` The count of the item.  
+///  `charge` The charge of the item.  
+///  `enchantment_charge` The enchantment charge of the item.
 ///
 ///  Returns void
 ///
@@ -3601,8 +3601,8 @@ pub fn equip_item(pid: u16, slot: u16, ref_id: &str, count: u16, charge: i16, en
 ///
 ///  Unequip the item in a certain slot of the equipment of a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The equipment slot.
+///  `pid` The player ID.  
+///  `slot` The equipment slot.
 ///
 ///  Returns void
 ///
@@ -3615,12 +3615,12 @@ pub fn unequip_item(pid: u16, slot: u16) {
 ///
 ///  Add an item change to a player's inventory changes.
 ///
-///  [`pid`] The player ID.
-///  [`ref_id`] The refId of the item.
-///  [`count`] The count of the item.
-///  [`charge`] The charge of the item.
-///  [`enchantment_charge`] The enchantment charge of the item.
-///  [`soul`] The soul of the item.
+///  `pid` The player ID.  
+///  `ref_id` The refId of the item.  
+///  `count` The count of the item.  
+///  `charge` The charge of the item.  
+///  `enchantment_charge` The enchantment charge of the item.  
+///  `soul` The soul of the item.
 ///
 ///  Returns void
 ///
@@ -3633,8 +3633,8 @@ pub fn add_item_change(pid: u16, ref_id: &str, count: u16, charge: i16, enchantm
 ///
 ///  Check whether a player has equipped an item with a certain refId in any slot.
 ///
-///  [`pid`] The player ID.
-///  [`ref_id`] The refId of the item.
+///  `pid` The player ID.  
+///  `ref_id` The refId of the item.
 ///
 ///  Returns whether the player has the item equipped.
 ///
@@ -3647,8 +3647,8 @@ pub fn has_item_equipped(pid: u16, ref_id: &str) -> bool {
 ///
 ///  Get the refId of the item in a certain slot of the equipment of a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the equipment item.
+///  `pid` The player ID.  
+///  `slot` The slot of the equipment item.
 ///
 ///  Returns the refId.
 ///
@@ -3664,8 +3664,8 @@ pub fn get_equipment_item_ref_id(pid: u16, slot: u16) -> String {
 ///
 ///  Get the count of the item in a certain slot of the equipment of a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the equipment item.
+///  `pid` The player ID.  
+///  `slot` The slot of the equipment item.
 ///
 ///  Returns the item count.
 ///
@@ -3678,8 +3678,8 @@ pub fn get_equipment_item_count(pid: u16, slot: u16) -> i16 {
 ///
 ///  Get the charge of the item in a certain slot of the equipment of a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the equipment item.
+///  `pid` The player ID.  
+///  `slot` The slot of the equipment item.
 ///
 ///  Returns the charge.
 ///
@@ -3690,11 +3690,11 @@ pub fn get_equipment_item_charge(pid: u16, slot: u16) -> i16 {
 }
 
 ///
-///  Get the enchantment charge of the item in a certain slot of the equipment of
+///  Get the enchantment charge of the item in a certain slot of the equipment of  
 ///         a player.
 ///
-///  [`pid`] The player ID.
-///  [`slot`] The slot of the equipment item.
+///  `pid` The player ID.  
+///  `slot` The slot of the equipment item.
 ///
 ///  Returns the enchantment charge.
 ///
@@ -3705,11 +3705,11 @@ pub fn get_equipment_item_enchantment_charge(pid: u16, slot: u16) -> f64 {
 }
 
 ///
-///  Get the refId of the item at a certain index in a player's latest inventory
+///  Get the refId of the item at a certain index in a player's latest inventory  
 ///         changes.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
-///  [`index`] The index of the inventory item.
+///  `pid` The player ID whose inventory changes should be used.  
+///  `index` The index of the inventory item.
 ///
 ///  Returns the refId.
 ///
@@ -3723,11 +3723,11 @@ pub fn get_inventory_item_ref_id(pid: u16, index: u16) -> String {
 }
 
 ///
-///  Get the count of the item at a certain index in a player's latest inventory
+///  Get the count of the item at a certain index in a player's latest inventory  
 ///         changes.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
-///  [`index`] The index of the inventory item.
+///  `pid` The player ID whose inventory changes should be used.  
+///  `index` The index of the inventory item.
 ///
 ///  Returns the item count.
 ///
@@ -3738,11 +3738,11 @@ pub fn get_inventory_item_count(pid: u16, index: u16) -> i16 {
 }
 
 ///
-///  Get the charge of the item at a certain index in a player's latest inventory
+///  Get the charge of the item at a certain index in a player's latest inventory  
 ///         changes.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
-///  [`index`] The index of the inventory item.
+///  `pid` The player ID whose inventory changes should be used.  
+///  `index` The index of the inventory item.
 ///
 ///  Returns the charge.
 ///
@@ -3753,11 +3753,11 @@ pub fn get_inventory_item_charge(pid: u16, index: u16) -> i16 {
 }
 
 ///
-///  Get the enchantment charge of the item at a certain index in a player's
+///  Get the enchantment charge of the item at a certain index in a player's  
 ///         latest inventory changes.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
-///  [`index`] The index of the inventory item.
+///  `pid` The player ID whose inventory changes should be used.  
+///  `index` The index of the inventory item.
 ///
 ///  Returns the enchantment charge.
 ///
@@ -3768,11 +3768,11 @@ pub fn get_inventory_item_enchantment_charge(pid: u16, index: u16) -> f64 {
 }
 
 ///
-///  Get the soul of the item at a certain index in a player's latest inventory
+///  Get the soul of the item at a certain index in a player's latest inventory  
 ///         changes.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
-///  [`index`] The index of the inventory item.
+///  `pid` The player ID whose inventory changes should be used.  
+///  `index` The index of the inventory item.
 ///
 ///  Returns the soul.
 ///
@@ -3788,7 +3788,7 @@ pub fn get_inventory_item_soul(pid: u16, index: u16) -> String {
 ///
 ///  Get the refId of the item last used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the refId.
 ///
@@ -3804,7 +3804,7 @@ pub fn get_used_item_ref_id(pid: u16) -> String {
 ///
 ///  Get the count of the item last used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the item count.
 ///
@@ -3817,7 +3817,7 @@ pub fn get_used_item_count(pid: u16) -> i16 {
 ///
 ///  Get the charge of the item last used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the charge.
 ///
@@ -3830,7 +3830,7 @@ pub fn get_used_item_charge(pid: u16) -> i16 {
 ///
 ///  Get the enchantment charge of the item last used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the enchantment charge.
 ///
@@ -3843,7 +3843,7 @@ pub fn get_used_item_enchantment_charge(pid: u16) -> f64 {
 ///
 ///  Get the soul of the item last used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the soul.
 ///
@@ -3861,7 +3861,7 @@ pub fn get_used_item_soul(pid: u16) -> String {
 ///
 ///  It is always sent to all players.
 ///
-///  [`pid`] The player ID whose equipment should be sent.
+///  `pid` The player ID whose equipment should be sent.
 ///
 ///  Returns void
 ///
@@ -3874,10 +3874,10 @@ pub fn send_equipment(pid: u16) {
 ///
 ///  Send a PlayerInventory packet with a player's recorded inventory changes.
 ///
-///  [`pid`] The player ID whose inventory changes should be used.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID whose inventory changes should be used.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -3891,7 +3891,7 @@ pub fn send_inventory_changes(pid: u16, send_to_other_players: bool, skip_attach
 ///
 ///  Send a PlayerItemUse causing a player to use their recorded usedItem.
 ///
-///  [`pid`] The player ID affected.
+///  `pid` The player ID affected.
 ///
 ///  Returns void
 ///
@@ -3916,7 +3916,7 @@ pub fn add_item(pid: u16, ref_id: &str, count: u16, charge: i16, enchantment_cha
 ///
 ///  Get the type of a PlayerMiscellaneous packet.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the type.
 ///
@@ -3929,7 +3929,7 @@ pub fn get_miscellaneous_change_type(pid: u16) -> u8 {
 ///
 ///  Get the cell description of a player's Mark cell.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the cell description.
 ///
@@ -3945,7 +3945,7 @@ pub fn get_mark_cell(pid: u16) -> String {
 ///
 ///  Get the X position of a player's Mark.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the X position.
 ///
@@ -3958,7 +3958,7 @@ pub fn get_mark_pos_x(pid: u16) -> f64 {
 ///
 ///  Get the Y position of a player's Mark.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the Y position.
 ///
@@ -3971,7 +3971,7 @@ pub fn get_mark_pos_y(pid: u16) -> f64 {
 ///
 ///  Get the Z position of a player's Mark.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the Z position.
 ///
@@ -3984,7 +3984,7 @@ pub fn get_mark_pos_z(pid: u16) -> f64 {
 ///
 ///  Get the X rotation of a player's Mark.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the X rotation.
 ///
@@ -3997,7 +3997,7 @@ pub fn get_mark_rot_x(pid: u16) -> f64 {
 ///
 ///  Get the Z rotation of a player's Mark.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the X rotation.
 ///
@@ -4010,7 +4010,7 @@ pub fn get_mark_rot_z(pid: u16) -> f64 {
 ///
 ///  Get the ID of a player's selected spell.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the spell ID.
 ///
@@ -4026,7 +4026,7 @@ pub fn get_selected_spell_id(pid: u16) -> String {
 ///
 ///  Check whether the killer of a certain player is also a player.
 ///
-///  [`pid`] The player ID of the killed player.
+///  `pid` The player ID of the killed player.
 ///
 ///  Returns whether the player was killed by another player.
 ///
@@ -4039,7 +4039,7 @@ pub fn does_player_have_player_killer(pid: u16) -> bool {
 ///
 ///  Get the player ID of the killer of a certain player.
 ///
-///  [`pid`] The player ID of the killed player.
+///  `pid` The player ID of the killed player.
 ///
 ///  Returns the player ID of the killer.
 ///
@@ -4052,7 +4052,7 @@ pub fn get_player_killer_pid(pid: u16) -> i16 {
 ///
 ///  Get the refId of the actor killer of a certain player.
 ///
-///  [`pid`] The player ID of the killed player.
+///  `pid` The player ID of the killed player.
 ///
 ///  Returns the refId of the killer.
 ///
@@ -4068,7 +4068,7 @@ pub fn get_player_killer_ref_id(pid: u16) -> String {
 ///
 ///  Get the refNum of the actor killer of a certain player.
 ///
-///  [`pid`] The player ID of the killed player.
+///  `pid` The player ID of the killed player.
 ///
 ///  Returns the refNum of the killer.
 ///
@@ -4081,7 +4081,7 @@ pub fn get_player_killer_ref_num(pid: u16) -> u16 {
 ///
 ///  Get the mpNum of the actor killer of a certain player.
 ///
-///  [`pid`] The player ID of the killed player.
+///  `pid` The player ID of the killed player.
 ///
 ///  Returns the mpNum of the killer.
 ///
@@ -4094,7 +4094,7 @@ pub fn get_player_killer_mp_num(pid: u16) -> u16 {
 ///
 ///  Get the name of the actor killer of a certain player.
 ///
-///  [`pid`] The player ID of the killed player.
+///  `pid` The player ID of the killed player.
 ///
 ///  Returns the name of the killer.
 ///
@@ -4108,10 +4108,10 @@ pub fn get_player_killer_name(pid: u16) -> String {
 }
 
 ///
-///  Get the draw state of a player (0 for nothing, 1 for drawn weapon,
+///  Get the draw state of a player (0 for nothing, 1 for drawn weapon,  
 ///         2 for drawn spell).
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the draw state.
 ///
@@ -4124,7 +4124,7 @@ pub fn get_draw_state(pid: u16) -> u16 {
 ///
 ///  Get the sneak state of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns whether the player is sneaking.
 ///
@@ -4137,14 +4137,14 @@ pub fn get_sneak_state(pid: u16) -> bool {
 ///
 ///  Set the Mark cell of a player.
 ///
-///  This changes the Mark cell recorded for that player in the server memory, but does not by itself
+///  This changes the Mark cell recorded for that player in the server memory, but does not by itself  
 ///  send a packet.
 ///
-///  The cell is determined to be an exterior cell if it fits the pattern of a number followed
+///  The cell is determined to be an exterior cell if it fits the pattern of a number followed  
 ///  by a comma followed by another number.
 ///
-///  [`pid`] The player ID.
-///  [`cell_description`] The cell description.
+///  `pid` The player ID.  
+///  `cell_description` The cell description.
 ///
 ///  Returns void
 ///
@@ -4157,13 +4157,13 @@ pub fn set_mark_cell(pid: u16, cell_description: &str) {
 ///
 ///  Set the Mark position of a player.
 ///
-///  This changes the Mark positional coordinates recorded for that player in the server memory, but
+///  This changes the Mark positional coordinates recorded for that player in the server memory, but  
 ///  does not by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`x`] The X position.
-///  [`y`] The Y position.
-///  [`z`] The Z position.
+///  `pid` The player ID.  
+///  `x` The X position.  
+///  `y` The Y position.  
+///  `z` The Z position.
 ///
 ///  Returns void
 ///
@@ -4176,12 +4176,12 @@ pub fn set_mark_pos(pid: u16, x: f64, y: f64, z: f64) {
 ///
 ///  Set the Mark rotation of a player.
 ///
-///  This changes the Mark positional coordinates recorded for that player in the server memory, but
+///  This changes the Mark positional coordinates recorded for that player in the server memory, but  
 ///  does not by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`x`] The X rotation.
-///  [`z`] The Z rotation.
+///  `pid` The player ID.  
+///  `x` The X rotation.  
+///  `z` The Z rotation.
 ///
 ///  Returns void
 ///
@@ -4194,11 +4194,11 @@ pub fn set_mark_rot(pid: u16, x: f64, z: f64) {
 ///
 ///  Set the ID of a player's selected spell.
 ///
-///  This changes the spell ID recorded for that player in the server memory, but does not by itself
+///  This changes the spell ID recorded for that player in the server memory, but does not by itself  
 ///  send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`spell_id`] The spell ID.
+///  `pid` The player ID.  
+///  `spell_id` The spell ID.
 ///
 ///  Returns void
 ///
@@ -4211,7 +4211,7 @@ pub fn set_selected_spell_id(pid: u16, spell_id: &str) {
 ///
 ///  Send a PlayerMiscellaneous packet with a Mark location to a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -4224,7 +4224,7 @@ pub fn send_mark_location(pid: u16) {
 ///
 ///  Send a PlayerMiscellaneous packet with a selected spell ID to a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -4237,21 +4237,21 @@ pub fn send_selected_spell(pid: u16) {
 ///
 ///  Send a PlayerJail packet about a player.
 ///
-///  This is similar to the player being jailed by a guard, but provides extra parameters for
+///  This is similar to the player being jailed by a guard, but provides extra parameters for  
 ///  increased flexibility.
 ///
-///  It is only sent to the player being jailed, as the other players will be informed of the
+///  It is only sent to the player being jailed, as the other players will be informed of the  
 ///  jailing's actual consequences via other packets sent by the affected client.
 ///
-///  [`pid`] The player ID.
-///  [`jail_days`] The number of days to spend jailed, where each day affects one skill point.
-///  [`ignore_jail_teleportation`] Whether the player being teleported to the nearest jail
-///                                 marker should be overridden.
-///  [`ignore_jail_skill_increase`] Whether the player's Sneak and Security skills should be
-///                                 prevented from increasing as a result of the jailing,
-///                                 overriding default behavior.
-///  [`jail_progress_text`] The text that should be displayed while jailed.
-///  [`jail_end_text`] The text that should be displayed once the jailing period is over.
+///  `pid` The player ID.  
+///  `jail_days` The number of days to spend jailed, where each day affects one skill point.  
+///  `ignore_jail_teleportation` Whether the player being teleported to the nearest jail  
+///                                 marker should be overridden.  
+///  `ignore_jail_skill_increase` Whether the player's Sneak and Security skills should be  
+///                                 prevented from increasing as a result of the jailing,  
+///                                 overriding default behavior.  
+///  `jail_progress_text` The text that should be displayed while jailed.  
+///  `jail_end_text` The text that should be displayed once the jailing period is over.
 ///
 ///  Returns void
 ///
@@ -4266,8 +4266,8 @@ pub fn jail(pid: u16, jail_days: i16, ignore_jail_teleportation: bool, ignore_ja
 ///
 ///  This sends the packet to all players connected to the server.
 ///
-///  [`pid`] The player ID.
-///  [`_type`] The type of resurrection (0 for REGULAR, 1 for IMPERIAL_SHRINE,
+///  `pid` The player ID.  
+///  `_type` The type of resurrection (0 for REGULAR, 1 for IMPERIAL_SHRINE,  
 ///              2 for TRIBUNAL_TEMPLE).
 ///
 ///  Returns void
@@ -4294,10 +4294,10 @@ pub fn get_player_killer_ref_num_index(pid: u16) -> u16 {
 }
 
 ///
-///  Generate a random string of a particular length that only contains
+///  Generate a random string of a particular length that only contains  
 ///         letters and numbers.
 ///
-///  [`length`] The length of the generated string.
+///  `length` The length of the generated string.
 ///
 ///  Returns the generated string.
 ///
@@ -4313,7 +4313,7 @@ pub fn generate_random_string(length: u16) -> String {
 ///
 ///  Get the SHA256 hash corresponding to an input string.
 ///
-///  [`input_string`] The input string.
+///  `input_string` The input string.
 ///
 ///  Returns the SHA256 hash.
 ///
@@ -4329,7 +4329,7 @@ pub fn get_sha256_hash(input_string: &str) -> String {
 ///
 ///  Get the last player ID currently connected to the server.
 ///
-///  Every player receives a unique numerical index known as their player ID upon joining the
+///  Every player receives a unique numerical index known as their player ID upon joining the  
 ///  server.
 ///
 ///
@@ -4344,11 +4344,11 @@ pub fn get_last_player_id() -> u16 {
 ///
 ///  Get the current (latest) mpNum generated by the server.
 ///
-///  Every object that did not exist in an .ESM or .ESP data file and has instead been placed or
+///  Every object that did not exist in an .ESM or .ESP data file and has instead been placed or  
 ///  spawned through a server-sent packet has a numerical index known as its mpNum.
 ///
-///  When ObjectPlace and ObjectSpawn packets are received from players, their objects lack mpNums,
-///  so the server assigns them some based on incrementing the server's current mpNum, with the
+///  When ObjectPlace and ObjectSpawn packets are received from players, their objects lack mpNums,  
+///  so the server assigns them some based on incrementing the server's current mpNum, with the  
 ///  operation's final mpNum becoming the server's new current mpNum.
 ///
 ///
@@ -4363,11 +4363,11 @@ pub fn get_current_mp_num() -> i16 {
 ///
 ///  Set the current (latest) mpNum generated by the server.
 ///
-///  When restarting a server, it is important to revert to the previous current (latest) mpNum
-///  as stored in the server's data, so as to avoid starting over from 0 and ending up assigning
+///  When restarting a server, it is important to revert to the previous current (latest) mpNum  
+///  as stored in the server's data, so as to avoid starting over from 0 and ending up assigning  
 ///  duplicate mpNums to objects.
 ///
-///  [`mp_num`] The number that should be used as the new current mpNum.
+///  `mp_num` The number that should be used as the new current mpNum.
 ///
 ///  Returns void
 ///
@@ -4380,7 +4380,7 @@ pub fn set_current_mp_num(mp_num: i16) {
 ///
 ///  Get the X position of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the X position.
 ///
@@ -4393,7 +4393,7 @@ pub fn get_pos_x(pid: u16) -> f64 {
 ///
 ///  Get the Y position of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the Y position.
 ///
@@ -4406,7 +4406,7 @@ pub fn get_pos_y(pid: u16) -> f64 {
 ///
 ///  Get the Z position of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the Z position.
 ///
@@ -4419,7 +4419,7 @@ pub fn get_pos_z(pid: u16) -> f64 {
 ///
 ///  Get the X position of a player from before their latest cell change.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the X position.
 ///
@@ -4432,7 +4432,7 @@ pub fn get_previous_cell_pos_x(pid: u16) -> f64 {
 ///
 ///  Get the Y position of a player from before their latest cell change.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the Y position.
 ///
@@ -4445,7 +4445,7 @@ pub fn get_previous_cell_pos_y(pid: u16) -> f64 {
 ///
 ///  Get the Z position of a player from before their latest cell change.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the Z position.
 ///
@@ -4458,7 +4458,7 @@ pub fn get_previous_cell_pos_z(pid: u16) -> f64 {
 ///
 ///  Get the X rotation of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the X rotation.
 ///
@@ -4471,7 +4471,7 @@ pub fn get_rot_x(pid: u16) -> f64 {
 ///
 ///  Get the Z rotation of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the Z rotation.
 ///
@@ -4484,13 +4484,13 @@ pub fn get_rot_z(pid: u16) -> f64 {
 ///
 ///  Set the position of a player.
 ///
-///  This changes the positional coordinates recorded for that player in the server memory, but
+///  This changes the positional coordinates recorded for that player in the server memory, but  
 ///  does not by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`x`] The X position.
-///  [`y`] The Y position.
-///  [`z`] The Z position.
+///  `pid` The player ID.  
+///  `x` The X position.  
+///  `y` The Y position.  
+///  `z` The Z position.
 ///
 ///  Returns void
 ///
@@ -4503,14 +4503,14 @@ pub fn set_pos(pid: u16, x: f64, y: f64, z: f64) {
 ///
 ///  Set the rotation of a player.
 ///
-///  This changes the rotational coordinates recorded for that player in the server memory, but
+///  This changes the rotational coordinates recorded for that player in the server memory, but  
 ///  does not by itself send a packet.
 ///
 ///  A player's Y rotation is always 0, which is why there is no Y rotation parameter.
 ///
-///  [`pid`] The player ID.
-///  [`x`] The X position.
-///  [`z`] The Z position.
+///  `pid` The player ID.  
+///  `x` The X position.  
+///  `z` The Z position.
 ///
 ///  Returns void
 ///
@@ -4523,13 +4523,13 @@ pub fn set_rot(pid: u16, x: f64, z: f64) {
 ///
 ///  Set the momentum of a player.
 ///
-///  This changes the coordinates recorded for that player's momentum in the server memory, but
+///  This changes the coordinates recorded for that player's momentum in the server memory, but  
 ///  does not by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`x`] The X momentum.
-///  [`y`] The Y momentum.
-///  [`z`] The Z momentum.
+///  `pid` The player ID.  
+///  `x` The X momentum.  
+///  `y` The Y momentum.  
+///  `z` The Z momentum.
 ///
 ///  Returns void
 ///
@@ -4544,7 +4544,7 @@ pub fn set_momentum(pid: u16, x: f64, y: f64, z: f64) {
 ///
 ///  It is only sent to the affected player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -4559,7 +4559,7 @@ pub fn send_pos(pid: u16) {
 ///
 ///  It is only sent to the affected player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -4574,7 +4574,7 @@ pub fn send_momentum(pid: u16) {
 ///
 ///  This is used to initialize the sending of new PlayerJournal packets.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
+///  `pid` The player ID whose journal changes should be used.
 ///
 ///  Returns void
 ///
@@ -4587,7 +4587,7 @@ pub fn clear_journal_changes(pid: u16) {
 ///
 ///  Get the number of indexes in a player's latest journal changes.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
+///  `pid` The player ID whose journal changes should be used.
 ///
 ///  Returns the number of indexes.
 ///
@@ -4598,13 +4598,13 @@ pub fn get_journal_changes_size(pid: u16) -> u16 {
 }
 
 ///
-///  Add a new journal item of type ENTRY to the journal changes for a player,
+///  Add a new journal item of type ENTRY to the journal changes for a player,  
 ///   with a specific timestamp.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
-///  [`quest`] The quest of the journal item.
-///  [`index`] The quest index of the journal item.
-///  [`actor_ref_id`] The actor refId of the journal item.
+///  `pid` The player ID whose journal changes should be used.  
+///  `quest` The quest of the journal item.  
+///  `index` The quest index of the journal item.  
+///  `actor_ref_id` The actor refId of the journal item.
 ///
 ///  Returns void
 ///
@@ -4615,16 +4615,16 @@ pub fn add_journal_entry(pid: u16, quest: &str, index: u16, actor_ref_id: &str) 
 }
 
 ///
-///  Add a new journal item of type ENTRY to the journal changes for a player,
+///  Add a new journal item of type ENTRY to the journal changes for a player,  
 ///   with a specific timestamp.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
-///  [`quest`] The quest of the journal item.
-///  [`index`] The quest index of the journal item.
-///  [`actor_ref_id`] The actor refId of the journal item.
-///  [`the`] daysPassed for the journal item.
-///  [`the`] month for the journal item.
-///  [`the`] day of the month for the journal item.
+///  `pid` The player ID whose journal changes should be used.  
+///  `quest` The quest of the journal item.  
+///  `index` The quest index of the journal item.  
+///  `actor_ref_id` The actor refId of the journal item.  
+///  `the` daysPassed for the journal item.  
+///  `the` month for the journal item.  
+///  `the` day of the month for the journal item.
 ///
 ///  Returns void
 ///
@@ -4637,9 +4637,9 @@ pub fn add_journal_entry_with_timestamp(pid: u16, quest: &str, index: u16, actor
 ///
 ///  Add a new journal item of type INDEX to the journal changes for a player.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
-///  [`quest`] The quest of the journal item.
-///  [`index`] The quest index of the journal item.
+///  `pid` The player ID whose journal changes should be used.  
+///  `quest` The quest of the journal item.  
+///  `index` The quest index of the journal item.
 ///
 ///  Returns void
 ///
@@ -4652,8 +4652,8 @@ pub fn add_journal_index(pid: u16, quest: &str, index: u16) {
 ///
 ///  Set the reputation of a certain player.
 ///
-///  [`pid`] The player ID.
-///  [`value`] The reputation.
+///  `pid` The player ID.  
+///  `value` The reputation.
 ///
 ///  Returns void
 ///
@@ -4666,8 +4666,8 @@ pub fn set_reputation(pid: u16, value: i16) {
 ///
 ///  Get the quest at a certain index in a player's latest journal changes.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
-///  [`index`] The index of the journalItem.
+///  `pid` The player ID whose journal changes should be used.  
+///  `index` The index of the journalItem.
 ///
 ///  Returns the quest.
 ///
@@ -4683,8 +4683,8 @@ pub fn get_journal_item_quest(pid: u16, index: u16) -> String {
 ///
 ///  Get the quest index at a certain index in a player's latest journal changes.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
-///  [`index`] The index of the journalItem.
+///  `pid` The player ID whose journal changes should be used.  
+///  `index` The index of the journalItem.
 ///
 ///  Returns the quest index.
 ///
@@ -4697,8 +4697,8 @@ pub fn get_journal_item_index(pid: u16, index: u16) -> i16 {
 ///
 ///  Get the journal item type at a certain index in a player's latest journal changes.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
-///  [`index`] The index of the journalItem.
+///  `pid` The player ID whose journal changes should be used.  
+///  `index` The index of the journalItem.
 ///
 ///  Returns the type (0 for ENTRY, 1 for INDEX).
 ///
@@ -4713,8 +4713,8 @@ pub fn get_journal_item_type(pid: u16, index: u16) -> i16 {
 ///
 ///  Every journal change has an associated actor, which is usually the quest giver.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
-///  [`index`] The index of the journalItem.
+///  `pid` The player ID whose journal changes should be used.  
+///  `index` The index of the journalItem.
 ///
 ///  Returns the actor refId.
 ///
@@ -4730,7 +4730,7 @@ pub fn get_journal_item_actor_ref_id(pid: u16, index: u16) -> String {
 ///
 ///  Get the a certain player's reputation.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the reputation.
 ///
@@ -4743,10 +4743,10 @@ pub fn get_reputation(pid: u16) -> i16 {
 ///
 ///  Send a PlayerJournal packet with a player's recorded journal changes.
 ///
-///  [`pid`] The player ID whose journal changes should be used.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID whose journal changes should be used.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -4760,10 +4760,10 @@ pub fn send_journal_changes(pid: u16, send_to_other_players: bool, skip_attached
 ///
 ///  Send a PlayerReputation packet with a player's recorded reputation.
 ///
-///  [`pid`] The player ID whose reputation should be used.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID whose reputation should be used.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -4796,7 +4796,7 @@ pub fn clear_records() {
 ///  Get the type of records in the read worldstate's dynamic records.
 ///
 ///
-///  Returns the type of records (0 for SPELL, 1 for POTION, 2 for ENCHANTMENT,
+///  Returns the type of records (0 for SPELL, 1 for POTION, 2 for ENCHANTMENT,  
 ///          3 for NPC).
 ///
 pub fn get_record_type() -> u16 {
@@ -4818,10 +4818,10 @@ pub fn get_record_count() -> u16 {
 }
 
 ///
-///  Get the number of effects for the record at a certain index in the read
+///  Get the number of effects for the record at a certain index in the read  
 ///  worldstate's current records.
 ///
-///  [`record_index`] The index of the record.
+///  `record_index` The index of the record.
 ///
 ///  Returns the number of effects.
 ///
@@ -4832,10 +4832,10 @@ pub fn get_record_effect_count(record_index: u16) -> u16 {
 }
 
 ///
-///  Get the id of the record at a certain index in the read worldstate's
+///  Get the id of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the id of the record.
 ///
@@ -4849,11 +4849,11 @@ pub fn get_record_id(index: u16) -> String {
 }
 
 ///
-///  Get the base id (i.e. the id this record should inherit default
-///  values from) of the record at a certain index in the read worldstate's
+///  Get the base id (i.e. the id this record should inherit default  
+///  values from) of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the base id of the record.
 ///
@@ -4867,10 +4867,10 @@ pub fn get_record_base_id(index: u16) -> String {
 }
 
 ///
-///  Get the subtype of the record at a certain index in the read worldstate's
+///  Get the subtype of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the type of the record.
 ///
@@ -4881,10 +4881,10 @@ pub fn get_record_subtype(index: u16) -> i16 {
 }
 
 ///
-///  Get the name of the record at a certain index in the read worldstate's
+///  Get the name of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the name of the record.
 ///
@@ -4898,10 +4898,10 @@ pub fn get_record_name(index: u16) -> String {
 }
 
 ///
-///  Get the model of the record at a certain index in the read worldstate's
+///  Get the model of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the model of the record.
 ///
@@ -4915,10 +4915,10 @@ pub fn get_record_model(index: u16) -> String {
 }
 
 ///
-///  Get the icon of the record at a certain index in the read worldstate's
+///  Get the icon of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the icon of the record.
 ///
@@ -4932,10 +4932,10 @@ pub fn get_record_icon(index: u16) -> String {
 }
 
 ///
-///  Get the script of the record at a certain index in the read worldstate's
+///  Get the script of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the script of the record.
 ///
@@ -4949,10 +4949,10 @@ pub fn get_record_script(index: u16) -> String {
 }
 
 ///
-///  Get the enchantment id of the record at a certain index in the read
+///  Get the enchantment id of the record at a certain index in the read  
 ///  worldstate's dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the enchantment id of the record.
 ///
@@ -4966,10 +4966,10 @@ pub fn get_record_enchantment_id(index: u16) -> String {
 }
 
 ///
-///  Get the enchantment charge of the record at a certain index in
+///  Get the enchantment charge of the record at a certain index in  
 ///  the read worldstate's dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the enchantment charge of the record.
 ///
@@ -4980,10 +4980,10 @@ pub fn get_record_enchantment_charge(index: u16) -> i16 {
 }
 
 ///
-///  Get the auto-calculation flag value of the record at a certain index in
+///  Get the auto-calculation flag value of the record at a certain index in  
 ///  the read worldstate's dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the auto-calculation flag value of the record.
 ///
@@ -4994,10 +4994,10 @@ pub fn get_record_auto_calc(index: u16) -> i16 {
 }
 
 ///
-///  Get the charge of the record at a certain index in the read worldstate's
+///  Get the charge of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the charge of the record.
 ///
@@ -5008,10 +5008,10 @@ pub fn get_record_charge(index: u16) -> i16 {
 }
 
 ///
-///  Get the cost of the record at a certain index in the read worldstate's
+///  Get the cost of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the cost of the record.
 ///
@@ -5022,10 +5022,10 @@ pub fn get_record_cost(index: u16) -> i16 {
 }
 
 ///
-///  Get the flags of the record at a certain index in the read worldstate's
+///  Get the flags of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the flags of the spell as an integer.
 ///
@@ -5036,10 +5036,10 @@ pub fn get_record_flags(index: u16) -> i16 {
 }
 
 ///
-///  Get the value of the record at a certain index in the read worldstate's
+///  Get the value of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the value of the record.
 ///
@@ -5050,10 +5050,10 @@ pub fn get_record_value(index: u16) -> i16 {
 }
 
 ///
-///  Get the weight of the record at a certain index in the read worldstate's
+///  Get the weight of the record at a certain index in the read worldstate's  
 ///  dynamic records of the current type.
 ///
-///  [`index`] The index of the record.
+///  `index` The index of the record.
 ///
 ///  Returns the weight of the record.
 ///
@@ -5064,11 +5064,11 @@ pub fn get_record_weight(index: u16) -> f64 {
 }
 
 ///
-///  Get the ID of the effect at a certain index in the read worldstate's
+///  Get the ID of the effect at a certain index in the read worldstate's  
 ///  current records.
 ///
-///  [`record_index`] The index of the record.
-///  [`effect_index`] The index of the effect.
+///  `record_index` The index of the record.  
+///  `effect_index` The index of the effect.
 ///
 ///  Returns the ID of the effect.
 ///
@@ -5079,11 +5079,11 @@ pub fn get_record_effect_id(record_index: u16, effect_index: u16) -> u16 {
 }
 
 ///
-///  Get the ID of the attribute modified by the effect at a certain index in the
+///  Get the ID of the attribute modified by the effect at a certain index in the  
 ///  read worldstate's current records.
 ///
-///  [`record_index`] The index of the record.
-///  [`effect_index`] The index of the effect.
+///  `record_index` The index of the record.  
+///  `effect_index` The index of the effect.
 ///
 ///  Returns the attribute ID for the effect.
 ///
@@ -5094,11 +5094,11 @@ pub fn get_record_effect_attribute(record_index: u16, effect_index: u16) -> i16 
 }
 
 ///
-///  Get the ID of the skill modified by the effect at a certain index in the
+///  Get the ID of the skill modified by the effect at a certain index in the  
 ///  read worldstate's current records.
 ///
-///  [`record_index`] The index of the record.
-///  [`effect_index`] The index of the effect.
+///  `record_index` The index of the record.  
+///  `effect_index` The index of the effect.
 ///
 ///  Returns the skill ID for the effect.
 ///
@@ -5109,11 +5109,11 @@ pub fn get_record_effect_skill(record_index: u16, effect_index: u16) -> i16 {
 }
 
 ///
-///  Get the range type of the effect at a certain index in the read worldstate's
+///  Get the range type of the effect at a certain index in the read worldstate's  
 ///  current records (0 for self, 1 for touch, 2 for target).
 ///
-///  [`record_index`] The index of the record.
-///  [`effect_index`] The index of the effect.
+///  `record_index` The index of the record.  
+///  `effect_index` The index of the effect.
 ///
 ///  Returns the range of the effect.
 ///
@@ -5124,11 +5124,11 @@ pub fn get_record_effect_range_type(record_index: u16, effect_index: u16) -> u16
 }
 
 ///
-///  Get the area of the effect at a certain index in the read worldstate's current
+///  Get the area of the effect at a certain index in the read worldstate's current  
 ///  records.
 ///
-///  [`record_index`] The index of the record.
-///  [`effect_index`] The index of the effect.
+///  `record_index` The index of the record.  
+///  `effect_index` The index of the effect.
 ///
 ///  Returns the area of the effect.
 ///
@@ -5139,11 +5139,11 @@ pub fn get_record_effect_area(record_index: u16, effect_index: u16) -> i16 {
 }
 
 ///
-///  Get the duration of the effect at a certain index in the read worldstate's current
+///  Get the duration of the effect at a certain index in the read worldstate's current  
 ///  records.
 ///
-///  [`record_index`] The index of the record.
-///  [`effect_index`] The index of the effect.
+///  `record_index` The index of the record.  
+///  `effect_index` The index of the effect.
 ///
 ///  Returns the duration of the effect.
 ///
@@ -5154,11 +5154,11 @@ pub fn get_record_effect_duration(record_index: u16, effect_index: u16) -> i16 {
 }
 
 ///
-///  Get the maximum magnitude of the effect at a certain index in the read
+///  Get the maximum magnitude of the effect at a certain index in the read  
 ///  worldstate's current records.
 ///
-///  [`record_index`] The index of the record.
-///  [`effect_index`] The index of the effect.
+///  `record_index` The index of the record.  
+///  `effect_index` The index of the effect.
 ///
 ///  Returns the maximum magnitude of the effect.
 ///
@@ -5169,11 +5169,11 @@ pub fn get_record_effect_magnitude_max(record_index: u16, effect_index: u16) -> 
 }
 
 ///
-///  Get the minimum magnitude of the effect at a certain index in the read
+///  Get the minimum magnitude of the effect at a certain index in the read  
 ///  worldstate's current records.
 ///
-///  [`record_index`] The index of the record.
-///  [`effect_index`] The index of the effect.
+///  `record_index` The index of the record.  
+///  `effect_index` The index of the effect.
 ///
 ///  Returns the minimum magnitude of the effect.
 ///
@@ -5184,10 +5184,10 @@ pub fn get_record_effect_magnitude_min(record_index: u16, effect_index: u16) -> 
 }
 
 ///
-///  Set which type of temporary records stored on the server should have
+///  Set which type of temporary records stored on the server should have  
 ///  their data changed via setter functions.
 ///
-///  [`_type`] The type of records.
+///  `_type` The type of records.
 ///
 ///  Returns void
 ///
@@ -5198,10 +5198,10 @@ pub fn set_record_type(_type: u16) {
 }
 
 ///
-///  Set the id of the temporary record stored on the server for the
+///  Set the id of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`id`] The id of the record.
+///  `id` The id of the record.
 ///
 ///  Returns void
 ///
@@ -5212,11 +5212,11 @@ pub fn set_record_id(id: &str) {
 }
 
 ///
-///  Set the base id (i.e. the id this record should inherit default
-///  values from) of the temporary record stored on the server for the
+///  Set the base id (i.e. the id this record should inherit default  
+///  values from) of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`base_id`] The baseId of the record.
+///  `base_id` The baseId of the record.
 ///
 ///  Returns void
 ///
@@ -5227,11 +5227,11 @@ pub fn set_record_base_id(base_id: &str) {
 }
 
 ///
-///  Set the inventory base id (i.e. the id this record should inherit
-///  its inventory contents from) of the temporary record stored on the server for
+///  Set the inventory base id (i.e. the id this record should inherit  
+///  its inventory contents from) of the temporary record stored on the server for  
 ///  the currently specified record type.
 ///
-///  [`inventory_base_id`] The inventoryBaseId of the record.
+///  `inventory_base_id` The inventoryBaseId of the record.
 ///
 ///  Returns void
 ///
@@ -5242,10 +5242,10 @@ pub fn set_record_inventory_base_id(inventory_base_id: &str) {
 }
 
 ///
-///  Set the subtype of the temporary record stored on the server for
+///  Set the subtype of the temporary record stored on the server for  
 ///  the currently specified record type.
 ///
-///  [`_type`] The spell type.
+///  `_type` The spell type.
 ///
 ///  Returns void
 ///
@@ -5256,10 +5256,10 @@ pub fn set_record_subtype(subtype: u16) {
 }
 
 ///
-///  Set the name of the temporary record stored on the server for the
+///  Set the name of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`name`] The name of the record.
+///  `name` The name of the record.
 ///
 ///  Returns void
 ///
@@ -5270,10 +5270,10 @@ pub fn set_record_name(name: &str) {
 }
 
 ///
-///  Set the model of the temporary record stored on the server for the
+///  Set the model of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`model`] The model of the record.
+///  `model` The model of the record.
 ///
 ///  Returns void
 ///
@@ -5284,10 +5284,10 @@ pub fn set_record_model(model: &str) {
 }
 
 ///
-///  Set the icon of the temporary record stored on the server for the
+///  Set the icon of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`icon`] The icon of the record.
+///  `icon` The icon of the record.
 ///
 ///  Returns void
 ///
@@ -5298,10 +5298,10 @@ pub fn set_record_icon(icon: &str) {
 }
 
 ///
-///  Set the script of the temporary record stored on the server for the
+///  Set the script of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`script`] The script of the record.
+///  `script` The script of the record.
 ///
 ///  Returns void
 ///
@@ -5312,10 +5312,10 @@ pub fn set_record_script(script: &str) {
 }
 
 ///
-///  Set the enchantment id of the temporary record stored on the server
+///  Set the enchantment id of the temporary record stored on the server  
 ///  for the currently specified record type.
 ///
-///  [`enchantment_id`] The enchantment id of the record.
+///  `enchantment_id` The enchantment id of the record.
 ///
 ///  Returns void
 ///
@@ -5326,10 +5326,10 @@ pub fn set_record_enchantment_id(enchantment_id: &str) {
 }
 
 ///
-///  Set the enchantment charge of the temporary record stored on the server
+///  Set the enchantment charge of the temporary record stored on the server  
 ///  for the currently specified record type.
 ///
-///  [`enchantment_charge`] The enchantmentCharge of the record.
+///  `enchantment_charge` The enchantmentCharge of the record.
 ///
 ///  Returns void
 ///
@@ -5340,10 +5340,10 @@ pub fn set_record_enchantment_charge(enchantment_charge: i16) {
 }
 
 ///
-///  Set the auto-calculation flag value of the temporary record stored
+///  Set the auto-calculation flag value of the temporary record stored  
 ///  on the server for the currently specified record type.
 ///
-///  [`auto_calc`] The auto-calculation flag value of the record.
+///  `auto_calc` The auto-calculation flag value of the record.
 ///
 ///  Returns void
 ///
@@ -5354,10 +5354,10 @@ pub fn set_record_auto_calc(auto_calc: i16) {
 }
 
 ///
-///  Set the charge of the temporary record stored on the server for the
+///  Set the charge of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`charge`] The charge of the record.
+///  `charge` The charge of the record.
 ///
 ///  Returns void
 ///
@@ -5368,10 +5368,10 @@ pub fn set_record_charge(charge: i16) {
 }
 
 ///
-///  Set the cost of the temporary record stored on the server for the
+///  Set the cost of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`cost`] The cost of the record.
+///  `cost` The cost of the record.
 ///
 ///  Returns void
 ///
@@ -5382,10 +5382,10 @@ pub fn set_record_cost(cost: i16) {
 }
 
 ///
-///  Set the flags of the temporary record stored on the server for the
+///  Set the flags of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`flags`] The flags of the record.
+///  `flags` The flags of the record.
 ///
 ///  Returns void
 ///
@@ -5396,10 +5396,10 @@ pub fn set_record_flags(flags: i16) {
 }
 
 ///
-///  Set the value of the temporary record stored on the server for the
+///  Set the value of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`value`] The value of the record.
+///  `value` The value of the record.
 ///
 ///  Returns void
 ///
@@ -5410,10 +5410,10 @@ pub fn set_record_value(value: i16) {
 }
 
 ///
-///  Set the weight of the temporary record stored on the server for the
+///  Set the weight of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`weight`] The weight of the record.
+///  `weight` The weight of the record.
 ///
 ///  Returns void
 ///
@@ -5424,10 +5424,10 @@ pub fn set_record_weight(weight: f64) {
 }
 
 ///
-///  Set the item quality of the temporary record stored on the server for the
+///  Set the item quality of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`weight`] The weight of the record.
+///  `weight` The weight of the record.
 ///
 ///  Returns void
 ///
@@ -5438,10 +5438,10 @@ pub fn set_record_quality(quality: f64) {
 }
 
 ///
-///  Set the number of uses of the temporary record stored on the server for the
+///  Set the number of uses of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`uses`] The number of uses of the record.
+///  `uses` The number of uses of the record.
 ///
 ///  Returns void
 ///
@@ -5452,10 +5452,10 @@ pub fn set_record_uses(uses: i16) {
 }
 
 ///
-///  Set the time of the temporary record stored on the server for the currently
+///  Set the time of the temporary record stored on the server for the currently  
 ///  specified record type.
 ///
-///  [`time`] The time of the record.
+///  `time` The time of the record.
 ///
 ///  Returns void
 ///
@@ -5466,10 +5466,10 @@ pub fn set_record_time(time: i16) {
 }
 
 ///
-///  Set the radius of the temporary record stored on the server for the currently
+///  Set the radius of the temporary record stored on the server for the currently  
 ///  specified record type.
 ///
-///  [`uses`] The radius of the record.
+///  `uses` The radius of the record.
 ///
 ///  Returns void
 ///
@@ -5480,10 +5480,10 @@ pub fn set_record_radius(radius: i16) {
 }
 
 ///
-///  Set the color of the temporary record stored on the server for the currently
+///  Set the color of the temporary record stored on the server for the currently  
 ///  specified record type.
 ///
-///  [`color`] The color of the record.
+///  `color` The color of the record.
 ///
 ///  Returns void
 ///
@@ -5494,10 +5494,10 @@ pub fn set_record_color(red: u16, green: u16, blue: u16) {
 }
 
 ///
-///  Set the armor rating of the temporary record stored on the server
+///  Set the armor rating of the temporary record stored on the server  
 ///  for the currently specified record type.
 ///
-///  [`armor_rating`] The armor rating of the record.
+///  `armor_rating` The armor rating of the record.
 ///
 ///  Returns void
 ///
@@ -5508,10 +5508,10 @@ pub fn set_record_armor_rating(armor_rating: i16) {
 }
 
 ///
-///  Set the health of the temporary record stored on the server for the
+///  Set the health of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`health`] The health of the record.
+///  `health` The health of the record.
 ///
 ///  Returns void
 ///
@@ -5522,11 +5522,11 @@ pub fn set_record_health(health: i16) {
 }
 
 ///
-///  Set the chop damage of the temporary record stored on the server for the
+///  Set the chop damage of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`min_damage`] The minimum damage of the record.
-///  [`max_damage`] The maximum damage of the record.
+///  `min_damage` The minimum damage of the record.  
+///  `max_damage` The maximum damage of the record.
 ///
 ///  Returns void
 ///
@@ -5537,11 +5537,11 @@ pub fn set_record_damage_chop(min_damage: u16, max_damage: u16) {
 }
 
 ///
-///  Set the slash damage of the temporary record stored on the server for the
+///  Set the slash damage of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`min_damage`] The minimum damage of the record.
-///  [`max_damage`] The maximum damage of the record.
+///  `min_damage` The minimum damage of the record.  
+///  `max_damage` The maximum damage of the record.
 ///
 ///  Returns void
 ///
@@ -5552,11 +5552,11 @@ pub fn set_record_damage_slash(min_damage: u16, max_damage: u16) {
 }
 
 ///
-///  Set the thrust damage of the temporary record stored on the server for the
+///  Set the thrust damage of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`min_damage`] The minimum damage of the record.
-///  [`max_damage`] The maximum damage of the record.
+///  `min_damage` The minimum damage of the record.  
+///  `max_damage` The maximum damage of the record.
 ///
 ///  Returns void
 ///
@@ -5567,10 +5567,10 @@ pub fn set_record_damage_thrust(min_damage: u16, max_damage: u16) {
 }
 
 ///
-///  Set the reach of the temporary record stored on the server for the
+///  Set the reach of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`reach`] The reach of the record.
+///  `reach` The reach of the record.
 ///
 ///  Returns void
 ///
@@ -5581,10 +5581,10 @@ pub fn set_record_reach(reach: f64) {
 }
 
 ///
-///  Set the speed of the temporary record stored on the server for the
+///  Set the speed of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`speed`] The speed of the record.
+///  `speed` The speed of the record.
 ///
 ///  Returns void
 ///
@@ -5595,12 +5595,12 @@ pub fn set_record_speed(speed: f64) {
 }
 
 ///
-///  Set whether the temporary record stored on the server for the
+///  Set whether the temporary record stored on the server for the  
 ///  currently specified record type is a key.
 ///
 ///  Note: This is only applicable to Miscellaneous records.
 ///
-///  [`key_state`] Whether the record is a key.
+///  `key_state` Whether the record is a key.
 ///
 ///  Returns void
 ///
@@ -5611,12 +5611,12 @@ pub fn set_record_key_state(key_state: bool) {
 }
 
 ///
-///  Set whether the temporary record stored on the server for the
+///  Set whether the temporary record stored on the server for the  
 ///  currently specified record type is a scroll.
 ///
 ///  Note: This is only applicable to Book records.
 ///
-///  [`scroll_state`] Whether the record is a scroll.
+///  `scroll_state` Whether the record is a scroll.
 ///
 ///  Returns void
 ///
@@ -5627,10 +5627,10 @@ pub fn set_record_scroll_state(scroll_state: bool) {
 }
 
 ///
-///  Set the skill ID of the temporary record stored on the server for the
+///  Set the skill ID of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`skill_id`] The skill ID of the record.
+///  `skill_id` The skill ID of the record.
 ///
 ///  Returns void
 ///
@@ -5641,10 +5641,10 @@ pub fn set_record_skill_id(skill_id: i16) {
 }
 
 ///
-///  Set the text of the temporary record stored on the server for the
+///  Set the text of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`text`] The text of the record.
+///  `text` The text of the record.
 ///
 ///  Returns void
 ///
@@ -5655,10 +5655,10 @@ pub fn set_record_text(text: &str) {
 }
 
 ///
-///  Set the hair of the temporary record stored on the server for the
+///  Set the hair of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`hair`] The hair of the record.
+///  `hair` The hair of the record.
 ///
 ///  Returns void
 ///
@@ -5669,10 +5669,10 @@ pub fn set_record_hair(hair: &str) {
 }
 
 ///
-///  Set the head of the temporary record stored on the server for the
+///  Set the head of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`hair`] The head of the record.
+///  `hair` The head of the record.
 ///
 ///  Returns void
 ///
@@ -5683,10 +5683,10 @@ pub fn set_record_head(head: &str) {
 }
 
 ///
-///  Set the gender of the temporary record stored on the server for the
+///  Set the gender of the temporary record stored on the server for the  
 ///  currently specified record type (0 for female, 1 for male).
 ///
-///  [`hair`] The race of the record.
+///  `hair` The race of the record.
 ///
 ///  Returns void
 ///
@@ -5697,10 +5697,10 @@ pub fn set_record_gender(gender: u16) {
 }
 
 ///
-///  Set the race of the temporary record stored on the server for the
+///  Set the race of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`hair`] The race of the record.
+///  `hair` The race of the record.
 ///
 ///  Returns void
 ///
@@ -5711,10 +5711,10 @@ pub fn set_record_race(race: &str) {
 }
 
 ///
-///  Set the character class of the temporary record stored on the server
+///  Set the character class of the temporary record stored on the server  
 ///  for the currently specified record type.
 ///
-///  [`hair`] The character class of the record.
+///  `hair` The character class of the record.
 ///
 ///  Returns void
 ///
@@ -5725,10 +5725,10 @@ pub fn set_record_class(char_class: &str) {
 }
 
 ///
-///  Set the faction of the temporary record stored on the server for the
+///  Set the faction of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`faction`] The faction of the record.
+///  `faction` The faction of the record.
 ///
 ///  Returns void
 ///
@@ -5739,10 +5739,10 @@ pub fn set_record_faction(faction: &str) {
 }
 
 ///
-///  Set the scale of the temporary record stored on the server for the
+///  Set the scale of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`scale`] The scale of the record.
+///  `scale` The scale of the record.
 ///
 ///  Returns void
 ///
@@ -5753,10 +5753,10 @@ pub fn set_record_scale(scale: f64) {
 }
 
 ///
-///  Set the blood type of the temporary record stored on the server for the
+///  Set the blood type of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`blood_type`] The blood type of the record.
+///  `blood_type` The blood type of the record.
 ///
 ///  Returns void
 ///
@@ -5767,10 +5767,10 @@ pub fn set_record_blood_type(blood_type: i16) {
 }
 
 ///
-///  Set the level of the temporary record stored on the server for the
+///  Set the level of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`level`] The level of the record.
+///  `level` The level of the record.
 ///
 ///  Returns void
 ///
@@ -5781,10 +5781,10 @@ pub fn set_record_level(level: i16) {
 }
 
 ///
-///  Set the magicka of the temporary record stored on the server for the
+///  Set the magicka of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`magicka`] The magicka of the record.
+///  `magicka` The magicka of the record.
 ///
 ///  Returns void
 ///
@@ -5795,10 +5795,10 @@ pub fn set_record_magicka(magicka: i16) {
 }
 
 ///
-///  Set the fatigue of the temporary record stored on the server for the
+///  Set the fatigue of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`fatigue`] The fatigue of the record.
+///  `fatigue` The fatigue of the record.
 ///
 ///  Returns void
 ///
@@ -5809,10 +5809,10 @@ pub fn set_record_fatigue(fatigue: i16) {
 }
 
 ///
-///  Set the AI fight value of the temporary record stored on the server for the
+///  Set the AI fight value of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`ai_fight`] The AI fight value of the record.
+///  `ai_fight` The AI fight value of the record.
 ///
 ///  Returns void
 ///
@@ -5823,10 +5823,10 @@ pub fn set_record_ai_fight(ai_fight: i16) {
 }
 
 ///
-///  Set the AI flee value of the temporary record stored on the server for the
+///  Set the AI flee value of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`ai_flee`] The AI flee value of the record.
+///  `ai_flee` The AI flee value of the record.
 ///
 ///  Returns void
 ///
@@ -5837,10 +5837,10 @@ pub fn set_record_ai_flee(ai_flee: i16) {
 }
 
 ///
-///  Set the AI alarm value of the temporary record stored on the server for the
+///  Set the AI alarm value of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`ai_alarm`] The AI alarm value of the record.
+///  `ai_alarm` The AI alarm value of the record.
 ///
 ///  Returns void
 ///
@@ -5851,10 +5851,10 @@ pub fn set_record_ai_alarm(ai_alarm: i16) {
 }
 
 ///
-///  Set the AI services value of the temporary record stored on the server for the
+///  Set the AI services value of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`ai_services`] The AI services value of the record.
+///  `ai_services` The AI services value of the record.
 ///
 ///  Returns void
 ///
@@ -5865,10 +5865,10 @@ pub fn set_record_ai_services(ai_services: i16) {
 }
 
 ///
-///  Set the sound of the temporary record stored on the server for the currently
+///  Set the sound of the temporary record stored on the server for the currently  
 ///  specified record type.
 ///
-///  [`sound`] The sound of the record.
+///  `sound` The sound of the record.
 ///
 ///  Returns void
 ///
@@ -5879,10 +5879,10 @@ pub fn set_record_sound(sound: &str) {
 }
 
 ///
-///  Set the opening sound of the temporary record stored on the server for the
+///  Set the opening sound of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`sound`] The opening sound of the record.
+///  `sound` The opening sound of the record.
 ///
 ///  Returns void
 ///
@@ -5893,10 +5893,10 @@ pub fn set_record_open_sound(sound: &str) {
 }
 
 ///
-///  Set the closing sound of the temporary record stored on the server for the
+///  Set the closing sound of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`sound`] The closing sound of the record.
+///  `sound` The closing sound of the record.
 ///
 ///  Returns void
 ///
@@ -5907,10 +5907,10 @@ pub fn set_record_close_sound(sound: &str) {
 }
 
 ///
-///  Set the script text of the temporary record stored on the server for the
+///  Set the script text of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
-///  [`sound`] The script text of the record.
+///  `sound` The script text of the record.
 ///
 ///  Returns void
 ///
@@ -5923,11 +5923,11 @@ pub fn set_record_script_text(script_text: &str) {
 ///
 ///  Set the id of the record at a certain index in the records stored on the server.
 ///
-///  When resending a received RecordsDynamic packet, this allows you to set the server-generated
+///  When resending a received RecordsDynamic packet, this allows you to set the server-generated  
 ///  id of a record without having to clear and recreate the packet.
 ///
-///  [`index`] The index of the record.
-///  [`id`] The id of the record.
+///  `index` The index of the record.  
+///  `id` The id of the record.
 ///
 ///  Returns void
 ///
@@ -5938,14 +5938,14 @@ pub fn set_record_id_by_index(index: u16, id: &str) {
 }
 
 ///
-///  Set the enchantment id of the record at a certain index in the records stored on
+///  Set the enchantment id of the record at a certain index in the records stored on  
 ///  the server.
 ///
-///  When resending a received RecordsDynamic packet, this allows you to set the server-generated
+///  When resending a received RecordsDynamic packet, this allows you to set the server-generated  
 ///  enchantment id of a record without having to clear and recreate the packet.
 ///
-///  [`index`] The index of the record.
-///  [`enchantment_id`] The enchantment id of the record.
+///  `index` The index of the record.  
+///  `enchantment_id` The enchantment id of the record.
 ///
 ///  Returns void
 ///
@@ -5958,7 +5958,7 @@ pub fn set_record_enchantment_id_by_index(index: u16, enchantment_id: &str) {
 ///
 ///  Set the ID of the temporary effect stored on the server.
 ///
-///  [`effect_id`] The ID of the effect.
+///  `effect_id` The ID of the effect.
 ///
 ///  Returns void
 ///
@@ -5969,10 +5969,10 @@ pub fn set_record_effect_id(effect_id: u16) {
 }
 
 ///
-///  Set the ID of the attribute modified by the temporary effect stored on
+///  Set the ID of the attribute modified by the temporary effect stored on  
 ///  the server.
 ///
-///  [`attribute_id`] The ID of the attribute.
+///  `attribute_id` The ID of the attribute.
 ///
 ///  Returns void
 ///
@@ -5983,10 +5983,10 @@ pub fn set_record_effect_attribute(attribute_id: i16) {
 }
 
 ///
-///  Set the ID of the skill modified by the temporary effect stored on the
+///  Set the ID of the skill modified by the temporary effect stored on the  
 ///  server.
 ///
-///  [`skill_id`] The ID of the skill.
+///  `skill_id` The ID of the skill.
 ///
 ///  Returns void
 ///
@@ -5997,10 +5997,10 @@ pub fn set_record_effect_skill(skill_id: i16) {
 }
 
 ///
-///  Set the range type of the temporary effect stored on the server (0 for
+///  Set the range type of the temporary effect stored on the server (0 for  
 ///  self, 1 for touch, 2 for target).
 ///
-///  [`range_type`] The range type of the effect.
+///  `range_type` The range type of the effect.
 ///
 ///  Returns void
 ///
@@ -6013,7 +6013,7 @@ pub fn set_record_effect_range_type(range_type: u16) {
 ///
 ///  Set the area of the temporary effect stored on the server.
 ///
-///  [`area`] The area of the effect.
+///  `area` The area of the effect.
 ///
 ///  Returns void
 ///
@@ -6026,7 +6026,7 @@ pub fn set_record_effect_area(area: i16) {
 ///
 ///  Set the duration of the temporary effect stored on the server.
 ///
-///  [`duration`] The duration of the effect.
+///  `duration` The duration of the effect.
 ///
 ///  Returns void
 ///
@@ -6039,7 +6039,7 @@ pub fn set_record_effect_duration(duration: i16) {
 ///
 ///  Set the maximum magnitude of the temporary effect stored on the server.
 ///
-///  [`magnitude_max`] The maximum magnitude of the effect.
+///  `magnitude_max` The maximum magnitude of the effect.
 ///
 ///  Returns void
 ///
@@ -6052,7 +6052,7 @@ pub fn set_record_effect_magnitude_max(magnitude_max: i16) {
 ///
 ///  Set the minimum magnitude of the temporary effect stored on the server.
 ///
-///  [`magnitude_min`] The minimum magnitude of the effect.
+///  `magnitude_min` The minimum magnitude of the effect.
 ///
 ///  Returns void
 ///
@@ -6065,7 +6065,7 @@ pub fn set_record_effect_magnitude_min(magnitude_min: i16) {
 ///
 ///  Set the type of the temporary body part stored on the server.
 ///
-///  [`part_type`] The type of the body part.
+///  `part_type` The type of the body part.
 ///
 ///  Returns void
 ///
@@ -6076,10 +6076,10 @@ pub fn set_record_body_part_type(part_type: u16) {
 }
 
 ///
-///  Set the id of the male version of the temporary body part stored on the
+///  Set the id of the male version of the temporary body part stored on the  
 ///  server.
 ///
-///  [`part_id`] The id of the body part.
+///  `part_id` The id of the body part.
 ///
 ///  Returns void
 ///
@@ -6090,10 +6090,10 @@ pub fn set_record_body_part_id_for_male(part_id: &str) {
 }
 
 ///
-///  Set the id of the female version of the temporary body part stored on the
+///  Set the id of the female version of the temporary body part stored on the  
 ///  server.
 ///
-///  [`part_id`] The id of the body part.
+///  `part_id` The id of the body part.
 ///
 ///  Returns void
 ///
@@ -6106,7 +6106,7 @@ pub fn set_record_body_part_id_for_female(part_id: &str) {
 ///
 ///  Set the id of the of the temporary inventory item stored on the server.
 ///
-///  [`part_id`] The id of the inventory item.
+///  `part_id` The id of the inventory item.
 ///
 ///  Returns void
 ///
@@ -6119,7 +6119,7 @@ pub fn set_record_inventory_item_id(item_id: &str) {
 ///
 ///  Set the count of the of the temporary inventory item stored on the server.
 ///
-///  [`count`] The count of the inventory item.
+///  `count` The count of the inventory item.
 ///
 ///  Returns void
 ///
@@ -6130,10 +6130,10 @@ pub fn set_record_inventory_item_count(count: u16) {
 }
 
 ///
-///  Add a copy of the server's temporary record of the current specified
+///  Add a copy of the server's temporary record of the current specified  
 ///  type to the stored records.
 ///
-///  In the process, the server's temporary record will automatically be cleared
+///  In the process, the server's temporary record will automatically be cleared  
 ///  so a new one can be set up.
 ///
 ///
@@ -6146,10 +6146,10 @@ pub fn add_record() {
 }
 
 ///
-///  Add a copy of the server's temporary effect to the temporary record
+///  Add a copy of the server's temporary effect to the temporary record  
 ///  of the current specified type.
 ///
-///  In the process, the server's temporary effect will automatically be cleared
+///  In the process, the server's temporary effect will automatically be cleared  
 ///  so a new one can be set up.
 ///
 ///
@@ -6162,10 +6162,10 @@ pub fn add_record_effect() {
 }
 
 ///
-///  Add a copy of the server's temporary body part to the temporary record
+///  Add a copy of the server's temporary body part to the temporary record  
 ///  of the current specified type.
 ///
-///  In the process, the server's temporary body part will automatically be cleared
+///  In the process, the server's temporary body part will automatically be cleared  
 ///  so a new one can be set up.
 ///
 ///
@@ -6178,13 +6178,13 @@ pub fn add_record_body_part() {
 }
 
 ///
-///  Add a copy of the server's temporary inventory item to the temporary record
+///  Add a copy of the server's temporary inventory item to the temporary record  
 ///  of the current specified type.
 ///
-///  In the process, the server's temporary inventory item will automatically be cleared
+///  In the process, the server's temporary inventory item will automatically be cleared  
 ///  so a new one can be set up.
 ///
-///  Note: Any items added this way will be ignored if the record already has a valid
+///  Note: Any items added this way will be ignored if the record already has a valid  
 ///        inventoryBaseId.
 ///
 ///
@@ -6199,10 +6199,10 @@ pub fn add_record_inventory_item() {
 ///
 ///  Send a RecordDynamic packet with the current specified record type.
 ///
-///  [`pid`] The player ID attached to the packet.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID attached to the packet.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -6216,7 +6216,7 @@ pub fn send_record_dynamic(pid: u16, send_to_other_players: bool, skip_attached_
 ///
 ///  Get the scale of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the scale.
 ///
@@ -6231,7 +6231,7 @@ pub fn get_scale(pid: u16) -> f64 {
 ///
 ///  This is based on the last PlayerShapeshift packet received or sent for that player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the werewolf state.
 ///
@@ -6244,7 +6244,7 @@ pub fn is_werewolf(pid: u16) -> bool {
 ///
 ///  Get the refId of the creature the player is disguised as.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the creature refId.
 ///
@@ -6258,12 +6258,12 @@ pub fn get_creature_ref_id(pid: u16) -> String {
 }
 
 ///
-///  Check whether a player's name is replaced by that of the creature they are
+///  Check whether a player's name is replaced by that of the creature they are  
 ///         disguised as when other players hover over them.
 ///
 ///  This is based on the last PlayerShapeshift packet received or sent for that player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the creature name display state.
 ///
@@ -6276,11 +6276,11 @@ pub fn get_creature_name_display_state(pid: u16) -> bool {
 ///
 ///  Set the scale of a player.
 ///
-///  This changes the scale recorded for that player in the server memory, but
+///  This changes the scale recorded for that player in the server memory, but  
 ///  does not by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`scale`] The new scale.
+///  `pid` The player ID.  
+///  `scale` The new scale.
 ///
 ///  Returns void
 ///
@@ -6293,11 +6293,11 @@ pub fn set_scale(pid: u16, scale: f64) {
 ///
 ///  Set the werewolf state of a player.
 ///
-///  This changes the werewolf state recorded for that player in the server memory, but
+///  This changes the werewolf state recorded for that player in the server memory, but  
 ///  does not by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`is_werewolf`] The new werewolf state.
+///  `pid` The player ID.  
+///  `is_werewolf` The new werewolf state.
 ///
 ///  Returns void
 ///
@@ -6310,12 +6310,12 @@ pub fn set_werewolf_state(pid: u16, is_werewolf: bool) {
 ///
 ///  Set the refId of the creature a player is disguised as.
 ///
-///  This changes the creature refId recorded for that player in the server memory, but
+///  This changes the creature refId recorded for that player in the server memory, but  
 ///  does not by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`ref_id`] The creature refId.
-///  [`displays_creature_name`] Whether the player's name appears as that of the creature
+///  `pid` The player ID.  
+///  `ref_id` The creature refId.  
+///  `displays_creature_name` Whether the player's name appears as that of the creature  
 ///                              when hovered over by others.
 ///
 ///  Returns void
@@ -6327,11 +6327,11 @@ pub fn set_creature_ref_id(pid: u16, ref_id: &str) {
 }
 
 ///
-///  Set whether a player's name is replaced by that of the creature they are
+///  Set whether a player's name is replaced by that of the creature they are  
 ///         disguised as when other players hover over them.
 ///
-///  [`pid`] The player ID.
-///  [`display_state`] The creature name display state.
+///  `pid` The player ID.  
+///  `display_state` The creature name display state.
 ///
 ///  Returns void
 ///
@@ -6344,10 +6344,10 @@ pub fn set_creature_name_display_state(pid: u16, display_state: bool) {
 ///
 ///  Send a PlayerShapeshift packet about a player.
 ///
-///  This sends the packet to all players connected to the server. It is currently used
+///  This sends the packet to all players connected to the server. It is currently used  
 ///  only to communicate werewolf states.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -6362,9 +6362,9 @@ pub fn send_shapeshift(pid: u16) {
 ///
 ///  It will have `[Script]:` prepended to it so as to mark it as a script-generated log message.
 ///
-///  [`level`] The logging level used (0 for LOG_VERBOSE, 1 for LOG_INFO, 2 for LOG_WARN,
-///               3 for LOG_ERROR, 4 for LOG_FATAL).
-///  [`message`] The message logged.
+///  `level` The logging level used (0 for LOG_VERBOSE, 1 for LOG_INFO, 2 for LOG_WARN,  
+///               3 for LOG_ERROR, 4 for LOG_FATAL).  
+///  `message` The message logged.
 ///
 ///  Returns void
 ///
@@ -6379,9 +6379,9 @@ pub fn log_message(level: u16, message: &str) {
 ///
 ///  It will have `[Script]:` prepended to it so as to mark it as a script-generated log message.
 ///
-///  [`level`] The logging level used (0 for LOG_VERBOSE, 1 for LOG_INFO, 2 for LOG_WARN,
-///               3 for LOG_ERROR, 4 for LOG_FATAL).
-///  [`message`] The message logged.
+///  `level` The logging level used (0 for LOG_VERBOSE, 1 for LOG_INFO, 2 for LOG_WARN,  
+///               3 for LOG_ERROR, 4 for LOG_FATAL).  
+///  `message` The message logged.
 ///
 ///  Returns void
 ///
@@ -6394,7 +6394,7 @@ pub fn log_append(level: u16, message: &str) {
 ///
 ///  Shut down the server.
 ///
-///  [`code`] The shutdown code.
+///  `code` The shutdown code.
 ///
 ///  Returns void
 ///
@@ -6407,7 +6407,7 @@ pub fn stop_server(code: i16) {
 ///
 ///  Kick a certain player from the server.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -6420,7 +6420,7 @@ pub fn kick(pid: u16) {
 ///
 ///  Ban a certain IP address from the server.
 ///
-///  [`ip_address`] The IP address.
+///  `ip_address` The IP address.
 ///
 ///  Returns void
 ///
@@ -6433,7 +6433,7 @@ pub fn ban_address(ip_address: &str) {
 ///
 ///  Unban a certain IP address from the server.
 ///
-///  [`ip_address`] The IP address.
+///  `ip_address` The IP address.
 ///
 ///  Returns void
 ///
@@ -6460,7 +6460,7 @@ pub fn does_file_path_exist(file_path: &str) -> bool {
 }
 
 ///
-///  Get the first filename in a folder that has a case insensitive match with the filename
+///  Get the first filename in a folder that has a case insensitive match with the filename  
 ///  argument.
 ///
 ///  This is used to retain case insensitivity when opening data files on Linux.
@@ -6571,7 +6571,7 @@ pub fn get_protocol_version() -> String {
 ///
 ///  Get the average ping of a certain player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the average ping.
 ///
@@ -6584,7 +6584,7 @@ pub fn get_avg_ping(pid: u16) -> i16 {
 ///
 ///  Get the IP address of a certain player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the IP address.
 ///
@@ -6663,7 +6663,7 @@ pub fn get_script_error_ignoring_state() -> bool {
 ///
 ///  Set the game mode of the server, as displayed in the server browser.
 ///
-///  [`name`] The new game mode.
+///  `name` The new game mode.
 ///
 ///  Returns void
 ///
@@ -6676,7 +6676,7 @@ pub fn set_game_mode(game_mode: &str) {
 ///
 ///  Set the name of the server, as displayed in the server browser.
 ///
-///  [`name`] The new name.
+///  `name` The new name.
 ///
 ///  Returns void
 ///
@@ -6689,7 +6689,7 @@ pub fn set_hostname(name: &str) {
 ///
 ///  Set the password required to join the server.
 ///
-///  [`password`] The password.
+///  `password` The password.
 ///
 ///  Returns void
 ///
@@ -6704,7 +6704,7 @@ pub fn set_server_password(password: &str) {
 ///
 ///  If true, clients are required to use the same data files as set for the server.
 ///
-///  [`state`] The new enforcement state.
+///  `state` The new enforcement state.
 ///
 ///  Returns void
 ///
@@ -6717,11 +6717,11 @@ pub fn set_data_file_enforcement_state(state: bool) {
 ///
 ///  Set whether script errors should be ignored or not.
 ///
-///  If true, script errors will not crash the server, but could have any number
-///  of unforeseen consequences, which is why this is a highly experimental
+///  If true, script errors will not crash the server, but could have any number  
+///  of unforeseen consequences, which is why this is a highly experimental  
 ///  setting.
 ///
-///  [`state`] The new script error ignoring state.
+///  `state` The new script error ignoring state.
 ///
 ///  Returns void
 ///
@@ -6734,8 +6734,8 @@ pub fn set_script_error_ignoring_state(state: bool) {
 ///
 ///  Set a rule string for the server details displayed in the server browser.
 ///
-///  [`key`] The name of the rule.
-///  [`value`] The string value of the rule.
+///  `key` The name of the rule.  
+///  `value` The string value of the rule.
 ///
 ///  Returns void
 ///
@@ -6748,8 +6748,8 @@ pub fn set_rule_string(key: &str, value: &str) {
 ///
 ///  Set a rule value for the server details displayed in the server browser.
 ///
-///  [`key`] The name of the rule.
-///  [`value`] The numerical value of the rule.
+///  `key` The name of the rule.  
+///  `value` The numerical value of the rule.
 ///
 ///  Returns void
 ///
@@ -6760,16 +6760,16 @@ pub fn set_rule_value(key: &str, value: f64) {
 }
 
 ///
-///  Add a data file and a corresponding CRC32 checksum to the data file loadout
+///  Add a data file and a corresponding CRC32 checksum to the data file loadout  
 ///         that connecting clients need to match.
 ///
 ///  It can be used multiple times to set multiple checksums for the same data file.
 ///
-///  Note: If an empty string is provided for the checksum, a checksum will not be
+///  Note: If an empty string is provided for the checksum, a checksum will not be  
 ///        required for that data file.
 ///
-///  @param dataFilename The filename of the data file.
-///  @param checksumString A string with the CRC32 checksum required.
+///  `data_filename` The filename of the data file.  
+///  `checksum_string` A string with the CRC32 checksum required.
 ///
 pub fn add_data_file_requirement(data_filename: &str, checksum_string: &str) {
     unsafe {
@@ -6813,11 +6813,11 @@ pub fn add_plugin_hash(plugin_name: &str, checksum_string: &str) {
 ///
 ///  Set the difficulty for a player.
 ///
-///  This changes the difficulty for that player in the server memory, but does not by itself
+///  This changes the difficulty for that player in the server memory, but does not by itself  
 ///  send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`difficulty`] The difficulty.
+///  `pid` The player ID.  
+///  `difficulty` The difficulty.
 ///
 ///  Returns void
 ///
@@ -6830,17 +6830,17 @@ pub fn set_difficulty(pid: u16, difficulty: i16) {
 ///
 ///  Set the client log level enforced for a player.
 ///
-///  This changes the enforced log level for that player in the server memory, but does not by itself
+///  This changes the enforced log level for that player in the server memory, but does not by itself  
 ///  send a packet.
 ///
-///  Enforcing a certain log level is necessary to prevent players from learning information from
-///  their console window that they are otherwise unable to obtain, such as the locations of
+///  Enforcing a certain log level is necessary to prevent players from learning information from  
+///  their console window that they are otherwise unable to obtain, such as the locations of  
 ///  other players.
 ///
 ///  If you do not wish to enforce a log level, simply set enforcedLogLevel to -1
 ///
-///  [`pid`] The player ID.
-///  [`enforced_log_level`] The enforced log level.
+///  `pid` The player ID.  
+///  `enforced_log_level` The enforced log level.
 ///
 ///  Returns void
 ///
@@ -6853,11 +6853,11 @@ pub fn set_enforced_log_level(pid: u16, enforced_log_level: i16) {
 ///
 ///  Set the physics framerate for a player.
 ///
-///  This changes the physics framerate for that player in the server memory, but does not by itself
+///  This changes the physics framerate for that player in the server memory, but does not by itself  
 ///  send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`physics_framerate`] The physics framerate.
+///  `pid` The player ID.  
+///  `physics_framerate` The physics framerate.
 ///
 ///  Returns void
 ///
@@ -6870,11 +6870,11 @@ pub fn set_physics_framerate(pid: u16, physics_framerate: f64) {
 ///
 ///  Set whether the console is allowed for a player.
 ///
-///  This changes the console permission for that player in the server memory, but does not
+///  This changes the console permission for that player in the server memory, but does not  
 ///  by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`state`] The console permission state.
+///  `pid` The player ID.  
+///  `state` The console permission state.
 ///
 ///  Returns void
 ///
@@ -6887,11 +6887,11 @@ pub fn set_console_allowed(pid: u16, state: bool) {
 ///
 ///  Set whether resting in beds is allowed for a player.
 ///
-///  This changes the resting permission for that player in the server memory, but does not
+///  This changes the resting permission for that player in the server memory, but does not  
 ///  by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`state`] The resting permission state.
+///  `pid` The player ID.  
+///  `state` The resting permission state.
 ///
 ///  Returns void
 ///
@@ -6904,11 +6904,11 @@ pub fn set_bed_rest_allowed(pid: u16, state: bool) {
 ///
 ///  Set whether resting in the wilderness is allowed for a player.
 ///
-///  This changes the resting permission for that player in the server memory, but does not
+///  This changes the resting permission for that player in the server memory, but does not  
 ///  by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`state`] The resting permission state.
+///  `pid` The player ID.  
+///  `state` The resting permission state.
 ///
 ///  Returns void
 ///
@@ -6921,11 +6921,11 @@ pub fn set_wilderness_rest_allowed(pid: u16, state: bool) {
 ///
 ///  Set whether waiting is allowed for a player.
 ///
-///  This changes the waiting permission for that player in the server memory, but does not
+///  This changes the waiting permission for that player in the server memory, but does not  
 ///  by itself send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`state`] The waiting permission state.
+///  `pid` The player ID.  
+///  `state` The waiting permission state.
 ///
 ///  Returns void
 ///
@@ -6938,7 +6938,7 @@ pub fn set_wait_allowed(pid: u16, state: bool) {
 ///
 ///  Send a PlayerSettings packet to the player affected by it.
 ///
-///  [`pid`] The player ID to send it to.
+///  `pid` The player ID to send it to.
 ///
 ///  Returns void
 ///
@@ -6953,7 +6953,7 @@ pub fn send_settings(pid: u16) {
 ///
 ///  This is used to initialize the sending of new PlayerSpellbook packets.
 ///
-///  [`pid`] The player ID whose spellbook changes should be used.
+///  `pid` The player ID whose spellbook changes should be used.
 ///
 ///  Returns void
 ///
@@ -6966,7 +6966,7 @@ pub fn clear_spellbook_changes(pid: u16) {
 ///
 ///  Get the number of indexes in a player's latest spellbook changes.
 ///
-///  [`pid`] The player ID whose spellbook changes should be used.
+///  `pid` The player ID whose spellbook changes should be used.
 ///
 ///  Returns the number of indexes.
 ///
@@ -6979,7 +6979,7 @@ pub fn get_spellbook_changes_size(pid: u16) -> u16 {
 ///
 ///  Get the action type used in a player's latest spellbook changes.
 ///
-///  [`pid`] The player ID whose spellbook changes should be used.
+///  `pid` The player ID whose spellbook changes should be used.
 ///
 ///  Returns the action type (0 for SET, 1 for ADD, 2 for REMOVE).
 ///
@@ -6992,8 +6992,8 @@ pub fn get_spellbook_changes_action(pid: u16) -> u16 {
 ///
 ///  Set the action type in a player's spellbook changes.
 ///
-///  [`pid`] The player ID whose spellbook changes should be used.
-///  [`action`] The action (0 for SET, 1 for ADD, 2 for REMOVE).
+///  `pid` The player ID whose spellbook changes should be used.  
+///  `action` The action (0 for SET, 1 for ADD, 2 for REMOVE).
 ///
 ///  Returns void
 ///
@@ -7006,8 +7006,8 @@ pub fn set_spellbook_changes_action(pid: u16, action: u8) {
 ///
 ///  Add a new spell to the spellbook changes for a player.
 ///
-///  [`pid`] The player ID whose spellbook changes should be used.
-///  [`spell_id`] The spellId of the spell.
+///  `pid` The player ID whose spellbook changes should be used.  
+///  `spell_id` The spellId of the spell.
 ///
 ///  Returns void
 ///
@@ -7020,8 +7020,8 @@ pub fn add_spell(pid: u16, spell_id: &str) {
 ///
 ///  Get the spellId at a certain index in a player's latest spellbook changes.
 ///
-///  [`pid`] The player ID whose spellbook changes should be used.
-///  [`index`] The index of the spell.
+///  `pid` The player ID whose spellbook changes should be used.  
+///  `index` The index of the spell.
 ///
 ///  Returns the spellId.
 ///
@@ -7037,10 +7037,10 @@ pub fn get_spell_id(pid: u16, index: u16) -> String {
 ///
 ///  Send a PlayerSpellbook packet with a player's recorded spellbook changes.
 ///
-///  [`pid`] The player ID whose spellbook changes should be used.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID whose spellbook changes should be used.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -7090,7 +7090,7 @@ pub fn get_skill_count() -> i16 {
 ///
 ///  If an invalid name is used, the ID returned is -1
 ///
-///  [`name`] The name of the attribute.
+///  `name` The name of the attribute.
 ///
 ///  Returns the ID of the attribute.
 ///
@@ -7105,7 +7105,7 @@ pub fn get_attribute_id(name: &str) -> i16 {
 ///
 ///  If an invalid name is used, the ID returned is -1
 ///
-///  [`name`] The name of the skill.
+///  `name` The name of the skill.
 ///
 ///  Returns the ID of the skill.
 ///
@@ -7120,7 +7120,7 @@ pub fn get_skill_id(name: &str) -> i16 {
 ///
 ///  If an invalid ID is used, "invalid" is returned.
 ///
-///  [`attribute_id`] The ID of the attribute.
+///  `attribute_id` The ID of the attribute.
 ///
 ///  Returns the name of the attribute.
 ///
@@ -7138,7 +7138,7 @@ pub fn get_attribute_name(attribute_id: u16) -> String {
 ///
 ///  If an invalid ID is used, "invalid" is returned.
 ///
-///  [`skill_id`] The ID of the skill.
+///  `skill_id` The ID of the skill.
 ///
 ///  Returns the name of the skill.
 ///
@@ -7154,7 +7154,7 @@ pub fn get_skill_name(skill_id: u16) -> String {
 ///
 ///  Get the name of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the name of the player.
 ///
@@ -7170,7 +7170,7 @@ pub fn get_name(pid: u16) -> String {
 ///
 ///  Get the race of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the race of the player.
 ///
@@ -7186,7 +7186,7 @@ pub fn get_race(pid: u16) -> String {
 ///
 ///  Get the head mesh used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the head mesh of the player.
 ///
@@ -7202,7 +7202,7 @@ pub fn get_head(pid: u16) -> String {
 ///
 ///  Get the hairstyle mesh used by a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the hairstyle mesh of the player.
 ///
@@ -7218,7 +7218,7 @@ pub fn get_hair(pid: u16) -> String {
 ///
 ///  Check whether a player is male or not.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns whether the player is male.
 ///
@@ -7231,7 +7231,7 @@ pub fn get_is_male(pid: u16) -> i16 {
 ///
 ///  Get the birthsign of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the birthsign of the player.
 ///
@@ -7247,7 +7247,7 @@ pub fn get_birthsign(pid: u16) -> String {
 ///
 ///  Get the character level of a player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the level of the player.
 ///
@@ -7260,7 +7260,7 @@ pub fn get_level(pid: u16) -> i16 {
 ///
 ///  Get the player's progress to their next character level.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the level progress.
 ///
@@ -7273,7 +7273,7 @@ pub fn get_level_progress(pid: u16) -> i16 {
 ///
 ///  Get the base health of the player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the base health.
 ///
@@ -7286,7 +7286,7 @@ pub fn get_health_base(pid: u16) -> f64 {
 ///
 ///  Get the current health of the player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the current health.
 ///
@@ -7299,7 +7299,7 @@ pub fn get_health_current(pid: u16) -> f64 {
 ///
 ///  Get the base magicka of the player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the base magicka.
 ///
@@ -7312,7 +7312,7 @@ pub fn get_magicka_base(pid: u16) -> f64 {
 ///
 ///  Get the current magicka of the player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the current magicka.
 ///
@@ -7325,7 +7325,7 @@ pub fn get_magicka_current(pid: u16) -> f64 {
 ///
 ///  Get the base fatigue of the player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the base fatigue.
 ///
@@ -7338,7 +7338,7 @@ pub fn get_fatigue_base(pid: u16) -> f64 {
 ///
 ///  Get the current fatigue of the player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the current fatigue.
 ///
@@ -7351,8 +7351,8 @@ pub fn get_fatigue_current(pid: u16) -> f64 {
 ///
 ///  Get the base value of a player's attribute.
 ///
-///  [`pid`] The player ID.
-///  [`attribute_id`] The attribute ID.
+///  `pid` The player ID.  
+///  `attribute_id` The attribute ID.
 ///
 ///  Returns the base value of the attribute.
 ///
@@ -7365,8 +7365,8 @@ pub fn get_attribute_base(pid: u16, attribute_id: u16) -> i16 {
 ///
 ///  Get the modifier value of a player's attribute.
 ///
-///  [`pid`] The player ID.
-///  [`attribute_id`] The attribute ID.
+///  `pid` The player ID.  
+///  `attribute_id` The attribute ID.
 ///
 ///  Returns the modifier value of the attribute.
 ///
@@ -7377,11 +7377,11 @@ pub fn get_attribute_modifier(pid: u16, attribute_id: u16) -> i16 {
 }
 
 ///
-///  Get the amount of damage (as caused through the Damage Attribute effect)
+///  Get the amount of damage (as caused through the Damage Attribute effect)  
 ///         to a player's attribute.
 ///
-///  [`pid`] The player ID.
-///  [`attribute_id`] The attribute ID.
+///  `pid` The player ID.  
+///  `attribute_id` The attribute ID.
 ///
 ///  Returns the amount of damage to the attribute.
 ///
@@ -7394,8 +7394,8 @@ pub fn get_attribute_damage(pid: u16, attribute_id: u16) -> f64 {
 ///
 ///  Get the base value of a player's skill.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The skill ID.
+///  `pid` The player ID.  
+///  `skill_id` The skill ID.
 ///
 ///  Returns the base value of the skill.
 ///
@@ -7408,8 +7408,8 @@ pub fn get_skill_base(pid: u16, skill_id: u16) -> i16 {
 ///
 ///  Get the modifier value of a player's skill.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The skill ID.
+///  `pid` The player ID.  
+///  `skill_id` The skill ID.
 ///
 ///  Returns the modifier value of the skill.
 ///
@@ -7420,11 +7420,11 @@ pub fn get_skill_modifier(pid: u16, skill_id: u16) -> i16 {
 }
 
 ///
-///  Get the amount of damage (as caused through the Damage Skill effect)
+///  Get the amount of damage (as caused through the Damage Skill effect)  
 ///         to a player's skill.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The skill ID.
+///  `pid` The player ID.  
+///  `skill_id` The skill ID.
 ///
 ///  Returns the amount of damage to the skill.
 ///
@@ -7437,8 +7437,8 @@ pub fn get_skill_damage(pid: u16, skill_id: u16) -> f64 {
 ///
 ///  Get the progress the player has made towards increasing a certain skill by 1.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The skill ID.
+///  `pid` The player ID.  
+///  `skill_id` The skill ID.
 ///
 ///  Returns the skill progress.
 ///
@@ -7449,13 +7449,13 @@ pub fn get_skill_progress(pid: u16, skill_id: u16) -> f64 {
 }
 
 ///
-///  Get the bonus applied to a certain attribute at the next level up as a result
+///  Get the bonus applied to a certain attribute at the next level up as a result  
 ///         of associated skill increases.
 ///
 ///  Although confusing, the term "skill increase" for this is taken from OpenMW itself.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The attribute ID.
+///  `pid` The player ID.  
+///  `skill_id` The attribute ID.
 ///
 ///  Returns the increase in the attribute caused by skills.
 ///
@@ -7468,7 +7468,7 @@ pub fn get_skill_increase(pid: u16, attribute_id: u16) -> i16 {
 ///
 ///  Get the bounty of the player.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns the bounty.
 ///
@@ -7481,8 +7481,8 @@ pub fn get_bounty(pid: u16) -> i16 {
 ///
 ///  Set the name of a player.
 ///
-///  [`pid`] The player ID.
-///  [`name`] The new name of the player.
+///  `pid` The player ID.  
+///  `name` The new name of the player.
 ///
 ///  Returns void
 ///
@@ -7495,8 +7495,8 @@ pub fn set_name(pid: u16, name: &str) {
 ///
 ///  Set the race of a player.
 ///
-///  [`pid`] The player ID.
-///  [`race`] The new race of the player.
+///  `pid` The player ID.  
+///  `race` The new race of the player.
 ///
 ///  Returns void
 ///
@@ -7509,8 +7509,8 @@ pub fn set_race(pid: u16, race: &str) {
 ///
 ///  Set the head mesh used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`head`] The new head mesh of the player.
+///  `pid` The player ID.  
+///  `head` The new head mesh of the player.
 ///
 ///  Returns void
 ///
@@ -7523,8 +7523,8 @@ pub fn set_head(pid: u16, head: &str) {
 ///
 ///  Set the hairstyle mesh used by a player.
 ///
-///  [`pid`] The player ID.
-///  [`hairstyle`] The new hairstyle mesh of the player.
+///  `pid` The player ID.  
+///  `hairstyle` The new hairstyle mesh of the player.
 ///
 ///  Returns void
 ///
@@ -7537,8 +7537,8 @@ pub fn set_hair(pid: u16, hairstyle: &str) {
 ///
 ///  Set whether a player is male or not.
 ///
-///  [`pid`] The player ID.
-///  [`state`] Whether the player is male.
+///  `pid` The player ID.  
+///  `state` Whether the player is male.
 ///
 ///  Returns void
 ///
@@ -7551,8 +7551,8 @@ pub fn set_is_male(pid: u16, state: i16) {
 ///
 ///  Set the birthsign of a player.
 ///
-///  [`pid`] The player ID.
-///  [`name`] The new birthsign of the player.
+///  `pid` The player ID.  
+///  `name` The new birthsign of the player.
 ///
 ///  Returns void
 ///
@@ -7563,14 +7563,14 @@ pub fn set_birthsign(pid: u16, name: &str) {
 }
 
 ///
-///  Set whether the player's stats should be reset based on their
+///  Set whether the player's stats should be reset based on their  
 ///         current race as the result of a PlayerBaseInfo packet.
 ///
-///  This changes the resetState for that player in the server memory, but does not by itself
+///  This changes the resetState for that player in the server memory, but does not by itself  
 ///  send a packet.
 ///
-///  [`pid`] The player ID.
-///  [`reset_stats`] The stat reset state.
+///  `pid` The player ID.  
+///  `reset_stats` The stat reset state.
 ///
 ///  Returns void
 ///
@@ -7583,8 +7583,8 @@ pub fn set_reset_stats(pid: u16, reset_stats: bool) {
 ///
 ///  Set the character level of a player.
 ///
-///  [`pid`] The player ID.
-///  [`value`] The new level of the player.
+///  `pid` The player ID.  
+///  `value` The new level of the player.
 ///
 ///  Returns void
 ///
@@ -7597,8 +7597,8 @@ pub fn set_level(pid: u16, value: i16) {
 ///
 ///  Set the player's progress to their next character level.
 ///
-///  [`pid`] The player ID.
-///  [`value`] The new level progress of the player.
+///  `pid` The player ID.  
+///  `value` The new level progress of the player.
 ///
 ///  Returns void
 ///
@@ -7611,8 +7611,8 @@ pub fn set_level_progress(pid: u16, value: i16) {
 ///
 ///  Set the base health of a player.
 ///
-///  [`pid`] The player ID.
-///  [`name`] The new base health of the player.
+///  `pid` The player ID.  
+///  `name` The new base health of the player.
 ///
 ///  Returns void
 ///
@@ -7625,8 +7625,8 @@ pub fn set_health_base(pid: u16, value: f64) {
 ///
 ///  Set the current health of a player.
 ///
-///  [`pid`] The player ID.
-///  [`name`] The new current health of the player.
+///  `pid` The player ID.  
+///  `name` The new current health of the player.
 ///
 ///  Returns void
 ///
@@ -7639,8 +7639,8 @@ pub fn set_health_current(pid: u16, value: f64) {
 ///
 ///  Set the base magicka of a player.
 ///
-///  [`pid`] The player ID.
-///  [`name`] The new base magicka of the player.
+///  `pid` The player ID.  
+///  `name` The new base magicka of the player.
 ///
 ///  Returns void
 ///
@@ -7653,8 +7653,8 @@ pub fn set_magicka_base(pid: u16, value: f64) {
 ///
 ///  Set the current magicka of a player.
 ///
-///  [`pid`] The player ID.
-///  [`name`] The new current magicka of the player.
+///  `pid` The player ID.  
+///  `name` The new current magicka of the player.
 ///
 ///  Returns void
 ///
@@ -7667,8 +7667,8 @@ pub fn set_magicka_current(pid: u16, value: f64) {
 ///
 ///  Set the base fatigue of a player.
 ///
-///  [`pid`] The player ID.
-///  [`name`] The new base fatigue of the player.
+///  `pid` The player ID.  
+///  `name` The new base fatigue of the player.
 ///
 ///  Returns void
 ///
@@ -7681,8 +7681,8 @@ pub fn set_fatigue_base(pid: u16, value: f64) {
 ///
 ///  Set the current fatigue of a player.
 ///
-///  [`pid`] The player ID.
-///  [`name`] The new current fatigue of the player.
+///  `pid` The player ID.  
+///  `name` The new current fatigue of the player.
 ///
 ///  Returns void
 ///
@@ -7695,9 +7695,9 @@ pub fn set_fatigue_current(pid: u16, value: f64) {
 ///
 ///  Set the base value of a player's attribute.
 ///
-///  [`pid`] The player ID.
-///  [`attribute_id`] The attribute ID.
-///  [`value`] The new base value of the player's attribute.
+///  `pid` The player ID.  
+///  `attribute_id` The attribute ID.  
+///  `value` The new base value of the player's attribute.
 ///
 ///  Returns void
 ///
@@ -7710,13 +7710,13 @@ pub fn set_attribute_base(pid: u16, attribute_id: u16, value: i16) {
 ///
 ///  Clear the modifier value of a player's attribute.
 ///
-///  There's no way to set a modifier to a specific value because it can come from
-///  multiple different sources, but clearing it is a straightforward process that
-///  dispels associated effects on a client and, if necessary, unequips associated
+///  There's no way to set a modifier to a specific value because it can come from  
+///  multiple different sources, but clearing it is a straightforward process that  
+///  dispels associated effects on a client and, if necessary, unequips associated  
 ///  items.
 ///
-///  [`pid`] The player ID.
-///  [`attribute_id`] The attribute ID.
+///  `pid` The player ID.  
+///  `attribute_id` The attribute ID.
 ///
 ///  Returns void
 ///
@@ -7727,12 +7727,12 @@ pub fn clear_attribute_modifier(pid: u16, attribute_id: u16) {
 }
 
 ///
-///  Set the amount of damage (as caused through the Damage Attribute effect) to
+///  Set the amount of damage (as caused through the Damage Attribute effect) to  
 ///         a player's attribute.
 ///
-///  [`pid`] The player ID.
-///  [`attribute_id`] The attribute ID.
-///  [`value`] The amount of damage to the player's attribute.
+///  `pid` The player ID.  
+///  `attribute_id` The attribute ID.  
+///  `value` The amount of damage to the player's attribute.
 ///
 ///  Returns void
 ///
@@ -7745,9 +7745,9 @@ pub fn set_attribute_damage(pid: u16, attribute_id: u16, value: f64) {
 ///
 ///  Set the base value of a player's skill.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The skill ID.
-///  [`value`] The new base value of the player's skill.
+///  `pid` The player ID.  
+///  `skill_id` The skill ID.  
+///  `value` The new base value of the player's skill.
 ///
 ///  Returns void
 ///
@@ -7760,13 +7760,13 @@ pub fn set_skill_base(pid: u16, skill_id: u16, value: i16) {
 ///
 ///  Clear the modifier value of a player's skill.
 ///
-///  There's no way to set a modifier to a specific value because it can come from
-///  multiple different sources, but clearing it is a straightforward process that
-///  dispels associated effects on a client and, if necessary, unequips associated
+///  There's no way to set a modifier to a specific value because it can come from  
+///  multiple different sources, but clearing it is a straightforward process that  
+///  dispels associated effects on a client and, if necessary, unequips associated  
 ///  items.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The skill ID.
+///  `pid` The player ID.  
+///  `skill_id` The skill ID.
 ///
 ///  Returns void
 ///
@@ -7777,12 +7777,12 @@ pub fn clear_skill_modifier(pid: u16, skill_id: u16) {
 }
 
 ///
-///  Set the amount of damage (as caused through the Damage Skill effect) to
+///  Set the amount of damage (as caused through the Damage Skill effect) to  
 ///         a player's skill.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The skill ID.
-///  [`value`] The amount of damage to the player's skill.
+///  `pid` The player ID.  
+///  `skill_id` The skill ID.  
+///  `value` The amount of damage to the player's skill.
 ///
 ///  Returns void
 ///
@@ -7795,9 +7795,9 @@ pub fn set_skill_damage(pid: u16, skill_id: u16, value: f64) {
 ///
 ///  Set the progress the player has made towards increasing a certain skill by 1.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The skill ID.
-///  [`value`] The progress value.
+///  `pid` The player ID.  
+///  `skill_id` The skill ID.  
+///  `value` The progress value.
 ///
 ///  Returns void
 ///
@@ -7808,14 +7808,14 @@ pub fn set_skill_progress(pid: u16, skill_id: u16, value: f64) {
 }
 
 ///
-///  Set the bonus applied to a certain attribute at the next level up as a result
+///  Set the bonus applied to a certain attribute at the next level up as a result  
 ///         of associated skill increases.
 ///
 ///  Although confusing, the term "skill increase" for this is taken from OpenMW itself.
 ///
-///  [`pid`] The player ID.
-///  [`skill_id`] The attribute ID.
-///  [`value`] The increase in the attribute caused by skills.
+///  `pid` The player ID.  
+///  `skill_id` The attribute ID.  
+///  `value` The increase in the attribute caused by skills.
 ///
 ///  Returns void
 ///
@@ -7828,8 +7828,8 @@ pub fn set_skill_increase(pid: u16, attribute_id: u16, value: i16) {
 ///
 ///  Set the bounty of a player.
 ///
-///  [`pid`] The player ID.
-///  [`value`] The new bounty.
+///  `pid` The player ID.  
+///  `value` The new bounty.
 ///
 ///  Returns void
 ///
@@ -7844,9 +7844,9 @@ pub fn set_bounty(pid: u16, value: i16) {
 ///
 ///  This is used to repeat part of character generation or to only go through part of it.
 ///
-///  [`pid`] The player ID.
-///  [`current_stage`] The new current stage.
-///  [`end_stage`] The new ending stage.
+///  `pid` The player ID.  
+///  `current_stage` The new current stage.  
+///  `end_stage` The new ending stage.
 ///
 ///  Returns void
 ///
@@ -7857,12 +7857,12 @@ pub fn set_char_gen_stage(pid: u16, current_stage: i16, end_stage: i16) {
 }
 
 ///
-///  Send a PlayerBaseInfo packet with a player's name, race, head mesh,
+///  Send a PlayerBaseInfo packet with a player's name, race, head mesh,  
 ///         hairstyle mesh, birthsign and stat reset state.
 ///
 ///  It is always sent to all players.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -7873,12 +7873,12 @@ pub fn send_base_info(pid: u16) {
 }
 
 ///
-///  Send a PlayerStatsDynamic packet with a player's dynamic stats (health,
+///  Send a PlayerStatsDynamic packet with a player's dynamic stats (health,  
 ///         magicka and fatigue).
 ///
 ///  It is always sent to all players.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -7889,13 +7889,13 @@ pub fn send_stats_dynamic(pid: u16) {
 }
 
 ///
-///  Send a PlayerAttribute packet with a player's attributes and bonuses
-///         to those attributes at the next level up (the latter being called
+///  Send a PlayerAttribute packet with a player's attributes and bonuses  
+///         to those attributes at the next level up (the latter being called  
 ///         "skill increases" as in OpenMW).
 ///
 ///  It is always sent to all players.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -7910,7 +7910,7 @@ pub fn send_attributes(pid: u16) {
 ///
 ///  It is always sent to all players.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -7921,12 +7921,12 @@ pub fn send_skills(pid: u16) {
 }
 
 ///
-///  Send a PlayerLevel packet with a player's character level and
+///  Send a PlayerLevel packet with a player's character level and  
 ///         progress towards the next level up
 ///
 ///  It is always sent to all players.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -7941,7 +7941,7 @@ pub fn send_level(pid: u16) {
 ///
 ///  It is always sent to all players.
 ///
-///  [`pid`] The player ID.
+///  `pid` The player ID.
 ///
 ///  Returns void
 ///
@@ -7978,7 +7978,7 @@ pub fn clear_object_list() {
 ///
 ///  Set the pid attached to the ObjectList.
 ///
-///  [`pid`] The player ID to whom the object list should be attached.
+///  `pid` The player ID to whom the object list should be attached.
 ///
 ///  Returns void
 ///
@@ -7989,8 +7989,8 @@ pub fn set_object_list_pid(pid: u16) {
 }
 
 ///
-///  Take the contents of the read-only object list last received by the
-///         server from a player and move its contents to the stored object list
+///  Take the contents of the read-only object list last received by the  
+///         server from a player and move its contents to the stored object list  
 ///         that can be sent by the server.
 ///
 ///
@@ -8018,8 +8018,8 @@ pub fn get_object_list_size() -> u16 {
 ///  Get the origin of the read object list.
 ///
 ///
-///  Returns the origin (0 for CLIENT_GAMEPLAY, 1 for CLIENT_CONSOLE, 2 for
-///  CLIENT_DIALOGUE, 3 for CLIENT_SCRIPT_LOCAL, 4 for CLIENT_SCRIPT_GLOBAL,
+///  Returns the origin (0 for CLIENT_GAMEPLAY, 1 for CLIENT_CONSOLE, 2 for  
+///  CLIENT_DIALOGUE, 3 for CLIENT_SCRIPT_LOCAL, 4 for CLIENT_SCRIPT_GLOBAL,  
 ///  5 for SERVER_SCRIPT).
 ///
 pub fn get_object_list_origin() -> u8 {
@@ -8070,14 +8070,14 @@ pub fn get_object_list_container_sub_action() -> u8 {
 }
 
 ///
-///  Check whether the object at a certain index in the read object list is a
+///  Check whether the object at a certain index in the read object list is a  
 ///  player.
 ///
-///  Note: Although most player data and events are dealt with in Player packets,
-///        object activation is general enough for players themselves to be included
+///  Note: Although most player data and events are dealt with in Player packets,  
+///        object activation is general enough for players themselves to be included  
 ///        as objects in ObjectActivate packets.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns whether the object is a player.
 ///
@@ -8088,13 +8088,13 @@ pub fn is_object_player(index: u16) -> bool {
 }
 
 ///
-///  Get the player ID of the object at a certain index in the read object list,
+///  Get the player ID of the object at a certain index in the read object list,  
 ///  only valid if the object is a player.
 ///
-///  Note: Currently, players can only be objects in ObjectActivate and ConsoleCommand
+///  Note: Currently, players can only be objects in ObjectActivate and ConsoleCommand  
 ///        packets.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the player ID of the object.
 ///
@@ -8107,7 +8107,7 @@ pub fn get_object_pid(index: u16) -> i16 {
 ///
 ///  Get the refId of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the refId.
 ///
@@ -8123,7 +8123,7 @@ pub fn get_object_ref_id(index: u16) -> String {
 ///
 ///  Get the refNum of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the refNum.
 ///
@@ -8136,7 +8136,7 @@ pub fn get_object_ref_num(index: u16) -> u16 {
 ///
 ///  Get the mpNum of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the mpNum.
 ///
@@ -8149,7 +8149,7 @@ pub fn get_object_mp_num(index: u16) -> u16 {
 ///
 ///  Get the count of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the object count.
 ///
@@ -8162,7 +8162,7 @@ pub fn get_object_count(index: u16) -> i16 {
 ///
 ///  Get the charge of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the charge.
 ///
@@ -8175,7 +8175,7 @@ pub fn get_object_charge(index: u16) -> i16 {
 ///
 ///  Get the enchantment charge of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the enchantment charge.
 ///
@@ -8188,7 +8188,7 @@ pub fn get_object_enchantment_charge(index: u16) -> f64 {
 ///
 ///  Get the soul of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the soul.
 ///
@@ -8206,7 +8206,7 @@ pub fn get_object_soul(index: u16) -> String {
 ///
 ///  This is used solely to get the gold value of gold. It is not used for other objects.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the gold value.
 ///
@@ -8219,7 +8219,7 @@ pub fn get_object_gold_value(index: u16) -> i16 {
 ///
 ///  Get the object scale of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the object scale.
 ///
@@ -8232,7 +8232,7 @@ pub fn get_object_scale(index: u16) -> f64 {
 ///
 ///  Get the object state of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the object state.
 ///
@@ -8245,7 +8245,7 @@ pub fn get_object_state(index: u16) -> bool {
 ///
 ///  Get the door state of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the door state.
 ///
@@ -8258,7 +8258,7 @@ pub fn get_object_door_state(index: u16) -> i16 {
 ///
 ///  Get the lock level of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the lock level.
 ///
@@ -8269,10 +8269,10 @@ pub fn get_object_lock_level(index: u16) -> i16 {
 }
 
 ///
-///  Check whether the object at a certain index in the read object list has been
+///  Check whether the object at a certain index in the read object list has been  
 ///  activated by a player.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns whether the object has been activated by a player.
 ///
@@ -8283,10 +8283,10 @@ pub fn does_object_have_player_activating(index: u16) -> bool {
 }
 
 ///
-///  Get the player ID of the player activating the object at a certain index in the
+///  Get the player ID of the player activating the object at a certain index in the  
 ///  read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the player ID of the activating player.
 ///
@@ -8297,10 +8297,10 @@ pub fn get_object_activating_pid(index: u16) -> i16 {
 }
 
 ///
-///  Get the refId of the actor activating the object at a certain index in the read
+///  Get the refId of the actor activating the object at a certain index in the read  
 ///  object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the refId of the activating actor.
 ///
@@ -8314,10 +8314,10 @@ pub fn get_object_activating_ref_id(index: u16) -> String {
 }
 
 ///
-///  Get the refNum of the actor activating the object at a certain index in the read
+///  Get the refNum of the actor activating the object at a certain index in the read  
 ///  object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the refNum of the activating actor.
 ///
@@ -8328,10 +8328,10 @@ pub fn get_object_activating_ref_num(index: u16) -> u16 {
 }
 
 ///
-///  Get the mpNum of the actor activating the object at a certain index in the read
+///  Get the mpNum of the actor activating the object at a certain index in the read  
 ///  object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the mpNum of the activating actor.
 ///
@@ -8342,10 +8342,10 @@ pub fn get_object_activating_mp_num(index: u16) -> u16 {
 }
 
 ///
-///  Get the name of the actor activating the object at a certain index in the read
+///  Get the name of the actor activating the object at a certain index in the read  
 ///  object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the name of the activating actor.
 ///
@@ -8359,7 +8359,7 @@ pub fn get_object_activating_name(index: u16) -> String {
 }
 
 ///
-///  Check whether the object at a certain index in the read object list is a
+///  Check whether the object at a certain index in the read object list is a  
 ///  summon.
 ///
 ///  Only living actors can be summoned.
@@ -8378,7 +8378,7 @@ pub fn get_object_summon_state(index: u16) -> bool {
 ///
 ///  Note: Returns -1 if indefinite.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the summon duration.
 ///
@@ -8389,12 +8389,12 @@ pub fn get_object_summon_duration(index: u16) -> f64 {
 }
 
 ///
-///  Check whether the object at a certain index in the read object list has a player
+///  Check whether the object at a certain index in the read object list has a player  
 ///  as its summoner.
 ///
 ///  Only living actors can be summoned.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns whether a player is the summoner of the object.
 ///
@@ -8405,10 +8405,10 @@ pub fn does_object_have_player_summoner(index: u16) -> bool {
 }
 
 ///
-///  Get the player ID of the summoner of the object at a certain index in the read object
+///  Get the player ID of the summoner of the object at a certain index in the read object  
 ///  list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the player ID of the summoner.
 ///
@@ -8419,10 +8419,10 @@ pub fn get_object_summoner_pid(index: u16) -> i16 {
 }
 
 ///
-///  Get the refId of the actor summoner of the object at a certain index in the read object
+///  Get the refId of the actor summoner of the object at a certain index in the read object  
 ///  list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the refId of the summoner.
 ///
@@ -8436,10 +8436,10 @@ pub fn get_object_summoner_ref_id(index: u16) -> String {
 }
 
 ///
-///  Get the refNum of the actor summoner of the object at a certain index in the read object
+///  Get the refNum of the actor summoner of the object at a certain index in the read object  
 ///  list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the refNum of the summoner.
 ///
@@ -8452,7 +8452,7 @@ pub fn get_object_summoner_ref_num(index: u16) -> u16 {
 ///
 ///  Get the mpNum of the actor summoner of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the mpNum of the summoner.
 ///
@@ -8465,7 +8465,7 @@ pub fn get_object_summoner_mp_num(index: u16) -> u16 {
 ///
 ///  Get the X position of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the X position.
 ///
@@ -8478,7 +8478,7 @@ pub fn get_object_pos_x(index: u16) -> f64 {
 ///
 ///  Get the Y position of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the Y position.
 ///
@@ -8491,7 +8491,7 @@ pub fn get_object_pos_y(index: u16) -> f64 {
 ///
 ///  Get the Z position at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the Z position.
 ///
@@ -8504,7 +8504,7 @@ pub fn get_object_pos_z(index: u16) -> f64 {
 ///
 ///  Get the X rotation of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the X rotation.
 ///
@@ -8517,7 +8517,7 @@ pub fn get_object_rot_x(index: u16) -> f64 {
 ///
 ///  Get the Y rotation of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the Y rotation.
 ///
@@ -8530,7 +8530,7 @@ pub fn get_object_rot_y(index: u16) -> f64 {
 ///
 ///  Get the Z rotation of the object at a certain index in the read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the Z rotation.
 ///
@@ -8571,10 +8571,10 @@ pub fn get_script_variable_short_value(index: u16) -> i16 {
 }
 
 ///
-///  Get the number of container item indexes of the object at a certain index in the
+///  Get the number of container item indexes of the object at a certain index in the  
 ///  read object list.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns the number of container item indexes.
 ///
@@ -8585,11 +8585,11 @@ pub fn get_container_changes_size(object_index: u16) -> u16 {
 }
 
 ///
-///  Get the refId of the container item at a certain itemIndex in the container changes
+///  Get the refId of the container item at a certain itemIndex in the container changes  
 ///  of the object at a certain objectIndex in the read object list.
 ///
-///  [`object_index`] The index of the object.
-///  [`item_index`] The index of the container item.
+///  `object_index` The index of the object.  
+///  `item_index` The index of the container item.
 ///
 ///  Returns the refId.
 ///
@@ -8603,11 +8603,11 @@ pub fn get_container_item_ref_id(object_index: u16, item_index: u16) -> String {
 }
 
 ///
-///  Get the item count of the container item at a certain itemIndex in the container
+///  Get the item count of the container item at a certain itemIndex in the container  
 ///  changes of the object at a certain objectIndex in the read object list.
 ///
-///  [`object_index`] The index of the object.
-///  [`item_index`] The index of the container item.
+///  `object_index` The index of the object.  
+///  `item_index` The index of the container item.
 ///
 ///  Returns the item count.
 ///
@@ -8618,11 +8618,11 @@ pub fn get_container_item_count(object_index: u16, item_index: u16) -> i16 {
 }
 
 ///
-///  Get the charge of the container item at a certain itemIndex in the container changes
+///  Get the charge of the container item at a certain itemIndex in the container changes  
 ///  of the object at a certain objectIndex in the read object list.
 ///
-///  [`object_index`] The index of the object.
-///  [`item_index`] The index of the container item.
+///  `object_index` The index of the object.  
+///  `item_index` The index of the container item.
 ///
 ///  Returns the charge.
 ///
@@ -8633,11 +8633,11 @@ pub fn get_container_item_charge(object_index: u16, item_index: u16) -> i16 {
 }
 
 ///
-///  Get the enchantment charge of the container item at a certain itemIndex in the container changes
+///  Get the enchantment charge of the container item at a certain itemIndex in the container changes  
 ///  of the object at a certain objectIndex in the read object list.
 ///
-///  [`object_index`] The index of the object.
-///  [`item_index`] The index of the container item.
+///  `object_index` The index of the object.  
+///  `item_index` The index of the container item.
 ///
 ///  Returns the enchantment charge.
 ///
@@ -8648,11 +8648,11 @@ pub fn get_container_item_enchantment_charge(object_index: u16, item_index: u16)
 }
 
 ///
-///  Get the soul of the container item at a certain itemIndex in the container changes
+///  Get the soul of the container item at a certain itemIndex in the container changes  
 ///  of the object at a certain objectIndex in the read object list.
 ///
-///  [`object_index`] The index of the object.
-///  [`item_index`] The index of the container item.
+///  `object_index` The index of the object.  
+///  `item_index` The index of the container item.
 ///
 ///  Returns the soul.
 ///
@@ -8666,11 +8666,11 @@ pub fn get_container_item_soul(object_index: u16, item_index: u16) -> String {
 }
 
 ///
-///  Get the action count of the container item at a certain itemIndex in the container
+///  Get the action count of the container item at a certain itemIndex in the container  
 ///  changes of the object at a certain objectIndex in the read object list.
 ///
-///  [`object_index`] The index of the object.
-///  [`item_index`] The index of the container item.
+///  `object_index` The index of the object.  
+///  `item_index` The index of the container item.
 ///
 ///  Returns the action count.
 ///
@@ -8683,10 +8683,10 @@ pub fn get_container_item_action_count(object_index: u16, item_index: u16) -> i1
 ///
 ///  Check whether the object at a certain index in the read object list has a container.
 ///
-///  Note: Only ObjectLists from ObjectPlace packets contain this information. Objects from
+///  Note: Only ObjectLists from ObjectPlace packets contain this information. Objects from  
 ///        received ObjectSpawn packets can always be assumed to have a container.
 ///
-///  [`index`] The index of the object.
+///  `index` The index of the object.
 ///
 ///  Returns whether the object has a container.
 ///
@@ -8699,10 +8699,10 @@ pub fn does_object_have_container(index: u16) -> bool {
 ///
 ///  Set the cell of the temporary object list stored on the server.
 ///
-///  The cell is determined to be an exterior cell if it fits the pattern of a number followed
+///  The cell is determined to be an exterior cell if it fits the pattern of a number followed  
 ///  by a comma followed by another number.
 ///
-///  [`cell_description`] The description of the cell.
+///  `cell_description` The description of the cell.
 ///
 ///  Returns void
 ///
@@ -8715,7 +8715,7 @@ pub fn set_object_list_cell(cell_description: &str) {
 ///
 ///  Set the action type of the temporary object list stored on the server.
 ///
-///  [`action`] The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
+///  `action` The action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
 ///
 ///  Returns void
 ///
@@ -8728,10 +8728,10 @@ pub fn set_object_list_action(action: u8) {
 ///
 ///  Set the console command of the temporary object list stored on the server.
 ///
-///  When sent, the command will run once on every object added to the object list. If no objects
+///  When sent, the command will run once on every object added to the object list. If no objects  
 ///  have been added, it will run once without any object reference.
 ///
-///  [`console_command`] The console command.
+///  `console_command` The console command.
 ///
 ///  Returns void
 ///
@@ -8744,7 +8744,7 @@ pub fn set_object_list_console_command(console_command: &str) {
 ///
 ///  Set the refId of the temporary object stored on the server.
 ///
-///  [`ref_id`] The refId.
+///  `ref_id` The refId.
 ///
 ///  Returns void
 ///
@@ -8757,13 +8757,13 @@ pub fn set_object_ref_id(ref_id: &str) {
 ///
 ///  Set the refNum of the temporary object stored on the server.
 ///
-///  Every object loaded from .ESM and .ESP data files has a unique refNum which needs to be
+///  Every object loaded from .ESM and .ESP data files has a unique refNum which needs to be  
 ///  retained to refer to it in packets.
 ///
-///  On the other hand, objects placed or spawned via the server should always have a refNum
+///  On the other hand, objects placed or spawned via the server should always have a refNum  
 ///  of 0.
 ///
-///  [`ref_num`] The refNum.
+///  `ref_num` The refNum.
 ///
 ///  Returns void
 ///
@@ -8776,14 +8776,14 @@ pub fn set_object_ref_num(ref_num: i16) {
 ///
 ///  Set the mpNum of the temporary object stored on the server.
 ///
-///  Every object placed or spawned via the server is assigned an mpNum by incrementing the last
-///  mpNum stored on the server. Scripts should take care to ensure that mpNums are kept unique
+///  Every object placed or spawned via the server is assigned an mpNum by incrementing the last  
+///  mpNum stored on the server. Scripts should take care to ensure that mpNums are kept unique  
 ///  for these objects.
 ///
-///  Objects loaded from .ESM and .ESP data files should always have an mpNum of 0, because they
+///  Objects loaded from .ESM and .ESP data files should always have an mpNum of 0, because they  
 ///  have unique refNumes instead.
 ///
-///  [`mp_num`] The mpNum.
+///  `mp_num` The mpNum.
 ///
 ///  Returns void
 ///
@@ -8798,7 +8798,7 @@ pub fn set_object_mp_num(mp_num: i16) {
 ///
 ///  This determines the quantity of an object, with the exception of gold.
 ///
-///  [`count`] The object count.
+///  `count` The object count.
 ///
 ///  Returns void
 ///
@@ -8813,7 +8813,7 @@ pub fn set_object_count(count: i16) {
 ///
 ///  Object durabilities are set through this value.
 ///
-///  [`charge`] The charge.
+///  `charge` The charge.
 ///
 ///  Returns void
 ///
@@ -8828,7 +8828,7 @@ pub fn set_object_charge(charge: i16) {
 ///
 ///  Object durabilities are set through this value.
 ///
-///  [`charge`] The enchantment charge.
+///  `charge` The enchantment charge.
 ///
 ///  Returns void
 ///
@@ -8841,7 +8841,7 @@ pub fn set_object_enchantment_charge(enchantment_charge: f64) {
 ///
 ///  Set the soul of the temporary object stored on the server.
 ///
-///  [`ref_id`] The soul.
+///  `ref_id` The soul.
 ///
 ///  Returns void
 ///
@@ -8856,7 +8856,7 @@ pub fn set_object_soul(soul: &str) {
 ///
 ///  This is used solely to set the gold value for gold. It has no effect on other objects.
 ///
-///  [`gold_value`] The gold value.
+///  `gold_value` The gold value.
 ///
 ///  Returns void
 ///
@@ -8871,7 +8871,7 @@ pub fn set_object_gold_value(gold_value: i16) {
 ///
 ///  Objects are smaller or larger than their default size based on their scale.
 ///
-///  [`scale`] The scale.
+///  `scale` The scale.
 ///
 ///  Returns void
 ///
@@ -8886,7 +8886,7 @@ pub fn set_object_scale(scale: f64) {
 ///
 ///  Objects are enabled or disabled based on their object state.
 ///
-///  [`object_state`] The object state.
+///  `object_state` The object state.
 ///
 ///  Returns void
 ///
@@ -8899,7 +8899,7 @@ pub fn set_object_state(object_state: bool) {
 ///
 ///  Set the lock level of the temporary object stored on the server.
 ///
-///  [`lock_level`] The lock level.
+///  `lock_level` The lock level.
 ///
 ///  Returns void
 ///
@@ -8912,7 +8912,7 @@ pub fn set_object_lock_level(lock_level: i16) {
 ///
 ///  Set the disarm state of the temporary object stored on the server.
 ///
-///  [`disarm_state`] The disarmState.
+///  `disarm_state` The disarmState.
 ///
 ///  Returns void
 ///
@@ -8925,7 +8925,7 @@ pub fn set_object_disarm_state(disarm_state: bool) {
 ///
 ///  Set the summon duration of the temporary object stored on the server.
 ///
-///  [`summon_duration`] The summon duration.
+///  `summon_duration` The summon duration.
 ///
 ///  Returns void
 ///
@@ -8938,10 +8938,10 @@ pub fn set_object_summon_duration(summon_duration: f32) {
 ///
 ///  Set the summon state of the temporary object stored on the server.
 ///
-///  This only affects living actors and determines whether they are summons of another
+///  This only affects living actors and determines whether they are summons of another  
 ///  living actor.
 ///
-///  [`summon_state`] The summon state.
+///  `summon_state` The summon state.
 ///
 ///  Returns void
 ///
@@ -8954,9 +8954,9 @@ pub fn set_object_summon_state(summon_state: bool) {
 ///
 ///  Set the position of the temporary object stored on the server.
 ///
-///  [`x`] The X position.
-///  [`y`] The Y position.
-///  [`z`] The Z position.
+///  `x` The X position.  
+///  `y` The Y position.  
+///  `z` The Z position.
 ///
 ///  Returns void
 ///
@@ -8969,9 +8969,9 @@ pub fn set_object_position(x: f64, y: f64, z: f64) {
 ///
 ///  Set the rotation of the temporary object stored on the server.
 ///
-///  [`x`] The X rotation.
-///  [`y`] The Y rotation.
-///  [`z`] The Z rotation.
+///  `x` The X rotation.  
+///  `y` The Y rotation.  
+///  `z` The Z rotation.
 ///
 ///  Returns void
 ///
@@ -8982,10 +8982,10 @@ pub fn set_object_rotation(x: f64, y: f64, z: f64) {
 }
 
 ///
-///  Set the player ID of the player activating the temporary object stored on the
+///  Set the player ID of the player activating the temporary object stored on the  
 ///         server. Currently only used for ObjectActivate packets.
 ///
-///  [`pid`] The pid of the player.
+///  `pid` The pid of the player.
 ///
 ///  Returns void
 ///
@@ -9000,7 +9000,7 @@ pub fn set_object_activating_pid(pid: u16) {
 ///
 ///  Doors are open or closed based on their door state.
 ///
-///  [`door_state`] The door state.
+///  `door_state` The door state.
 ///
 ///  Returns void
 ///
@@ -9013,10 +9013,10 @@ pub fn set_object_door_state(door_state: i16) {
 ///
 ///  Set the teleport state of the temporary object stored on the server.
 ///
-///  If a door's teleport state is true, interacting with the door teleports a player to its
+///  If a door's teleport state is true, interacting with the door teleports a player to its  
 ///  destination. If it's false, it opens and closes like a regular door.
 ///
-///  [`teleport_state`] The teleport state.
+///  `teleport_state` The teleport state.
 ///
 ///  Returns void
 ///
@@ -9029,10 +9029,10 @@ pub fn set_object_door_teleport_state(teleport_state: bool) {
 ///
 ///  Set the door destination cell of the temporary object stored on the server.
 ///
-///  The cell is determined to be an exterior cell if it fits the pattern of a number followed
+///  The cell is determined to be an exterior cell if it fits the pattern of a number followed  
 ///  by a comma followed by another number.
 ///
-///  [`cell_description`] The description of the cell.
+///  `cell_description` The description of the cell.
 ///
 ///  Returns void
 ///
@@ -9045,9 +9045,9 @@ pub fn set_object_door_destination_cell(cell_description: &str) {
 ///
 ///  Set the door destination position of the temporary object stored on the server.
 ///
-///  [`x`] The X position.
-///  [`y`] The Y position.
-///  [`z`] The Z position.
+///  `x` The X position.  
+///  `y` The Y position.  
+///  `z` The Z position.
 ///
 ///  Returns void
 ///
@@ -9060,11 +9060,11 @@ pub fn set_object_door_destination_position(x: f64, y: f64, z: f64) {
 ///
 ///  Set the door destination rotation of the temporary object stored on the server.
 ///
-///  Note: Because this sets the rotation a player will have upon using the door, and rotation
+///  Note: Because this sets the rotation a player will have upon using the door, and rotation  
 ///        on the Y axis has no effect on players, the Y value has been omitted as an argument.
 ///
-///  [`x`] The X rotation.
-///  [`z`] The Z rotation.
+///  `x` The X rotation.  
+///  `z` The Z rotation.
 ///
 ///  Returns void
 ///
@@ -9087,10 +9087,10 @@ pub fn set_script_variable_short_value(short_val: i16) {
 }
 
 ///
-///  Set a player as the object in the temporary object stored on the server.
+///  Set a player as the object in the temporary object stored on the server.  
 ///         Currently only used for ConsoleCommand packets.
 ///
-///  [`pid`] The pid of the player.
+///  `pid` The pid of the player.
 ///
 ///  Returns void
 ///
@@ -9103,7 +9103,7 @@ pub fn set_player_as_object(pid: u16) {
 ///
 ///  Set the refId of the temporary container item stored on the server.
 ///
-///  [`ref_id`] The refId.
+///  `ref_id` The refId.
 ///
 ///  Returns void
 ///
@@ -9116,7 +9116,7 @@ pub fn set_container_item_ref_id(ref_id: &str) {
 ///
 ///  Set the item count of the temporary container item stored on the server.
 ///
-///  [`count`] The item count.
+///  `count` The item count.
 ///
 ///  Returns void
 ///
@@ -9129,7 +9129,7 @@ pub fn set_container_item_count(count: i16) {
 ///
 ///  Set the charge of the temporary container item stored on the server.
 ///
-///  [`charge`] The charge.
+///  `charge` The charge.
 ///
 ///  Returns void
 ///
@@ -9142,7 +9142,7 @@ pub fn set_container_item_charge(charge: i16) {
 ///
 ///  Set the enchantment charge of the temporary container item stored on the server.
 ///
-///  [`charge`] The enchantment charge.
+///  `charge` The enchantment charge.
 ///
 ///  Returns void
 ///
@@ -9155,7 +9155,7 @@ pub fn set_container_item_enchantment_charge(enchantment_charge: f64) {
 ///
 ///  Set the soul of the temporary container item stored on the server.
 ///
-///  [`ref_id`] The soul.
+///  `ref_id` The soul.
 ///
 ///  Returns void
 ///
@@ -9166,16 +9166,16 @@ pub fn set_container_item_soul(soul: &str) {
 }
 
 ///
-///  Set the action count of the container item at a certain itemIndex in the container
+///  Set the action count of the container item at a certain itemIndex in the container  
 ///  changes of the object at a certain objectIndex in the object list stored on the server.
 ///
-///  When resending a received Container packet, this allows you to correct the amount of items
-///  removed from a container by a player when it conflicts with what other players have already
+///  When resending a received Container packet, this allows you to correct the amount of items  
+///  removed from a container by a player when it conflicts with what other players have already  
 ///  taken.
 ///
-///  [`object_index`] The index of the object.
-///  [`item_index`] The index of the container item.
-///  [`action_count`] The action count.
+///  `object_index` The index of the object.  
+///  `item_index` The index of the container item.  
+///  `action_count` The action count.
 ///
 ///  Returns void
 ///
@@ -9186,10 +9186,10 @@ pub fn set_container_item_action_count_by_index(object_index: u16, item_index: u
 }
 
 ///
-///  Add a copy of the server's temporary object to the server's currently stored object
+///  Add a copy of the server's temporary object to the server's currently stored object  
 ///  list.
 ///
-///  In the process, the server's temporary object will automatically be cleared so a new
+///  In the process, the server's temporary object will automatically be cleared so a new  
 ///  one can be set up.
 ///
 ///
@@ -9202,10 +9202,10 @@ pub fn add_object() {
 }
 
 ///
-///  Add a copy of the server's temporary container item to the container changes of the
+///  Add a copy of the server's temporary container item to the container changes of the  
 ///  server's temporary object.
 ///
-///  In the process, the server's temporary container item will automatically be cleared so a new
+///  In the process, the server's temporary container item will automatically be cleared so a new  
 ///  one can be set up.
 ///
 ///
@@ -9220,9 +9220,9 @@ pub fn add_container_item() {
 ///
 ///  Send an ObjectActivate packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9236,9 +9236,9 @@ pub fn send_object_activate(send_to_other_players: bool, skip_attached_player: b
 ///
 ///  Send an ObjectPlace packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9252,9 +9252,9 @@ pub fn send_object_place(send_to_other_players: bool, skip_attached_player: bool
 ///
 ///  Send an ObjectSpawn packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9268,7 +9268,7 @@ pub fn send_object_spawn(send_to_other_players: bool, skip_attached_player: bool
 ///
 ///  Send an ObjectDelete packet.
 ///
-///  [`broadcast`] Whether this packet should be sent only to the player for whom the current
+///  `broadcast` Whether this packet should be sent only to the player for whom the current  
 ///                   object list was initialized or to everyone on the server.
 ///
 ///
@@ -9283,9 +9283,9 @@ pub fn send_object_delete(send_to_other_players: bool, skip_attached_player: boo
 ///
 ///  Send an ObjectLock packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9299,7 +9299,7 @@ pub fn send_object_lock(send_to_other_players: bool, skip_attached_player: bool)
 ///
 ///  Send an ObjectTrap packet.
 ///
-///  [`broadcast`] Whether this packet should be sent only to the player for whom the current
+///  `broadcast` Whether this packet should be sent only to the player for whom the current  
 ///                   object list was initialized or to everyone on the server.
 ///
 ///
@@ -9314,9 +9314,9 @@ pub fn send_object_trap(send_to_other_players: bool, skip_attached_player: bool)
 ///
 ///  Send an ObjectScale packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9330,9 +9330,9 @@ pub fn send_object_scale(send_to_other_players: bool, skip_attached_player: bool
 ///
 ///  Send an ObjectState packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9346,9 +9346,9 @@ pub fn send_object_state(send_to_other_players: bool, skip_attached_player: bool
 ///
 ///  Send a DoorState packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9362,9 +9362,9 @@ pub fn send_door_state(send_to_other_players: bool, skip_attached_player: bool) 
 ///
 ///  Send a DoorDestination packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9378,9 +9378,9 @@ pub fn send_door_destination(send_to_other_players: bool, skip_attached_player: 
 ///
 ///  Send a Container packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9394,9 +9394,9 @@ pub fn send_container(send_to_other_players: bool, skip_attached_player: bool) {
 ///
 ///  Send a VideoPlay packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9416,9 +9416,9 @@ pub fn send_script_global_short(send_to_other_players: bool, skip_attached_playe
 ///
 ///  Send a ConsoleCommand packet.
 ///
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -9532,8 +9532,8 @@ pub fn read_received_worldstate() {
 }
 
 ///
-///  Take the contents of the read-only worldstate last received by the
-///         server from a player and move its contents to the stored worldstate
+///  Take the contents of the read-only worldstate last received by the  
+///         server from a player and move its contents to the stored worldstate  
 ///         that can be sent by the server.
 ///
 ///
@@ -9600,7 +9600,7 @@ pub fn get_map_changes_size() -> u16 {
 ///
 ///  Get the refId at a certain index in the read worldstate's kill count changes.
 ///
-///  [`index`] The index of the kill count.
+///  `index` The index of the kill count.
 ///
 ///  Returns the refId.
 ///
@@ -9616,7 +9616,7 @@ pub fn get_kill_ref_id(index: u16) -> String {
 ///
 ///  Get the number of kills at a certain index in the read worldstate's kill count changes.
 ///
-///  [`index`] The index of the kill count.
+///  `index` The index of the kill count.
 ///
 ///  Returns the number of kills.
 ///
@@ -9690,10 +9690,10 @@ pub fn get_weather_transition_factor() -> f64 {
 }
 
 ///
-///  Get the X coordinate of the cell corresponding to the map tile at a certain index in
+///  Get the X coordinate of the cell corresponding to the map tile at a certain index in  
 ///         the read worldstate's map tiles.
 ///
-///  [`index`] The index of the map tile.
+///  `index` The index of the map tile.
 ///
 ///  Returns the X coordinate of the cell.
 ///
@@ -9704,10 +9704,10 @@ pub fn get_map_tile_cell_x(index: u16) -> i16 {
 }
 
 ///
-///  Get the Y coordinate of the cell corresponding to the map tile at a certain index in
+///  Get the Y coordinate of the cell corresponding to the map tile at a certain index in  
 ///         the read worldstate's map tiles.
 ///
-///  [`index`] The index of the map tile.
+///  `index` The index of the map tile.
 ///
 ///  Returns the Y coordinate of the cell.
 ///
@@ -9720,7 +9720,7 @@ pub fn get_map_tile_cell_y(index: u16) -> i16 {
 ///
 ///  Set the region affected by the next WorldRegionAuthority packet sent.
 ///
-///  [`region`] The region.
+///  `region` The region.
 ///
 ///  Returns void
 ///
@@ -9733,7 +9733,7 @@ pub fn set_authority_region(authority_region: &str) {
 ///
 ///  Set the weather region in the write-only worldstate stored on the server.
 ///
-///  [`region`] The region.
+///  `region` The region.
 ///
 ///  Returns void
 ///
@@ -9748,7 +9748,7 @@ pub fn set_weather_region(region: &str) {
 ///
 ///  Players who receive a packet with forced weather will switch to that weather immediately.
 ///
-///  [`force_state`] The weather forcing state.
+///  `force_state` The weather forcing state.
 ///
 ///  Returns void
 ///
@@ -9761,7 +9761,7 @@ pub fn set_weather_force_state(force_state: bool) {
 ///
 ///  Set the current weather in the write-only worldstate stored on the server.
 ///
-///  [`current_weather`] The current weather.
+///  `current_weather` The current weather.
 ///
 ///  Returns void
 ///
@@ -9774,7 +9774,7 @@ pub fn set_weather_current(current_weather: i16) {
 ///
 ///  Set the next weather in the write-only worldstate stored on the server.
 ///
-///  [`next_weather`] The next weather.
+///  `next_weather` The next weather.
 ///
 ///  Returns void
 ///
@@ -9787,7 +9787,7 @@ pub fn set_weather_next(next_weather: i16) {
 ///
 ///  Set the queued weather in the write-only worldstate stored on the server.
 ///
-///  [`queued_weather`] The queued weather.
+///  `queued_weather` The queued weather.
 ///
 ///  Returns void
 ///
@@ -9800,7 +9800,7 @@ pub fn set_weather_queued(queued_weather: i16) {
 ///
 ///  Set the transition factor for the weather in the write-only worldstate stored on the server.
 ///
-///  [`transition_factor`] The transition factor.
+///  `transition_factor` The transition factor.
 ///
 ///  Returns void
 ///
@@ -9813,7 +9813,7 @@ pub fn set_weather_transition_factor(transition_factor: f64) {
 ///
 ///  Set the world's hour in the write-only worldstate stored on the server.
 ///
-///  [`hour`] The hour.
+///  `hour` The hour.
 ///
 ///  Returns void
 ///
@@ -9826,7 +9826,7 @@ pub fn set_hour(hour: f64) {
 ///
 ///  Set the world's day in the write-only worldstate stored on the server.
 ///
-///  [`day`] The day.
+///  `day` The day.
 ///
 ///  Returns void
 ///
@@ -9839,7 +9839,7 @@ pub fn set_day(day: i16) {
 ///
 ///  Set the world's month in the write-only worldstate stored on the server.
 ///
-///  [`month`] The month.
+///  `month` The month.
 ///
 ///  Returns void
 ///
@@ -9852,7 +9852,7 @@ pub fn set_month(month: i16) {
 ///
 ///  Set the world's year in the write-only worldstate stored on the server.
 ///
-///  [`year`] The year.
+///  `year` The year.
 ///
 ///  Returns void
 ///
@@ -9865,7 +9865,7 @@ pub fn set_year(year: i16) {
 ///
 ///  Set the world's days passed in the write-only worldstate stored on the server.
 ///
-///  [`days_passed`] The days passed.
+///  `days_passed` The days passed.
 ///
 ///  Returns void
 ///
@@ -9878,8 +9878,8 @@ pub fn set_days_passed(days_passed: i16) {
 ///
 ///  Set the world's time scale in the write-only worldstate stored on the server.
 ///
-///  [`pid`] The player ID.
-///  [`time_scale`] The time scale.
+///  `pid` The player ID.  
+///  `time_scale` The time scale.
 ///
 ///  Returns void
 ///
@@ -9890,10 +9890,10 @@ pub fn set_time_scale(time_scale: f64) {
 }
 
 ///
-///  Set the collision state for other players in the write-only worldstate stored
+///  Set the collision state for other players in the write-only worldstate stored  
 ///         on the server.
 ///
-///  [`state`] The collision state.
+///  `state` The collision state.
 ///
 ///  Returns void
 ///
@@ -9904,10 +9904,10 @@ pub fn set_player_collision_state(state: bool) {
 }
 
 ///
-///  Set the collision state for actors in the write-only worldstate stored on the
+///  Set the collision state for actors in the write-only worldstate stored on the  
 ///         server.
 ///
-///  [`state`] The collision state.
+///  `state` The collision state.
 ///
 ///  Returns void
 ///
@@ -9918,10 +9918,10 @@ pub fn set_actor_collision_state(state: bool) {
 }
 
 ///
-///  Set the collision state for placed objects in the write-only worldstate stored
+///  Set the collision state for placed objects in the write-only worldstate stored  
 ///         on the server.
 ///
-///  [`state`] The collision state.
+///  `state` The collision state.
 ///
 ///  Returns void
 ///
@@ -9932,10 +9932,10 @@ pub fn set_placed_object_collision_state(state: bool) {
 }
 
 ///
-///  Whether placed objects with collision turned on should use actor collision, i.e.
+///  Whether placed objects with collision turned on should use actor collision, i.e.  
 ///         whether they should be slippery and prevent players from standing on them.
 ///
-///  [`use_actor_collision`] Whether to use actor collision.
+///  `use_actor_collision` Whether to use actor collision.
 ///
 ///  Returns void
 ///
@@ -9948,8 +9948,8 @@ pub fn use_actor_collision_for_placed_objects(use_actor_collision: bool) {
 ///
 ///  Add a new kill count to the kill count changes.
 ///
-///  [`ref_id`] The refId of the kill count.
-///  [`number`] The number of kills in the kill count.
+///  `ref_id` The refId of the kill count.  
+///  `number` The number of kills in the kill count.
 ///
 ///  Returns void
 ///
@@ -9960,10 +9960,10 @@ pub fn add_kill(ref_id: &str, number: i16) {
 }
 
 ///
-///  Add an ID to the list of script IDs whose variable changes should be sent to the
+///  Add an ID to the list of script IDs whose variable changes should be sent to the  
 ///         the server by clients.
 ///
-///  [`script_id`] The ID.
+///  `script_id` The ID.
 ///
 ///  Returns void
 ///
@@ -9974,10 +9974,10 @@ pub fn add_synchronized_client_script_id(script_id: &str) {
 }
 
 ///
-///  Add an ID to the list of global IDs whose value changes should be sent to the
+///  Add an ID to the list of global IDs whose value changes should be sent to the  
 ///         server by clients.
 ///
-///  [`global_id`] The ID.
+///  `global_id` The ID.
 ///
 ///  Returns void
 ///
@@ -9988,10 +9988,10 @@ pub fn add_synchronized_client_global_id(global_id: &str) {
 }
 
 ///
-///  Add a refId to the list of refIds for which collision should be enforced
+///  Add a refId to the list of refIds for which collision should be enforced  
 ///         irrespective of other settings.
 ///
-///  [`ref_id`] The refId.
+///  `ref_id` The refId.
 ///
 ///  Returns void
 ///
@@ -10002,7 +10002,7 @@ pub fn add_enforced_collision_ref_id(ref_id: &str) {
 }
 
 ///
-///  Clear the list of script IDs whose variable changes should be sent to the
+///  Clear the list of script IDs whose variable changes should be sent to the  
 ///         the server by clients.
 ///
 ///
@@ -10015,7 +10015,7 @@ pub fn clear_synchronized_client_script_ids() {
 }
 
 ///
-///  Clear the list of global IDs whose value changes should be sent to the
+///  Clear the list of global IDs whose value changes should be sent to the  
 ///         the server by clients.
 ///
 ///
@@ -10028,7 +10028,7 @@ pub fn clear_synchronized_client_global_ids() {
 }
 
 ///
-///  Clear the list of refIds for which collision should be enforced irrespective
+///  Clear the list of refIds for which collision should be enforced irrespective  
 ///         of other settings.
 ///
 ///
@@ -10041,11 +10041,11 @@ pub fn clear_enforced_collision_ref_ids() {
 }
 
 ///
-///  Save the .png image data of the map tile at a certain index in the read worldstate's
+///  Save the .png image data of the map tile at a certain index in the read worldstate's  
 ///         map changes.
 ///
-///  [`index`] The index of the map tile.
-///  [`file_path`] The file path of the resulting file.
+///  `index` The index of the map tile.  
+///  `file_path` The file path of the resulting file.
 ///
 ///  Returns void
 ///
@@ -10056,12 +10056,12 @@ pub fn save_map_tile_image_file(index: u16, file_path: &str) {
 }
 
 ///
-///  Load a .png file as the image data for a map tile and add it to the write-only worldstate
+///  Load a .png file as the image data for a map tile and add it to the write-only worldstate  
 ///         stored on the server.
 ///
-///  [`cell_x`] The X coordinate of the cell corresponding to the map tile.
-///  [`cell_y`] The Y coordinate of the cell corresponding to the map tile.
-///  [`file_path`] The file path of the loaded file.
+///  `cell_x` The X coordinate of the cell corresponding to the map tile.  
+///  `cell_y` The Y coordinate of the cell corresponding to the map tile.  
+///  `file_path` The file path of the loaded file.
 ///
 ///  Returns void
 ///
@@ -10072,13 +10072,13 @@ pub fn load_map_tile_image_file(cell_x: i16, cell_y: i16, file_path: &str) {
 }
 
 ///
-///  Send a ClientScriptSettings packet with the current client script settings in
+///  Send a ClientScriptSettings packet with the current client script settings in  
 ///         the write-only worldstate.
 ///
-///  [`pid`] The player ID attached to the packet.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID attached to the packet.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -10090,13 +10090,13 @@ pub fn send_client_script_settings(pid: u16, send_to_other_players: bool, skip_a
 }
 
 ///
-///  Send a WorldKillCount packet with the current set of kill count changes in the write-only
+///  Send a WorldKillCount packet with the current set of kill count changes in the write-only  
 ///         worldstate.
 ///
-///  [`pid`] The player ID attached to the packet.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID attached to the packet.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -10108,11 +10108,11 @@ pub fn send_world_kill_count(pid: u16, send_to_other_players: bool, skip_attache
 }
 
 ///
-///  Send a WorldMap packet with the current set of map changes in the write-only
+///  Send a WorldMap packet with the current set of map changes in the write-only  
 ///         worldstate.
 ///
-///  [`pid`] The player ID attached to the packet.
-///  [`broadcast`] Whether this packet should be sent only to the attached player
+///  `pid` The player ID attached to the packet.  
+///  `broadcast` Whether this packet should be sent only to the attached player  
 ///                   or to all players on the server.
 ///
 ///  Returns void
@@ -10124,13 +10124,13 @@ pub fn send_world_map(pid: u16, send_to_other_players: bool, skip_attached_playe
 }
 
 ///
-///  Send a WorldTime packet with the current time and time scale in the write-only
+///  Send a WorldTime packet with the current time and time scale in the write-only  
 ///         worldstate.
 ///
-///  [`pid`] The player ID attached to the packet.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID attached to the packet.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -10144,10 +10144,10 @@ pub fn send_world_time(pid: u16, send_to_other_players: bool, skip_attached_play
 ///
 ///  Send a WorldWeather packet with the current weather in the write-only worldstate.
 ///
-///  [`pid`] The player ID attached to the packet.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID attached to the packet.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -10159,13 +10159,13 @@ pub fn send_world_weather(pid: u16, send_to_other_players: bool, skip_attached_p
 }
 
 ///
-///  Send a WorldCollisionOverride packet with the current collision overrides in
+///  Send a WorldCollisionOverride packet with the current collision overrides in  
 ///         the write-only worldstate.
 ///
-///  [`pid`] The player ID attached to the packet.
-///  [`send_to_other_players`] Whether this packet should be sent to players other than the
-///                            player attached to the packet (false by default).
-///  [`skip_attached_player`] Whether the packet should skip being sent to the player attached
+///  `pid` The player ID attached to the packet.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
 ///                            to the packet (false by default).
 ///
 ///  Returns void
@@ -10177,12 +10177,12 @@ pub fn send_world_collision_override(pid: u16, send_to_other_players: bool, skip
 }
 
 ///
-///  Send a WorldRegionAuthority packet establishing a certain player as the only one who
+///  Send a WorldRegionAuthority packet establishing a certain player as the only one who  
 ///         should process certain region-specific events (such as weather changes).
 ///
 ///  It is always sent to all players.
 ///
-///  [`pid`] The player ID attached to the packet.
+///  `pid` The player ID attached to the packet.
 ///
 ///  Returns void
 ///
