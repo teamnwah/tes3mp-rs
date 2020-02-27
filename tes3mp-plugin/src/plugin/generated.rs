@@ -1,153 +1,155 @@
 use std::ffi::{CStr, CString};
+use std::os::raw::*;
 
 #[allow(non_upper_case_globals)]
 pub mod raw {
+    use std::os::raw::*;
     #[no_mangle]
     pub static mut prefix: [u8; 4] = *b"rust";
     #[no_mangle]
-    pub static mut rustCreateTimer: fn(fn(), i16) -> i16 = |_, _| { unreachable!("CreateTimer was called before set by TES3MP"); };
+    pub static mut rustCreateTimer: fn(fn(), c_int) -> c_int = |_, _| { unreachable!("CreateTimer was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustMakePublic: fn(fn(), *const i8, i8, *const i8) = |_, _, _, _| { unreachable!("MakePublic was called before set by TES3MP"); };
+    pub static mut rustMakePublic: fn(fn(), *const c_char, c_char, *const c_char) = |_, _, _, _| { unreachable!("MakePublic was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustStartTimer: fn(i16) = |_| { unreachable!("StartTimer was called before set by TES3MP"); };
+    pub static mut rustStartTimer: fn(c_int) = |_| { unreachable!("StartTimer was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustStopTimer: fn(i16) = |_| { unreachable!("StopTimer was called before set by TES3MP"); };
+    pub static mut rustStopTimer: fn(c_int) = |_| { unreachable!("StopTimer was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustRestartTimer: fn(i16, i16) = |_, _| { unreachable!("RestartTimer was called before set by TES3MP"); };
+    pub static mut rustRestartTimer: fn(c_int, c_int) = |_, _| { unreachable!("RestartTimer was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustFreeTimer: fn(i16) = |_| { unreachable!("FreeTimer was called before set by TES3MP"); };
+    pub static mut rustFreeTimer: fn(c_int) = |_| { unreachable!("FreeTimer was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustIsTimerElapsed: fn(i16) -> bool = |_| { unreachable!("IsTimerElapsed was called before set by TES3MP"); };
+    pub static mut rustIsTimerElapsed: fn(c_int) -> bool = |_| { unreachable!("IsTimerElapsed was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustReadReceivedActorList: fn() = || { unreachable!("ReadReceivedActorList was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustReadCellActorList: fn(*const i8) = |_| { unreachable!("ReadCellActorList was called before set by TES3MP"); };
+    pub static mut rustReadCellActorList: fn(*const c_char) = |_| { unreachable!("ReadCellActorList was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustClearActorList: fn() = || { unreachable!("ClearActorList was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorListPid: fn(u16) = |_| { unreachable!("SetActorListPid was called before set by TES3MP"); };
+    pub static mut rustSetActorListPid: fn(c_ushort) = |_| { unreachable!("SetActorListPid was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustCopyReceivedActorListToStore: fn() = || { unreachable!("CopyReceivedActorListToStore was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorListSize: fn() -> u16 = || { unreachable!("GetActorListSize was called before set by TES3MP"); };
+    pub static mut rustGetActorListSize: fn() -> c_uint = || { unreachable!("GetActorListSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorListAction: fn() -> u8 = || { unreachable!("GetActorListAction was called before set by TES3MP"); };
+    pub static mut rustGetActorListAction: fn() -> c_uchar = || { unreachable!("GetActorListAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorCell: fn(u16) -> *const i8 = |_| { unreachable!("GetActorCell was called before set by TES3MP"); };
+    pub static mut rustGetActorCell: fn(c_uint) -> *const c_char = |_| { unreachable!("GetActorCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorRefId: fn(u16) -> *const i8 = |_| { unreachable!("GetActorRefId was called before set by TES3MP"); };
+    pub static mut rustGetActorRefId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetActorRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorRefNum: fn(u16) -> u16 = |_| { unreachable!("GetActorRefNum was called before set by TES3MP"); };
+    pub static mut rustGetActorRefNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetActorRefNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorMpNum: fn(u16) -> u16 = |_| { unreachable!("GetActorMpNum was called before set by TES3MP"); };
+    pub static mut rustGetActorMpNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetActorMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorPosX: fn(u16) -> f64 = |_| { unreachable!("GetActorPosX was called before set by TES3MP"); };
+    pub static mut rustGetActorPosX: fn(c_uint) -> c_double = |_| { unreachable!("GetActorPosX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorPosY: fn(u16) -> f64 = |_| { unreachable!("GetActorPosY was called before set by TES3MP"); };
+    pub static mut rustGetActorPosY: fn(c_uint) -> c_double = |_| { unreachable!("GetActorPosY was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorPosZ: fn(u16) -> f64 = |_| { unreachable!("GetActorPosZ was called before set by TES3MP"); };
+    pub static mut rustGetActorPosZ: fn(c_uint) -> c_double = |_| { unreachable!("GetActorPosZ was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorRotX: fn(u16) -> f64 = |_| { unreachable!("GetActorRotX was called before set by TES3MP"); };
+    pub static mut rustGetActorRotX: fn(c_uint) -> c_double = |_| { unreachable!("GetActorRotX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorRotY: fn(u16) -> f64 = |_| { unreachable!("GetActorRotY was called before set by TES3MP"); };
+    pub static mut rustGetActorRotY: fn(c_uint) -> c_double = |_| { unreachable!("GetActorRotY was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorRotZ: fn(u16) -> f64 = |_| { unreachable!("GetActorRotZ was called before set by TES3MP"); };
+    pub static mut rustGetActorRotZ: fn(c_uint) -> c_double = |_| { unreachable!("GetActorRotZ was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorHealthBase: fn(u16) -> f64 = |_| { unreachable!("GetActorHealthBase was called before set by TES3MP"); };
+    pub static mut rustGetActorHealthBase: fn(c_uint) -> c_double = |_| { unreachable!("GetActorHealthBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorHealthCurrent: fn(u16) -> f64 = |_| { unreachable!("GetActorHealthCurrent was called before set by TES3MP"); };
+    pub static mut rustGetActorHealthCurrent: fn(c_uint) -> c_double = |_| { unreachable!("GetActorHealthCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorHealthModified: fn(u16) -> f64 = |_| { unreachable!("GetActorHealthModified was called before set by TES3MP"); };
+    pub static mut rustGetActorHealthModified: fn(c_uint) -> c_double = |_| { unreachable!("GetActorHealthModified was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorMagickaBase: fn(u16) -> f64 = |_| { unreachable!("GetActorMagickaBase was called before set by TES3MP"); };
+    pub static mut rustGetActorMagickaBase: fn(c_uint) -> c_double = |_| { unreachable!("GetActorMagickaBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorMagickaCurrent: fn(u16) -> f64 = |_| { unreachable!("GetActorMagickaCurrent was called before set by TES3MP"); };
+    pub static mut rustGetActorMagickaCurrent: fn(c_uint) -> c_double = |_| { unreachable!("GetActorMagickaCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorMagickaModified: fn(u16) -> f64 = |_| { unreachable!("GetActorMagickaModified was called before set by TES3MP"); };
+    pub static mut rustGetActorMagickaModified: fn(c_uint) -> c_double = |_| { unreachable!("GetActorMagickaModified was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorFatigueBase: fn(u16) -> f64 = |_| { unreachable!("GetActorFatigueBase was called before set by TES3MP"); };
+    pub static mut rustGetActorFatigueBase: fn(c_uint) -> c_double = |_| { unreachable!("GetActorFatigueBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorFatigueCurrent: fn(u16) -> f64 = |_| { unreachable!("GetActorFatigueCurrent was called before set by TES3MP"); };
+    pub static mut rustGetActorFatigueCurrent: fn(c_uint) -> c_double = |_| { unreachable!("GetActorFatigueCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorFatigueModified: fn(u16) -> f64 = |_| { unreachable!("GetActorFatigueModified was called before set by TES3MP"); };
+    pub static mut rustGetActorFatigueModified: fn(c_uint) -> c_double = |_| { unreachable!("GetActorFatigueModified was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorEquipmentItemRefId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetActorEquipmentItemRefId was called before set by TES3MP"); };
+    pub static mut rustGetActorEquipmentItemRefId: fn(c_uint, c_ushort) -> *const c_char = |_, _| { unreachable!("GetActorEquipmentItemRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorEquipmentItemCount: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetActorEquipmentItemCount was called before set by TES3MP"); };
+    pub static mut rustGetActorEquipmentItemCount: fn(c_uint, c_ushort) -> c_int = |_, _| { unreachable!("GetActorEquipmentItemCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorEquipmentItemCharge: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetActorEquipmentItemCharge was called before set by TES3MP"); };
+    pub static mut rustGetActorEquipmentItemCharge: fn(c_uint, c_ushort) -> c_int = |_, _| { unreachable!("GetActorEquipmentItemCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorEquipmentItemEnchantmentCharge: fn(u16, u16) -> f64 = |_, _| { unreachable!("GetActorEquipmentItemEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustGetActorEquipmentItemEnchantmentCharge: fn(c_uint, c_ushort) -> c_double = |_, _| { unreachable!("GetActorEquipmentItemEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustDoesActorHavePlayerKiller: fn(u16) -> bool = |_| { unreachable!("DoesActorHavePlayerKiller was called before set by TES3MP"); };
+    pub static mut rustDoesActorHavePlayerKiller: fn(c_uint) -> bool = |_| { unreachable!("DoesActorHavePlayerKiller was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorKillerPid: fn(u16) -> i16 = |_| { unreachable!("GetActorKillerPid was called before set by TES3MP"); };
+    pub static mut rustGetActorKillerPid: fn(c_uint) -> c_int = |_| { unreachable!("GetActorKillerPid was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorKillerRefId: fn(u16) -> *const i8 = |_| { unreachable!("GetActorKillerRefId was called before set by TES3MP"); };
+    pub static mut rustGetActorKillerRefId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetActorKillerRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorKillerRefNum: fn(u16) -> u16 = |_| { unreachable!("GetActorKillerRefNum was called before set by TES3MP"); };
+    pub static mut rustGetActorKillerRefNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetActorKillerRefNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorKillerMpNum: fn(u16) -> u16 = |_| { unreachable!("GetActorKillerMpNum was called before set by TES3MP"); };
+    pub static mut rustGetActorKillerMpNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetActorKillerMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorKillerName: fn(u16) -> *const i8 = |_| { unreachable!("GetActorKillerName was called before set by TES3MP"); };
+    pub static mut rustGetActorKillerName: fn(c_uint) -> *const c_char = |_| { unreachable!("GetActorKillerName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustDoesActorHavePosition: fn(u16) -> bool = |_| { unreachable!("DoesActorHavePosition was called before set by TES3MP"); };
+    pub static mut rustDoesActorHavePosition: fn(c_uint) -> bool = |_| { unreachable!("DoesActorHavePosition was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustDoesActorHaveStatsDynamic: fn(u16) -> bool = |_| { unreachable!("DoesActorHaveStatsDynamic was called before set by TES3MP"); };
+    pub static mut rustDoesActorHaveStatsDynamic: fn(c_uint) -> bool = |_| { unreachable!("DoesActorHaveStatsDynamic was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorListCell: fn(*const i8) = |_| { unreachable!("SetActorListCell was called before set by TES3MP"); };
+    pub static mut rustSetActorListCell: fn(*const c_char) = |_| { unreachable!("SetActorListCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorListAction: fn(u8) = |_| { unreachable!("SetActorListAction was called before set by TES3MP"); };
+    pub static mut rustSetActorListAction: fn(c_uchar) = |_| { unreachable!("SetActorListAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorCell: fn(*const i8) = |_| { unreachable!("SetActorCell was called before set by TES3MP"); };
+    pub static mut rustSetActorCell: fn(*const c_char) = |_| { unreachable!("SetActorCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorRefId: fn(*const i8) = |_| { unreachable!("SetActorRefId was called before set by TES3MP"); };
+    pub static mut rustSetActorRefId: fn(*const c_char) = |_| { unreachable!("SetActorRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorRefNum: fn(i16) = |_| { unreachable!("SetActorRefNum was called before set by TES3MP"); };
+    pub static mut rustSetActorRefNum: fn(c_int) = |_| { unreachable!("SetActorRefNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorMpNum: fn(i16) = |_| { unreachable!("SetActorMpNum was called before set by TES3MP"); };
+    pub static mut rustSetActorMpNum: fn(c_int) = |_| { unreachable!("SetActorMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorPosition: fn(f64, f64, f64) = |_, _, _| { unreachable!("SetActorPosition was called before set by TES3MP"); };
+    pub static mut rustSetActorPosition: fn(c_double, c_double, c_double) = |_, _, _| { unreachable!("SetActorPosition was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorRotation: fn(f64, f64, f64) = |_, _, _| { unreachable!("SetActorRotation was called before set by TES3MP"); };
+    pub static mut rustSetActorRotation: fn(c_double, c_double, c_double) = |_, _, _| { unreachable!("SetActorRotation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorHealthBase: fn(f64) = |_| { unreachable!("SetActorHealthBase was called before set by TES3MP"); };
+    pub static mut rustSetActorHealthBase: fn(c_double) = |_| { unreachable!("SetActorHealthBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorHealthCurrent: fn(f64) = |_| { unreachable!("SetActorHealthCurrent was called before set by TES3MP"); };
+    pub static mut rustSetActorHealthCurrent: fn(c_double) = |_| { unreachable!("SetActorHealthCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorHealthModified: fn(f64) = |_| { unreachable!("SetActorHealthModified was called before set by TES3MP"); };
+    pub static mut rustSetActorHealthModified: fn(c_double) = |_| { unreachable!("SetActorHealthModified was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorMagickaBase: fn(f64) = |_| { unreachable!("SetActorMagickaBase was called before set by TES3MP"); };
+    pub static mut rustSetActorMagickaBase: fn(c_double) = |_| { unreachable!("SetActorMagickaBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorMagickaCurrent: fn(f64) = |_| { unreachable!("SetActorMagickaCurrent was called before set by TES3MP"); };
+    pub static mut rustSetActorMagickaCurrent: fn(c_double) = |_| { unreachable!("SetActorMagickaCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorMagickaModified: fn(f64) = |_| { unreachable!("SetActorMagickaModified was called before set by TES3MP"); };
+    pub static mut rustSetActorMagickaModified: fn(c_double) = |_| { unreachable!("SetActorMagickaModified was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorFatigueBase: fn(f64) = |_| { unreachable!("SetActorFatigueBase was called before set by TES3MP"); };
+    pub static mut rustSetActorFatigueBase: fn(c_double) = |_| { unreachable!("SetActorFatigueBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorFatigueCurrent: fn(f64) = |_| { unreachable!("SetActorFatigueCurrent was called before set by TES3MP"); };
+    pub static mut rustSetActorFatigueCurrent: fn(c_double) = |_| { unreachable!("SetActorFatigueCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorFatigueModified: fn(f64) = |_| { unreachable!("SetActorFatigueModified was called before set by TES3MP"); };
+    pub static mut rustSetActorFatigueModified: fn(c_double) = |_| { unreachable!("SetActorFatigueModified was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorSound: fn(*const i8) = |_| { unreachable!("SetActorSound was called before set by TES3MP"); };
+    pub static mut rustSetActorSound: fn(*const c_char) = |_| { unreachable!("SetActorSound was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorAIAction: fn(u16) = |_| { unreachable!("SetActorAIAction was called before set by TES3MP"); };
+    pub static mut rustSetActorAIAction: fn(c_uint) = |_| { unreachable!("SetActorAIAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorAITargetToPlayer: fn(u16) = |_| { unreachable!("SetActorAITargetToPlayer was called before set by TES3MP"); };
+    pub static mut rustSetActorAITargetToPlayer: fn(c_ushort) = |_| { unreachable!("SetActorAITargetToPlayer was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorAITargetToObject: fn(i16, i16) = |_, _| { unreachable!("SetActorAITargetToObject was called before set by TES3MP"); };
+    pub static mut rustSetActorAITargetToObject: fn(c_int, c_int) = |_, _| { unreachable!("SetActorAITargetToObject was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorAICoordinates: fn(f64, f64, f64) = |_, _, _| { unreachable!("SetActorAICoordinates was called before set by TES3MP"); };
+    pub static mut rustSetActorAICoordinates: fn(c_double, c_double, c_double) = |_, _, _| { unreachable!("SetActorAICoordinates was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorAIDistance: fn(u16) = |_| { unreachable!("SetActorAIDistance was called before set by TES3MP"); };
+    pub static mut rustSetActorAIDistance: fn(c_uint) = |_| { unreachable!("SetActorAIDistance was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorAIDuration: fn(u16) = |_| { unreachable!("SetActorAIDuration was called before set by TES3MP"); };
+    pub static mut rustSetActorAIDuration: fn(c_uint) = |_| { unreachable!("SetActorAIDuration was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetActorAIRepetition: fn(bool) = |_| { unreachable!("SetActorAIRepetition was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustEquipActorItem: fn(u16, *const i8, u16, i16, f64) = |_, _, _, _, _| { unreachable!("EquipActorItem was called before set by TES3MP"); };
+    pub static mut rustEquipActorItem: fn(c_ushort, *const c_char, c_uint, c_int, c_double) = |_, _, _, _, _| { unreachable!("EquipActorItem was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustUnequipActorItem: fn(u16) = |_| { unreachable!("UnequipActorItem was called before set by TES3MP"); };
+    pub static mut rustUnequipActorItem: fn(c_ushort) = |_| { unreachable!("UnequipActorItem was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustAddActor: fn() = || { unreachable!("AddActor was called before set by TES3MP"); };
     #[no_mangle]
@@ -169,523 +171,523 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustReadLastActorList: fn() = || { unreachable!("ReadLastActorList was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeActorList: fn(u16) = |_| { unreachable!("InitializeActorList was called before set by TES3MP"); };
+    pub static mut rustInitializeActorList: fn(c_ushort) = |_| { unreachable!("InitializeActorList was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustCopyLastActorListToStore: fn() = || { unreachable!("CopyLastActorListToStore was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorRefNumIndex: fn(u16) -> u16 = |_| { unreachable!("GetActorRefNumIndex was called before set by TES3MP"); };
+    pub static mut rustGetActorRefNumIndex: fn(c_uint) -> c_uint = |_| { unreachable!("GetActorRefNumIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetActorKillerRefNumIndex: fn(u16) -> u16 = |_| { unreachable!("GetActorKillerRefNumIndex was called before set by TES3MP"); };
+    pub static mut rustGetActorKillerRefNumIndex: fn(c_uint) -> c_uint = |_| { unreachable!("GetActorKillerRefNumIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetActorRefNumIndex: fn(i16) = |_| { unreachable!("SetActorRefNumIndex was called before set by TES3MP"); };
+    pub static mut rustSetActorRefNumIndex: fn(c_int) = |_| { unreachable!("SetActorRefNumIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearBookChanges: fn(u16) = |_| { unreachable!("ClearBookChanges was called before set by TES3MP"); };
+    pub static mut rustClearBookChanges: fn(c_ushort) = |_| { unreachable!("ClearBookChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetBookChangesSize: fn(u16) -> u16 = |_| { unreachable!("GetBookChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetBookChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetBookChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddBook: fn(u16, *const i8) = |_, _| { unreachable!("AddBook was called before set by TES3MP"); };
+    pub static mut rustAddBook: fn(c_ushort, *const c_char) = |_, _| { unreachable!("AddBook was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetBookId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetBookId was called before set by TES3MP"); };
+    pub static mut rustGetBookId: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetBookId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendBookChanges: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendBookChanges was called before set by TES3MP"); };
+    pub static mut rustSendBookChanges: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendBookChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeBookChanges: fn(u16) = |_| { unreachable!("InitializeBookChanges was called before set by TES3MP"); };
+    pub static mut rustInitializeBookChanges: fn(c_ushort) = |_| { unreachable!("InitializeBookChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetCellStateChangesSize: fn(u16) -> u16 = |_| { unreachable!("GetCellStateChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetCellStateChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetCellStateChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetCellStateType: fn(u16, u16) -> u16 = |_, _| { unreachable!("GetCellStateType was called before set by TES3MP"); };
+    pub static mut rustGetCellStateType: fn(c_ushort, c_uint) -> c_uint = |_, _| { unreachable!("GetCellStateType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetCellStateDescription: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetCellStateDescription was called before set by TES3MP"); };
+    pub static mut rustGetCellStateDescription: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetCellStateDescription was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetCell: fn(u16) -> *const i8 = |_| { unreachable!("GetCell was called before set by TES3MP"); };
+    pub static mut rustGetCell: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetExteriorX: fn(u16) -> i16 = |_| { unreachable!("GetExteriorX was called before set by TES3MP"); };
+    pub static mut rustGetExteriorX: fn(c_ushort) -> c_int = |_| { unreachable!("GetExteriorX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetExteriorY: fn(u16) -> i16 = |_| { unreachable!("GetExteriorY was called before set by TES3MP"); };
+    pub static mut rustGetExteriorY: fn(c_ushort) -> c_int = |_| { unreachable!("GetExteriorY was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustIsInExterior: fn(u16) -> bool = |_| { unreachable!("IsInExterior was called before set by TES3MP"); };
+    pub static mut rustIsInExterior: fn(c_ushort) -> bool = |_| { unreachable!("IsInExterior was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRegion: fn(u16) -> *const i8 = |_| { unreachable!("GetRegion was called before set by TES3MP"); };
+    pub static mut rustGetRegion: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetRegion was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustIsChangingRegion: fn(u16) -> bool = |_| { unreachable!("IsChangingRegion was called before set by TES3MP"); };
+    pub static mut rustIsChangingRegion: fn(c_ushort) -> bool = |_| { unreachable!("IsChangingRegion was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetCell: fn(u16, *const i8) = |_, _| { unreachable!("SetCell was called before set by TES3MP"); };
+    pub static mut rustSetCell: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetExteriorCell: fn(u16, i16, i16) = |_, _, _| { unreachable!("SetExteriorCell was called before set by TES3MP"); };
+    pub static mut rustSetExteriorCell: fn(c_ushort, c_int, c_int) = |_, _, _| { unreachable!("SetExteriorCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendCell: fn(u16) = |_| { unreachable!("SendCell was called before set by TES3MP"); };
+    pub static mut rustSendCell: fn(c_ushort) = |_| { unreachable!("SendCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetDefaultClass: fn(u16) -> *const i8 = |_| { unreachable!("GetDefaultClass was called before set by TES3MP"); };
+    pub static mut rustGetDefaultClass: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetDefaultClass was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetClassName: fn(u16) -> *const i8 = |_| { unreachable!("GetClassName was called before set by TES3MP"); };
+    pub static mut rustGetClassName: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetClassName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetClassDesc: fn(u16) -> *const i8 = |_| { unreachable!("GetClassDesc was called before set by TES3MP"); };
+    pub static mut rustGetClassDesc: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetClassDesc was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetClassMajorAttribute: fn(u16, u8) -> i16 = |_, _| { unreachable!("GetClassMajorAttribute was called before set by TES3MP"); };
+    pub static mut rustGetClassMajorAttribute: fn(c_ushort, c_uchar) -> c_int = |_, _| { unreachable!("GetClassMajorAttribute was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetClassSpecialization: fn(u16) -> i16 = |_| { unreachable!("GetClassSpecialization was called before set by TES3MP"); };
+    pub static mut rustGetClassSpecialization: fn(c_ushort) -> c_int = |_| { unreachable!("GetClassSpecialization was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetClassMajorSkill: fn(u16, u8) -> i16 = |_, _| { unreachable!("GetClassMajorSkill was called before set by TES3MP"); };
+    pub static mut rustGetClassMajorSkill: fn(c_ushort, c_uchar) -> c_int = |_, _| { unreachable!("GetClassMajorSkill was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetClassMinorSkill: fn(u16, u8) -> i16 = |_, _| { unreachable!("GetClassMinorSkill was called before set by TES3MP"); };
+    pub static mut rustGetClassMinorSkill: fn(c_ushort, c_uchar) -> c_int = |_, _| { unreachable!("GetClassMinorSkill was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustIsClassDefault: fn(u16) -> i16 = |_| { unreachable!("IsClassDefault was called before set by TES3MP"); };
+    pub static mut rustIsClassDefault: fn(c_ushort) -> c_int = |_| { unreachable!("IsClassDefault was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetDefaultClass: fn(u16, *const i8) = |_, _| { unreachable!("SetDefaultClass was called before set by TES3MP"); };
+    pub static mut rustSetDefaultClass: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetDefaultClass was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetClassName: fn(u16, *const i8) = |_, _| { unreachable!("SetClassName was called before set by TES3MP"); };
+    pub static mut rustSetClassName: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetClassName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetClassDesc: fn(u16, *const i8) = |_, _| { unreachable!("SetClassDesc was called before set by TES3MP"); };
+    pub static mut rustSetClassDesc: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetClassDesc was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetClassMajorAttribute: fn(u16, u8, i16) = |_, _, _| { unreachable!("SetClassMajorAttribute was called before set by TES3MP"); };
+    pub static mut rustSetClassMajorAttribute: fn(c_ushort, c_uchar, c_int) = |_, _, _| { unreachable!("SetClassMajorAttribute was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetClassSpecialization: fn(u16, i16) = |_, _| { unreachable!("SetClassSpecialization was called before set by TES3MP"); };
+    pub static mut rustSetClassSpecialization: fn(c_ushort, c_int) = |_, _| { unreachable!("SetClassSpecialization was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetClassMajorSkill: fn(u16, u8, i16) = |_, _, _| { unreachable!("SetClassMajorSkill was called before set by TES3MP"); };
+    pub static mut rustSetClassMajorSkill: fn(c_ushort, c_uchar, c_int) = |_, _, _| { unreachable!("SetClassMajorSkill was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetClassMinorSkill: fn(u16, u8, i16) = |_, _, _| { unreachable!("SetClassMinorSkill was called before set by TES3MP"); };
+    pub static mut rustSetClassMinorSkill: fn(c_ushort, c_uchar, c_int) = |_, _, _| { unreachable!("SetClassMinorSkill was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendClass: fn(u16) = |_| { unreachable!("SendClass was called before set by TES3MP"); };
+    pub static mut rustSendClass: fn(c_ushort) = |_| { unreachable!("SendClass was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendMessage: fn(u16, *const i8, bool, bool) = |_, _, _, _| { unreachable!("SendMessage was called before set by TES3MP"); };
+    pub static mut rustSendMessage: fn(c_ushort, *const c_char, bool, bool) = |_, _, _, _| { unreachable!("SendMessage was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustCleanChatForPid: fn() = || { unreachable!("CleanChatForPid was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustCleanChat: fn(u16) = |_| { unreachable!("CleanChat was called before set by TES3MP"); };
+    pub static mut rustCleanChat: fn(c_ushort) = |_| { unreachable!("CleanChat was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearTopicChanges: fn(u16) = |_| { unreachable!("ClearTopicChanges was called before set by TES3MP"); };
+    pub static mut rustClearTopicChanges: fn(c_ushort) = |_| { unreachable!("ClearTopicChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetTopicChangesSize: fn(u16) -> u16 = |_| { unreachable!("GetTopicChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetTopicChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetTopicChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddTopic: fn(u16, *const i8) = |_, _| { unreachable!("AddTopic was called before set by TES3MP"); };
+    pub static mut rustAddTopic: fn(c_ushort, *const c_char) = |_, _| { unreachable!("AddTopic was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetTopicId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetTopicId was called before set by TES3MP"); };
+    pub static mut rustGetTopicId: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetTopicId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendTopicChanges: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendTopicChanges was called before set by TES3MP"); };
+    pub static mut rustSendTopicChanges: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendTopicChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustPlayAnimation: fn(u16, *const i8, i16, i16, bool) = |_, _, _, _, _| { unreachable!("PlayAnimation was called before set by TES3MP"); };
+    pub static mut rustPlayAnimation: fn(c_ushort, *const c_char, c_int, c_int, bool) = |_, _, _, _, _| { unreachable!("PlayAnimation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustPlaySpeech: fn(u16, *const i8) = |_, _| { unreachable!("PlaySpeech was called before set by TES3MP"); };
+    pub static mut rustPlaySpeech: fn(c_ushort, *const c_char) = |_, _| { unreachable!("PlaySpeech was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeTopicChanges: fn(u16) = |_| { unreachable!("InitializeTopicChanges was called before set by TES3MP"); };
+    pub static mut rustInitializeTopicChanges: fn(c_ushort) = |_| { unreachable!("InitializeTopicChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearFactionChanges: fn(u16) = |_| { unreachable!("ClearFactionChanges was called before set by TES3MP"); };
+    pub static mut rustClearFactionChanges: fn(c_ushort) = |_| { unreachable!("ClearFactionChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetFactionChangesSize: fn(u16) -> u16 = |_| { unreachable!("GetFactionChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetFactionChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetFactionChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetFactionChangesAction: fn(u16) -> u8 = |_| { unreachable!("GetFactionChangesAction was called before set by TES3MP"); };
+    pub static mut rustGetFactionChangesAction: fn(c_ushort) -> c_uchar = |_| { unreachable!("GetFactionChangesAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetFactionId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetFactionId was called before set by TES3MP"); };
+    pub static mut rustGetFactionId: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetFactionId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetFactionRank: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetFactionRank was called before set by TES3MP"); };
+    pub static mut rustGetFactionRank: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetFactionRank was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetFactionExpulsionState: fn(u16, u16) -> bool = |_, _| { unreachable!("GetFactionExpulsionState was called before set by TES3MP"); };
+    pub static mut rustGetFactionExpulsionState: fn(c_ushort, c_uint) -> bool = |_, _| { unreachable!("GetFactionExpulsionState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetFactionReputation: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetFactionReputation was called before set by TES3MP"); };
+    pub static mut rustGetFactionReputation: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetFactionReputation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetFactionChangesAction: fn(u16, u8) = |_, _| { unreachable!("SetFactionChangesAction was called before set by TES3MP"); };
+    pub static mut rustSetFactionChangesAction: fn(c_ushort, c_uchar) = |_, _| { unreachable!("SetFactionChangesAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetFactionId: fn(*const i8) = |_| { unreachable!("SetFactionId was called before set by TES3MP"); };
+    pub static mut rustSetFactionId: fn(*const c_char) = |_| { unreachable!("SetFactionId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetFactionRank: fn(u16) = |_| { unreachable!("SetFactionRank was called before set by TES3MP"); };
+    pub static mut rustSetFactionRank: fn(c_uint) = |_| { unreachable!("SetFactionRank was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetFactionExpulsionState: fn(bool) = |_| { unreachable!("SetFactionExpulsionState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetFactionReputation: fn(i16) = |_| { unreachable!("SetFactionReputation was called before set by TES3MP"); };
+    pub static mut rustSetFactionReputation: fn(c_int) = |_| { unreachable!("SetFactionReputation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddFaction: fn(u16) = |_| { unreachable!("AddFaction was called before set by TES3MP"); };
+    pub static mut rustAddFaction: fn(c_ushort) = |_| { unreachable!("AddFaction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendFactionChanges: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendFactionChanges was called before set by TES3MP"); };
+    pub static mut rustSendFactionChanges: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendFactionChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeFactionChanges: fn(u16) = |_| { unreachable!("InitializeFactionChanges was called before set by TES3MP"); };
+    pub static mut rustInitializeFactionChanges: fn(c_ushort) = |_| { unreachable!("InitializeFactionChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustCustomMessageBox: fn(u16, i16, *const i8, *const i8) = |_, _, _, _| { unreachable!("CustomMessageBox was called before set by TES3MP"); };
+    pub static mut rustCustomMessageBox: fn(c_ushort, c_int, *const c_char, *const c_char) = |_, _, _, _| { unreachable!("CustomMessageBox was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInputDialog: fn(u16, i16, *const i8, *const i8) = |_, _, _, _| { unreachable!("InputDialog was called before set by TES3MP"); };
+    pub static mut rustInputDialog: fn(c_ushort, c_int, *const c_char, *const c_char) = |_, _, _, _| { unreachable!("InputDialog was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustPasswordDialog: fn(u16, i16, *const i8, *const i8) = |_, _, _, _| { unreachable!("PasswordDialog was called before set by TES3MP"); };
+    pub static mut rustPasswordDialog: fn(c_ushort, c_int, *const c_char, *const c_char) = |_, _, _, _| { unreachable!("PasswordDialog was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustListBox: fn(u16, i16, *const i8, *const i8) = |_, _, _, _| { unreachable!("ListBox was called before set by TES3MP"); };
+    pub static mut rustListBox: fn(c_ushort, c_int, *const c_char, *const c_char) = |_, _, _, _| { unreachable!("ListBox was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearQuickKeyChanges: fn(u16) = |_| { unreachable!("ClearQuickKeyChanges was called before set by TES3MP"); };
+    pub static mut rustClearQuickKeyChanges: fn(c_ushort) = |_| { unreachable!("ClearQuickKeyChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetQuickKeyChangesSize: fn(u16) -> u16 = |_| { unreachable!("GetQuickKeyChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetQuickKeyChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetQuickKeyChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetQuickKeySlot: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetQuickKeySlot was called before set by TES3MP"); };
+    pub static mut rustGetQuickKeySlot: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetQuickKeySlot was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetQuickKeyType: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetQuickKeyType was called before set by TES3MP"); };
+    pub static mut rustGetQuickKeyType: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetQuickKeyType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetQuickKeyItemId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetQuickKeyItemId was called before set by TES3MP"); };
+    pub static mut rustGetQuickKeyItemId: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetQuickKeyItemId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddQuickKey: fn(u16, u16, i16, *const i8) = |_, _, _, _| { unreachable!("AddQuickKey was called before set by TES3MP"); };
+    pub static mut rustAddQuickKey: fn(c_ushort, c_ushort, c_int, *const c_char) = |_, _, _, _| { unreachable!("AddQuickKey was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendQuickKeyChanges: fn(u16) = |_| { unreachable!("SendQuickKeyChanges was called before set by TES3MP"); };
+    pub static mut rustSendQuickKeyChanges: fn(c_ushort) = |_| { unreachable!("SendQuickKeyChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetMapVisibility: fn(u16, u16, u16) = |_, _, _| { unreachable!("SetMapVisibility was called before set by TES3MP"); };
+    pub static mut rustSetMapVisibility: fn(c_ushort, c_ushort, c_ushort) = |_, _, _| { unreachable!("SetMapVisibility was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetMapVisibilityAll: fn(u16, u16) = |_, _| { unreachable!("SetMapVisibilityAll was called before set by TES3MP"); };
+    pub static mut rustSetMapVisibilityAll: fn(c_ushort, c_ushort) = |_, _| { unreachable!("SetMapVisibilityAll was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeQuickKeyChanges: fn(u16) = |_| { unreachable!("InitializeQuickKeyChanges was called before set by TES3MP"); };
+    pub static mut rustInitializeQuickKeyChanges: fn(c_ushort) = |_| { unreachable!("InitializeQuickKeyChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearInventoryChanges: fn(u16) = |_| { unreachable!("ClearInventoryChanges was called before set by TES3MP"); };
+    pub static mut rustClearInventoryChanges: fn(c_ushort) = |_| { unreachable!("ClearInventoryChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetEquipmentSize: fn() -> i16 = || { unreachable!("GetEquipmentSize was called before set by TES3MP"); };
+    pub static mut rustGetEquipmentSize: fn() -> c_int = || { unreachable!("GetEquipmentSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetInventoryChangesSize: fn(u16) -> u16 = |_| { unreachable!("GetInventoryChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetInventoryChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetInventoryChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetInventoryChangesAction: fn(u16) -> u16 = |_| { unreachable!("GetInventoryChangesAction was called before set by TES3MP"); };
+    pub static mut rustGetInventoryChangesAction: fn(c_ushort) -> c_uint = |_| { unreachable!("GetInventoryChangesAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetInventoryChangesAction: fn(u16, u8) = |_, _| { unreachable!("SetInventoryChangesAction was called before set by TES3MP"); };
+    pub static mut rustSetInventoryChangesAction: fn(c_ushort, c_uchar) = |_, _| { unreachable!("SetInventoryChangesAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustEquipItem: fn(u16, u16, *const i8, u16, i16, f64) = |_, _, _, _, _, _| { unreachable!("EquipItem was called before set by TES3MP"); };
+    pub static mut rustEquipItem: fn(c_ushort, c_ushort, *const c_char, c_uint, c_int, c_double) = |_, _, _, _, _, _| { unreachable!("EquipItem was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustUnequipItem: fn(u16, u16) = |_, _| { unreachable!("UnequipItem was called before set by TES3MP"); };
+    pub static mut rustUnequipItem: fn(c_ushort, c_ushort) = |_, _| { unreachable!("UnequipItem was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddItemChange: fn(u16, *const i8, u16, i16, f64, *const i8) = |_, _, _, _, _, _| { unreachable!("AddItemChange was called before set by TES3MP"); };
+    pub static mut rustAddItemChange: fn(c_ushort, *const c_char, c_uint, c_int, c_double, *const c_char) = |_, _, _, _, _, _| { unreachable!("AddItemChange was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustHasItemEquipped: fn(u16, *const i8) -> bool = |_, _| { unreachable!("HasItemEquipped was called before set by TES3MP"); };
+    pub static mut rustHasItemEquipped: fn(c_ushort, *const c_char) -> bool = |_, _| { unreachable!("HasItemEquipped was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetEquipmentItemRefId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetEquipmentItemRefId was called before set by TES3MP"); };
+    pub static mut rustGetEquipmentItemRefId: fn(c_ushort, c_ushort) -> *const c_char = |_, _| { unreachable!("GetEquipmentItemRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetEquipmentItemCount: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetEquipmentItemCount was called before set by TES3MP"); };
+    pub static mut rustGetEquipmentItemCount: fn(c_ushort, c_ushort) -> c_int = |_, _| { unreachable!("GetEquipmentItemCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetEquipmentItemCharge: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetEquipmentItemCharge was called before set by TES3MP"); };
+    pub static mut rustGetEquipmentItemCharge: fn(c_ushort, c_ushort) -> c_int = |_, _| { unreachable!("GetEquipmentItemCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetEquipmentItemEnchantmentCharge: fn(u16, u16) -> f64 = |_, _| { unreachable!("GetEquipmentItemEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustGetEquipmentItemEnchantmentCharge: fn(c_ushort, c_ushort) -> c_double = |_, _| { unreachable!("GetEquipmentItemEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetInventoryItemRefId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetInventoryItemRefId was called before set by TES3MP"); };
+    pub static mut rustGetInventoryItemRefId: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetInventoryItemRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetInventoryItemCount: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetInventoryItemCount was called before set by TES3MP"); };
+    pub static mut rustGetInventoryItemCount: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetInventoryItemCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetInventoryItemCharge: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetInventoryItemCharge was called before set by TES3MP"); };
+    pub static mut rustGetInventoryItemCharge: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetInventoryItemCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetInventoryItemEnchantmentCharge: fn(u16, u16) -> f64 = |_, _| { unreachable!("GetInventoryItemEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustGetInventoryItemEnchantmentCharge: fn(c_ushort, c_uint) -> c_double = |_, _| { unreachable!("GetInventoryItemEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetInventoryItemSoul: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetInventoryItemSoul was called before set by TES3MP"); };
+    pub static mut rustGetInventoryItemSoul: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetInventoryItemSoul was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetUsedItemRefId: fn(u16) -> *const i8 = |_| { unreachable!("GetUsedItemRefId was called before set by TES3MP"); };
+    pub static mut rustGetUsedItemRefId: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetUsedItemRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetUsedItemCount: fn(u16) -> i16 = |_| { unreachable!("GetUsedItemCount was called before set by TES3MP"); };
+    pub static mut rustGetUsedItemCount: fn(c_ushort) -> c_int = |_| { unreachable!("GetUsedItemCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetUsedItemCharge: fn(u16) -> i16 = |_| { unreachable!("GetUsedItemCharge was called before set by TES3MP"); };
+    pub static mut rustGetUsedItemCharge: fn(c_ushort) -> c_int = |_| { unreachable!("GetUsedItemCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetUsedItemEnchantmentCharge: fn(u16) -> f64 = |_| { unreachable!("GetUsedItemEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustGetUsedItemEnchantmentCharge: fn(c_ushort) -> c_double = |_| { unreachable!("GetUsedItemEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetUsedItemSoul: fn(u16) -> *const i8 = |_| { unreachable!("GetUsedItemSoul was called before set by TES3MP"); };
+    pub static mut rustGetUsedItemSoul: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetUsedItemSoul was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendEquipment: fn(u16) = |_| { unreachable!("SendEquipment was called before set by TES3MP"); };
+    pub static mut rustSendEquipment: fn(c_ushort) = |_| { unreachable!("SendEquipment was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendInventoryChanges: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendInventoryChanges was called before set by TES3MP"); };
+    pub static mut rustSendInventoryChanges: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendInventoryChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendItemUse: fn(u16) = |_| { unreachable!("SendItemUse was called before set by TES3MP"); };
+    pub static mut rustSendItemUse: fn(c_ushort) = |_| { unreachable!("SendItemUse was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeInventoryChanges: fn(u16) = |_| { unreachable!("InitializeInventoryChanges was called before set by TES3MP"); };
+    pub static mut rustInitializeInventoryChanges: fn(c_ushort) = |_| { unreachable!("InitializeInventoryChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddItem: fn(u16, *const i8, u16, i16, f64, *const i8) = |_, _, _, _, _, _| { unreachable!("AddItem was called before set by TES3MP"); };
+    pub static mut rustAddItem: fn(c_ushort, *const c_char, c_uint, c_int, c_double, *const c_char) = |_, _, _, _, _, _| { unreachable!("AddItem was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMiscellaneousChangeType: fn(u16) -> u8 = |_| { unreachable!("GetMiscellaneousChangeType was called before set by TES3MP"); };
+    pub static mut rustGetMiscellaneousChangeType: fn(c_ushort) -> c_uchar = |_| { unreachable!("GetMiscellaneousChangeType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMarkCell: fn(u16) -> *const i8 = |_| { unreachable!("GetMarkCell was called before set by TES3MP"); };
+    pub static mut rustGetMarkCell: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetMarkCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMarkPosX: fn(u16) -> f64 = |_| { unreachable!("GetMarkPosX was called before set by TES3MP"); };
+    pub static mut rustGetMarkPosX: fn(c_ushort) -> c_double = |_| { unreachable!("GetMarkPosX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMarkPosY: fn(u16) -> f64 = |_| { unreachable!("GetMarkPosY was called before set by TES3MP"); };
+    pub static mut rustGetMarkPosY: fn(c_ushort) -> c_double = |_| { unreachable!("GetMarkPosY was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMarkPosZ: fn(u16) -> f64 = |_| { unreachable!("GetMarkPosZ was called before set by TES3MP"); };
+    pub static mut rustGetMarkPosZ: fn(c_ushort) -> c_double = |_| { unreachable!("GetMarkPosZ was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMarkRotX: fn(u16) -> f64 = |_| { unreachable!("GetMarkRotX was called before set by TES3MP"); };
+    pub static mut rustGetMarkRotX: fn(c_ushort) -> c_double = |_| { unreachable!("GetMarkRotX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMarkRotZ: fn(u16) -> f64 = |_| { unreachable!("GetMarkRotZ was called before set by TES3MP"); };
+    pub static mut rustGetMarkRotZ: fn(c_ushort) -> c_double = |_| { unreachable!("GetMarkRotZ was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSelectedSpellId: fn(u16) -> *const i8 = |_| { unreachable!("GetSelectedSpellId was called before set by TES3MP"); };
+    pub static mut rustGetSelectedSpellId: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetSelectedSpellId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustDoesPlayerHavePlayerKiller: fn(u16) -> bool = |_| { unreachable!("DoesPlayerHavePlayerKiller was called before set by TES3MP"); };
+    pub static mut rustDoesPlayerHavePlayerKiller: fn(c_ushort) -> bool = |_| { unreachable!("DoesPlayerHavePlayerKiller was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPlayerKillerPid: fn(u16) -> i16 = |_| { unreachable!("GetPlayerKillerPid was called before set by TES3MP"); };
+    pub static mut rustGetPlayerKillerPid: fn(c_ushort) -> c_int = |_| { unreachable!("GetPlayerKillerPid was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPlayerKillerRefId: fn(u16) -> *const i8 = |_| { unreachable!("GetPlayerKillerRefId was called before set by TES3MP"); };
+    pub static mut rustGetPlayerKillerRefId: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetPlayerKillerRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPlayerKillerRefNum: fn(u16) -> u16 = |_| { unreachable!("GetPlayerKillerRefNum was called before set by TES3MP"); };
+    pub static mut rustGetPlayerKillerRefNum: fn(c_ushort) -> c_uint = |_| { unreachable!("GetPlayerKillerRefNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPlayerKillerMpNum: fn(u16) -> u16 = |_| { unreachable!("GetPlayerKillerMpNum was called before set by TES3MP"); };
+    pub static mut rustGetPlayerKillerMpNum: fn(c_ushort) -> c_uint = |_| { unreachable!("GetPlayerKillerMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPlayerKillerName: fn(u16) -> *const i8 = |_| { unreachable!("GetPlayerKillerName was called before set by TES3MP"); };
+    pub static mut rustGetPlayerKillerName: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetPlayerKillerName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetDrawState: fn(u16) -> u16 = |_| { unreachable!("GetDrawState was called before set by TES3MP"); };
+    pub static mut rustGetDrawState: fn(c_ushort) -> c_uint = |_| { unreachable!("GetDrawState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSneakState: fn(u16) -> bool = |_| { unreachable!("GetSneakState was called before set by TES3MP"); };
+    pub static mut rustGetSneakState: fn(c_ushort) -> bool = |_| { unreachable!("GetSneakState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetMarkCell: fn(u16, *const i8) = |_, _| { unreachable!("SetMarkCell was called before set by TES3MP"); };
+    pub static mut rustSetMarkCell: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetMarkCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetMarkPos: fn(u16, f64, f64, f64) = |_, _, _, _| { unreachable!("SetMarkPos was called before set by TES3MP"); };
+    pub static mut rustSetMarkPos: fn(c_ushort, c_double, c_double, c_double) = |_, _, _, _| { unreachable!("SetMarkPos was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetMarkRot: fn(u16, f64, f64) = |_, _, _| { unreachable!("SetMarkRot was called before set by TES3MP"); };
+    pub static mut rustSetMarkRot: fn(c_ushort, c_double, c_double) = |_, _, _| { unreachable!("SetMarkRot was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetSelectedSpellId: fn(u16, *const i8) = |_, _| { unreachable!("SetSelectedSpellId was called before set by TES3MP"); };
+    pub static mut rustSetSelectedSpellId: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetSelectedSpellId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendMarkLocation: fn(u16) = |_| { unreachable!("SendMarkLocation was called before set by TES3MP"); };
+    pub static mut rustSendMarkLocation: fn(c_ushort) = |_| { unreachable!("SendMarkLocation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendSelectedSpell: fn(u16) = |_| { unreachable!("SendSelectedSpell was called before set by TES3MP"); };
+    pub static mut rustSendSelectedSpell: fn(c_ushort) = |_| { unreachable!("SendSelectedSpell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustJail: fn(u16, i16, bool, bool, *const i8, *const i8) = |_, _, _, _, _, _| { unreachable!("Jail was called before set by TES3MP"); };
+    pub static mut rustJail: fn(c_ushort, c_int, bool, bool, *const c_char, *const c_char) = |_, _, _, _, _, _| { unreachable!("Jail was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustResurrect: fn(u16, u16) = |_, _| { unreachable!("Resurrect was called before set by TES3MP"); };
+    pub static mut rustResurrect: fn(c_ushort, c_uint) = |_, _| { unreachable!("Resurrect was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetDeathReason: fn(u16) -> *const i8 = |_| { unreachable!("GetDeathReason was called before set by TES3MP"); };
+    pub static mut rustGetDeathReason: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetDeathReason was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPlayerKillerRefNumIndex: fn(u16) -> u16 = |_| { unreachable!("GetPlayerKillerRefNumIndex was called before set by TES3MP"); };
+    pub static mut rustGetPlayerKillerRefNumIndex: fn(c_ushort) -> c_uint = |_| { unreachable!("GetPlayerKillerRefNumIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGenerateRandomString: fn(u16) -> *const i8 = |_| { unreachable!("GenerateRandomString was called before set by TES3MP"); };
+    pub static mut rustGenerateRandomString: fn(c_uint) -> *const c_char = |_| { unreachable!("GenerateRandomString was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSHA256Hash: fn(*const i8) -> *const i8 = |_| { unreachable!("GetSHA256Hash was called before set by TES3MP"); };
+    pub static mut rustGetSHA256Hash: fn(*const c_char) -> *const c_char = |_| { unreachable!("GetSHA256Hash was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetLastPlayerId: fn() -> u16 = || { unreachable!("GetLastPlayerId was called before set by TES3MP"); };
+    pub static mut rustGetLastPlayerId: fn() -> c_uint = || { unreachable!("GetLastPlayerId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetCurrentMpNum: fn() -> i16 = || { unreachable!("GetCurrentMpNum was called before set by TES3MP"); };
+    pub static mut rustGetCurrentMpNum: fn() -> c_int = || { unreachable!("GetCurrentMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetCurrentMpNum: fn(i16) = |_| { unreachable!("SetCurrentMpNum was called before set by TES3MP"); };
+    pub static mut rustSetCurrentMpNum: fn(c_int) = |_| { unreachable!("SetCurrentMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPosX: fn(u16) -> f64 = |_| { unreachable!("GetPosX was called before set by TES3MP"); };
+    pub static mut rustGetPosX: fn(c_ushort) -> c_double = |_| { unreachable!("GetPosX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPosY: fn(u16) -> f64 = |_| { unreachable!("GetPosY was called before set by TES3MP"); };
+    pub static mut rustGetPosY: fn(c_ushort) -> c_double = |_| { unreachable!("GetPosY was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPosZ: fn(u16) -> f64 = |_| { unreachable!("GetPosZ was called before set by TES3MP"); };
+    pub static mut rustGetPosZ: fn(c_ushort) -> c_double = |_| { unreachable!("GetPosZ was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPreviousCellPosX: fn(u16) -> f64 = |_| { unreachable!("GetPreviousCellPosX was called before set by TES3MP"); };
+    pub static mut rustGetPreviousCellPosX: fn(c_ushort) -> c_double = |_| { unreachable!("GetPreviousCellPosX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPreviousCellPosY: fn(u16) -> f64 = |_| { unreachable!("GetPreviousCellPosY was called before set by TES3MP"); };
+    pub static mut rustGetPreviousCellPosY: fn(c_ushort) -> c_double = |_| { unreachable!("GetPreviousCellPosY was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPreviousCellPosZ: fn(u16) -> f64 = |_| { unreachable!("GetPreviousCellPosZ was called before set by TES3MP"); };
+    pub static mut rustGetPreviousCellPosZ: fn(c_ushort) -> c_double = |_| { unreachable!("GetPreviousCellPosZ was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRotX: fn(u16) -> f64 = |_| { unreachable!("GetRotX was called before set by TES3MP"); };
+    pub static mut rustGetRotX: fn(c_ushort) -> c_double = |_| { unreachable!("GetRotX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRotZ: fn(u16) -> f64 = |_| { unreachable!("GetRotZ was called before set by TES3MP"); };
+    pub static mut rustGetRotZ: fn(c_ushort) -> c_double = |_| { unreachable!("GetRotZ was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetPos: fn(u16, f64, f64, f64) = |_, _, _, _| { unreachable!("SetPos was called before set by TES3MP"); };
+    pub static mut rustSetPos: fn(c_ushort, c_double, c_double, c_double) = |_, _, _, _| { unreachable!("SetPos was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRot: fn(u16, f64, f64) = |_, _, _| { unreachable!("SetRot was called before set by TES3MP"); };
+    pub static mut rustSetRot: fn(c_ushort, c_double, c_double) = |_, _, _| { unreachable!("SetRot was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetMomentum: fn(u16, f64, f64, f64) = |_, _, _, _| { unreachable!("SetMomentum was called before set by TES3MP"); };
+    pub static mut rustSetMomentum: fn(c_ushort, c_double, c_double, c_double) = |_, _, _, _| { unreachable!("SetMomentum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendPos: fn(u16) = |_| { unreachable!("SendPos was called before set by TES3MP"); };
+    pub static mut rustSendPos: fn(c_ushort) = |_| { unreachable!("SendPos was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendMomentum: fn(u16) = |_| { unreachable!("SendMomentum was called before set by TES3MP"); };
+    pub static mut rustSendMomentum: fn(c_ushort) = |_| { unreachable!("SendMomentum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearJournalChanges: fn(u16) = |_| { unreachable!("ClearJournalChanges was called before set by TES3MP"); };
+    pub static mut rustClearJournalChanges: fn(c_ushort) = |_| { unreachable!("ClearJournalChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetJournalChangesSize: fn(u16) -> u16 = |_| { unreachable!("GetJournalChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetJournalChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetJournalChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddJournalEntry: fn(u16, *const i8, u16, *const i8) = |_, _, _, _| { unreachable!("AddJournalEntry was called before set by TES3MP"); };
+    pub static mut rustAddJournalEntry: fn(c_ushort, *const c_char, c_uint, *const c_char) = |_, _, _, _| { unreachable!("AddJournalEntry was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddJournalEntryWithTimestamp: fn(u16, *const i8, u16, *const i8, u16, u16, u16) = |_, _, _, _, _, _, _| { unreachable!("AddJournalEntryWithTimestamp was called before set by TES3MP"); };
+    pub static mut rustAddJournalEntryWithTimestamp: fn(c_ushort, *const c_char, c_uint, *const c_char, c_uint, c_uint, c_uint) = |_, _, _, _, _, _, _| { unreachable!("AddJournalEntryWithTimestamp was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddJournalIndex: fn(u16, *const i8, u16) = |_, _, _| { unreachable!("AddJournalIndex was called before set by TES3MP"); };
+    pub static mut rustAddJournalIndex: fn(c_ushort, *const c_char, c_uint) = |_, _, _| { unreachable!("AddJournalIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetReputation: fn(u16, i16) = |_, _| { unreachable!("SetReputation was called before set by TES3MP"); };
+    pub static mut rustSetReputation: fn(c_ushort, c_int) = |_, _| { unreachable!("SetReputation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetJournalItemQuest: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetJournalItemQuest was called before set by TES3MP"); };
+    pub static mut rustGetJournalItemQuest: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetJournalItemQuest was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetJournalItemIndex: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetJournalItemIndex was called before set by TES3MP"); };
+    pub static mut rustGetJournalItemIndex: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetJournalItemIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetJournalItemType: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetJournalItemType was called before set by TES3MP"); };
+    pub static mut rustGetJournalItemType: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetJournalItemType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetJournalItemActorRefId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetJournalItemActorRefId was called before set by TES3MP"); };
+    pub static mut rustGetJournalItemActorRefId: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetJournalItemActorRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetReputation: fn(u16) -> i16 = |_| { unreachable!("GetReputation was called before set by TES3MP"); };
+    pub static mut rustGetReputation: fn(c_ushort) -> c_int = |_| { unreachable!("GetReputation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendJournalChanges: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendJournalChanges was called before set by TES3MP"); };
+    pub static mut rustSendJournalChanges: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendJournalChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendReputation: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendReputation was called before set by TES3MP"); };
+    pub static mut rustSendReputation: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendReputation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeJournalChanges: fn(u16) = |_| { unreachable!("InitializeJournalChanges was called before set by TES3MP"); };
+    pub static mut rustInitializeJournalChanges: fn(c_ushort) = |_| { unreachable!("InitializeJournalChanges was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustClearRecords: fn() = || { unreachable!("ClearRecords was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordType: fn() -> u16 = || { unreachable!("GetRecordType was called before set by TES3MP"); };
+    pub static mut rustGetRecordType: fn() -> c_ushort = || { unreachable!("GetRecordType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordCount: fn() -> u16 = || { unreachable!("GetRecordCount was called before set by TES3MP"); };
+    pub static mut rustGetRecordCount: fn() -> c_uint = || { unreachable!("GetRecordCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEffectCount: fn(u16) -> u16 = |_| { unreachable!("GetRecordEffectCount was called before set by TES3MP"); };
+    pub static mut rustGetRecordEffectCount: fn(c_uint) -> c_uint = |_| { unreachable!("GetRecordEffectCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordId: fn(u16) -> *const i8 = |_| { unreachable!("GetRecordId was called before set by TES3MP"); };
+    pub static mut rustGetRecordId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetRecordId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordBaseId: fn(u16) -> *const i8 = |_| { unreachable!("GetRecordBaseId was called before set by TES3MP"); };
+    pub static mut rustGetRecordBaseId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetRecordBaseId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordSubtype: fn(u16) -> i16 = |_| { unreachable!("GetRecordSubtype was called before set by TES3MP"); };
+    pub static mut rustGetRecordSubtype: fn(c_uint) -> c_int = |_| { unreachable!("GetRecordSubtype was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordName: fn(u16) -> *const i8 = |_| { unreachable!("GetRecordName was called before set by TES3MP"); };
+    pub static mut rustGetRecordName: fn(c_uint) -> *const c_char = |_| { unreachable!("GetRecordName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordModel: fn(u16) -> *const i8 = |_| { unreachable!("GetRecordModel was called before set by TES3MP"); };
+    pub static mut rustGetRecordModel: fn(c_uint) -> *const c_char = |_| { unreachable!("GetRecordModel was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordIcon: fn(u16) -> *const i8 = |_| { unreachable!("GetRecordIcon was called before set by TES3MP"); };
+    pub static mut rustGetRecordIcon: fn(c_uint) -> *const c_char = |_| { unreachable!("GetRecordIcon was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordScript: fn(u16) -> *const i8 = |_| { unreachable!("GetRecordScript was called before set by TES3MP"); };
+    pub static mut rustGetRecordScript: fn(c_uint) -> *const c_char = |_| { unreachable!("GetRecordScript was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEnchantmentId: fn(u16) -> *const i8 = |_| { unreachable!("GetRecordEnchantmentId was called before set by TES3MP"); };
+    pub static mut rustGetRecordEnchantmentId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetRecordEnchantmentId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEnchantmentCharge: fn(u16) -> i16 = |_| { unreachable!("GetRecordEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustGetRecordEnchantmentCharge: fn(c_uint) -> c_int = |_| { unreachable!("GetRecordEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordAutoCalc: fn(u16) -> i16 = |_| { unreachable!("GetRecordAutoCalc was called before set by TES3MP"); };
+    pub static mut rustGetRecordAutoCalc: fn(c_uint) -> c_int = |_| { unreachable!("GetRecordAutoCalc was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordCharge: fn(u16) -> i16 = |_| { unreachable!("GetRecordCharge was called before set by TES3MP"); };
+    pub static mut rustGetRecordCharge: fn(c_uint) -> c_int = |_| { unreachable!("GetRecordCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordCost: fn(u16) -> i16 = |_| { unreachable!("GetRecordCost was called before set by TES3MP"); };
+    pub static mut rustGetRecordCost: fn(c_uint) -> c_int = |_| { unreachable!("GetRecordCost was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordFlags: fn(u16) -> i16 = |_| { unreachable!("GetRecordFlags was called before set by TES3MP"); };
+    pub static mut rustGetRecordFlags: fn(c_uint) -> c_int = |_| { unreachable!("GetRecordFlags was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordValue: fn(u16) -> i16 = |_| { unreachable!("GetRecordValue was called before set by TES3MP"); };
+    pub static mut rustGetRecordValue: fn(c_uint) -> c_int = |_| { unreachable!("GetRecordValue was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordWeight: fn(u16) -> f64 = |_| { unreachable!("GetRecordWeight was called before set by TES3MP"); };
+    pub static mut rustGetRecordWeight: fn(c_uint) -> c_double = |_| { unreachable!("GetRecordWeight was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEffectId: fn(u16, u16) -> u16 = |_, _| { unreachable!("GetRecordEffectId was called before set by TES3MP"); };
+    pub static mut rustGetRecordEffectId: fn(c_uint, c_uint) -> c_uint = |_, _| { unreachable!("GetRecordEffectId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEffectAttribute: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetRecordEffectAttribute was called before set by TES3MP"); };
+    pub static mut rustGetRecordEffectAttribute: fn(c_uint, c_uint) -> c_int = |_, _| { unreachable!("GetRecordEffectAttribute was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEffectSkill: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetRecordEffectSkill was called before set by TES3MP"); };
+    pub static mut rustGetRecordEffectSkill: fn(c_uint, c_uint) -> c_int = |_, _| { unreachable!("GetRecordEffectSkill was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEffectRangeType: fn(u16, u16) -> u16 = |_, _| { unreachable!("GetRecordEffectRangeType was called before set by TES3MP"); };
+    pub static mut rustGetRecordEffectRangeType: fn(c_uint, c_uint) -> c_uint = |_, _| { unreachable!("GetRecordEffectRangeType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEffectArea: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetRecordEffectArea was called before set by TES3MP"); };
+    pub static mut rustGetRecordEffectArea: fn(c_uint, c_uint) -> c_int = |_, _| { unreachable!("GetRecordEffectArea was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEffectDuration: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetRecordEffectDuration was called before set by TES3MP"); };
+    pub static mut rustGetRecordEffectDuration: fn(c_uint, c_uint) -> c_int = |_, _| { unreachable!("GetRecordEffectDuration was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEffectMagnitudeMax: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetRecordEffectMagnitudeMax was called before set by TES3MP"); };
+    pub static mut rustGetRecordEffectMagnitudeMax: fn(c_uint, c_uint) -> c_int = |_, _| { unreachable!("GetRecordEffectMagnitudeMax was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRecordEffectMagnitudeMin: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetRecordEffectMagnitudeMin was called before set by TES3MP"); };
+    pub static mut rustGetRecordEffectMagnitudeMin: fn(c_uint, c_uint) -> c_int = |_, _| { unreachable!("GetRecordEffectMagnitudeMin was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordType: fn(u16) = |_| { unreachable!("SetRecordType was called before set by TES3MP"); };
+    pub static mut rustSetRecordType: fn(c_uint) = |_| { unreachable!("SetRecordType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordId: fn(*const i8) = |_| { unreachable!("SetRecordId was called before set by TES3MP"); };
+    pub static mut rustSetRecordId: fn(*const c_char) = |_| { unreachable!("SetRecordId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordBaseId: fn(*const i8) = |_| { unreachable!("SetRecordBaseId was called before set by TES3MP"); };
+    pub static mut rustSetRecordBaseId: fn(*const c_char) = |_| { unreachable!("SetRecordBaseId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordInventoryBaseId: fn(*const i8) = |_| { unreachable!("SetRecordInventoryBaseId was called before set by TES3MP"); };
+    pub static mut rustSetRecordInventoryBaseId: fn(*const c_char) = |_| { unreachable!("SetRecordInventoryBaseId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordSubtype: fn(u16) = |_| { unreachable!("SetRecordSubtype was called before set by TES3MP"); };
+    pub static mut rustSetRecordSubtype: fn(c_uint) = |_| { unreachable!("SetRecordSubtype was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordName: fn(*const i8) = |_| { unreachable!("SetRecordName was called before set by TES3MP"); };
+    pub static mut rustSetRecordName: fn(*const c_char) = |_| { unreachable!("SetRecordName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordModel: fn(*const i8) = |_| { unreachable!("SetRecordModel was called before set by TES3MP"); };
+    pub static mut rustSetRecordModel: fn(*const c_char) = |_| { unreachable!("SetRecordModel was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordIcon: fn(*const i8) = |_| { unreachable!("SetRecordIcon was called before set by TES3MP"); };
+    pub static mut rustSetRecordIcon: fn(*const c_char) = |_| { unreachable!("SetRecordIcon was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordScript: fn(*const i8) = |_| { unreachable!("SetRecordScript was called before set by TES3MP"); };
+    pub static mut rustSetRecordScript: fn(*const c_char) = |_| { unreachable!("SetRecordScript was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEnchantmentId: fn(*const i8) = |_| { unreachable!("SetRecordEnchantmentId was called before set by TES3MP"); };
+    pub static mut rustSetRecordEnchantmentId: fn(*const c_char) = |_| { unreachable!("SetRecordEnchantmentId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEnchantmentCharge: fn(i16) = |_| { unreachable!("SetRecordEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustSetRecordEnchantmentCharge: fn(c_int) = |_| { unreachable!("SetRecordEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordAutoCalc: fn(i16) = |_| { unreachable!("SetRecordAutoCalc was called before set by TES3MP"); };
+    pub static mut rustSetRecordAutoCalc: fn(c_int) = |_| { unreachable!("SetRecordAutoCalc was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordCharge: fn(i16) = |_| { unreachable!("SetRecordCharge was called before set by TES3MP"); };
+    pub static mut rustSetRecordCharge: fn(c_int) = |_| { unreachable!("SetRecordCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordCost: fn(i16) = |_| { unreachable!("SetRecordCost was called before set by TES3MP"); };
+    pub static mut rustSetRecordCost: fn(c_int) = |_| { unreachable!("SetRecordCost was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordFlags: fn(i16) = |_| { unreachable!("SetRecordFlags was called before set by TES3MP"); };
+    pub static mut rustSetRecordFlags: fn(c_int) = |_| { unreachable!("SetRecordFlags was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordValue: fn(i16) = |_| { unreachable!("SetRecordValue was called before set by TES3MP"); };
+    pub static mut rustSetRecordValue: fn(c_int) = |_| { unreachable!("SetRecordValue was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordWeight: fn(f64) = |_| { unreachable!("SetRecordWeight was called before set by TES3MP"); };
+    pub static mut rustSetRecordWeight: fn(c_double) = |_| { unreachable!("SetRecordWeight was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordQuality: fn(f64) = |_| { unreachable!("SetRecordQuality was called before set by TES3MP"); };
+    pub static mut rustSetRecordQuality: fn(c_double) = |_| { unreachable!("SetRecordQuality was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordUses: fn(i16) = |_| { unreachable!("SetRecordUses was called before set by TES3MP"); };
+    pub static mut rustSetRecordUses: fn(c_int) = |_| { unreachable!("SetRecordUses was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordTime: fn(i16) = |_| { unreachable!("SetRecordTime was called before set by TES3MP"); };
+    pub static mut rustSetRecordTime: fn(c_int) = |_| { unreachable!("SetRecordTime was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordRadius: fn(i16) = |_| { unreachable!("SetRecordRadius was called before set by TES3MP"); };
+    pub static mut rustSetRecordRadius: fn(c_int) = |_| { unreachable!("SetRecordRadius was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordColor: fn(u16, u16, u16) = |_, _, _| { unreachable!("SetRecordColor was called before set by TES3MP"); };
+    pub static mut rustSetRecordColor: fn(c_uint, c_uint, c_uint) = |_, _, _| { unreachable!("SetRecordColor was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordArmorRating: fn(i16) = |_| { unreachable!("SetRecordArmorRating was called before set by TES3MP"); };
+    pub static mut rustSetRecordArmorRating: fn(c_int) = |_| { unreachable!("SetRecordArmorRating was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordHealth: fn(i16) = |_| { unreachable!("SetRecordHealth was called before set by TES3MP"); };
+    pub static mut rustSetRecordHealth: fn(c_int) = |_| { unreachable!("SetRecordHealth was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordDamageChop: fn(u16, u16) = |_, _| { unreachable!("SetRecordDamageChop was called before set by TES3MP"); };
+    pub static mut rustSetRecordDamageChop: fn(c_uint, c_uint) = |_, _| { unreachable!("SetRecordDamageChop was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordDamageSlash: fn(u16, u16) = |_, _| { unreachable!("SetRecordDamageSlash was called before set by TES3MP"); };
+    pub static mut rustSetRecordDamageSlash: fn(c_uint, c_uint) = |_, _| { unreachable!("SetRecordDamageSlash was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordDamageThrust: fn(u16, u16) = |_, _| { unreachable!("SetRecordDamageThrust was called before set by TES3MP"); };
+    pub static mut rustSetRecordDamageThrust: fn(c_uint, c_uint) = |_, _| { unreachable!("SetRecordDamageThrust was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordReach: fn(f64) = |_| { unreachable!("SetRecordReach was called before set by TES3MP"); };
+    pub static mut rustSetRecordReach: fn(c_double) = |_| { unreachable!("SetRecordReach was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordSpeed: fn(f64) = |_| { unreachable!("SetRecordSpeed was called before set by TES3MP"); };
+    pub static mut rustSetRecordSpeed: fn(c_double) = |_| { unreachable!("SetRecordSpeed was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetRecordKeyState: fn(bool) = |_| { unreachable!("SetRecordKeyState was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetRecordScrollState: fn(bool) = |_| { unreachable!("SetRecordScrollState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordSkillId: fn(i16) = |_| { unreachable!("SetRecordSkillId was called before set by TES3MP"); };
+    pub static mut rustSetRecordSkillId: fn(c_int) = |_| { unreachable!("SetRecordSkillId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordText: fn(*const i8) = |_| { unreachable!("SetRecordText was called before set by TES3MP"); };
+    pub static mut rustSetRecordText: fn(*const c_char) = |_| { unreachable!("SetRecordText was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordHair: fn(*const i8) = |_| { unreachable!("SetRecordHair was called before set by TES3MP"); };
+    pub static mut rustSetRecordHair: fn(*const c_char) = |_| { unreachable!("SetRecordHair was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordHead: fn(*const i8) = |_| { unreachable!("SetRecordHead was called before set by TES3MP"); };
+    pub static mut rustSetRecordHead: fn(*const c_char) = |_| { unreachable!("SetRecordHead was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordGender: fn(u16) = |_| { unreachable!("SetRecordGender was called before set by TES3MP"); };
+    pub static mut rustSetRecordGender: fn(c_uint) = |_| { unreachable!("SetRecordGender was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordRace: fn(*const i8) = |_| { unreachable!("SetRecordRace was called before set by TES3MP"); };
+    pub static mut rustSetRecordRace: fn(*const c_char) = |_| { unreachable!("SetRecordRace was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordClass: fn(*const i8) = |_| { unreachable!("SetRecordClass was called before set by TES3MP"); };
+    pub static mut rustSetRecordClass: fn(*const c_char) = |_| { unreachable!("SetRecordClass was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordFaction: fn(*const i8) = |_| { unreachable!("SetRecordFaction was called before set by TES3MP"); };
+    pub static mut rustSetRecordFaction: fn(*const c_char) = |_| { unreachable!("SetRecordFaction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordScale: fn(f64) = |_| { unreachable!("SetRecordScale was called before set by TES3MP"); };
+    pub static mut rustSetRecordScale: fn(c_double) = |_| { unreachable!("SetRecordScale was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordBloodType: fn(i16) = |_| { unreachable!("SetRecordBloodType was called before set by TES3MP"); };
+    pub static mut rustSetRecordBloodType: fn(c_int) = |_| { unreachable!("SetRecordBloodType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordLevel: fn(i16) = |_| { unreachable!("SetRecordLevel was called before set by TES3MP"); };
+    pub static mut rustSetRecordLevel: fn(c_int) = |_| { unreachable!("SetRecordLevel was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordMagicka: fn(i16) = |_| { unreachable!("SetRecordMagicka was called before set by TES3MP"); };
+    pub static mut rustSetRecordMagicka: fn(c_int) = |_| { unreachable!("SetRecordMagicka was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordFatigue: fn(i16) = |_| { unreachable!("SetRecordFatigue was called before set by TES3MP"); };
+    pub static mut rustSetRecordFatigue: fn(c_int) = |_| { unreachable!("SetRecordFatigue was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordAIFight: fn(i16) = |_| { unreachable!("SetRecordAIFight was called before set by TES3MP"); };
+    pub static mut rustSetRecordAIFight: fn(c_int) = |_| { unreachable!("SetRecordAIFight was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordAIFlee: fn(i16) = |_| { unreachable!("SetRecordAIFlee was called before set by TES3MP"); };
+    pub static mut rustSetRecordAIFlee: fn(c_int) = |_| { unreachable!("SetRecordAIFlee was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordAIAlarm: fn(i16) = |_| { unreachable!("SetRecordAIAlarm was called before set by TES3MP"); };
+    pub static mut rustSetRecordAIAlarm: fn(c_int) = |_| { unreachable!("SetRecordAIAlarm was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordAIServices: fn(i16) = |_| { unreachable!("SetRecordAIServices was called before set by TES3MP"); };
+    pub static mut rustSetRecordAIServices: fn(c_int) = |_| { unreachable!("SetRecordAIServices was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordSound: fn(*const i8) = |_| { unreachable!("SetRecordSound was called before set by TES3MP"); };
+    pub static mut rustSetRecordSound: fn(*const c_char) = |_| { unreachable!("SetRecordSound was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordOpenSound: fn(*const i8) = |_| { unreachable!("SetRecordOpenSound was called before set by TES3MP"); };
+    pub static mut rustSetRecordOpenSound: fn(*const c_char) = |_| { unreachable!("SetRecordOpenSound was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordCloseSound: fn(*const i8) = |_| { unreachable!("SetRecordCloseSound was called before set by TES3MP"); };
+    pub static mut rustSetRecordCloseSound: fn(*const c_char) = |_| { unreachable!("SetRecordCloseSound was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordScriptText: fn(*const i8) = |_| { unreachable!("SetRecordScriptText was called before set by TES3MP"); };
+    pub static mut rustSetRecordScriptText: fn(*const c_char) = |_| { unreachable!("SetRecordScriptText was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordIdByIndex: fn(u16, *const i8) = |_, _| { unreachable!("SetRecordIdByIndex was called before set by TES3MP"); };
+    pub static mut rustSetRecordIdByIndex: fn(c_uint, *const c_char) = |_, _| { unreachable!("SetRecordIdByIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEnchantmentIdByIndex: fn(u16, *const i8) = |_, _| { unreachable!("SetRecordEnchantmentIdByIndex was called before set by TES3MP"); };
+    pub static mut rustSetRecordEnchantmentIdByIndex: fn(c_uint, *const c_char) = |_, _| { unreachable!("SetRecordEnchantmentIdByIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEffectId: fn(u16) = |_| { unreachable!("SetRecordEffectId was called before set by TES3MP"); };
+    pub static mut rustSetRecordEffectId: fn(c_uint) = |_| { unreachable!("SetRecordEffectId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEffectAttribute: fn(i16) = |_| { unreachable!("SetRecordEffectAttribute was called before set by TES3MP"); };
+    pub static mut rustSetRecordEffectAttribute: fn(c_int) = |_| { unreachable!("SetRecordEffectAttribute was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEffectSkill: fn(i16) = |_| { unreachable!("SetRecordEffectSkill was called before set by TES3MP"); };
+    pub static mut rustSetRecordEffectSkill: fn(c_int) = |_| { unreachable!("SetRecordEffectSkill was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEffectRangeType: fn(u16) = |_| { unreachable!("SetRecordEffectRangeType was called before set by TES3MP"); };
+    pub static mut rustSetRecordEffectRangeType: fn(c_uint) = |_| { unreachable!("SetRecordEffectRangeType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEffectArea: fn(i16) = |_| { unreachable!("SetRecordEffectArea was called before set by TES3MP"); };
+    pub static mut rustSetRecordEffectArea: fn(c_int) = |_| { unreachable!("SetRecordEffectArea was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEffectDuration: fn(i16) = |_| { unreachable!("SetRecordEffectDuration was called before set by TES3MP"); };
+    pub static mut rustSetRecordEffectDuration: fn(c_int) = |_| { unreachable!("SetRecordEffectDuration was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEffectMagnitudeMax: fn(i16) = |_| { unreachable!("SetRecordEffectMagnitudeMax was called before set by TES3MP"); };
+    pub static mut rustSetRecordEffectMagnitudeMax: fn(c_int) = |_| { unreachable!("SetRecordEffectMagnitudeMax was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordEffectMagnitudeMin: fn(i16) = |_| { unreachable!("SetRecordEffectMagnitudeMin was called before set by TES3MP"); };
+    pub static mut rustSetRecordEffectMagnitudeMin: fn(c_int) = |_| { unreachable!("SetRecordEffectMagnitudeMin was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordBodyPartType: fn(u16) = |_| { unreachable!("SetRecordBodyPartType was called before set by TES3MP"); };
+    pub static mut rustSetRecordBodyPartType: fn(c_uint) = |_| { unreachable!("SetRecordBodyPartType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordBodyPartIdForMale: fn(*const i8) = |_| { unreachable!("SetRecordBodyPartIdForMale was called before set by TES3MP"); };
+    pub static mut rustSetRecordBodyPartIdForMale: fn(*const c_char) = |_| { unreachable!("SetRecordBodyPartIdForMale was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordBodyPartIdForFemale: fn(*const i8) = |_| { unreachable!("SetRecordBodyPartIdForFemale was called before set by TES3MP"); };
+    pub static mut rustSetRecordBodyPartIdForFemale: fn(*const c_char) = |_| { unreachable!("SetRecordBodyPartIdForFemale was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordInventoryItemId: fn(*const i8) = |_| { unreachable!("SetRecordInventoryItemId was called before set by TES3MP"); };
+    pub static mut rustSetRecordInventoryItemId: fn(*const c_char) = |_| { unreachable!("SetRecordInventoryItemId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordInventoryItemCount: fn(u16) = |_| { unreachable!("SetRecordInventoryItemCount was called before set by TES3MP"); };
+    pub static mut rustSetRecordInventoryItemCount: fn(c_uint) = |_| { unreachable!("SetRecordInventoryItemCount was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustAddRecord: fn() = || { unreachable!("AddRecord was called before set by TES3MP"); };
     #[no_mangle]
@@ -695,61 +697,61 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustAddRecordInventoryItem: fn() = || { unreachable!("AddRecordInventoryItem was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendRecordDynamic: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendRecordDynamic was called before set by TES3MP"); };
+    pub static mut rustSendRecordDynamic: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendRecordDynamic was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetScale: fn(u16) -> f64 = |_| { unreachable!("GetScale was called before set by TES3MP"); };
+    pub static mut rustGetScale: fn(c_ushort) -> c_double = |_| { unreachable!("GetScale was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustIsWerewolf: fn(u16) -> bool = |_| { unreachable!("IsWerewolf was called before set by TES3MP"); };
+    pub static mut rustIsWerewolf: fn(c_ushort) -> bool = |_| { unreachable!("IsWerewolf was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetCreatureRefId: fn(u16) -> *const i8 = |_| { unreachable!("GetCreatureRefId was called before set by TES3MP"); };
+    pub static mut rustGetCreatureRefId: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetCreatureRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetCreatureNameDisplayState: fn(u16) -> bool = |_| { unreachable!("GetCreatureNameDisplayState was called before set by TES3MP"); };
+    pub static mut rustGetCreatureNameDisplayState: fn(c_ushort) -> bool = |_| { unreachable!("GetCreatureNameDisplayState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetScale: fn(u16, f64) = |_, _| { unreachable!("SetScale was called before set by TES3MP"); };
+    pub static mut rustSetScale: fn(c_ushort, c_double) = |_, _| { unreachable!("SetScale was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetWerewolfState: fn(u16, bool) = |_, _| { unreachable!("SetWerewolfState was called before set by TES3MP"); };
+    pub static mut rustSetWerewolfState: fn(c_ushort, bool) = |_, _| { unreachable!("SetWerewolfState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetCreatureRefId: fn(u16, *const i8) = |_, _| { unreachable!("SetCreatureRefId was called before set by TES3MP"); };
+    pub static mut rustSetCreatureRefId: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetCreatureRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetCreatureNameDisplayState: fn(u16, bool) = |_, _| { unreachable!("SetCreatureNameDisplayState was called before set by TES3MP"); };
+    pub static mut rustSetCreatureNameDisplayState: fn(c_ushort, bool) = |_, _| { unreachable!("SetCreatureNameDisplayState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendShapeshift: fn(u16) = |_| { unreachable!("SendShapeshift was called before set by TES3MP"); };
+    pub static mut rustSendShapeshift: fn(c_ushort) = |_| { unreachable!("SendShapeshift was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustLogMessage: fn(u16, *const i8) = |_, _| { unreachable!("LogMessage was called before set by TES3MP"); };
+    pub static mut rustLogMessage: fn(c_ushort, *const c_char) = |_, _| { unreachable!("LogMessage was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustLogAppend: fn(u16, *const i8) = |_, _| { unreachable!("LogAppend was called before set by TES3MP"); };
+    pub static mut rustLogAppend: fn(c_ushort, *const c_char) = |_, _| { unreachable!("LogAppend was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustStopServer: fn(i16) = |_| { unreachable!("StopServer was called before set by TES3MP"); };
+    pub static mut rustStopServer: fn(c_int) = |_| { unreachable!("StopServer was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustKick: fn(u16) = |_| { unreachable!("Kick was called before set by TES3MP"); };
+    pub static mut rustKick: fn(c_ushort) = |_| { unreachable!("Kick was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustBanAddress: fn(*const i8) = |_| { unreachable!("BanAddress was called before set by TES3MP"); };
+    pub static mut rustBanAddress: fn(*const c_char) = |_| { unreachable!("BanAddress was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustUnbanAddress: fn(*const i8) = |_| { unreachable!("UnbanAddress was called before set by TES3MP"); };
+    pub static mut rustUnbanAddress: fn(*const c_char) = |_| { unreachable!("UnbanAddress was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustDoesFilePathExist: fn(*const i8) -> bool = |_| { unreachable!("DoesFilePathExist was called before set by TES3MP"); };
+    pub static mut rustDoesFilePathExist: fn(*const c_char) -> bool = |_| { unreachable!("DoesFilePathExist was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetCaseInsensitiveFilename: fn(*const i8, *const i8) -> *const i8 = |_, _| { unreachable!("GetCaseInsensitiveFilename was called before set by TES3MP"); };
+    pub static mut rustGetCaseInsensitiveFilename: fn(*const c_char, *const c_char) -> *const c_char = |_, _| { unreachable!("GetCaseInsensitiveFilename was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetDataPath: fn() -> *const i8 = || { unreachable!("GetDataPath was called before set by TES3MP"); };
+    pub static mut rustGetDataPath: fn() -> *const c_char = || { unreachable!("GetDataPath was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMillisecondsSinceServerStart: fn() -> u16 = || { unreachable!("GetMillisecondsSinceServerStart was called before set by TES3MP"); };
+    pub static mut rustGetMillisecondsSinceServerStart: fn() -> c_uint = || { unreachable!("GetMillisecondsSinceServerStart was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetOperatingSystemType: fn() -> *const i8 = || { unreachable!("GetOperatingSystemType was called before set by TES3MP"); };
+    pub static mut rustGetOperatingSystemType: fn() -> *const c_char = || { unreachable!("GetOperatingSystemType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetArchitectureType: fn() -> *const i8 = || { unreachable!("GetArchitectureType was called before set by TES3MP"); };
+    pub static mut rustGetArchitectureType: fn() -> *const c_char = || { unreachable!("GetArchitectureType was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetServerVersion: fn() -> *const i8 = || { unreachable!("GetServerVersion was called before set by TES3MP"); };
+    pub static mut rustGetServerVersion: fn() -> *const c_char = || { unreachable!("GetServerVersion was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetProtocolVersion: fn() -> *const i8 = || { unreachable!("GetProtocolVersion was called before set by TES3MP"); };
+    pub static mut rustGetProtocolVersion: fn() -> *const c_char = || { unreachable!("GetProtocolVersion was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetAvgPing: fn(u16) -> i16 = |_| { unreachable!("GetAvgPing was called before set by TES3MP"); };
+    pub static mut rustGetAvgPing: fn(c_ushort) -> c_int = |_| { unreachable!("GetAvgPing was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetIP: fn(u16) -> *const i8 = |_| { unreachable!("GetIP was called before set by TES3MP"); };
+    pub static mut rustGetIP: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetIP was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMaxPlayers: fn() -> u16 = || { unreachable!("GetMaxPlayers was called before set by TES3MP"); };
+    pub static mut rustGetMaxPlayers: fn() -> c_uint = || { unreachable!("GetMaxPlayers was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetPort: fn() -> u16 = || { unreachable!("GetPort was called before set by TES3MP"); };
+    pub static mut rustGetPort: fn() -> c_ushort = || { unreachable!("GetPort was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustHasPassword: fn() -> bool = || { unreachable!("HasPassword was called before set by TES3MP"); };
     #[no_mangle]
@@ -757,357 +759,357 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustGetScriptErrorIgnoringState: fn() -> bool = || { unreachable!("GetScriptErrorIgnoringState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetGameMode: fn(*const i8) = |_| { unreachable!("SetGameMode was called before set by TES3MP"); };
+    pub static mut rustSetGameMode: fn(*const c_char) = |_| { unreachable!("SetGameMode was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetHostname: fn(*const i8) = |_| { unreachable!("SetHostname was called before set by TES3MP"); };
+    pub static mut rustSetHostname: fn(*const c_char) = |_| { unreachable!("SetHostname was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetServerPassword: fn(*const i8) = |_| { unreachable!("SetServerPassword was called before set by TES3MP"); };
+    pub static mut rustSetServerPassword: fn(*const c_char) = |_| { unreachable!("SetServerPassword was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetDataFileEnforcementState: fn(bool) = |_| { unreachable!("SetDataFileEnforcementState was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetScriptErrorIgnoringState: fn(bool) = |_| { unreachable!("SetScriptErrorIgnoringState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRuleString: fn(*const i8, *const i8) = |_, _| { unreachable!("SetRuleString was called before set by TES3MP"); };
+    pub static mut rustSetRuleString: fn(*const c_char, *const c_char) = |_, _| { unreachable!("SetRuleString was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRuleValue: fn(*const i8, f64) = |_, _| { unreachable!("SetRuleValue was called before set by TES3MP"); };
+    pub static mut rustSetRuleValue: fn(*const c_char, c_double) = |_, _| { unreachable!("SetRuleValue was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddDataFileRequirement: fn(*const i8, *const i8) = |_, _| { unreachable!("AddDataFileRequirement was called before set by TES3MP"); };
+    pub static mut rustAddDataFileRequirement: fn(*const c_char, *const c_char) = |_, _| { unreachable!("AddDataFileRequirement was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustDoesFileExist: fn(*const i8) -> bool = |_| { unreachable!("DoesFileExist was called before set by TES3MP"); };
+    pub static mut rustDoesFileExist: fn(*const c_char) -> bool = |_| { unreachable!("DoesFileExist was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetModDir: fn() -> *const i8 = || { unreachable!("GetModDir was called before set by TES3MP"); };
+    pub static mut rustGetModDir: fn() -> *const c_char = || { unreachable!("GetModDir was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustGetPluginEnforcementState: fn() -> bool = || { unreachable!("GetPluginEnforcementState was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetPluginEnforcementState: fn(bool) = |_| { unreachable!("SetPluginEnforcementState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddPluginHash: fn(*const i8, *const i8) = |_, _| { unreachable!("AddPluginHash was called before set by TES3MP"); };
+    pub static mut rustAddPluginHash: fn(*const c_char, *const c_char) = |_, _| { unreachable!("AddPluginHash was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetDifficulty: fn(u16, i16) = |_, _| { unreachable!("SetDifficulty was called before set by TES3MP"); };
+    pub static mut rustSetDifficulty: fn(c_ushort, c_int) = |_, _| { unreachable!("SetDifficulty was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetEnforcedLogLevel: fn(u16, i16) = |_, _| { unreachable!("SetEnforcedLogLevel was called before set by TES3MP"); };
+    pub static mut rustSetEnforcedLogLevel: fn(c_ushort, c_int) = |_, _| { unreachable!("SetEnforcedLogLevel was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetPhysicsFramerate: fn(u16, f64) = |_, _| { unreachable!("SetPhysicsFramerate was called before set by TES3MP"); };
+    pub static mut rustSetPhysicsFramerate: fn(c_ushort, c_double) = |_, _| { unreachable!("SetPhysicsFramerate was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetConsoleAllowed: fn(u16, bool) = |_, _| { unreachable!("SetConsoleAllowed was called before set by TES3MP"); };
+    pub static mut rustSetConsoleAllowed: fn(c_ushort, bool) = |_, _| { unreachable!("SetConsoleAllowed was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetBedRestAllowed: fn(u16, bool) = |_, _| { unreachable!("SetBedRestAllowed was called before set by TES3MP"); };
+    pub static mut rustSetBedRestAllowed: fn(c_ushort, bool) = |_, _| { unreachable!("SetBedRestAllowed was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetWildernessRestAllowed: fn(u16, bool) = |_, _| { unreachable!("SetWildernessRestAllowed was called before set by TES3MP"); };
+    pub static mut rustSetWildernessRestAllowed: fn(c_ushort, bool) = |_, _| { unreachable!("SetWildernessRestAllowed was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetWaitAllowed: fn(u16, bool) = |_, _| { unreachable!("SetWaitAllowed was called before set by TES3MP"); };
+    pub static mut rustSetWaitAllowed: fn(c_ushort, bool) = |_, _| { unreachable!("SetWaitAllowed was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendSettings: fn(u16) = |_| { unreachable!("SendSettings was called before set by TES3MP"); };
+    pub static mut rustSendSettings: fn(c_ushort) = |_| { unreachable!("SendSettings was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearSpellbookChanges: fn(u16) = |_| { unreachable!("ClearSpellbookChanges was called before set by TES3MP"); };
+    pub static mut rustClearSpellbookChanges: fn(c_ushort) = |_| { unreachable!("ClearSpellbookChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSpellbookChangesSize: fn(u16) -> u16 = |_| { unreachable!("GetSpellbookChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetSpellbookChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetSpellbookChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSpellbookChangesAction: fn(u16) -> u16 = |_| { unreachable!("GetSpellbookChangesAction was called before set by TES3MP"); };
+    pub static mut rustGetSpellbookChangesAction: fn(c_ushort) -> c_uint = |_| { unreachable!("GetSpellbookChangesAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetSpellbookChangesAction: fn(u16, u8) = |_, _| { unreachable!("SetSpellbookChangesAction was called before set by TES3MP"); };
+    pub static mut rustSetSpellbookChangesAction: fn(c_ushort, c_uchar) = |_, _| { unreachable!("SetSpellbookChangesAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddSpell: fn(u16, *const i8) = |_, _| { unreachable!("AddSpell was called before set by TES3MP"); };
+    pub static mut rustAddSpell: fn(c_ushort, *const c_char) = |_, _| { unreachable!("AddSpell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSpellId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetSpellId was called before set by TES3MP"); };
+    pub static mut rustGetSpellId: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetSpellId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendSpellbookChanges: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendSpellbookChanges was called before set by TES3MP"); };
+    pub static mut rustSendSpellbookChanges: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendSpellbookChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeSpellbookChanges: fn(u16) = |_| { unreachable!("InitializeSpellbookChanges was called before set by TES3MP"); };
+    pub static mut rustInitializeSpellbookChanges: fn(c_ushort) = |_| { unreachable!("InitializeSpellbookChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetAttributeCount: fn() -> i16 = || { unreachable!("GetAttributeCount was called before set by TES3MP"); };
+    pub static mut rustGetAttributeCount: fn() -> c_int = || { unreachable!("GetAttributeCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSkillCount: fn() -> i16 = || { unreachable!("GetSkillCount was called before set by TES3MP"); };
+    pub static mut rustGetSkillCount: fn() -> c_int = || { unreachable!("GetSkillCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetAttributeId: fn(*const i8) -> i16 = |_| { unreachable!("GetAttributeId was called before set by TES3MP"); };
+    pub static mut rustGetAttributeId: fn(*const c_char) -> c_int = |_| { unreachable!("GetAttributeId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSkillId: fn(*const i8) -> i16 = |_| { unreachable!("GetSkillId was called before set by TES3MP"); };
+    pub static mut rustGetSkillId: fn(*const c_char) -> c_int = |_| { unreachable!("GetSkillId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetAttributeName: fn(u16) -> *const i8 = |_| { unreachable!("GetAttributeName was called before set by TES3MP"); };
+    pub static mut rustGetAttributeName: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetAttributeName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSkillName: fn(u16) -> *const i8 = |_| { unreachable!("GetSkillName was called before set by TES3MP"); };
+    pub static mut rustGetSkillName: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetSkillName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetName: fn(u16) -> *const i8 = |_| { unreachable!("GetName was called before set by TES3MP"); };
+    pub static mut rustGetName: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetRace: fn(u16) -> *const i8 = |_| { unreachable!("GetRace was called before set by TES3MP"); };
+    pub static mut rustGetRace: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetRace was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetHead: fn(u16) -> *const i8 = |_| { unreachable!("GetHead was called before set by TES3MP"); };
+    pub static mut rustGetHead: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetHead was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetHair: fn(u16) -> *const i8 = |_| { unreachable!("GetHair was called before set by TES3MP"); };
+    pub static mut rustGetHair: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetHair was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetIsMale: fn(u16) -> i16 = |_| { unreachable!("GetIsMale was called before set by TES3MP"); };
+    pub static mut rustGetIsMale: fn(c_ushort) -> c_int = |_| { unreachable!("GetIsMale was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetBirthsign: fn(u16) -> *const i8 = |_| { unreachable!("GetBirthsign was called before set by TES3MP"); };
+    pub static mut rustGetBirthsign: fn(c_ushort) -> *const c_char = |_| { unreachable!("GetBirthsign was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetLevel: fn(u16) -> i16 = |_| { unreachable!("GetLevel was called before set by TES3MP"); };
+    pub static mut rustGetLevel: fn(c_ushort) -> c_int = |_| { unreachable!("GetLevel was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetLevelProgress: fn(u16) -> i16 = |_| { unreachable!("GetLevelProgress was called before set by TES3MP"); };
+    pub static mut rustGetLevelProgress: fn(c_ushort) -> c_int = |_| { unreachable!("GetLevelProgress was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetHealthBase: fn(u16) -> f64 = |_| { unreachable!("GetHealthBase was called before set by TES3MP"); };
+    pub static mut rustGetHealthBase: fn(c_ushort) -> c_double = |_| { unreachable!("GetHealthBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetHealthCurrent: fn(u16) -> f64 = |_| { unreachable!("GetHealthCurrent was called before set by TES3MP"); };
+    pub static mut rustGetHealthCurrent: fn(c_ushort) -> c_double = |_| { unreachable!("GetHealthCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMagickaBase: fn(u16) -> f64 = |_| { unreachable!("GetMagickaBase was called before set by TES3MP"); };
+    pub static mut rustGetMagickaBase: fn(c_ushort) -> c_double = |_| { unreachable!("GetMagickaBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMagickaCurrent: fn(u16) -> f64 = |_| { unreachable!("GetMagickaCurrent was called before set by TES3MP"); };
+    pub static mut rustGetMagickaCurrent: fn(c_ushort) -> c_double = |_| { unreachable!("GetMagickaCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetFatigueBase: fn(u16) -> f64 = |_| { unreachable!("GetFatigueBase was called before set by TES3MP"); };
+    pub static mut rustGetFatigueBase: fn(c_ushort) -> c_double = |_| { unreachable!("GetFatigueBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetFatigueCurrent: fn(u16) -> f64 = |_| { unreachable!("GetFatigueCurrent was called before set by TES3MP"); };
+    pub static mut rustGetFatigueCurrent: fn(c_ushort) -> c_double = |_| { unreachable!("GetFatigueCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetAttributeBase: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetAttributeBase was called before set by TES3MP"); };
+    pub static mut rustGetAttributeBase: fn(c_ushort, c_ushort) -> c_int = |_, _| { unreachable!("GetAttributeBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetAttributeModifier: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetAttributeModifier was called before set by TES3MP"); };
+    pub static mut rustGetAttributeModifier: fn(c_ushort, c_ushort) -> c_int = |_, _| { unreachable!("GetAttributeModifier was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetAttributeDamage: fn(u16, u16) -> f64 = |_, _| { unreachable!("GetAttributeDamage was called before set by TES3MP"); };
+    pub static mut rustGetAttributeDamage: fn(c_ushort, c_ushort) -> c_double = |_, _| { unreachable!("GetAttributeDamage was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSkillBase: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetSkillBase was called before set by TES3MP"); };
+    pub static mut rustGetSkillBase: fn(c_ushort, c_ushort) -> c_int = |_, _| { unreachable!("GetSkillBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSkillModifier: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetSkillModifier was called before set by TES3MP"); };
+    pub static mut rustGetSkillModifier: fn(c_ushort, c_ushort) -> c_int = |_, _| { unreachable!("GetSkillModifier was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSkillDamage: fn(u16, u16) -> f64 = |_, _| { unreachable!("GetSkillDamage was called before set by TES3MP"); };
+    pub static mut rustGetSkillDamage: fn(c_ushort, c_ushort) -> c_double = |_, _| { unreachable!("GetSkillDamage was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSkillProgress: fn(u16, u16) -> f64 = |_, _| { unreachable!("GetSkillProgress was called before set by TES3MP"); };
+    pub static mut rustGetSkillProgress: fn(c_ushort, c_ushort) -> c_double = |_, _| { unreachable!("GetSkillProgress was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetSkillIncrease: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetSkillIncrease was called before set by TES3MP"); };
+    pub static mut rustGetSkillIncrease: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetSkillIncrease was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetBounty: fn(u16) -> i16 = |_| { unreachable!("GetBounty was called before set by TES3MP"); };
+    pub static mut rustGetBounty: fn(c_ushort) -> c_int = |_| { unreachable!("GetBounty was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetName: fn(u16, *const i8) = |_, _| { unreachable!("SetName was called before set by TES3MP"); };
+    pub static mut rustSetName: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRace: fn(u16, *const i8) = |_, _| { unreachable!("SetRace was called before set by TES3MP"); };
+    pub static mut rustSetRace: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetRace was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetHead: fn(u16, *const i8) = |_, _| { unreachable!("SetHead was called before set by TES3MP"); };
+    pub static mut rustSetHead: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetHead was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetHair: fn(u16, *const i8) = |_, _| { unreachable!("SetHair was called before set by TES3MP"); };
+    pub static mut rustSetHair: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetHair was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetIsMale: fn(u16, i16) = |_, _| { unreachable!("SetIsMale was called before set by TES3MP"); };
+    pub static mut rustSetIsMale: fn(c_ushort, c_int) = |_, _| { unreachable!("SetIsMale was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetBirthsign: fn(u16, *const i8) = |_, _| { unreachable!("SetBirthsign was called before set by TES3MP"); };
+    pub static mut rustSetBirthsign: fn(c_ushort, *const c_char) = |_, _| { unreachable!("SetBirthsign was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetResetStats: fn(u16, bool) = |_, _| { unreachable!("SetResetStats was called before set by TES3MP"); };
+    pub static mut rustSetResetStats: fn(c_ushort, bool) = |_, _| { unreachable!("SetResetStats was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetLevel: fn(u16, i16) = |_, _| { unreachable!("SetLevel was called before set by TES3MP"); };
+    pub static mut rustSetLevel: fn(c_ushort, c_int) = |_, _| { unreachable!("SetLevel was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetLevelProgress: fn(u16, i16) = |_, _| { unreachable!("SetLevelProgress was called before set by TES3MP"); };
+    pub static mut rustSetLevelProgress: fn(c_ushort, c_int) = |_, _| { unreachable!("SetLevelProgress was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetHealthBase: fn(u16, f64) = |_, _| { unreachable!("SetHealthBase was called before set by TES3MP"); };
+    pub static mut rustSetHealthBase: fn(c_ushort, c_double) = |_, _| { unreachable!("SetHealthBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetHealthCurrent: fn(u16, f64) = |_, _| { unreachable!("SetHealthCurrent was called before set by TES3MP"); };
+    pub static mut rustSetHealthCurrent: fn(c_ushort, c_double) = |_, _| { unreachable!("SetHealthCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetMagickaBase: fn(u16, f64) = |_, _| { unreachable!("SetMagickaBase was called before set by TES3MP"); };
+    pub static mut rustSetMagickaBase: fn(c_ushort, c_double) = |_, _| { unreachable!("SetMagickaBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetMagickaCurrent: fn(u16, f64) = |_, _| { unreachable!("SetMagickaCurrent was called before set by TES3MP"); };
+    pub static mut rustSetMagickaCurrent: fn(c_ushort, c_double) = |_, _| { unreachable!("SetMagickaCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetFatigueBase: fn(u16, f64) = |_, _| { unreachable!("SetFatigueBase was called before set by TES3MP"); };
+    pub static mut rustSetFatigueBase: fn(c_ushort, c_double) = |_, _| { unreachable!("SetFatigueBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetFatigueCurrent: fn(u16, f64) = |_, _| { unreachable!("SetFatigueCurrent was called before set by TES3MP"); };
+    pub static mut rustSetFatigueCurrent: fn(c_ushort, c_double) = |_, _| { unreachable!("SetFatigueCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetAttributeBase: fn(u16, u16, i16) = |_, _, _| { unreachable!("SetAttributeBase was called before set by TES3MP"); };
+    pub static mut rustSetAttributeBase: fn(c_ushort, c_ushort, c_int) = |_, _, _| { unreachable!("SetAttributeBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearAttributeModifier: fn(u16, u16) = |_, _| { unreachable!("ClearAttributeModifier was called before set by TES3MP"); };
+    pub static mut rustClearAttributeModifier: fn(c_ushort, c_ushort) = |_, _| { unreachable!("ClearAttributeModifier was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetAttributeDamage: fn(u16, u16, f64) = |_, _, _| { unreachable!("SetAttributeDamage was called before set by TES3MP"); };
+    pub static mut rustSetAttributeDamage: fn(c_ushort, c_ushort, c_double) = |_, _, _| { unreachable!("SetAttributeDamage was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetSkillBase: fn(u16, u16, i16) = |_, _, _| { unreachable!("SetSkillBase was called before set by TES3MP"); };
+    pub static mut rustSetSkillBase: fn(c_ushort, c_ushort, c_int) = |_, _, _| { unreachable!("SetSkillBase was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearSkillModifier: fn(u16, u16) = |_, _| { unreachable!("ClearSkillModifier was called before set by TES3MP"); };
+    pub static mut rustClearSkillModifier: fn(c_ushort, c_ushort) = |_, _| { unreachable!("ClearSkillModifier was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetSkillDamage: fn(u16, u16, f64) = |_, _, _| { unreachable!("SetSkillDamage was called before set by TES3MP"); };
+    pub static mut rustSetSkillDamage: fn(c_ushort, c_ushort, c_double) = |_, _, _| { unreachable!("SetSkillDamage was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetSkillProgress: fn(u16, u16, f64) = |_, _, _| { unreachable!("SetSkillProgress was called before set by TES3MP"); };
+    pub static mut rustSetSkillProgress: fn(c_ushort, c_ushort, c_double) = |_, _, _| { unreachable!("SetSkillProgress was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetSkillIncrease: fn(u16, u16, i16) = |_, _, _| { unreachable!("SetSkillIncrease was called before set by TES3MP"); };
+    pub static mut rustSetSkillIncrease: fn(c_ushort, c_uint, c_int) = |_, _, _| { unreachable!("SetSkillIncrease was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetBounty: fn(u16, i16) = |_, _| { unreachable!("SetBounty was called before set by TES3MP"); };
+    pub static mut rustSetBounty: fn(c_ushort, c_int) = |_, _| { unreachable!("SetBounty was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetCharGenStage: fn(u16, i16, i16) = |_, _, _| { unreachable!("SetCharGenStage was called before set by TES3MP"); };
+    pub static mut rustSetCharGenStage: fn(c_ushort, c_int, c_int) = |_, _, _| { unreachable!("SetCharGenStage was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendBaseInfo: fn(u16) = |_| { unreachable!("SendBaseInfo was called before set by TES3MP"); };
+    pub static mut rustSendBaseInfo: fn(c_ushort) = |_| { unreachable!("SendBaseInfo was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendStatsDynamic: fn(u16) = |_| { unreachable!("SendStatsDynamic was called before set by TES3MP"); };
+    pub static mut rustSendStatsDynamic: fn(c_ushort) = |_| { unreachable!("SendStatsDynamic was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendAttributes: fn(u16) = |_| { unreachable!("SendAttributes was called before set by TES3MP"); };
+    pub static mut rustSendAttributes: fn(c_ushort) = |_| { unreachable!("SendAttributes was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendSkills: fn(u16) = |_| { unreachable!("SendSkills was called before set by TES3MP"); };
+    pub static mut rustSendSkills: fn(c_ushort) = |_| { unreachable!("SendSkills was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendLevel: fn(u16) = |_| { unreachable!("SendLevel was called before set by TES3MP"); };
+    pub static mut rustSendLevel: fn(c_ushort) = |_| { unreachable!("SendLevel was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendBounty: fn(u16) = |_| { unreachable!("SendBounty was called before set by TES3MP"); };
+    pub static mut rustSendBounty: fn(c_ushort) = |_| { unreachable!("SendBounty was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustReadReceivedObjectList: fn() = || { unreachable!("ReadReceivedObjectList was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustClearObjectList: fn() = || { unreachable!("ClearObjectList was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectListPid: fn(u16) = |_| { unreachable!("SetObjectListPid was called before set by TES3MP"); };
+    pub static mut rustSetObjectListPid: fn(c_ushort) = |_| { unreachable!("SetObjectListPid was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustCopyReceivedObjectListToStore: fn() = || { unreachable!("CopyReceivedObjectListToStore was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectListSize: fn() -> u16 = || { unreachable!("GetObjectListSize was called before set by TES3MP"); };
+    pub static mut rustGetObjectListSize: fn() -> c_uint = || { unreachable!("GetObjectListSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectListOrigin: fn() -> u8 = || { unreachable!("GetObjectListOrigin was called before set by TES3MP"); };
+    pub static mut rustGetObjectListOrigin: fn() -> c_uchar = || { unreachable!("GetObjectListOrigin was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectListClientScript: fn() -> *const i8 = || { unreachable!("GetObjectListClientScript was called before set by TES3MP"); };
+    pub static mut rustGetObjectListClientScript: fn() -> *const c_char = || { unreachable!("GetObjectListClientScript was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectListAction: fn() -> u8 = || { unreachable!("GetObjectListAction was called before set by TES3MP"); };
+    pub static mut rustGetObjectListAction: fn() -> c_uchar = || { unreachable!("GetObjectListAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectListContainerSubAction: fn() -> u8 = || { unreachable!("GetObjectListContainerSubAction was called before set by TES3MP"); };
+    pub static mut rustGetObjectListContainerSubAction: fn() -> c_uchar = || { unreachable!("GetObjectListContainerSubAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustIsObjectPlayer: fn(u16) -> bool = |_| { unreachable!("IsObjectPlayer was called before set by TES3MP"); };
+    pub static mut rustIsObjectPlayer: fn(c_uint) -> bool = |_| { unreachable!("IsObjectPlayer was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectPid: fn(u16) -> i16 = |_| { unreachable!("GetObjectPid was called before set by TES3MP"); };
+    pub static mut rustGetObjectPid: fn(c_uint) -> c_int = |_| { unreachable!("GetObjectPid was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectRefId: fn(u16) -> *const i8 = |_| { unreachable!("GetObjectRefId was called before set by TES3MP"); };
+    pub static mut rustGetObjectRefId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetObjectRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectRefNum: fn(u16) -> u16 = |_| { unreachable!("GetObjectRefNum was called before set by TES3MP"); };
+    pub static mut rustGetObjectRefNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetObjectRefNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectMpNum: fn(u16) -> u16 = |_| { unreachable!("GetObjectMpNum was called before set by TES3MP"); };
+    pub static mut rustGetObjectMpNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetObjectMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectCount: fn(u16) -> i16 = |_| { unreachable!("GetObjectCount was called before set by TES3MP"); };
+    pub static mut rustGetObjectCount: fn(c_uint) -> c_int = |_| { unreachable!("GetObjectCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectCharge: fn(u16) -> i16 = |_| { unreachable!("GetObjectCharge was called before set by TES3MP"); };
+    pub static mut rustGetObjectCharge: fn(c_uint) -> c_int = |_| { unreachable!("GetObjectCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectEnchantmentCharge: fn(u16) -> f64 = |_| { unreachable!("GetObjectEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustGetObjectEnchantmentCharge: fn(c_uint) -> c_double = |_| { unreachable!("GetObjectEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectSoul: fn(u16) -> *const i8 = |_| { unreachable!("GetObjectSoul was called before set by TES3MP"); };
+    pub static mut rustGetObjectSoul: fn(c_uint) -> *const c_char = |_| { unreachable!("GetObjectSoul was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectGoldValue: fn(u16) -> i16 = |_| { unreachable!("GetObjectGoldValue was called before set by TES3MP"); };
+    pub static mut rustGetObjectGoldValue: fn(c_uint) -> c_int = |_| { unreachable!("GetObjectGoldValue was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectScale: fn(u16) -> f64 = |_| { unreachable!("GetObjectScale was called before set by TES3MP"); };
+    pub static mut rustGetObjectScale: fn(c_uint) -> c_double = |_| { unreachable!("GetObjectScale was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectState: fn(u16) -> bool = |_| { unreachable!("GetObjectState was called before set by TES3MP"); };
+    pub static mut rustGetObjectState: fn(c_uint) -> bool = |_| { unreachable!("GetObjectState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectDoorState: fn(u16) -> i16 = |_| { unreachable!("GetObjectDoorState was called before set by TES3MP"); };
+    pub static mut rustGetObjectDoorState: fn(c_uint) -> c_int = |_| { unreachable!("GetObjectDoorState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectLockLevel: fn(u16) -> i16 = |_| { unreachable!("GetObjectLockLevel was called before set by TES3MP"); };
+    pub static mut rustGetObjectLockLevel: fn(c_uint) -> c_int = |_| { unreachable!("GetObjectLockLevel was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustDoesObjectHavePlayerActivating: fn(u16) -> bool = |_| { unreachable!("DoesObjectHavePlayerActivating was called before set by TES3MP"); };
+    pub static mut rustDoesObjectHavePlayerActivating: fn(c_uint) -> bool = |_| { unreachable!("DoesObjectHavePlayerActivating was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectActivatingPid: fn(u16) -> i16 = |_| { unreachable!("GetObjectActivatingPid was called before set by TES3MP"); };
+    pub static mut rustGetObjectActivatingPid: fn(c_uint) -> c_int = |_| { unreachable!("GetObjectActivatingPid was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectActivatingRefId: fn(u16) -> *const i8 = |_| { unreachable!("GetObjectActivatingRefId was called before set by TES3MP"); };
+    pub static mut rustGetObjectActivatingRefId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetObjectActivatingRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectActivatingRefNum: fn(u16) -> u16 = |_| { unreachable!("GetObjectActivatingRefNum was called before set by TES3MP"); };
+    pub static mut rustGetObjectActivatingRefNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetObjectActivatingRefNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectActivatingMpNum: fn(u16) -> u16 = |_| { unreachable!("GetObjectActivatingMpNum was called before set by TES3MP"); };
+    pub static mut rustGetObjectActivatingMpNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetObjectActivatingMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectActivatingName: fn(u16) -> *const i8 = |_| { unreachable!("GetObjectActivatingName was called before set by TES3MP"); };
+    pub static mut rustGetObjectActivatingName: fn(c_uint) -> *const c_char = |_| { unreachable!("GetObjectActivatingName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectSummonState: fn(u16) -> bool = |_| { unreachable!("GetObjectSummonState was called before set by TES3MP"); };
+    pub static mut rustGetObjectSummonState: fn(c_uint) -> bool = |_| { unreachable!("GetObjectSummonState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectSummonDuration: fn(u16) -> f64 = |_| { unreachable!("GetObjectSummonDuration was called before set by TES3MP"); };
+    pub static mut rustGetObjectSummonDuration: fn(c_uint) -> c_double = |_| { unreachable!("GetObjectSummonDuration was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustDoesObjectHavePlayerSummoner: fn(u16) -> bool = |_| { unreachable!("DoesObjectHavePlayerSummoner was called before set by TES3MP"); };
+    pub static mut rustDoesObjectHavePlayerSummoner: fn(c_uint) -> bool = |_| { unreachable!("DoesObjectHavePlayerSummoner was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectSummonerPid: fn(u16) -> i16 = |_| { unreachable!("GetObjectSummonerPid was called before set by TES3MP"); };
+    pub static mut rustGetObjectSummonerPid: fn(c_uint) -> c_int = |_| { unreachable!("GetObjectSummonerPid was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectSummonerRefId: fn(u16) -> *const i8 = |_| { unreachable!("GetObjectSummonerRefId was called before set by TES3MP"); };
+    pub static mut rustGetObjectSummonerRefId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetObjectSummonerRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectSummonerRefNum: fn(u16) -> u16 = |_| { unreachable!("GetObjectSummonerRefNum was called before set by TES3MP"); };
+    pub static mut rustGetObjectSummonerRefNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetObjectSummonerRefNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectSummonerMpNum: fn(u16) -> u16 = |_| { unreachable!("GetObjectSummonerMpNum was called before set by TES3MP"); };
+    pub static mut rustGetObjectSummonerMpNum: fn(c_uint) -> c_uint = |_| { unreachable!("GetObjectSummonerMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectPosX: fn(u16) -> f64 = |_| { unreachable!("GetObjectPosX was called before set by TES3MP"); };
+    pub static mut rustGetObjectPosX: fn(c_uint) -> c_double = |_| { unreachable!("GetObjectPosX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectPosY: fn(u16) -> f64 = |_| { unreachable!("GetObjectPosY was called before set by TES3MP"); };
+    pub static mut rustGetObjectPosY: fn(c_uint) -> c_double = |_| { unreachable!("GetObjectPosY was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectPosZ: fn(u16) -> f64 = |_| { unreachable!("GetObjectPosZ was called before set by TES3MP"); };
+    pub static mut rustGetObjectPosZ: fn(c_uint) -> c_double = |_| { unreachable!("GetObjectPosZ was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectRotX: fn(u16) -> f64 = |_| { unreachable!("GetObjectRotX was called before set by TES3MP"); };
+    pub static mut rustGetObjectRotX: fn(c_uint) -> c_double = |_| { unreachable!("GetObjectRotX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectRotY: fn(u16) -> f64 = |_| { unreachable!("GetObjectRotY was called before set by TES3MP"); };
+    pub static mut rustGetObjectRotY: fn(c_uint) -> c_double = |_| { unreachable!("GetObjectRotY was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectRotZ: fn(u16) -> f64 = |_| { unreachable!("GetObjectRotZ was called before set by TES3MP"); };
+    pub static mut rustGetObjectRotZ: fn(c_uint) -> c_double = |_| { unreachable!("GetObjectRotZ was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetVideoFilename: fn(u16) -> *const i8 = |_| { unreachable!("GetVideoFilename was called before set by TES3MP"); };
+    pub static mut rustGetVideoFilename: fn(c_uint) -> *const c_char = |_| { unreachable!("GetVideoFilename was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetScriptVariableName: fn(u16) -> *const i8 = |_| { unreachable!("GetScriptVariableName was called before set by TES3MP"); };
+    pub static mut rustGetScriptVariableName: fn(c_uint) -> *const c_char = |_| { unreachable!("GetScriptVariableName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetScriptVariableShortValue: fn(u16) -> i16 = |_| { unreachable!("GetScriptVariableShortValue was called before set by TES3MP"); };
+    pub static mut rustGetScriptVariableShortValue: fn(c_uint) -> c_int = |_| { unreachable!("GetScriptVariableShortValue was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetContainerChangesSize: fn(u16) -> u16 = |_| { unreachable!("GetContainerChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetContainerChangesSize: fn(c_uint) -> c_uint = |_| { unreachable!("GetContainerChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetContainerItemRefId: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetContainerItemRefId was called before set by TES3MP"); };
+    pub static mut rustGetContainerItemRefId: fn(c_uint, c_uint) -> *const c_char = |_, _| { unreachable!("GetContainerItemRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetContainerItemCount: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetContainerItemCount was called before set by TES3MP"); };
+    pub static mut rustGetContainerItemCount: fn(c_uint, c_uint) -> c_int = |_, _| { unreachable!("GetContainerItemCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetContainerItemCharge: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetContainerItemCharge was called before set by TES3MP"); };
+    pub static mut rustGetContainerItemCharge: fn(c_uint, c_uint) -> c_int = |_, _| { unreachable!("GetContainerItemCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetContainerItemEnchantmentCharge: fn(u16, u16) -> f64 = |_, _| { unreachable!("GetContainerItemEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustGetContainerItemEnchantmentCharge: fn(c_uint, c_uint) -> c_double = |_, _| { unreachable!("GetContainerItemEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetContainerItemSoul: fn(u16, u16) -> *const i8 = |_, _| { unreachable!("GetContainerItemSoul was called before set by TES3MP"); };
+    pub static mut rustGetContainerItemSoul: fn(c_uint, c_uint) -> *const c_char = |_, _| { unreachable!("GetContainerItemSoul was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetContainerItemActionCount: fn(u16, u16) -> i16 = |_, _| { unreachable!("GetContainerItemActionCount was called before set by TES3MP"); };
+    pub static mut rustGetContainerItemActionCount: fn(c_uint, c_uint) -> c_int = |_, _| { unreachable!("GetContainerItemActionCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustDoesObjectHaveContainer: fn(u16) -> bool = |_| { unreachable!("DoesObjectHaveContainer was called before set by TES3MP"); };
+    pub static mut rustDoesObjectHaveContainer: fn(c_uint) -> bool = |_| { unreachable!("DoesObjectHaveContainer was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectListCell: fn(*const i8) = |_| { unreachable!("SetObjectListCell was called before set by TES3MP"); };
+    pub static mut rustSetObjectListCell: fn(*const c_char) = |_| { unreachable!("SetObjectListCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectListAction: fn(u8) = |_| { unreachable!("SetObjectListAction was called before set by TES3MP"); };
+    pub static mut rustSetObjectListAction: fn(c_uchar) = |_| { unreachable!("SetObjectListAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectListConsoleCommand: fn(*const i8) = |_| { unreachable!("SetObjectListConsoleCommand was called before set by TES3MP"); };
+    pub static mut rustSetObjectListConsoleCommand: fn(*const c_char) = |_| { unreachable!("SetObjectListConsoleCommand was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectRefId: fn(*const i8) = |_| { unreachable!("SetObjectRefId was called before set by TES3MP"); };
+    pub static mut rustSetObjectRefId: fn(*const c_char) = |_| { unreachable!("SetObjectRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectRefNum: fn(i16) = |_| { unreachable!("SetObjectRefNum was called before set by TES3MP"); };
+    pub static mut rustSetObjectRefNum: fn(c_int) = |_| { unreachable!("SetObjectRefNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectMpNum: fn(i16) = |_| { unreachable!("SetObjectMpNum was called before set by TES3MP"); };
+    pub static mut rustSetObjectMpNum: fn(c_int) = |_| { unreachable!("SetObjectMpNum was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectCount: fn(i16) = |_| { unreachable!("SetObjectCount was called before set by TES3MP"); };
+    pub static mut rustSetObjectCount: fn(c_int) = |_| { unreachable!("SetObjectCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectCharge: fn(i16) = |_| { unreachable!("SetObjectCharge was called before set by TES3MP"); };
+    pub static mut rustSetObjectCharge: fn(c_int) = |_| { unreachable!("SetObjectCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectEnchantmentCharge: fn(f64) = |_| { unreachable!("SetObjectEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustSetObjectEnchantmentCharge: fn(c_double) = |_| { unreachable!("SetObjectEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectSoul: fn(*const i8) = |_| { unreachable!("SetObjectSoul was called before set by TES3MP"); };
+    pub static mut rustSetObjectSoul: fn(*const c_char) = |_| { unreachable!("SetObjectSoul was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectGoldValue: fn(i16) = |_| { unreachable!("SetObjectGoldValue was called before set by TES3MP"); };
+    pub static mut rustSetObjectGoldValue: fn(c_int) = |_| { unreachable!("SetObjectGoldValue was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectScale: fn(f64) = |_| { unreachable!("SetObjectScale was called before set by TES3MP"); };
+    pub static mut rustSetObjectScale: fn(c_double) = |_| { unreachable!("SetObjectScale was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetObjectState: fn(bool) = |_| { unreachable!("SetObjectState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectLockLevel: fn(i16) = |_| { unreachable!("SetObjectLockLevel was called before set by TES3MP"); };
+    pub static mut rustSetObjectLockLevel: fn(c_int) = |_| { unreachable!("SetObjectLockLevel was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetObjectDisarmState: fn(bool) = |_| { unreachable!("SetObjectDisarmState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectSummonDuration: fn(f32) = |_| { unreachable!("SetObjectSummonDuration was called before set by TES3MP"); };
+    pub static mut rustSetObjectSummonDuration: fn(c_float) = |_| { unreachable!("SetObjectSummonDuration was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetObjectSummonState: fn(bool) = |_| { unreachable!("SetObjectSummonState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectPosition: fn(f64, f64, f64) = |_, _, _| { unreachable!("SetObjectPosition was called before set by TES3MP"); };
+    pub static mut rustSetObjectPosition: fn(c_double, c_double, c_double) = |_, _, _| { unreachable!("SetObjectPosition was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectRotation: fn(f64, f64, f64) = |_, _, _| { unreachable!("SetObjectRotation was called before set by TES3MP"); };
+    pub static mut rustSetObjectRotation: fn(c_double, c_double, c_double) = |_, _, _| { unreachable!("SetObjectRotation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectActivatingPid: fn(u16) = |_| { unreachable!("SetObjectActivatingPid was called before set by TES3MP"); };
+    pub static mut rustSetObjectActivatingPid: fn(c_ushort) = |_| { unreachable!("SetObjectActivatingPid was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectDoorState: fn(i16) = |_| { unreachable!("SetObjectDoorState was called before set by TES3MP"); };
+    pub static mut rustSetObjectDoorState: fn(c_int) = |_| { unreachable!("SetObjectDoorState was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetObjectDoorTeleportState: fn(bool) = |_| { unreachable!("SetObjectDoorTeleportState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectDoorDestinationCell: fn(*const i8) = |_| { unreachable!("SetObjectDoorDestinationCell was called before set by TES3MP"); };
+    pub static mut rustSetObjectDoorDestinationCell: fn(*const c_char) = |_| { unreachable!("SetObjectDoorDestinationCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectDoorDestinationPosition: fn(f64, f64, f64) = |_, _, _| { unreachable!("SetObjectDoorDestinationPosition was called before set by TES3MP"); };
+    pub static mut rustSetObjectDoorDestinationPosition: fn(c_double, c_double, c_double) = |_, _, _| { unreachable!("SetObjectDoorDestinationPosition was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectDoorDestinationRotation: fn(f64, f64) = |_, _| { unreachable!("SetObjectDoorDestinationRotation was called before set by TES3MP"); };
+    pub static mut rustSetObjectDoorDestinationRotation: fn(c_double, c_double) = |_, _| { unreachable!("SetObjectDoorDestinationRotation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetScriptVariableName: fn(*const i8) = |_| { unreachable!("SetScriptVariableName was called before set by TES3MP"); };
+    pub static mut rustSetScriptVariableName: fn(*const c_char) = |_| { unreachable!("SetScriptVariableName was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetScriptVariableShortValue: fn(i16) = |_| { unreachable!("SetScriptVariableShortValue was called before set by TES3MP"); };
+    pub static mut rustSetScriptVariableShortValue: fn(c_int) = |_| { unreachable!("SetScriptVariableShortValue was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetPlayerAsObject: fn(u16) = |_| { unreachable!("SetPlayerAsObject was called before set by TES3MP"); };
+    pub static mut rustSetPlayerAsObject: fn(c_ushort) = |_| { unreachable!("SetPlayerAsObject was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetContainerItemRefId: fn(*const i8) = |_| { unreachable!("SetContainerItemRefId was called before set by TES3MP"); };
+    pub static mut rustSetContainerItemRefId: fn(*const c_char) = |_| { unreachable!("SetContainerItemRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetContainerItemCount: fn(i16) = |_| { unreachable!("SetContainerItemCount was called before set by TES3MP"); };
+    pub static mut rustSetContainerItemCount: fn(c_int) = |_| { unreachable!("SetContainerItemCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetContainerItemCharge: fn(i16) = |_| { unreachable!("SetContainerItemCharge was called before set by TES3MP"); };
+    pub static mut rustSetContainerItemCharge: fn(c_int) = |_| { unreachable!("SetContainerItemCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetContainerItemEnchantmentCharge: fn(f64) = |_| { unreachable!("SetContainerItemEnchantmentCharge was called before set by TES3MP"); };
+    pub static mut rustSetContainerItemEnchantmentCharge: fn(c_double) = |_| { unreachable!("SetContainerItemEnchantmentCharge was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetContainerItemSoul: fn(*const i8) = |_| { unreachable!("SetContainerItemSoul was called before set by TES3MP"); };
+    pub static mut rustSetContainerItemSoul: fn(*const c_char) = |_| { unreachable!("SetContainerItemSoul was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetContainerItemActionCountByIndex: fn(u16, u16, i16) = |_, _, _| { unreachable!("SetContainerItemActionCountByIndex was called before set by TES3MP"); };
+    pub static mut rustSetContainerItemActionCountByIndex: fn(c_uint, c_uint, c_int) = |_, _, _| { unreachable!("SetContainerItemActionCountByIndex was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustAddObject: fn() = || { unreachable!("AddObject was called before set by TES3MP"); };
     #[no_mangle]
@@ -1145,29 +1147,29 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustReadLastEvent: fn() = || { unreachable!("ReadLastEvent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeObjectList: fn(u16) = |_| { unreachable!("InitializeObjectList was called before set by TES3MP"); };
+    pub static mut rustInitializeObjectList: fn(c_ushort) = |_| { unreachable!("InitializeObjectList was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustInitializeEvent: fn(u16) = |_| { unreachable!("InitializeEvent was called before set by TES3MP"); };
+    pub static mut rustInitializeEvent: fn(c_ushort) = |_| { unreachable!("InitializeEvent was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustCopyLastObjectListToStore: fn() = || { unreachable!("CopyLastObjectListToStore was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectChangesSize: fn() -> u16 = || { unreachable!("GetObjectChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetObjectChangesSize: fn() -> c_uint = || { unreachable!("GetObjectChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetEventAction: fn() -> u8 = || { unreachable!("GetEventAction was called before set by TES3MP"); };
+    pub static mut rustGetEventAction: fn() -> c_uchar = || { unreachable!("GetEventAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetEventContainerSubAction: fn() -> u8 = || { unreachable!("GetEventContainerSubAction was called before set by TES3MP"); };
+    pub static mut rustGetEventContainerSubAction: fn() -> c_uchar = || { unreachable!("GetEventContainerSubAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectRefNumIndex: fn(u16) -> u16 = |_| { unreachable!("GetObjectRefNumIndex was called before set by TES3MP"); };
+    pub static mut rustGetObjectRefNumIndex: fn(c_uint) -> c_uint = |_| { unreachable!("GetObjectRefNumIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetObjectSummonerRefNumIndex: fn(u16) -> u16 = |_| { unreachable!("GetObjectSummonerRefNumIndex was called before set by TES3MP"); };
+    pub static mut rustGetObjectSummonerRefNumIndex: fn(c_uint) -> c_uint = |_| { unreachable!("GetObjectSummonerRefNumIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetEventCell: fn(*const i8) = |_| { unreachable!("SetEventCell was called before set by TES3MP"); };
+    pub static mut rustSetEventCell: fn(*const c_char) = |_| { unreachable!("SetEventCell was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetEventAction: fn(u8) = |_| { unreachable!("SetEventAction was called before set by TES3MP"); };
+    pub static mut rustSetEventAction: fn(c_uchar) = |_| { unreachable!("SetEventAction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetEventConsoleCommand: fn(*const i8) = |_| { unreachable!("SetEventConsoleCommand was called before set by TES3MP"); };
+    pub static mut rustSetEventConsoleCommand: fn(*const c_char) = |_| { unreachable!("SetEventConsoleCommand was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetObjectRefNumIndex: fn(i16) = |_| { unreachable!("SetObjectRefNumIndex was called before set by TES3MP"); };
+    pub static mut rustSetObjectRefNumIndex: fn(c_int) = |_| { unreachable!("SetObjectRefNumIndex was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustAddWorldObject: fn() = || { unreachable!("AddWorldObject was called before set by TES3MP"); };
     #[no_mangle]
@@ -1179,53 +1181,53 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustClearMapChanges: fn() = || { unreachable!("ClearMapChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetKillChangesSize: fn() -> u16 = || { unreachable!("GetKillChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetKillChangesSize: fn() -> c_uint = || { unreachable!("GetKillChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMapChangesSize: fn() -> u16 = || { unreachable!("GetMapChangesSize was called before set by TES3MP"); };
+    pub static mut rustGetMapChangesSize: fn() -> c_uint = || { unreachable!("GetMapChangesSize was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetKillRefId: fn(u16) -> *const i8 = |_| { unreachable!("GetKillRefId was called before set by TES3MP"); };
+    pub static mut rustGetKillRefId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetKillRefId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetKillNumber: fn(u16) -> i16 = |_| { unreachable!("GetKillNumber was called before set by TES3MP"); };
+    pub static mut rustGetKillNumber: fn(c_uint) -> c_int = |_| { unreachable!("GetKillNumber was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetWeatherRegion: fn() -> *const i8 = || { unreachable!("GetWeatherRegion was called before set by TES3MP"); };
+    pub static mut rustGetWeatherRegion: fn() -> *const c_char = || { unreachable!("GetWeatherRegion was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetWeatherCurrent: fn() -> i16 = || { unreachable!("GetWeatherCurrent was called before set by TES3MP"); };
+    pub static mut rustGetWeatherCurrent: fn() -> c_int = || { unreachable!("GetWeatherCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetWeatherNext: fn() -> i16 = || { unreachable!("GetWeatherNext was called before set by TES3MP"); };
+    pub static mut rustGetWeatherNext: fn() -> c_int = || { unreachable!("GetWeatherNext was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetWeatherQueued: fn() -> i16 = || { unreachable!("GetWeatherQueued was called before set by TES3MP"); };
+    pub static mut rustGetWeatherQueued: fn() -> c_int = || { unreachable!("GetWeatherQueued was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetWeatherTransitionFactor: fn() -> f64 = || { unreachable!("GetWeatherTransitionFactor was called before set by TES3MP"); };
+    pub static mut rustGetWeatherTransitionFactor: fn() -> c_double = || { unreachable!("GetWeatherTransitionFactor was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMapTileCellX: fn(u16) -> i16 = |_| { unreachable!("GetMapTileCellX was called before set by TES3MP"); };
+    pub static mut rustGetMapTileCellX: fn(c_uint) -> c_int = |_| { unreachable!("GetMapTileCellX was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetMapTileCellY: fn(u16) -> i16 = |_| { unreachable!("GetMapTileCellY was called before set by TES3MP"); };
+    pub static mut rustGetMapTileCellY: fn(c_uint) -> c_int = |_| { unreachable!("GetMapTileCellY was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetAuthorityRegion: fn(*const i8) = |_| { unreachable!("SetAuthorityRegion was called before set by TES3MP"); };
+    pub static mut rustSetAuthorityRegion: fn(*const c_char) = |_| { unreachable!("SetAuthorityRegion was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetWeatherRegion: fn(*const i8) = |_| { unreachable!("SetWeatherRegion was called before set by TES3MP"); };
+    pub static mut rustSetWeatherRegion: fn(*const c_char) = |_| { unreachable!("SetWeatherRegion was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetWeatherForceState: fn(bool) = |_| { unreachable!("SetWeatherForceState was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetWeatherCurrent: fn(i16) = |_| { unreachable!("SetWeatherCurrent was called before set by TES3MP"); };
+    pub static mut rustSetWeatherCurrent: fn(c_int) = |_| { unreachable!("SetWeatherCurrent was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetWeatherNext: fn(i16) = |_| { unreachable!("SetWeatherNext was called before set by TES3MP"); };
+    pub static mut rustSetWeatherNext: fn(c_int) = |_| { unreachable!("SetWeatherNext was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetWeatherQueued: fn(i16) = |_| { unreachable!("SetWeatherQueued was called before set by TES3MP"); };
+    pub static mut rustSetWeatherQueued: fn(c_int) = |_| { unreachable!("SetWeatherQueued was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetWeatherTransitionFactor: fn(f64) = |_| { unreachable!("SetWeatherTransitionFactor was called before set by TES3MP"); };
+    pub static mut rustSetWeatherTransitionFactor: fn(c_double) = |_| { unreachable!("SetWeatherTransitionFactor was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetHour: fn(f64) = |_| { unreachable!("SetHour was called before set by TES3MP"); };
+    pub static mut rustSetHour: fn(c_double) = |_| { unreachable!("SetHour was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetDay: fn(i16) = |_| { unreachable!("SetDay was called before set by TES3MP"); };
+    pub static mut rustSetDay: fn(c_int) = |_| { unreachable!("SetDay was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetMonth: fn(i16) = |_| { unreachable!("SetMonth was called before set by TES3MP"); };
+    pub static mut rustSetMonth: fn(c_int) = |_| { unreachable!("SetMonth was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetYear: fn(i16) = |_| { unreachable!("SetYear was called before set by TES3MP"); };
+    pub static mut rustSetYear: fn(c_int) = |_| { unreachable!("SetYear was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetDaysPassed: fn(i16) = |_| { unreachable!("SetDaysPassed was called before set by TES3MP"); };
+    pub static mut rustSetDaysPassed: fn(c_int) = |_| { unreachable!("SetDaysPassed was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetTimeScale: fn(f64) = |_| { unreachable!("SetTimeScale was called before set by TES3MP"); };
+    pub static mut rustSetTimeScale: fn(c_double) = |_| { unreachable!("SetTimeScale was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetPlayerCollisionState: fn(bool) = |_| { unreachable!("SetPlayerCollisionState was called before set by TES3MP"); };
     #[no_mangle]
@@ -1235,13 +1237,13 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustUseActorCollisionForPlacedObjects: fn(bool) = |_| { unreachable!("UseActorCollisionForPlacedObjects was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddKill: fn(*const i8, i16) = |_, _| { unreachable!("AddKill was called before set by TES3MP"); };
+    pub static mut rustAddKill: fn(*const c_char, c_int) = |_, _| { unreachable!("AddKill was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddSynchronizedClientScriptId: fn(*const i8) = |_| { unreachable!("AddSynchronizedClientScriptId was called before set by TES3MP"); };
+    pub static mut rustAddSynchronizedClientScriptId: fn(*const c_char) = |_| { unreachable!("AddSynchronizedClientScriptId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddSynchronizedClientGlobalId: fn(*const i8) = |_| { unreachable!("AddSynchronizedClientGlobalId was called before set by TES3MP"); };
+    pub static mut rustAddSynchronizedClientGlobalId: fn(*const c_char) = |_| { unreachable!("AddSynchronizedClientGlobalId was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddEnforcedCollisionRefId: fn(*const i8) = |_| { unreachable!("AddEnforcedCollisionRefId was called before set by TES3MP"); };
+    pub static mut rustAddEnforcedCollisionRefId: fn(*const c_char) = |_| { unreachable!("AddEnforcedCollisionRefId was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustClearSynchronizedClientScriptIds: fn() = || { unreachable!("ClearSynchronizedClientScriptIds was called before set by TES3MP"); };
     #[no_mangle]
@@ -1249,23 +1251,23 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustClearEnforcedCollisionRefIds: fn() = || { unreachable!("ClearEnforcedCollisionRefIds was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSaveMapTileImageFile: fn(u16, *const i8) = |_, _| { unreachable!("SaveMapTileImageFile was called before set by TES3MP"); };
+    pub static mut rustSaveMapTileImageFile: fn(c_uint, *const c_char) = |_, _| { unreachable!("SaveMapTileImageFile was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustLoadMapTileImageFile: fn(i16, i16, *const i8) = |_, _, _| { unreachable!("LoadMapTileImageFile was called before set by TES3MP"); };
+    pub static mut rustLoadMapTileImageFile: fn(c_int, c_int, *const c_char) = |_, _, _| { unreachable!("LoadMapTileImageFile was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendClientScriptSettings: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendClientScriptSettings was called before set by TES3MP"); };
+    pub static mut rustSendClientScriptSettings: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendClientScriptSettings was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendWorldKillCount: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendWorldKillCount was called before set by TES3MP"); };
+    pub static mut rustSendWorldKillCount: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendWorldKillCount was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendWorldMap: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendWorldMap was called before set by TES3MP"); };
+    pub static mut rustSendWorldMap: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendWorldMap was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendWorldTime: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendWorldTime was called before set by TES3MP"); };
+    pub static mut rustSendWorldTime: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendWorldTime was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendWorldWeather: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendWorldWeather was called before set by TES3MP"); };
+    pub static mut rustSendWorldWeather: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendWorldWeather was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendWorldCollisionOverride: fn(u16, bool, bool) = |_, _, _| { unreachable!("SendWorldCollisionOverride was called before set by TES3MP"); };
+    pub static mut rustSendWorldCollisionOverride: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendWorldCollisionOverride was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendWorldRegionAuthority: fn(u16) = |_| { unreachable!("SendWorldRegionAuthority was called before set by TES3MP"); };
+    pub static mut rustSendWorldRegionAuthority: fn(c_ushort) = |_| { unreachable!("SendWorldRegionAuthority was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustReadLastWorldstate: fn() = || { unreachable!("ReadLastWorldstate was called before set by TES3MP"); };
     #[no_mangle]
@@ -1280,13 +1282,13 @@ pub mod raw {
 ///
 ///  Returns the ID of the timer thus created.
 ///
-pub fn create_timer(callback: fn(), msec: i16) -> i16 {
+pub fn create_timer(callback: fn(), msec: c_int) -> c_int {
     unsafe {
         raw::rustCreateTimer(callback, msec)
     }
 }
 
-pub fn make_public(public: fn(), name: &str, ret_type: i8, def: &str) {
+pub fn make_public(public: fn(), name: &str, ret_type: c_char, def: &str) {
     unsafe {
         raw::rustMakePublic(public, CString::new(name).unwrap_or_default().as_ptr(), ret_type, CString::new(def).unwrap_or_default().as_ptr())
     }
@@ -1299,7 +1301,7 @@ pub fn make_public(public: fn(), name: &str, ret_type: i8, def: &str) {
 ///
 ///  Returns void
 ///
-pub fn start_timer(timer_id: i16) {
+pub fn start_timer(timer_id: c_int) {
     unsafe {
         raw::rustStartTimer(timer_id)
     }
@@ -1312,7 +1314,7 @@ pub fn start_timer(timer_id: i16) {
 ///
 ///  Returns void
 ///
-pub fn stop_timer(timer_id: i16) {
+pub fn stop_timer(timer_id: c_int) {
     unsafe {
         raw::rustStopTimer(timer_id)
     }
@@ -1326,7 +1328,7 @@ pub fn stop_timer(timer_id: i16) {
 ///
 ///  Returns void
 ///
-pub fn restart_timer(timer_id: i16, msec: i16) {
+pub fn restart_timer(timer_id: c_int, msec: c_int) {
     unsafe {
         raw::rustRestartTimer(timer_id, msec)
     }
@@ -1339,7 +1341,7 @@ pub fn restart_timer(timer_id: i16, msec: i16) {
 ///
 ///  Returns void
 ///
-pub fn free_timer(timer_id: i16) {
+pub fn free_timer(timer_id: c_int) {
     unsafe {
         raw::rustFreeTimer(timer_id)
     }
@@ -1352,7 +1354,7 @@ pub fn free_timer(timer_id: i16) {
 ///
 ///  Returns whether the timer is elapsed.
 ///
-pub fn is_timer_elapsed(timer_id: i16) -> bool {
+pub fn is_timer_elapsed(timer_id: c_int) -> bool {
     unsafe {
         raw::rustIsTimerElapsed(timer_id)
     }
@@ -1405,7 +1407,7 @@ pub fn clear_actor_list() {
 ///
 ///  Returns void
 ///
-pub fn set_actor_list_pid(pid: u16) {
+pub fn set_actor_list_pid(pid: c_ushort) {
     unsafe {
         raw::rustSetActorListPid(pid)
     }
@@ -1431,7 +1433,7 @@ pub fn copy_received_actor_list_to_store() {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_actor_list_size() -> u16 {
+pub fn get_actor_list_size() -> c_uint {
     unsafe {
         raw::rustGetActorListSize()
     }
@@ -1443,7 +1445,7 @@ pub fn get_actor_list_size() -> u16 {
 ///
 ///  Returns the action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
 ///
-pub fn get_actor_list_action() -> u8 {
+pub fn get_actor_list_action() -> c_uchar {
     unsafe {
         raw::rustGetActorListAction()
     }
@@ -1456,7 +1458,7 @@ pub fn get_actor_list_action() -> u8 {
 ///
 ///  Returns the cell description.
 ///
-pub fn get_actor_cell(index: u16) -> String {
+pub fn get_actor_cell(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetActorCell(index))
             .to_str()
@@ -1472,7 +1474,7 @@ pub fn get_actor_cell(index: u16) -> String {
 ///
 ///  Returns the refId.
 ///
-pub fn get_actor_ref_id(index: u16) -> String {
+pub fn get_actor_ref_id(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetActorRefId(index))
             .to_str()
@@ -1488,7 +1490,7 @@ pub fn get_actor_ref_id(index: u16) -> String {
 ///
 ///  Returns the refNum.
 ///
-pub fn get_actor_ref_num(index: u16) -> u16 {
+pub fn get_actor_ref_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetActorRefNum(index)
     }
@@ -1501,7 +1503,7 @@ pub fn get_actor_ref_num(index: u16) -> u16 {
 ///
 ///  Returns the mpNum.
 ///
-pub fn get_actor_mp_num(index: u16) -> u16 {
+pub fn get_actor_mp_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetActorMpNum(index)
     }
@@ -1514,7 +1516,7 @@ pub fn get_actor_mp_num(index: u16) -> u16 {
 ///
 ///  Returns the X position.
 ///
-pub fn get_actor_pos_x(index: u16) -> f64 {
+pub fn get_actor_pos_x(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorPosX(index)
     }
@@ -1527,7 +1529,7 @@ pub fn get_actor_pos_x(index: u16) -> f64 {
 ///
 ///  Returns the Y position.
 ///
-pub fn get_actor_pos_y(index: u16) -> f64 {
+pub fn get_actor_pos_y(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorPosY(index)
     }
@@ -1540,7 +1542,7 @@ pub fn get_actor_pos_y(index: u16) -> f64 {
 ///
 ///  Returns the Z position.
 ///
-pub fn get_actor_pos_z(index: u16) -> f64 {
+pub fn get_actor_pos_z(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorPosZ(index)
     }
@@ -1553,7 +1555,7 @@ pub fn get_actor_pos_z(index: u16) -> f64 {
 ///
 ///  Returns the X rotation.
 ///
-pub fn get_actor_rot_x(index: u16) -> f64 {
+pub fn get_actor_rot_x(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorRotX(index)
     }
@@ -1566,7 +1568,7 @@ pub fn get_actor_rot_x(index: u16) -> f64 {
 ///
 ///  Returns the Y rotation.
 ///
-pub fn get_actor_rot_y(index: u16) -> f64 {
+pub fn get_actor_rot_y(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorRotY(index)
     }
@@ -1579,7 +1581,7 @@ pub fn get_actor_rot_y(index: u16) -> f64 {
 ///
 ///  Returns the Z rotation.
 ///
-pub fn get_actor_rot_z(index: u16) -> f64 {
+pub fn get_actor_rot_z(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorRotZ(index)
     }
@@ -1592,7 +1594,7 @@ pub fn get_actor_rot_z(index: u16) -> f64 {
 ///
 ///  Returns the base health.
 ///
-pub fn get_actor_health_base(index: u16) -> f64 {
+pub fn get_actor_health_base(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorHealthBase(index)
     }
@@ -1605,7 +1607,7 @@ pub fn get_actor_health_base(index: u16) -> f64 {
 ///
 ///  Returns the current health.
 ///
-pub fn get_actor_health_current(index: u16) -> f64 {
+pub fn get_actor_health_current(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorHealthCurrent(index)
     }
@@ -1618,7 +1620,7 @@ pub fn get_actor_health_current(index: u16) -> f64 {
 ///
 ///  Returns the modified health.
 ///
-pub fn get_actor_health_modified(index: u16) -> f64 {
+pub fn get_actor_health_modified(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorHealthModified(index)
     }
@@ -1631,7 +1633,7 @@ pub fn get_actor_health_modified(index: u16) -> f64 {
 ///
 ///  Returns the base magicka.
 ///
-pub fn get_actor_magicka_base(index: u16) -> f64 {
+pub fn get_actor_magicka_base(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorMagickaBase(index)
     }
@@ -1644,7 +1646,7 @@ pub fn get_actor_magicka_base(index: u16) -> f64 {
 ///
 ///  Returns the current magicka.
 ///
-pub fn get_actor_magicka_current(index: u16) -> f64 {
+pub fn get_actor_magicka_current(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorMagickaCurrent(index)
     }
@@ -1657,7 +1659,7 @@ pub fn get_actor_magicka_current(index: u16) -> f64 {
 ///
 ///  Returns the modified magicka.
 ///
-pub fn get_actor_magicka_modified(index: u16) -> f64 {
+pub fn get_actor_magicka_modified(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorMagickaModified(index)
     }
@@ -1670,7 +1672,7 @@ pub fn get_actor_magicka_modified(index: u16) -> f64 {
 ///
 ///  Returns the base fatigue.
 ///
-pub fn get_actor_fatigue_base(index: u16) -> f64 {
+pub fn get_actor_fatigue_base(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorFatigueBase(index)
     }
@@ -1683,7 +1685,7 @@ pub fn get_actor_fatigue_base(index: u16) -> f64 {
 ///
 ///  Returns the current fatigue.
 ///
-pub fn get_actor_fatigue_current(index: u16) -> f64 {
+pub fn get_actor_fatigue_current(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorFatigueCurrent(index)
     }
@@ -1696,7 +1698,7 @@ pub fn get_actor_fatigue_current(index: u16) -> f64 {
 ///
 ///  Returns the modified fatigue.
 ///
-pub fn get_actor_fatigue_modified(index: u16) -> f64 {
+pub fn get_actor_fatigue_modified(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetActorFatigueModified(index)
     }
@@ -1711,7 +1713,7 @@ pub fn get_actor_fatigue_modified(index: u16) -> f64 {
 ///
 ///  Returns the refId.
 ///
-pub fn get_actor_equipment_item_ref_id(index: u16, slot: u16) -> String {
+pub fn get_actor_equipment_item_ref_id(index: c_uint, slot: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetActorEquipmentItemRefId(index, slot))
             .to_str()
@@ -1729,7 +1731,7 @@ pub fn get_actor_equipment_item_ref_id(index: u16, slot: u16) -> String {
 ///
 ///  Returns the item count.
 ///
-pub fn get_actor_equipment_item_count(index: u16, slot: u16) -> i16 {
+pub fn get_actor_equipment_item_count(index: c_uint, slot: c_ushort) -> c_int {
     unsafe {
         raw::rustGetActorEquipmentItemCount(index, slot)
     }
@@ -1744,7 +1746,7 @@ pub fn get_actor_equipment_item_count(index: u16, slot: u16) -> i16 {
 ///
 ///  Returns the charge.
 ///
-pub fn get_actor_equipment_item_charge(index: u16, slot: u16) -> i16 {
+pub fn get_actor_equipment_item_charge(index: c_uint, slot: c_ushort) -> c_int {
     unsafe {
         raw::rustGetActorEquipmentItemCharge(index, slot)
     }
@@ -1759,7 +1761,7 @@ pub fn get_actor_equipment_item_charge(index: u16, slot: u16) -> i16 {
 ///
 ///  Returns the enchantment charge.
 ///
-pub fn get_actor_equipment_item_enchantment_charge(index: u16, slot: u16) -> f64 {
+pub fn get_actor_equipment_item_enchantment_charge(index: c_uint, slot: c_ushort) -> c_double {
     unsafe {
         raw::rustGetActorEquipmentItemEnchantmentCharge(index, slot)
     }
@@ -1772,7 +1774,7 @@ pub fn get_actor_equipment_item_enchantment_charge(index: u16, slot: u16) -> f64
 ///
 ///  Returns whether the actor was killed by a player.
 ///
-pub fn does_actor_have_player_killer(index: u16) -> bool {
+pub fn does_actor_have_player_killer(index: c_uint) -> bool {
     unsafe {
         raw::rustDoesActorHavePlayerKiller(index)
     }
@@ -1785,7 +1787,7 @@ pub fn does_actor_have_player_killer(index: u16) -> bool {
 ///
 ///  Returns the player ID of the killer.
 ///
-pub fn get_actor_killer_pid(index: u16) -> i16 {
+pub fn get_actor_killer_pid(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetActorKillerPid(index)
     }
@@ -1798,7 +1800,7 @@ pub fn get_actor_killer_pid(index: u16) -> i16 {
 ///
 ///  Returns the refId of the killer.
 ///
-pub fn get_actor_killer_ref_id(index: u16) -> String {
+pub fn get_actor_killer_ref_id(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetActorKillerRefId(index))
             .to_str()
@@ -1814,7 +1816,7 @@ pub fn get_actor_killer_ref_id(index: u16) -> String {
 ///
 ///  Returns the refNum of the killer.
 ///
-pub fn get_actor_killer_ref_num(index: u16) -> u16 {
+pub fn get_actor_killer_ref_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetActorKillerRefNum(index)
     }
@@ -1827,7 +1829,7 @@ pub fn get_actor_killer_ref_num(index: u16) -> u16 {
 ///
 ///  Returns the mpNum of the killer.
 ///
-pub fn get_actor_killer_mp_num(index: u16) -> u16 {
+pub fn get_actor_killer_mp_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetActorKillerMpNum(index)
     }
@@ -1840,7 +1842,7 @@ pub fn get_actor_killer_mp_num(index: u16) -> u16 {
 ///
 ///  Returns the name of the killer.
 ///
-pub fn get_actor_killer_name(index: u16) -> String {
+pub fn get_actor_killer_name(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetActorKillerName(index))
             .to_str()
@@ -1859,7 +1861,7 @@ pub fn get_actor_killer_name(index: u16) -> String {
 ///
 ///  Returns whether the read actor list contains positional data.
 ///
-pub fn does_actor_have_position(index: u16) -> bool {
+pub fn does_actor_have_position(index: c_uint) -> bool {
     unsafe {
         raw::rustDoesActorHavePosition(index)
     }
@@ -1875,7 +1877,7 @@ pub fn does_actor_have_position(index: u16) -> bool {
 ///
 ///  Returns whether the read actor list contains dynamic stats data.
 ///
-pub fn does_actor_have_stats_dynamic(index: u16) -> bool {
+pub fn does_actor_have_stats_dynamic(index: c_uint) -> bool {
     unsafe {
         raw::rustDoesActorHaveStatsDynamic(index)
     }
@@ -1904,7 +1906,7 @@ pub fn set_actor_list_cell(cell_description: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_list_action(action: u8) {
+pub fn set_actor_list_action(action: c_uchar) {
     unsafe {
         raw::rustSetActorListAction(action)
     }
@@ -1949,7 +1951,7 @@ pub fn set_actor_ref_id(ref_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_ref_num(ref_num: i16) {
+pub fn set_actor_ref_num(ref_num: c_int) {
     unsafe {
         raw::rustSetActorRefNum(ref_num)
     }
@@ -1962,7 +1964,7 @@ pub fn set_actor_ref_num(ref_num: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_mp_num(mp_num: i16) {
+pub fn set_actor_mp_num(mp_num: c_int) {
     unsafe {
         raw::rustSetActorMpNum(mp_num)
     }
@@ -1977,7 +1979,7 @@ pub fn set_actor_mp_num(mp_num: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_position(x: f64, y: f64, z: f64) {
+pub fn set_actor_position(x: c_double, y: c_double, z: c_double) {
     unsafe {
         raw::rustSetActorPosition(x, y, z)
     }
@@ -1992,7 +1994,7 @@ pub fn set_actor_position(x: f64, y: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_rotation(x: f64, y: f64, z: f64) {
+pub fn set_actor_rotation(x: c_double, y: c_double, z: c_double) {
     unsafe {
         raw::rustSetActorRotation(x, y, z)
     }
@@ -2005,7 +2007,7 @@ pub fn set_actor_rotation(x: f64, y: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_health_base(value: f64) {
+pub fn set_actor_health_base(value: c_double) {
     unsafe {
         raw::rustSetActorHealthBase(value)
     }
@@ -2018,7 +2020,7 @@ pub fn set_actor_health_base(value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_health_current(value: f64) {
+pub fn set_actor_health_current(value: c_double) {
     unsafe {
         raw::rustSetActorHealthCurrent(value)
     }
@@ -2031,7 +2033,7 @@ pub fn set_actor_health_current(value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_health_modified(value: f64) {
+pub fn set_actor_health_modified(value: c_double) {
     unsafe {
         raw::rustSetActorHealthModified(value)
     }
@@ -2044,7 +2046,7 @@ pub fn set_actor_health_modified(value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_magicka_base(value: f64) {
+pub fn set_actor_magicka_base(value: c_double) {
     unsafe {
         raw::rustSetActorMagickaBase(value)
     }
@@ -2057,7 +2059,7 @@ pub fn set_actor_magicka_base(value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_magicka_current(value: f64) {
+pub fn set_actor_magicka_current(value: c_double) {
     unsafe {
         raw::rustSetActorMagickaCurrent(value)
     }
@@ -2070,7 +2072,7 @@ pub fn set_actor_magicka_current(value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_magicka_modified(value: f64) {
+pub fn set_actor_magicka_modified(value: c_double) {
     unsafe {
         raw::rustSetActorMagickaModified(value)
     }
@@ -2083,7 +2085,7 @@ pub fn set_actor_magicka_modified(value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_fatigue_base(value: f64) {
+pub fn set_actor_fatigue_base(value: c_double) {
     unsafe {
         raw::rustSetActorFatigueBase(value)
     }
@@ -2096,7 +2098,7 @@ pub fn set_actor_fatigue_base(value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_fatigue_current(value: f64) {
+pub fn set_actor_fatigue_current(value: c_double) {
     unsafe {
         raw::rustSetActorFatigueCurrent(value)
     }
@@ -2109,7 +2111,7 @@ pub fn set_actor_fatigue_current(value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_fatigue_modified(value: f64) {
+pub fn set_actor_fatigue_modified(value: c_double) {
     unsafe {
         raw::rustSetActorFatigueModified(value)
     }
@@ -2135,7 +2137,7 @@ pub fn set_actor_sound(sound: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_ai_action(action: u16) {
+pub fn set_actor_ai_action(action: c_uint) {
     unsafe {
         raw::rustSetActorAIAction(action)
     }
@@ -2148,7 +2150,7 @@ pub fn set_actor_ai_action(action: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_ai_target_to_player(pid: u16) {
+pub fn set_actor_ai_target_to_player(pid: c_ushort) {
     unsafe {
         raw::rustSetActorAITargetToPlayer(pid)
     }
@@ -2162,7 +2164,7 @@ pub fn set_actor_ai_target_to_player(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_ai_target_to_object(ref_num: i16, mp_num: i16) {
+pub fn set_actor_ai_target_to_object(ref_num: c_int, mp_num: c_int) {
     unsafe {
         raw::rustSetActorAITargetToObject(ref_num, mp_num)
     }
@@ -2177,7 +2179,7 @@ pub fn set_actor_ai_target_to_object(ref_num: i16, mp_num: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_ai_coordinates(x: f64, y: f64, z: f64) {
+pub fn set_actor_ai_coordinates(x: c_double, y: c_double, z: c_double) {
     unsafe {
         raw::rustSetActorAICoordinates(x, y, z)
     }
@@ -2190,7 +2192,7 @@ pub fn set_actor_ai_coordinates(x: f64, y: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_ai_distance(distance: u16) {
+pub fn set_actor_ai_distance(distance: c_uint) {
     unsafe {
         raw::rustSetActorAIDistance(distance)
     }
@@ -2203,7 +2205,7 @@ pub fn set_actor_ai_distance(distance: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_actor_ai_duration(duration: u16) {
+pub fn set_actor_ai_duration(duration: c_uint) {
     unsafe {
         raw::rustSetActorAIDuration(duration)
     }
@@ -2236,7 +2238,7 @@ pub fn set_actor_ai_repetition(should_repeat: bool) {
 ///
 ///  Returns void
 ///
-pub fn equip_actor_item(slot: u16, ref_id: &str, count: u16, charge: i16, enchantment_charge: f64) {
+pub fn equip_actor_item(slot: c_ushort, ref_id: &str, count: c_uint, charge: c_int, enchantment_charge: c_double) {
     unsafe {
         raw::rustEquipActorItem(slot, CString::new(ref_id).unwrap_or_default().as_ptr(), count, charge, enchantment_charge)
     }
@@ -2250,7 +2252,7 @@ pub fn equip_actor_item(slot: u16, ref_id: &str, count: u16, charge: i16, enchan
 ///
 ///  Returns void
 ///
-pub fn unequip_actor_item(slot: u16) {
+pub fn unequip_actor_item(slot: c_ushort) {
     unsafe {
         raw::rustUnequipActorItem(slot)
     }
@@ -2408,7 +2410,7 @@ pub fn read_last_actor_list() {
     }
 }
 
-pub fn initialize_actor_list(pid: u16) {
+pub fn initialize_actor_list(pid: c_ushort) {
     unsafe {
         raw::rustInitializeActorList(pid)
     }
@@ -2420,19 +2422,19 @@ pub fn copy_last_actor_list_to_store() {
     }
 }
 
-pub fn get_actor_ref_num_index(index: u16) -> u16 {
+pub fn get_actor_ref_num_index(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetActorRefNumIndex(index)
     }
 }
 
-pub fn get_actor_killer_ref_num_index(index: u16) -> u16 {
+pub fn get_actor_killer_ref_num_index(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetActorKillerRefNumIndex(index)
     }
 }
 
-pub fn set_actor_ref_num_index(ref_num: i16) {
+pub fn set_actor_ref_num_index(ref_num: c_int) {
     unsafe {
         raw::rustSetActorRefNumIndex(ref_num)
     }
@@ -2447,7 +2449,7 @@ pub fn set_actor_ref_num_index(ref_num: i16) {
 ///
 ///  Returns void
 ///
-pub fn clear_book_changes(pid: u16) {
+pub fn clear_book_changes(pid: c_ushort) {
     unsafe {
         raw::rustClearBookChanges(pid)
     }
@@ -2460,7 +2462,7 @@ pub fn clear_book_changes(pid: u16) {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_book_changes_size(pid: u16) -> u16 {
+pub fn get_book_changes_size(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetBookChangesSize(pid)
     }
@@ -2474,7 +2476,7 @@ pub fn get_book_changes_size(pid: u16) -> u16 {
 ///
 ///  Returns void
 ///
-pub fn add_book(pid: u16, book_id: &str) {
+pub fn add_book(pid: c_ushort, book_id: &str) {
     unsafe {
         raw::rustAddBook(pid, CString::new(book_id).unwrap_or_default().as_ptr())
     }
@@ -2488,7 +2490,7 @@ pub fn add_book(pid: u16, book_id: &str) {
 ///
 ///  Returns the bookId.
 ///
-pub fn get_book_id(pid: u16, index: u16) -> String {
+pub fn get_book_id(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetBookId(pid, index))
             .to_str()
@@ -2508,13 +2510,13 @@ pub fn get_book_id(pid: u16, index: u16) -> String {
 ///
 ///  Returns void
 ///
-pub fn send_book_changes(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_book_changes(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendBookChanges(pid, send_to_other_players, skip_attached_player)
     }
 }
 
-pub fn initialize_book_changes(pid: u16) {
+pub fn initialize_book_changes(pid: c_ushort) {
     unsafe {
         raw::rustInitializeBookChanges(pid)
     }
@@ -2527,7 +2529,7 @@ pub fn initialize_book_changes(pid: u16) {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_cell_state_changes_size(pid: u16) -> u16 {
+pub fn get_cell_state_changes_size(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetCellStateChangesSize(pid)
     }
@@ -2541,7 +2543,7 @@ pub fn get_cell_state_changes_size(pid: u16) -> u16 {
 ///
 ///  Returns the cell state type (0 for LOAD, 1 for UNLOAD).
 ///
-pub fn get_cell_state_type(pid: u16, index: u16) -> u16 {
+pub fn get_cell_state_type(pid: c_ushort, index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetCellStateType(pid, index)
     }
@@ -2555,7 +2557,7 @@ pub fn get_cell_state_type(pid: u16, index: u16) -> u16 {
 ///
 ///  Returns the cell description.
 ///
-pub fn get_cell_state_description(pid: u16, index: u16) -> String {
+pub fn get_cell_state_description(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetCellStateDescription(pid, index))
             .to_str()
@@ -2571,7 +2573,7 @@ pub fn get_cell_state_description(pid: u16, index: u16) -> String {
 ///
 ///  Returns the cell description.
 ///
-pub fn get_cell(pid: u16) -> String {
+pub fn get_cell(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetCell(pid))
             .to_str()
@@ -2587,7 +2589,7 @@ pub fn get_cell(pid: u16) -> String {
 ///
 ///  Returns the X coordinate of the cell.
 ///
-pub fn get_exterior_x(pid: u16) -> i16 {
+pub fn get_exterior_x(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetExteriorX(pid)
     }
@@ -2600,7 +2602,7 @@ pub fn get_exterior_x(pid: u16) -> i16 {
 ///
 ///  Returns the Y coordinate of the cell.
 ///
-pub fn get_exterior_y(pid: u16) -> i16 {
+pub fn get_exterior_y(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetExteriorY(pid)
     }
@@ -2613,7 +2615,7 @@ pub fn get_exterior_y(pid: u16) -> i16 {
 ///
 ///  Returns whether the player is in an exterior cell.
 ///
-pub fn is_in_exterior(pid: u16) -> bool {
+pub fn is_in_exterior(pid: c_ushort) -> bool {
     unsafe {
         raw::rustIsInExterior(pid)
     }
@@ -2628,7 +2630,7 @@ pub fn is_in_exterior(pid: u16) -> bool {
 ///
 ///  Returns the region.
 ///
-pub fn get_region(pid: u16) -> String {
+pub fn get_region(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetRegion(pid))
             .to_str()
@@ -2644,7 +2646,7 @@ pub fn get_region(pid: u16) -> String {
 ///
 ///  Returns whether the player has changed their region.
 ///
-pub fn is_changing_region(pid: u16) -> bool {
+pub fn is_changing_region(pid: c_ushort) -> bool {
     unsafe {
         raw::rustIsChangingRegion(pid)
     }
@@ -2664,7 +2666,7 @@ pub fn is_changing_region(pid: u16) -> bool {
 ///
 ///  Returns void
 ///
-pub fn set_cell(pid: u16, cell_description: &str) {
+pub fn set_cell(pid: c_ushort, cell_description: &str) {
     unsafe {
         raw::rustSetCell(pid, CString::new(cell_description).unwrap_or_default().as_ptr())
     }
@@ -2682,7 +2684,7 @@ pub fn set_cell(pid: u16, cell_description: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_exterior_cell(pid: u16, x: i16, y: i16) {
+pub fn set_exterior_cell(pid: c_ushort, x: c_int, y: c_int) {
     unsafe {
         raw::rustSetExteriorCell(pid, x, y)
     }
@@ -2697,7 +2699,7 @@ pub fn set_exterior_cell(pid: u16, x: i16, y: i16) {
 ///
 ///  Returns void
 ///
-pub fn send_cell(pid: u16) {
+pub fn send_cell(pid: c_ushort) {
     unsafe {
         raw::rustSendCell(pid)
     }
@@ -2710,7 +2712,7 @@ pub fn send_cell(pid: u16) {
 ///
 ///  Returns the ID of the default class.
 ///
-pub fn get_default_class(pid: u16) -> String {
+pub fn get_default_class(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetDefaultClass(pid))
             .to_str()
@@ -2726,7 +2728,7 @@ pub fn get_default_class(pid: u16) -> String {
 ///
 ///  Returns the name of the custom class.
 ///
-pub fn get_class_name(pid: u16) -> String {
+pub fn get_class_name(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetClassName(pid))
             .to_str()
@@ -2742,7 +2744,7 @@ pub fn get_class_name(pid: u16) -> String {
 ///
 ///  Returns the description of the custom class.
 ///
-pub fn get_class_desc(pid: u16) -> String {
+pub fn get_class_desc(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetClassDesc(pid))
             .to_str()
@@ -2759,7 +2761,7 @@ pub fn get_class_desc(pid: u16) -> String {
 ///
 ///  Returns the ID of the major attribute.
 ///
-pub fn get_class_major_attribute(pid: u16, slot: u8) -> i16 {
+pub fn get_class_major_attribute(pid: c_ushort, slot: c_uchar) -> c_int {
     unsafe {
         raw::rustGetClassMajorAttribute(pid, slot)
     }
@@ -2772,7 +2774,7 @@ pub fn get_class_major_attribute(pid: u16, slot: u8) -> i16 {
 ///
 ///  Returns the specialization ID of the custom class (0 for Combat, 1 for Magic, 2 for Stealth).
 ///
-pub fn get_class_specialization(pid: u16) -> i16 {
+pub fn get_class_specialization(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetClassSpecialization(pid)
     }
@@ -2786,7 +2788,7 @@ pub fn get_class_specialization(pid: u16) -> i16 {
 ///
 ///  Returns the ID of the major skill.
 ///
-pub fn get_class_major_skill(pid: u16, slot: u8) -> i16 {
+pub fn get_class_major_skill(pid: c_ushort, slot: c_uchar) -> c_int {
     unsafe {
         raw::rustGetClassMajorSkill(pid, slot)
     }
@@ -2800,7 +2802,7 @@ pub fn get_class_major_skill(pid: u16, slot: u8) -> i16 {
 ///
 ///  Returns the ID of the minor skill.
 ///
-pub fn get_class_minor_skill(pid: u16, slot: u8) -> i16 {
+pub fn get_class_minor_skill(pid: c_ushort, slot: c_uchar) -> c_int {
     unsafe {
         raw::rustGetClassMinorSkill(pid, slot)
     }
@@ -2813,7 +2815,7 @@ pub fn get_class_minor_skill(pid: u16, slot: u8) -> i16 {
 ///
 ///  Returns whether the player is using a default class.
 ///
-pub fn is_class_default(pid: u16) -> i16 {
+pub fn is_class_default(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustIsClassDefault(pid)
     }
@@ -2829,7 +2831,7 @@ pub fn is_class_default(pid: u16) -> i16 {
 ///
 ///  Returns void
 ///
-pub fn set_default_class(pid: u16, id: &str) {
+pub fn set_default_class(pid: c_ushort, id: &str) {
     unsafe {
         raw::rustSetDefaultClass(pid, CString::new(id).unwrap_or_default().as_ptr())
     }
@@ -2843,7 +2845,7 @@ pub fn set_default_class(pid: u16, id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_class_name(pid: u16, name: &str) {
+pub fn set_class_name(pid: c_ushort, name: &str) {
     unsafe {
         raw::rustSetClassName(pid, CString::new(name).unwrap_or_default().as_ptr())
     }
@@ -2857,7 +2859,7 @@ pub fn set_class_name(pid: u16, name: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_class_desc(pid: u16, desc: &str) {
+pub fn set_class_desc(pid: c_ushort, desc: &str) {
     unsafe {
         raw::rustSetClassDesc(pid, CString::new(desc).unwrap_or_default().as_ptr())
     }
@@ -2872,7 +2874,7 @@ pub fn set_class_desc(pid: u16, desc: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_class_major_attribute(pid: u16, slot: u8, attr_id: i16) {
+pub fn set_class_major_attribute(pid: c_ushort, slot: c_uchar, attr_id: c_int) {
     unsafe {
         raw::rustSetClassMajorAttribute(pid, slot, attr_id)
     }
@@ -2886,7 +2888,7 @@ pub fn set_class_major_attribute(pid: u16, slot: u8, attr_id: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_class_specialization(pid: u16, spec: i16) {
+pub fn set_class_specialization(pid: c_ushort, spec: c_int) {
     unsafe {
         raw::rustSetClassSpecialization(pid, spec)
     }
@@ -2901,7 +2903,7 @@ pub fn set_class_specialization(pid: u16, spec: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_class_major_skill(pid: u16, slot: u8, skill_id: i16) {
+pub fn set_class_major_skill(pid: c_ushort, slot: c_uchar, skill_id: c_int) {
     unsafe {
         raw::rustSetClassMajorSkill(pid, slot, skill_id)
     }
@@ -2916,7 +2918,7 @@ pub fn set_class_major_skill(pid: u16, slot: u8, skill_id: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_class_minor_skill(pid: u16, slot: u8, skill_id: i16) {
+pub fn set_class_minor_skill(pid: c_ushort, slot: c_uchar, skill_id: c_int) {
     unsafe {
         raw::rustSetClassMinorSkill(pid, slot, skill_id)
     }
@@ -2931,7 +2933,7 @@ pub fn set_class_minor_skill(pid: u16, slot: u8, skill_id: i16) {
 ///
 ///  Returns void
 ///
-pub fn send_class(pid: u16) {
+pub fn send_class(pid: c_ushort) {
     unsafe {
         raw::rustSendClass(pid)
     }
@@ -2949,7 +2951,7 @@ pub fn send_class(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_message(pid: u16, message: &str, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_message(pid: c_ushort, message: &str, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendMessage(pid, CString::new(message).unwrap_or_default().as_ptr(), send_to_other_players, skip_attached_player)
     }
@@ -2974,7 +2976,7 @@ pub fn clean_chat_for_pid() {
 ///
 ///  Returns void
 ///
-pub fn clean_chat(pid: u16) {
+pub fn clean_chat(pid: c_ushort) {
     unsafe {
         raw::rustCleanChat(pid)
     }
@@ -2989,7 +2991,7 @@ pub fn clean_chat(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn clear_topic_changes(pid: u16) {
+pub fn clear_topic_changes(pid: c_ushort) {
     unsafe {
         raw::rustClearTopicChanges(pid)
     }
@@ -3002,7 +3004,7 @@ pub fn clear_topic_changes(pid: u16) {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_topic_changes_size(pid: u16) -> u16 {
+pub fn get_topic_changes_size(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetTopicChangesSize(pid)
     }
@@ -3016,7 +3018,7 @@ pub fn get_topic_changes_size(pid: u16) -> u16 {
 ///
 ///  Returns void
 ///
-pub fn add_topic(pid: u16, topic_id: &str) {
+pub fn add_topic(pid: c_ushort, topic_id: &str) {
     unsafe {
         raw::rustAddTopic(pid, CString::new(topic_id).unwrap_or_default().as_ptr())
     }
@@ -3030,7 +3032,7 @@ pub fn add_topic(pid: u16, topic_id: &str) {
 ///
 ///  Returns the topicId.
 ///
-pub fn get_topic_id(pid: u16, index: u16) -> String {
+pub fn get_topic_id(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetTopicId(pid, index))
             .to_str()
@@ -3050,7 +3052,7 @@ pub fn get_topic_id(pid: u16, index: u16) -> String {
 ///
 ///  Returns void
 ///
-pub fn send_topic_changes(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_topic_changes(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendTopicChanges(pid, send_to_other_players, skip_attached_player)
     }
@@ -3068,7 +3070,7 @@ pub fn send_topic_changes(pid: u16, send_to_other_players: bool, skip_attached_p
 ///
 ///  Returns void
 ///
-pub fn play_animation(pid: u16, groupname: &str, mode: i16, count: i16, persist: bool) {
+pub fn play_animation(pid: c_ushort, groupname: &str, mode: c_int, count: c_int, persist: bool) {
     unsafe {
         raw::rustPlayAnimation(pid, CString::new(groupname).unwrap_or_default().as_ptr(), mode, count, persist)
     }
@@ -3083,13 +3085,13 @@ pub fn play_animation(pid: u16, groupname: &str, mode: i16, count: i16, persist:
 ///
 ///  Returns void
 ///
-pub fn play_speech(pid: u16, sound: &str) {
+pub fn play_speech(pid: c_ushort, sound: &str) {
     unsafe {
         raw::rustPlaySpeech(pid, CString::new(sound).unwrap_or_default().as_ptr())
     }
 }
 
-pub fn initialize_topic_changes(pid: u16) {
+pub fn initialize_topic_changes(pid: c_ushort) {
     unsafe {
         raw::rustInitializeTopicChanges(pid)
     }
@@ -3104,7 +3106,7 @@ pub fn initialize_topic_changes(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn clear_faction_changes(pid: u16) {
+pub fn clear_faction_changes(pid: c_ushort) {
     unsafe {
         raw::rustClearFactionChanges(pid)
     }
@@ -3117,7 +3119,7 @@ pub fn clear_faction_changes(pid: u16) {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_faction_changes_size(pid: u16) -> u16 {
+pub fn get_faction_changes_size(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetFactionChangesSize(pid)
     }
@@ -3130,7 +3132,7 @@ pub fn get_faction_changes_size(pid: u16) -> u16 {
 ///
 ///  Returns the action type (0 for RANK, 1 for EXPULSION, 2 for REPUTATION).
 ///
-pub fn get_faction_changes_action(pid: u16) -> u8 {
+pub fn get_faction_changes_action(pid: c_ushort) -> c_uchar {
     unsafe {
         raw::rustGetFactionChangesAction(pid)
     }
@@ -3144,7 +3146,7 @@ pub fn get_faction_changes_action(pid: u16) -> u8 {
 ///
 ///  Returns the factionId.
 ///
-pub fn get_faction_id(pid: u16, index: u16) -> String {
+pub fn get_faction_id(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetFactionId(pid, index))
             .to_str()
@@ -3161,7 +3163,7 @@ pub fn get_faction_id(pid: u16, index: u16) -> String {
 ///
 ///  Returns the rank.
 ///
-pub fn get_faction_rank(pid: u16, index: u16) -> i16 {
+pub fn get_faction_rank(pid: c_ushort, index: c_uint) -> c_int {
     unsafe {
         raw::rustGetFactionRank(pid, index)
     }
@@ -3175,7 +3177,7 @@ pub fn get_faction_rank(pid: u16, index: u16) -> i16 {
 ///
 ///  Returns the expulsion state.
 ///
-pub fn get_faction_expulsion_state(pid: u16, index: u16) -> bool {
+pub fn get_faction_expulsion_state(pid: c_ushort, index: c_uint) -> bool {
     unsafe {
         raw::rustGetFactionExpulsionState(pid, index)
     }
@@ -3189,7 +3191,7 @@ pub fn get_faction_expulsion_state(pid: u16, index: u16) -> bool {
 ///
 ///  Returns the reputation.
 ///
-pub fn get_faction_reputation(pid: u16, index: u16) -> i16 {
+pub fn get_faction_reputation(pid: c_ushort, index: c_uint) -> c_int {
     unsafe {
         raw::rustGetFactionReputation(pid, index)
     }
@@ -3203,7 +3205,7 @@ pub fn get_faction_reputation(pid: u16, index: u16) -> i16 {
 ///
 ///  Returns void
 ///
-pub fn set_faction_changes_action(pid: u16, action: u8) {
+pub fn set_faction_changes_action(pid: c_ushort, action: c_uchar) {
     unsafe {
         raw::rustSetFactionChangesAction(pid, action)
     }
@@ -3229,7 +3231,7 @@ pub fn set_faction_id(faction_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_faction_rank(rank: u16) {
+pub fn set_faction_rank(rank: c_uint) {
     unsafe {
         raw::rustSetFactionRank(rank)
     }
@@ -3255,7 +3257,7 @@ pub fn set_faction_expulsion_state(expulsion_state: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_faction_reputation(reputation: i16) {
+pub fn set_faction_reputation(reputation: c_int) {
     unsafe {
         raw::rustSetFactionReputation(reputation)
     }
@@ -3271,7 +3273,7 @@ pub fn set_faction_reputation(reputation: i16) {
 ///
 ///  Returns void
 ///
-pub fn add_faction(pid: u16) {
+pub fn add_faction(pid: c_ushort) {
     unsafe {
         raw::rustAddFaction(pid)
     }
@@ -3288,13 +3290,13 @@ pub fn add_faction(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_faction_changes(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_faction_changes(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendFactionChanges(pid, send_to_other_players, skip_attached_player)
     }
 }
 
-pub fn initialize_faction_changes(pid: u16) {
+pub fn initialize_faction_changes(pid: c_ushort) {
     unsafe {
         raw::rustInitializeFactionChanges(pid)
     }
@@ -3311,7 +3313,7 @@ pub fn initialize_faction_changes(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn custom_message_box(pid: u16, id: i16, label: &str, buttons: &str) {
+pub fn custom_message_box(pid: c_ushort, id: c_int, label: &str, buttons: &str) {
     unsafe {
         raw::rustCustomMessageBox(pid, id, CString::new(label).unwrap_or_default().as_ptr(), CString::new(buttons).unwrap_or_default().as_ptr())
     }
@@ -3327,7 +3329,7 @@ pub fn custom_message_box(pid: u16, id: i16, label: &str, buttons: &str) {
 ///
 ///  Returns void
 ///
-pub fn input_dialog(pid: u16, id: i16, label: &str, note: &str) {
+pub fn input_dialog(pid: c_ushort, id: c_int, label: &str, note: &str) {
     unsafe {
         raw::rustInputDialog(pid, id, CString::new(label).unwrap_or_default().as_ptr(), CString::new(note).unwrap_or_default().as_ptr())
     }
@@ -3346,7 +3348,7 @@ pub fn input_dialog(pid: u16, id: i16, label: &str, note: &str) {
 ///
 ///  Returns void
 ///
-pub fn password_dialog(pid: u16, id: i16, label: &str, note: &str) {
+pub fn password_dialog(pid: c_ushort, id: c_int, label: &str, note: &str) {
     unsafe {
         raw::rustPasswordDialog(pid, id, CString::new(label).unwrap_or_default().as_ptr(), CString::new(note).unwrap_or_default().as_ptr())
     }
@@ -3364,7 +3366,7 @@ pub fn password_dialog(pid: u16, id: i16, label: &str, note: &str) {
 ///
 ///  Returns void
 ///
-pub fn list_box(pid: u16, id: i16, label: &str, items: &str) {
+pub fn list_box(pid: c_ushort, id: c_int, label: &str, items: &str) {
     unsafe {
         raw::rustListBox(pid, id, CString::new(label).unwrap_or_default().as_ptr(), CString::new(items).unwrap_or_default().as_ptr())
     }
@@ -3379,7 +3381,7 @@ pub fn list_box(pid: u16, id: i16, label: &str, items: &str) {
 ///
 ///  Returns void
 ///
-pub fn clear_quick_key_changes(pid: u16) {
+pub fn clear_quick_key_changes(pid: c_ushort) {
     unsafe {
         raw::rustClearQuickKeyChanges(pid)
     }
@@ -3392,7 +3394,7 @@ pub fn clear_quick_key_changes(pid: u16) {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_quick_key_changes_size(pid: u16) -> u16 {
+pub fn get_quick_key_changes_size(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetQuickKeyChangesSize(pid)
     }
@@ -3406,7 +3408,7 @@ pub fn get_quick_key_changes_size(pid: u16) -> u16 {
 ///
 ///  Returns the slot.
 ///
-pub fn get_quick_key_slot(pid: u16, index: u16) -> i16 {
+pub fn get_quick_key_slot(pid: c_ushort, index: c_uint) -> c_int {
     unsafe {
         raw::rustGetQuickKeySlot(pid, index)
     }
@@ -3420,7 +3422,7 @@ pub fn get_quick_key_slot(pid: u16, index: u16) -> i16 {
 ///
 ///  Returns the quick key type.
 ///
-pub fn get_quick_key_type(pid: u16, index: u16) -> i16 {
+pub fn get_quick_key_type(pid: c_ushort, index: c_uint) -> c_int {
     unsafe {
         raw::rustGetQuickKeyType(pid, index)
     }
@@ -3434,7 +3436,7 @@ pub fn get_quick_key_type(pid: u16, index: u16) -> i16 {
 ///
 ///  Returns the itemId.
 ///
-pub fn get_quick_key_item_id(pid: u16, index: u16) -> String {
+pub fn get_quick_key_item_id(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetQuickKeyItemId(pid, index))
             .to_str()
@@ -3453,7 +3455,7 @@ pub fn get_quick_key_item_id(pid: u16, index: u16) -> String {
 ///
 ///  Returns void
 ///
-pub fn add_quick_key(pid: u16, slot: u16, _type: i16, item_id: &str) {
+pub fn add_quick_key(pid: c_ushort, slot: c_ushort, _type: c_int, item_id: &str) {
     unsafe {
         raw::rustAddQuickKey(pid, slot, _type, CString::new(item_id).unwrap_or_default().as_ptr())
     }
@@ -3466,7 +3468,7 @@ pub fn add_quick_key(pid: u16, slot: u16, _type: i16, item_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn send_quick_key_changes(pid: u16) {
+pub fn send_quick_key_changes(pid: c_ushort) {
     unsafe {
         raw::rustSendQuickKeyChanges(pid)
     }
@@ -3483,7 +3485,7 @@ pub fn send_quick_key_changes(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_map_visibility(target_pid: u16, affected_pid: u16, state: u16) {
+pub fn set_map_visibility(target_pid: c_ushort, affected_pid: c_ushort, state: c_ushort) {
     unsafe {
         raw::rustSetMapVisibility(target_pid, affected_pid, state)
     }
@@ -3499,13 +3501,13 @@ pub fn set_map_visibility(target_pid: u16, affected_pid: u16, state: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_map_visibility_all(target_pid: u16, state: u16) {
+pub fn set_map_visibility_all(target_pid: c_ushort, state: c_ushort) {
     unsafe {
         raw::rustSetMapVisibilityAll(target_pid, state)
     }
 }
 
-pub fn initialize_quick_key_changes(pid: u16) {
+pub fn initialize_quick_key_changes(pid: c_ushort) {
     unsafe {
         raw::rustInitializeQuickKeyChanges(pid)
     }
@@ -3520,7 +3522,7 @@ pub fn initialize_quick_key_changes(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn clear_inventory_changes(pid: u16) {
+pub fn clear_inventory_changes(pid: c_ushort) {
     unsafe {
         raw::rustClearInventoryChanges(pid)
     }
@@ -3534,7 +3536,7 @@ pub fn clear_inventory_changes(pid: u16) {
 ///
 ///  Returns the number of slots.
 ///
-pub fn get_equipment_size() -> i16 {
+pub fn get_equipment_size() -> c_int {
     unsafe {
         raw::rustGetEquipmentSize()
     }
@@ -3547,7 +3549,7 @@ pub fn get_equipment_size() -> i16 {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_inventory_changes_size(pid: u16) -> u16 {
+pub fn get_inventory_changes_size(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetInventoryChangesSize(pid)
     }
@@ -3560,7 +3562,7 @@ pub fn get_inventory_changes_size(pid: u16) -> u16 {
 ///
 ///  Returns the action type (0 for SET, 1 for ADD, 2 for REMOVE).
 ///
-pub fn get_inventory_changes_action(pid: u16) -> u16 {
+pub fn get_inventory_changes_action(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetInventoryChangesAction(pid)
     }
@@ -3574,7 +3576,7 @@ pub fn get_inventory_changes_action(pid: u16) -> u16 {
 ///
 ///  Returns void
 ///
-pub fn set_inventory_changes_action(pid: u16, action: u8) {
+pub fn set_inventory_changes_action(pid: c_ushort, action: c_uchar) {
     unsafe {
         raw::rustSetInventoryChangesAction(pid, action)
     }
@@ -3592,7 +3594,7 @@ pub fn set_inventory_changes_action(pid: u16, action: u8) {
 ///
 ///  Returns void
 ///
-pub fn equip_item(pid: u16, slot: u16, ref_id: &str, count: u16, charge: i16, enchantment_charge: f64) {
+pub fn equip_item(pid: c_ushort, slot: c_ushort, ref_id: &str, count: c_uint, charge: c_int, enchantment_charge: c_double) {
     unsafe {
         raw::rustEquipItem(pid, slot, CString::new(ref_id).unwrap_or_default().as_ptr(), count, charge, enchantment_charge)
     }
@@ -3606,7 +3608,7 @@ pub fn equip_item(pid: u16, slot: u16, ref_id: &str, count: u16, charge: i16, en
 ///
 ///  Returns void
 ///
-pub fn unequip_item(pid: u16, slot: u16) {
+pub fn unequip_item(pid: c_ushort, slot: c_ushort) {
     unsafe {
         raw::rustUnequipItem(pid, slot)
     }
@@ -3624,7 +3626,7 @@ pub fn unequip_item(pid: u16, slot: u16) {
 ///
 ///  Returns void
 ///
-pub fn add_item_change(pid: u16, ref_id: &str, count: u16, charge: i16, enchantment_charge: f64, soul: &str) {
+pub fn add_item_change(pid: c_ushort, ref_id: &str, count: c_uint, charge: c_int, enchantment_charge: c_double, soul: &str) {
     unsafe {
         raw::rustAddItemChange(pid, CString::new(ref_id).unwrap_or_default().as_ptr(), count, charge, enchantment_charge, CString::new(soul).unwrap_or_default().as_ptr())
     }
@@ -3638,7 +3640,7 @@ pub fn add_item_change(pid: u16, ref_id: &str, count: u16, charge: i16, enchantm
 ///
 ///  Returns whether the player has the item equipped.
 ///
-pub fn has_item_equipped(pid: u16, ref_id: &str) -> bool {
+pub fn has_item_equipped(pid: c_ushort, ref_id: &str) -> bool {
     unsafe {
         raw::rustHasItemEquipped(pid, CString::new(ref_id).unwrap_or_default().as_ptr())
     }
@@ -3652,7 +3654,7 @@ pub fn has_item_equipped(pid: u16, ref_id: &str) -> bool {
 ///
 ///  Returns the refId.
 ///
-pub fn get_equipment_item_ref_id(pid: u16, slot: u16) -> String {
+pub fn get_equipment_item_ref_id(pid: c_ushort, slot: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetEquipmentItemRefId(pid, slot))
             .to_str()
@@ -3669,7 +3671,7 @@ pub fn get_equipment_item_ref_id(pid: u16, slot: u16) -> String {
 ///
 ///  Returns the item count.
 ///
-pub fn get_equipment_item_count(pid: u16, slot: u16) -> i16 {
+pub fn get_equipment_item_count(pid: c_ushort, slot: c_ushort) -> c_int {
     unsafe {
         raw::rustGetEquipmentItemCount(pid, slot)
     }
@@ -3683,7 +3685,7 @@ pub fn get_equipment_item_count(pid: u16, slot: u16) -> i16 {
 ///
 ///  Returns the charge.
 ///
-pub fn get_equipment_item_charge(pid: u16, slot: u16) -> i16 {
+pub fn get_equipment_item_charge(pid: c_ushort, slot: c_ushort) -> c_int {
     unsafe {
         raw::rustGetEquipmentItemCharge(pid, slot)
     }
@@ -3698,7 +3700,7 @@ pub fn get_equipment_item_charge(pid: u16, slot: u16) -> i16 {
 ///
 ///  Returns the enchantment charge.
 ///
-pub fn get_equipment_item_enchantment_charge(pid: u16, slot: u16) -> f64 {
+pub fn get_equipment_item_enchantment_charge(pid: c_ushort, slot: c_ushort) -> c_double {
     unsafe {
         raw::rustGetEquipmentItemEnchantmentCharge(pid, slot)
     }
@@ -3713,7 +3715,7 @@ pub fn get_equipment_item_enchantment_charge(pid: u16, slot: u16) -> f64 {
 ///
 ///  Returns the refId.
 ///
-pub fn get_inventory_item_ref_id(pid: u16, index: u16) -> String {
+pub fn get_inventory_item_ref_id(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetInventoryItemRefId(pid, index))
             .to_str()
@@ -3731,7 +3733,7 @@ pub fn get_inventory_item_ref_id(pid: u16, index: u16) -> String {
 ///
 ///  Returns the item count.
 ///
-pub fn get_inventory_item_count(pid: u16, index: u16) -> i16 {
+pub fn get_inventory_item_count(pid: c_ushort, index: c_uint) -> c_int {
     unsafe {
         raw::rustGetInventoryItemCount(pid, index)
     }
@@ -3746,7 +3748,7 @@ pub fn get_inventory_item_count(pid: u16, index: u16) -> i16 {
 ///
 ///  Returns the charge.
 ///
-pub fn get_inventory_item_charge(pid: u16, index: u16) -> i16 {
+pub fn get_inventory_item_charge(pid: c_ushort, index: c_uint) -> c_int {
     unsafe {
         raw::rustGetInventoryItemCharge(pid, index)
     }
@@ -3761,7 +3763,7 @@ pub fn get_inventory_item_charge(pid: u16, index: u16) -> i16 {
 ///
 ///  Returns the enchantment charge.
 ///
-pub fn get_inventory_item_enchantment_charge(pid: u16, index: u16) -> f64 {
+pub fn get_inventory_item_enchantment_charge(pid: c_ushort, index: c_uint) -> c_double {
     unsafe {
         raw::rustGetInventoryItemEnchantmentCharge(pid, index)
     }
@@ -3776,7 +3778,7 @@ pub fn get_inventory_item_enchantment_charge(pid: u16, index: u16) -> f64 {
 ///
 ///  Returns the soul.
 ///
-pub fn get_inventory_item_soul(pid: u16, index: u16) -> String {
+pub fn get_inventory_item_soul(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetInventoryItemSoul(pid, index))
             .to_str()
@@ -3792,7 +3794,7 @@ pub fn get_inventory_item_soul(pid: u16, index: u16) -> String {
 ///
 ///  Returns the refId.
 ///
-pub fn get_used_item_ref_id(pid: u16) -> String {
+pub fn get_used_item_ref_id(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetUsedItemRefId(pid))
             .to_str()
@@ -3808,7 +3810,7 @@ pub fn get_used_item_ref_id(pid: u16) -> String {
 ///
 ///  Returns the item count.
 ///
-pub fn get_used_item_count(pid: u16) -> i16 {
+pub fn get_used_item_count(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetUsedItemCount(pid)
     }
@@ -3821,7 +3823,7 @@ pub fn get_used_item_count(pid: u16) -> i16 {
 ///
 ///  Returns the charge.
 ///
-pub fn get_used_item_charge(pid: u16) -> i16 {
+pub fn get_used_item_charge(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetUsedItemCharge(pid)
     }
@@ -3834,7 +3836,7 @@ pub fn get_used_item_charge(pid: u16) -> i16 {
 ///
 ///  Returns the enchantment charge.
 ///
-pub fn get_used_item_enchantment_charge(pid: u16) -> f64 {
+pub fn get_used_item_enchantment_charge(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetUsedItemEnchantmentCharge(pid)
     }
@@ -3847,7 +3849,7 @@ pub fn get_used_item_enchantment_charge(pid: u16) -> f64 {
 ///
 ///  Returns the soul.
 ///
-pub fn get_used_item_soul(pid: u16) -> String {
+pub fn get_used_item_soul(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetUsedItemSoul(pid))
             .to_str()
@@ -3865,7 +3867,7 @@ pub fn get_used_item_soul(pid: u16) -> String {
 ///
 ///  Returns void
 ///
-pub fn send_equipment(pid: u16) {
+pub fn send_equipment(pid: c_ushort) {
     unsafe {
         raw::rustSendEquipment(pid)
     }
@@ -3882,7 +3884,7 @@ pub fn send_equipment(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_inventory_changes(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_inventory_changes(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendInventoryChanges(pid, send_to_other_players, skip_attached_player)
     }
@@ -3895,19 +3897,19 @@ pub fn send_inventory_changes(pid: u16, send_to_other_players: bool, skip_attach
 ///
 ///  Returns void
 ///
-pub fn send_item_use(pid: u16) {
+pub fn send_item_use(pid: c_ushort) {
     unsafe {
         raw::rustSendItemUse(pid)
     }
 }
 
-pub fn initialize_inventory_changes(pid: u16) {
+pub fn initialize_inventory_changes(pid: c_ushort) {
     unsafe {
         raw::rustInitializeInventoryChanges(pid)
     }
 }
 
-pub fn add_item(pid: u16, ref_id: &str, count: u16, charge: i16, enchantment_charge: f64, soul: &str) {
+pub fn add_item(pid: c_ushort, ref_id: &str, count: c_uint, charge: c_int, enchantment_charge: c_double, soul: &str) {
     unsafe {
         raw::rustAddItem(pid, CString::new(ref_id).unwrap_or_default().as_ptr(), count, charge, enchantment_charge, CString::new(soul).unwrap_or_default().as_ptr())
     }
@@ -3920,7 +3922,7 @@ pub fn add_item(pid: u16, ref_id: &str, count: u16, charge: i16, enchantment_cha
 ///
 ///  Returns the type.
 ///
-pub fn get_miscellaneous_change_type(pid: u16) -> u8 {
+pub fn get_miscellaneous_change_type(pid: c_ushort) -> c_uchar {
     unsafe {
         raw::rustGetMiscellaneousChangeType(pid)
     }
@@ -3933,7 +3935,7 @@ pub fn get_miscellaneous_change_type(pid: u16) -> u8 {
 ///
 ///  Returns the cell description.
 ///
-pub fn get_mark_cell(pid: u16) -> String {
+pub fn get_mark_cell(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetMarkCell(pid))
             .to_str()
@@ -3949,7 +3951,7 @@ pub fn get_mark_cell(pid: u16) -> String {
 ///
 ///  Returns the X position.
 ///
-pub fn get_mark_pos_x(pid: u16) -> f64 {
+pub fn get_mark_pos_x(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetMarkPosX(pid)
     }
@@ -3962,7 +3964,7 @@ pub fn get_mark_pos_x(pid: u16) -> f64 {
 ///
 ///  Returns the Y position.
 ///
-pub fn get_mark_pos_y(pid: u16) -> f64 {
+pub fn get_mark_pos_y(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetMarkPosY(pid)
     }
@@ -3975,7 +3977,7 @@ pub fn get_mark_pos_y(pid: u16) -> f64 {
 ///
 ///  Returns the Z position.
 ///
-pub fn get_mark_pos_z(pid: u16) -> f64 {
+pub fn get_mark_pos_z(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetMarkPosZ(pid)
     }
@@ -3988,7 +3990,7 @@ pub fn get_mark_pos_z(pid: u16) -> f64 {
 ///
 ///  Returns the X rotation.
 ///
-pub fn get_mark_rot_x(pid: u16) -> f64 {
+pub fn get_mark_rot_x(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetMarkRotX(pid)
     }
@@ -4001,7 +4003,7 @@ pub fn get_mark_rot_x(pid: u16) -> f64 {
 ///
 ///  Returns the X rotation.
 ///
-pub fn get_mark_rot_z(pid: u16) -> f64 {
+pub fn get_mark_rot_z(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetMarkRotZ(pid)
     }
@@ -4014,7 +4016,7 @@ pub fn get_mark_rot_z(pid: u16) -> f64 {
 ///
 ///  Returns the spell ID.
 ///
-pub fn get_selected_spell_id(pid: u16) -> String {
+pub fn get_selected_spell_id(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetSelectedSpellId(pid))
             .to_str()
@@ -4030,7 +4032,7 @@ pub fn get_selected_spell_id(pid: u16) -> String {
 ///
 ///  Returns whether the player was killed by another player.
 ///
-pub fn does_player_have_player_killer(pid: u16) -> bool {
+pub fn does_player_have_player_killer(pid: c_ushort) -> bool {
     unsafe {
         raw::rustDoesPlayerHavePlayerKiller(pid)
     }
@@ -4043,7 +4045,7 @@ pub fn does_player_have_player_killer(pid: u16) -> bool {
 ///
 ///  Returns the player ID of the killer.
 ///
-pub fn get_player_killer_pid(pid: u16) -> i16 {
+pub fn get_player_killer_pid(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetPlayerKillerPid(pid)
     }
@@ -4056,7 +4058,7 @@ pub fn get_player_killer_pid(pid: u16) -> i16 {
 ///
 ///  Returns the refId of the killer.
 ///
-pub fn get_player_killer_ref_id(pid: u16) -> String {
+pub fn get_player_killer_ref_id(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetPlayerKillerRefId(pid))
             .to_str()
@@ -4072,7 +4074,7 @@ pub fn get_player_killer_ref_id(pid: u16) -> String {
 ///
 ///  Returns the refNum of the killer.
 ///
-pub fn get_player_killer_ref_num(pid: u16) -> u16 {
+pub fn get_player_killer_ref_num(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetPlayerKillerRefNum(pid)
     }
@@ -4085,7 +4087,7 @@ pub fn get_player_killer_ref_num(pid: u16) -> u16 {
 ///
 ///  Returns the mpNum of the killer.
 ///
-pub fn get_player_killer_mp_num(pid: u16) -> u16 {
+pub fn get_player_killer_mp_num(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetPlayerKillerMpNum(pid)
     }
@@ -4098,7 +4100,7 @@ pub fn get_player_killer_mp_num(pid: u16) -> u16 {
 ///
 ///  Returns the name of the killer.
 ///
-pub fn get_player_killer_name(pid: u16) -> String {
+pub fn get_player_killer_name(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetPlayerKillerName(pid))
             .to_str()
@@ -4115,7 +4117,7 @@ pub fn get_player_killer_name(pid: u16) -> String {
 ///
 ///  Returns the draw state.
 ///
-pub fn get_draw_state(pid: u16) -> u16 {
+pub fn get_draw_state(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetDrawState(pid)
     }
@@ -4128,7 +4130,7 @@ pub fn get_draw_state(pid: u16) -> u16 {
 ///
 ///  Returns whether the player is sneaking.
 ///
-pub fn get_sneak_state(pid: u16) -> bool {
+pub fn get_sneak_state(pid: c_ushort) -> bool {
     unsafe {
         raw::rustGetSneakState(pid)
     }
@@ -4148,7 +4150,7 @@ pub fn get_sneak_state(pid: u16) -> bool {
 ///
 ///  Returns void
 ///
-pub fn set_mark_cell(pid: u16, cell_description: &str) {
+pub fn set_mark_cell(pid: c_ushort, cell_description: &str) {
     unsafe {
         raw::rustSetMarkCell(pid, CString::new(cell_description).unwrap_or_default().as_ptr())
     }
@@ -4167,7 +4169,7 @@ pub fn set_mark_cell(pid: u16, cell_description: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_mark_pos(pid: u16, x: f64, y: f64, z: f64) {
+pub fn set_mark_pos(pid: c_ushort, x: c_double, y: c_double, z: c_double) {
     unsafe {
         raw::rustSetMarkPos(pid, x, y, z)
     }
@@ -4185,7 +4187,7 @@ pub fn set_mark_pos(pid: u16, x: f64, y: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_mark_rot(pid: u16, x: f64, z: f64) {
+pub fn set_mark_rot(pid: c_ushort, x: c_double, z: c_double) {
     unsafe {
         raw::rustSetMarkRot(pid, x, z)
     }
@@ -4202,7 +4204,7 @@ pub fn set_mark_rot(pid: u16, x: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_selected_spell_id(pid: u16, spell_id: &str) {
+pub fn set_selected_spell_id(pid: c_ushort, spell_id: &str) {
     unsafe {
         raw::rustSetSelectedSpellId(pid, CString::new(spell_id).unwrap_or_default().as_ptr())
     }
@@ -4215,7 +4217,7 @@ pub fn set_selected_spell_id(pid: u16, spell_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn send_mark_location(pid: u16) {
+pub fn send_mark_location(pid: c_ushort) {
     unsafe {
         raw::rustSendMarkLocation(pid)
     }
@@ -4228,7 +4230,7 @@ pub fn send_mark_location(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_selected_spell(pid: u16) {
+pub fn send_selected_spell(pid: c_ushort) {
     unsafe {
         raw::rustSendSelectedSpell(pid)
     }
@@ -4255,7 +4257,7 @@ pub fn send_selected_spell(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn jail(pid: u16, jail_days: i16, ignore_jail_teleportation: bool, ignore_jail_skill_increases: bool, jail_progress_text: &str, jail_end_text: &str) {
+pub fn jail(pid: c_ushort, jail_days: c_int, ignore_jail_teleportation: bool, ignore_jail_skill_increases: bool, jail_progress_text: &str, jail_end_text: &str) {
     unsafe {
         raw::rustJail(pid, jail_days, ignore_jail_teleportation, ignore_jail_skill_increases, CString::new(jail_progress_text).unwrap_or_default().as_ptr(), CString::new(jail_end_text).unwrap_or_default().as_ptr())
     }
@@ -4272,13 +4274,13 @@ pub fn jail(pid: u16, jail_days: i16, ignore_jail_teleportation: bool, ignore_ja
 ///
 ///  Returns void
 ///
-pub fn resurrect(pid: u16, _type: u16) {
+pub fn resurrect(pid: c_ushort, _type: c_uint) {
     unsafe {
         raw::rustResurrect(pid, _type)
     }
 }
 
-pub fn get_death_reason(pid: u16) -> String {
+pub fn get_death_reason(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetDeathReason(pid))
             .to_str()
@@ -4287,7 +4289,7 @@ pub fn get_death_reason(pid: u16) -> String {
     }
 }
 
-pub fn get_player_killer_ref_num_index(pid: u16) -> u16 {
+pub fn get_player_killer_ref_num_index(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetPlayerKillerRefNumIndex(pid)
     }
@@ -4301,7 +4303,7 @@ pub fn get_player_killer_ref_num_index(pid: u16) -> u16 {
 ///
 ///  Returns the generated string.
 ///
-pub fn generate_random_string(length: u16) -> String {
+pub fn generate_random_string(length: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGenerateRandomString(length))
             .to_str()
@@ -4335,7 +4337,7 @@ pub fn get_sha256_hash(input_string: &str) -> String {
 ///
 ///  Returns the player ID.
 ///
-pub fn get_last_player_id() -> u16 {
+pub fn get_last_player_id() -> c_uint {
     unsafe {
         raw::rustGetLastPlayerId()
     }
@@ -4354,7 +4356,7 @@ pub fn get_last_player_id() -> u16 {
 ///
 ///  Returns the mpNum.
 ///
-pub fn get_current_mp_num() -> i16 {
+pub fn get_current_mp_num() -> c_int {
     unsafe {
         raw::rustGetCurrentMpNum()
     }
@@ -4371,7 +4373,7 @@ pub fn get_current_mp_num() -> i16 {
 ///
 ///  Returns void
 ///
-pub fn set_current_mp_num(mp_num: i16) {
+pub fn set_current_mp_num(mp_num: c_int) {
     unsafe {
         raw::rustSetCurrentMpNum(mp_num)
     }
@@ -4384,7 +4386,7 @@ pub fn set_current_mp_num(mp_num: i16) {
 ///
 ///  Returns the X position.
 ///
-pub fn get_pos_x(pid: u16) -> f64 {
+pub fn get_pos_x(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetPosX(pid)
     }
@@ -4397,7 +4399,7 @@ pub fn get_pos_x(pid: u16) -> f64 {
 ///
 ///  Returns the Y position.
 ///
-pub fn get_pos_y(pid: u16) -> f64 {
+pub fn get_pos_y(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetPosY(pid)
     }
@@ -4410,7 +4412,7 @@ pub fn get_pos_y(pid: u16) -> f64 {
 ///
 ///  Returns the Z position.
 ///
-pub fn get_pos_z(pid: u16) -> f64 {
+pub fn get_pos_z(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetPosZ(pid)
     }
@@ -4423,7 +4425,7 @@ pub fn get_pos_z(pid: u16) -> f64 {
 ///
 ///  Returns the X position.
 ///
-pub fn get_previous_cell_pos_x(pid: u16) -> f64 {
+pub fn get_previous_cell_pos_x(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetPreviousCellPosX(pid)
     }
@@ -4436,7 +4438,7 @@ pub fn get_previous_cell_pos_x(pid: u16) -> f64 {
 ///
 ///  Returns the Y position.
 ///
-pub fn get_previous_cell_pos_y(pid: u16) -> f64 {
+pub fn get_previous_cell_pos_y(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetPreviousCellPosY(pid)
     }
@@ -4449,7 +4451,7 @@ pub fn get_previous_cell_pos_y(pid: u16) -> f64 {
 ///
 ///  Returns the Z position.
 ///
-pub fn get_previous_cell_pos_z(pid: u16) -> f64 {
+pub fn get_previous_cell_pos_z(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetPreviousCellPosZ(pid)
     }
@@ -4462,7 +4464,7 @@ pub fn get_previous_cell_pos_z(pid: u16) -> f64 {
 ///
 ///  Returns the X rotation.
 ///
-pub fn get_rot_x(pid: u16) -> f64 {
+pub fn get_rot_x(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetRotX(pid)
     }
@@ -4475,7 +4477,7 @@ pub fn get_rot_x(pid: u16) -> f64 {
 ///
 ///  Returns the Z rotation.
 ///
-pub fn get_rot_z(pid: u16) -> f64 {
+pub fn get_rot_z(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetRotZ(pid)
     }
@@ -4494,7 +4496,7 @@ pub fn get_rot_z(pid: u16) -> f64 {
 ///
 ///  Returns void
 ///
-pub fn set_pos(pid: u16, x: f64, y: f64, z: f64) {
+pub fn set_pos(pid: c_ushort, x: c_double, y: c_double, z: c_double) {
     unsafe {
         raw::rustSetPos(pid, x, y, z)
     }
@@ -4514,7 +4516,7 @@ pub fn set_pos(pid: u16, x: f64, y: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_rot(pid: u16, x: f64, z: f64) {
+pub fn set_rot(pid: c_ushort, x: c_double, z: c_double) {
     unsafe {
         raw::rustSetRot(pid, x, z)
     }
@@ -4533,7 +4535,7 @@ pub fn set_rot(pid: u16, x: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_momentum(pid: u16, x: f64, y: f64, z: f64) {
+pub fn set_momentum(pid: c_ushort, x: c_double, y: c_double, z: c_double) {
     unsafe {
         raw::rustSetMomentum(pid, x, y, z)
     }
@@ -4548,7 +4550,7 @@ pub fn set_momentum(pid: u16, x: f64, y: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn send_pos(pid: u16) {
+pub fn send_pos(pid: c_ushort) {
     unsafe {
         raw::rustSendPos(pid)
     }
@@ -4563,7 +4565,7 @@ pub fn send_pos(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_momentum(pid: u16) {
+pub fn send_momentum(pid: c_ushort) {
     unsafe {
         raw::rustSendMomentum(pid)
     }
@@ -4578,7 +4580,7 @@ pub fn send_momentum(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn clear_journal_changes(pid: u16) {
+pub fn clear_journal_changes(pid: c_ushort) {
     unsafe {
         raw::rustClearJournalChanges(pid)
     }
@@ -4591,7 +4593,7 @@ pub fn clear_journal_changes(pid: u16) {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_journal_changes_size(pid: u16) -> u16 {
+pub fn get_journal_changes_size(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetJournalChangesSize(pid)
     }
@@ -4608,7 +4610,7 @@ pub fn get_journal_changes_size(pid: u16) -> u16 {
 ///
 ///  Returns void
 ///
-pub fn add_journal_entry(pid: u16, quest: &str, index: u16, actor_ref_id: &str) {
+pub fn add_journal_entry(pid: c_ushort, quest: &str, index: c_uint, actor_ref_id: &str) {
     unsafe {
         raw::rustAddJournalEntry(pid, CString::new(quest).unwrap_or_default().as_ptr(), index, CString::new(actor_ref_id).unwrap_or_default().as_ptr())
     }
@@ -4628,7 +4630,7 @@ pub fn add_journal_entry(pid: u16, quest: &str, index: u16, actor_ref_id: &str) 
 ///
 ///  Returns void
 ///
-pub fn add_journal_entry_with_timestamp(pid: u16, quest: &str, index: u16, actor_ref_id: &str, days_passed: u16, month: u16, day: u16) {
+pub fn add_journal_entry_with_timestamp(pid: c_ushort, quest: &str, index: c_uint, actor_ref_id: &str, days_passed: c_uint, month: c_uint, day: c_uint) {
     unsafe {
         raw::rustAddJournalEntryWithTimestamp(pid, CString::new(quest).unwrap_or_default().as_ptr(), index, CString::new(actor_ref_id).unwrap_or_default().as_ptr(), days_passed, month, day)
     }
@@ -4643,7 +4645,7 @@ pub fn add_journal_entry_with_timestamp(pid: u16, quest: &str, index: u16, actor
 ///
 ///  Returns void
 ///
-pub fn add_journal_index(pid: u16, quest: &str, index: u16) {
+pub fn add_journal_index(pid: c_ushort, quest: &str, index: c_uint) {
     unsafe {
         raw::rustAddJournalIndex(pid, CString::new(quest).unwrap_or_default().as_ptr(), index)
     }
@@ -4657,7 +4659,7 @@ pub fn add_journal_index(pid: u16, quest: &str, index: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_reputation(pid: u16, value: i16) {
+pub fn set_reputation(pid: c_ushort, value: c_int) {
     unsafe {
         raw::rustSetReputation(pid, value)
     }
@@ -4671,7 +4673,7 @@ pub fn set_reputation(pid: u16, value: i16) {
 ///
 ///  Returns the quest.
 ///
-pub fn get_journal_item_quest(pid: u16, index: u16) -> String {
+pub fn get_journal_item_quest(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetJournalItemQuest(pid, index))
             .to_str()
@@ -4688,7 +4690,7 @@ pub fn get_journal_item_quest(pid: u16, index: u16) -> String {
 ///
 ///  Returns the quest index.
 ///
-pub fn get_journal_item_index(pid: u16, index: u16) -> i16 {
+pub fn get_journal_item_index(pid: c_ushort, index: c_uint) -> c_int {
     unsafe {
         raw::rustGetJournalItemIndex(pid, index)
     }
@@ -4702,7 +4704,7 @@ pub fn get_journal_item_index(pid: u16, index: u16) -> i16 {
 ///
 ///  Returns the type (0 for ENTRY, 1 for INDEX).
 ///
-pub fn get_journal_item_type(pid: u16, index: u16) -> i16 {
+pub fn get_journal_item_type(pid: c_ushort, index: c_uint) -> c_int {
     unsafe {
         raw::rustGetJournalItemType(pid, index)
     }
@@ -4718,7 +4720,7 @@ pub fn get_journal_item_type(pid: u16, index: u16) -> i16 {
 ///
 ///  Returns the actor refId.
 ///
-pub fn get_journal_item_actor_ref_id(pid: u16, index: u16) -> String {
+pub fn get_journal_item_actor_ref_id(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetJournalItemActorRefId(pid, index))
             .to_str()
@@ -4734,7 +4736,7 @@ pub fn get_journal_item_actor_ref_id(pid: u16, index: u16) -> String {
 ///
 ///  Returns the reputation.
 ///
-pub fn get_reputation(pid: u16) -> i16 {
+pub fn get_reputation(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetReputation(pid)
     }
@@ -4751,7 +4753,7 @@ pub fn get_reputation(pid: u16) -> i16 {
 ///
 ///  Returns void
 ///
-pub fn send_journal_changes(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_journal_changes(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendJournalChanges(pid, send_to_other_players, skip_attached_player)
     }
@@ -4768,13 +4770,13 @@ pub fn send_journal_changes(pid: u16, send_to_other_players: bool, skip_attached
 ///
 ///  Returns void
 ///
-pub fn send_reputation(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_reputation(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendReputation(pid, send_to_other_players, skip_attached_player)
     }
 }
 
-pub fn initialize_journal_changes(pid: u16) {
+pub fn initialize_journal_changes(pid: c_ushort) {
     unsafe {
         raw::rustInitializeJournalChanges(pid)
     }
@@ -4799,7 +4801,7 @@ pub fn clear_records() {
 ///  Returns the type of records (0 for SPELL, 1 for POTION, 2 for ENCHANTMENT,  
 ///          3 for NPC).
 ///
-pub fn get_record_type() -> u16 {
+pub fn get_record_type() -> c_ushort {
     unsafe {
         raw::rustGetRecordType()
     }
@@ -4811,7 +4813,7 @@ pub fn get_record_type() -> u16 {
 ///
 ///  Returns the number of records.
 ///
-pub fn get_record_count() -> u16 {
+pub fn get_record_count() -> c_uint {
     unsafe {
         raw::rustGetRecordCount()
     }
@@ -4825,7 +4827,7 @@ pub fn get_record_count() -> u16 {
 ///
 ///  Returns the number of effects.
 ///
-pub fn get_record_effect_count(record_index: u16) -> u16 {
+pub fn get_record_effect_count(record_index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetRecordEffectCount(record_index)
     }
@@ -4839,7 +4841,7 @@ pub fn get_record_effect_count(record_index: u16) -> u16 {
 ///
 ///  Returns the id of the record.
 ///
-pub fn get_record_id(index: u16) -> String {
+pub fn get_record_id(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetRecordId(index))
             .to_str()
@@ -4857,7 +4859,7 @@ pub fn get_record_id(index: u16) -> String {
 ///
 ///  Returns the base id of the record.
 ///
-pub fn get_record_base_id(index: u16) -> String {
+pub fn get_record_base_id(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetRecordBaseId(index))
             .to_str()
@@ -4874,7 +4876,7 @@ pub fn get_record_base_id(index: u16) -> String {
 ///
 ///  Returns the type of the record.
 ///
-pub fn get_record_subtype(index: u16) -> i16 {
+pub fn get_record_subtype(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordSubtype(index)
     }
@@ -4888,7 +4890,7 @@ pub fn get_record_subtype(index: u16) -> i16 {
 ///
 ///  Returns the name of the record.
 ///
-pub fn get_record_name(index: u16) -> String {
+pub fn get_record_name(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetRecordName(index))
             .to_str()
@@ -4905,7 +4907,7 @@ pub fn get_record_name(index: u16) -> String {
 ///
 ///  Returns the model of the record.
 ///
-pub fn get_record_model(index: u16) -> String {
+pub fn get_record_model(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetRecordModel(index))
             .to_str()
@@ -4922,7 +4924,7 @@ pub fn get_record_model(index: u16) -> String {
 ///
 ///  Returns the icon of the record.
 ///
-pub fn get_record_icon(index: u16) -> String {
+pub fn get_record_icon(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetRecordIcon(index))
             .to_str()
@@ -4939,7 +4941,7 @@ pub fn get_record_icon(index: u16) -> String {
 ///
 ///  Returns the script of the record.
 ///
-pub fn get_record_script(index: u16) -> String {
+pub fn get_record_script(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetRecordScript(index))
             .to_str()
@@ -4956,7 +4958,7 @@ pub fn get_record_script(index: u16) -> String {
 ///
 ///  Returns the enchantment id of the record.
 ///
-pub fn get_record_enchantment_id(index: u16) -> String {
+pub fn get_record_enchantment_id(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetRecordEnchantmentId(index))
             .to_str()
@@ -4973,7 +4975,7 @@ pub fn get_record_enchantment_id(index: u16) -> String {
 ///
 ///  Returns the enchantment charge of the record.
 ///
-pub fn get_record_enchantment_charge(index: u16) -> i16 {
+pub fn get_record_enchantment_charge(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordEnchantmentCharge(index)
     }
@@ -4987,7 +4989,7 @@ pub fn get_record_enchantment_charge(index: u16) -> i16 {
 ///
 ///  Returns the auto-calculation flag value of the record.
 ///
-pub fn get_record_auto_calc(index: u16) -> i16 {
+pub fn get_record_auto_calc(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordAutoCalc(index)
     }
@@ -5001,7 +5003,7 @@ pub fn get_record_auto_calc(index: u16) -> i16 {
 ///
 ///  Returns the charge of the record.
 ///
-pub fn get_record_charge(index: u16) -> i16 {
+pub fn get_record_charge(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordCharge(index)
     }
@@ -5015,7 +5017,7 @@ pub fn get_record_charge(index: u16) -> i16 {
 ///
 ///  Returns the cost of the record.
 ///
-pub fn get_record_cost(index: u16) -> i16 {
+pub fn get_record_cost(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordCost(index)
     }
@@ -5029,7 +5031,7 @@ pub fn get_record_cost(index: u16) -> i16 {
 ///
 ///  Returns the flags of the spell as an integer.
 ///
-pub fn get_record_flags(index: u16) -> i16 {
+pub fn get_record_flags(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordFlags(index)
     }
@@ -5043,7 +5045,7 @@ pub fn get_record_flags(index: u16) -> i16 {
 ///
 ///  Returns the value of the record.
 ///
-pub fn get_record_value(index: u16) -> i16 {
+pub fn get_record_value(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordValue(index)
     }
@@ -5057,7 +5059,7 @@ pub fn get_record_value(index: u16) -> i16 {
 ///
 ///  Returns the weight of the record.
 ///
-pub fn get_record_weight(index: u16) -> f64 {
+pub fn get_record_weight(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetRecordWeight(index)
     }
@@ -5072,7 +5074,7 @@ pub fn get_record_weight(index: u16) -> f64 {
 ///
 ///  Returns the ID of the effect.
 ///
-pub fn get_record_effect_id(record_index: u16, effect_index: u16) -> u16 {
+pub fn get_record_effect_id(record_index: c_uint, effect_index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetRecordEffectId(record_index, effect_index)
     }
@@ -5087,7 +5089,7 @@ pub fn get_record_effect_id(record_index: u16, effect_index: u16) -> u16 {
 ///
 ///  Returns the attribute ID for the effect.
 ///
-pub fn get_record_effect_attribute(record_index: u16, effect_index: u16) -> i16 {
+pub fn get_record_effect_attribute(record_index: c_uint, effect_index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordEffectAttribute(record_index, effect_index)
     }
@@ -5102,7 +5104,7 @@ pub fn get_record_effect_attribute(record_index: u16, effect_index: u16) -> i16 
 ///
 ///  Returns the skill ID for the effect.
 ///
-pub fn get_record_effect_skill(record_index: u16, effect_index: u16) -> i16 {
+pub fn get_record_effect_skill(record_index: c_uint, effect_index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordEffectSkill(record_index, effect_index)
     }
@@ -5117,7 +5119,7 @@ pub fn get_record_effect_skill(record_index: u16, effect_index: u16) -> i16 {
 ///
 ///  Returns the range of the effect.
 ///
-pub fn get_record_effect_range_type(record_index: u16, effect_index: u16) -> u16 {
+pub fn get_record_effect_range_type(record_index: c_uint, effect_index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetRecordEffectRangeType(record_index, effect_index)
     }
@@ -5132,7 +5134,7 @@ pub fn get_record_effect_range_type(record_index: u16, effect_index: u16) -> u16
 ///
 ///  Returns the area of the effect.
 ///
-pub fn get_record_effect_area(record_index: u16, effect_index: u16) -> i16 {
+pub fn get_record_effect_area(record_index: c_uint, effect_index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordEffectArea(record_index, effect_index)
     }
@@ -5147,7 +5149,7 @@ pub fn get_record_effect_area(record_index: u16, effect_index: u16) -> i16 {
 ///
 ///  Returns the duration of the effect.
 ///
-pub fn get_record_effect_duration(record_index: u16, effect_index: u16) -> i16 {
+pub fn get_record_effect_duration(record_index: c_uint, effect_index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordEffectDuration(record_index, effect_index)
     }
@@ -5162,7 +5164,7 @@ pub fn get_record_effect_duration(record_index: u16, effect_index: u16) -> i16 {
 ///
 ///  Returns the maximum magnitude of the effect.
 ///
-pub fn get_record_effect_magnitude_max(record_index: u16, effect_index: u16) -> i16 {
+pub fn get_record_effect_magnitude_max(record_index: c_uint, effect_index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordEffectMagnitudeMax(record_index, effect_index)
     }
@@ -5177,7 +5179,7 @@ pub fn get_record_effect_magnitude_max(record_index: u16, effect_index: u16) -> 
 ///
 ///  Returns the minimum magnitude of the effect.
 ///
-pub fn get_record_effect_magnitude_min(record_index: u16, effect_index: u16) -> i16 {
+pub fn get_record_effect_magnitude_min(record_index: c_uint, effect_index: c_uint) -> c_int {
     unsafe {
         raw::rustGetRecordEffectMagnitudeMin(record_index, effect_index)
     }
@@ -5191,7 +5193,7 @@ pub fn get_record_effect_magnitude_min(record_index: u16, effect_index: u16) -> 
 ///
 ///  Returns void
 ///
-pub fn set_record_type(_type: u16) {
+pub fn set_record_type(_type: c_uint) {
     unsafe {
         raw::rustSetRecordType(_type)
     }
@@ -5249,7 +5251,7 @@ pub fn set_record_inventory_base_id(inventory_base_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_record_subtype(subtype: u16) {
+pub fn set_record_subtype(subtype: c_uint) {
     unsafe {
         raw::rustSetRecordSubtype(subtype)
     }
@@ -5333,7 +5335,7 @@ pub fn set_record_enchantment_id(enchantment_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_record_enchantment_charge(enchantment_charge: i16) {
+pub fn set_record_enchantment_charge(enchantment_charge: c_int) {
     unsafe {
         raw::rustSetRecordEnchantmentCharge(enchantment_charge)
     }
@@ -5347,7 +5349,7 @@ pub fn set_record_enchantment_charge(enchantment_charge: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_auto_calc(auto_calc: i16) {
+pub fn set_record_auto_calc(auto_calc: c_int) {
     unsafe {
         raw::rustSetRecordAutoCalc(auto_calc)
     }
@@ -5361,7 +5363,7 @@ pub fn set_record_auto_calc(auto_calc: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_charge(charge: i16) {
+pub fn set_record_charge(charge: c_int) {
     unsafe {
         raw::rustSetRecordCharge(charge)
     }
@@ -5375,7 +5377,7 @@ pub fn set_record_charge(charge: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_cost(cost: i16) {
+pub fn set_record_cost(cost: c_int) {
     unsafe {
         raw::rustSetRecordCost(cost)
     }
@@ -5389,7 +5391,7 @@ pub fn set_record_cost(cost: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_flags(flags: i16) {
+pub fn set_record_flags(flags: c_int) {
     unsafe {
         raw::rustSetRecordFlags(flags)
     }
@@ -5403,7 +5405,7 @@ pub fn set_record_flags(flags: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_value(value: i16) {
+pub fn set_record_value(value: c_int) {
     unsafe {
         raw::rustSetRecordValue(value)
     }
@@ -5417,7 +5419,7 @@ pub fn set_record_value(value: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_weight(weight: f64) {
+pub fn set_record_weight(weight: c_double) {
     unsafe {
         raw::rustSetRecordWeight(weight)
     }
@@ -5431,7 +5433,7 @@ pub fn set_record_weight(weight: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_record_quality(quality: f64) {
+pub fn set_record_quality(quality: c_double) {
     unsafe {
         raw::rustSetRecordQuality(quality)
     }
@@ -5445,7 +5447,7 @@ pub fn set_record_quality(quality: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_record_uses(uses: i16) {
+pub fn set_record_uses(uses: c_int) {
     unsafe {
         raw::rustSetRecordUses(uses)
     }
@@ -5459,7 +5461,7 @@ pub fn set_record_uses(uses: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_time(time: i16) {
+pub fn set_record_time(time: c_int) {
     unsafe {
         raw::rustSetRecordTime(time)
     }
@@ -5473,7 +5475,7 @@ pub fn set_record_time(time: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_radius(radius: i16) {
+pub fn set_record_radius(radius: c_int) {
     unsafe {
         raw::rustSetRecordRadius(radius)
     }
@@ -5487,7 +5489,7 @@ pub fn set_record_radius(radius: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_color(red: u16, green: u16, blue: u16) {
+pub fn set_record_color(red: c_uint, green: c_uint, blue: c_uint) {
     unsafe {
         raw::rustSetRecordColor(red, green, blue)
     }
@@ -5501,7 +5503,7 @@ pub fn set_record_color(red: u16, green: u16, blue: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_armor_rating(armor_rating: i16) {
+pub fn set_record_armor_rating(armor_rating: c_int) {
     unsafe {
         raw::rustSetRecordArmorRating(armor_rating)
     }
@@ -5515,7 +5517,7 @@ pub fn set_record_armor_rating(armor_rating: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_health(health: i16) {
+pub fn set_record_health(health: c_int) {
     unsafe {
         raw::rustSetRecordHealth(health)
     }
@@ -5530,7 +5532,7 @@ pub fn set_record_health(health: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_damage_chop(min_damage: u16, max_damage: u16) {
+pub fn set_record_damage_chop(min_damage: c_uint, max_damage: c_uint) {
     unsafe {
         raw::rustSetRecordDamageChop(min_damage, max_damage)
     }
@@ -5545,7 +5547,7 @@ pub fn set_record_damage_chop(min_damage: u16, max_damage: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_damage_slash(min_damage: u16, max_damage: u16) {
+pub fn set_record_damage_slash(min_damage: c_uint, max_damage: c_uint) {
     unsafe {
         raw::rustSetRecordDamageSlash(min_damage, max_damage)
     }
@@ -5560,7 +5562,7 @@ pub fn set_record_damage_slash(min_damage: u16, max_damage: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_damage_thrust(min_damage: u16, max_damage: u16) {
+pub fn set_record_damage_thrust(min_damage: c_uint, max_damage: c_uint) {
     unsafe {
         raw::rustSetRecordDamageThrust(min_damage, max_damage)
     }
@@ -5574,7 +5576,7 @@ pub fn set_record_damage_thrust(min_damage: u16, max_damage: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_reach(reach: f64) {
+pub fn set_record_reach(reach: c_double) {
     unsafe {
         raw::rustSetRecordReach(reach)
     }
@@ -5588,7 +5590,7 @@ pub fn set_record_reach(reach: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_record_speed(speed: f64) {
+pub fn set_record_speed(speed: c_double) {
     unsafe {
         raw::rustSetRecordSpeed(speed)
     }
@@ -5634,7 +5636,7 @@ pub fn set_record_scroll_state(scroll_state: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_record_skill_id(skill_id: i16) {
+pub fn set_record_skill_id(skill_id: c_int) {
     unsafe {
         raw::rustSetRecordSkillId(skill_id)
     }
@@ -5690,7 +5692,7 @@ pub fn set_record_head(head: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_record_gender(gender: u16) {
+pub fn set_record_gender(gender: c_uint) {
     unsafe {
         raw::rustSetRecordGender(gender)
     }
@@ -5746,7 +5748,7 @@ pub fn set_record_faction(faction: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_record_scale(scale: f64) {
+pub fn set_record_scale(scale: c_double) {
     unsafe {
         raw::rustSetRecordScale(scale)
     }
@@ -5760,7 +5762,7 @@ pub fn set_record_scale(scale: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_record_blood_type(blood_type: i16) {
+pub fn set_record_blood_type(blood_type: c_int) {
     unsafe {
         raw::rustSetRecordBloodType(blood_type)
     }
@@ -5774,7 +5776,7 @@ pub fn set_record_blood_type(blood_type: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_level(level: i16) {
+pub fn set_record_level(level: c_int) {
     unsafe {
         raw::rustSetRecordLevel(level)
     }
@@ -5788,7 +5790,7 @@ pub fn set_record_level(level: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_magicka(magicka: i16) {
+pub fn set_record_magicka(magicka: c_int) {
     unsafe {
         raw::rustSetRecordMagicka(magicka)
     }
@@ -5802,7 +5804,7 @@ pub fn set_record_magicka(magicka: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_fatigue(fatigue: i16) {
+pub fn set_record_fatigue(fatigue: c_int) {
     unsafe {
         raw::rustSetRecordFatigue(fatigue)
     }
@@ -5816,7 +5818,7 @@ pub fn set_record_fatigue(fatigue: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_ai_fight(ai_fight: i16) {
+pub fn set_record_ai_fight(ai_fight: c_int) {
     unsafe {
         raw::rustSetRecordAIFight(ai_fight)
     }
@@ -5830,7 +5832,7 @@ pub fn set_record_ai_fight(ai_fight: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_ai_flee(ai_flee: i16) {
+pub fn set_record_ai_flee(ai_flee: c_int) {
     unsafe {
         raw::rustSetRecordAIFlee(ai_flee)
     }
@@ -5844,7 +5846,7 @@ pub fn set_record_ai_flee(ai_flee: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_ai_alarm(ai_alarm: i16) {
+pub fn set_record_ai_alarm(ai_alarm: c_int) {
     unsafe {
         raw::rustSetRecordAIAlarm(ai_alarm)
     }
@@ -5858,7 +5860,7 @@ pub fn set_record_ai_alarm(ai_alarm: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_ai_services(ai_services: i16) {
+pub fn set_record_ai_services(ai_services: c_int) {
     unsafe {
         raw::rustSetRecordAIServices(ai_services)
     }
@@ -5931,7 +5933,7 @@ pub fn set_record_script_text(script_text: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_record_id_by_index(index: u16, id: &str) {
+pub fn set_record_id_by_index(index: c_uint, id: &str) {
     unsafe {
         raw::rustSetRecordIdByIndex(index, CString::new(id).unwrap_or_default().as_ptr())
     }
@@ -5949,7 +5951,7 @@ pub fn set_record_id_by_index(index: u16, id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_record_enchantment_id_by_index(index: u16, enchantment_id: &str) {
+pub fn set_record_enchantment_id_by_index(index: c_uint, enchantment_id: &str) {
     unsafe {
         raw::rustSetRecordEnchantmentIdByIndex(index, CString::new(enchantment_id).unwrap_or_default().as_ptr())
     }
@@ -5962,7 +5964,7 @@ pub fn set_record_enchantment_id_by_index(index: u16, enchantment_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_record_effect_id(effect_id: u16) {
+pub fn set_record_effect_id(effect_id: c_uint) {
     unsafe {
         raw::rustSetRecordEffectId(effect_id)
     }
@@ -5976,7 +5978,7 @@ pub fn set_record_effect_id(effect_id: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_effect_attribute(attribute_id: i16) {
+pub fn set_record_effect_attribute(attribute_id: c_int) {
     unsafe {
         raw::rustSetRecordEffectAttribute(attribute_id)
     }
@@ -5990,7 +5992,7 @@ pub fn set_record_effect_attribute(attribute_id: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_effect_skill(skill_id: i16) {
+pub fn set_record_effect_skill(skill_id: c_int) {
     unsafe {
         raw::rustSetRecordEffectSkill(skill_id)
     }
@@ -6004,7 +6006,7 @@ pub fn set_record_effect_skill(skill_id: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_effect_range_type(range_type: u16) {
+pub fn set_record_effect_range_type(range_type: c_uint) {
     unsafe {
         raw::rustSetRecordEffectRangeType(range_type)
     }
@@ -6017,7 +6019,7 @@ pub fn set_record_effect_range_type(range_type: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_effect_area(area: i16) {
+pub fn set_record_effect_area(area: c_int) {
     unsafe {
         raw::rustSetRecordEffectArea(area)
     }
@@ -6030,7 +6032,7 @@ pub fn set_record_effect_area(area: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_effect_duration(duration: i16) {
+pub fn set_record_effect_duration(duration: c_int) {
     unsafe {
         raw::rustSetRecordEffectDuration(duration)
     }
@@ -6043,7 +6045,7 @@ pub fn set_record_effect_duration(duration: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_effect_magnitude_max(magnitude_max: i16) {
+pub fn set_record_effect_magnitude_max(magnitude_max: c_int) {
     unsafe {
         raw::rustSetRecordEffectMagnitudeMax(magnitude_max)
     }
@@ -6056,7 +6058,7 @@ pub fn set_record_effect_magnitude_max(magnitude_max: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_effect_magnitude_min(magnitude_min: i16) {
+pub fn set_record_effect_magnitude_min(magnitude_min: c_int) {
     unsafe {
         raw::rustSetRecordEffectMagnitudeMin(magnitude_min)
     }
@@ -6069,7 +6071,7 @@ pub fn set_record_effect_magnitude_min(magnitude_min: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_record_body_part_type(part_type: u16) {
+pub fn set_record_body_part_type(part_type: c_uint) {
     unsafe {
         raw::rustSetRecordBodyPartType(part_type)
     }
@@ -6123,7 +6125,7 @@ pub fn set_record_inventory_item_id(item_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_record_inventory_item_count(count: u16) {
+pub fn set_record_inventory_item_count(count: c_uint) {
     unsafe {
         raw::rustSetRecordInventoryItemCount(count)
     }
@@ -6207,7 +6209,7 @@ pub fn add_record_inventory_item() {
 ///
 ///  Returns void
 ///
-pub fn send_record_dynamic(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_record_dynamic(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendRecordDynamic(pid, send_to_other_players, skip_attached_player)
     }
@@ -6220,7 +6222,7 @@ pub fn send_record_dynamic(pid: u16, send_to_other_players: bool, skip_attached_
 ///
 ///  Returns the scale.
 ///
-pub fn get_scale(pid: u16) -> f64 {
+pub fn get_scale(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetScale(pid)
     }
@@ -6235,7 +6237,7 @@ pub fn get_scale(pid: u16) -> f64 {
 ///
 ///  Returns the werewolf state.
 ///
-pub fn is_werewolf(pid: u16) -> bool {
+pub fn is_werewolf(pid: c_ushort) -> bool {
     unsafe {
         raw::rustIsWerewolf(pid)
     }
@@ -6248,7 +6250,7 @@ pub fn is_werewolf(pid: u16) -> bool {
 ///
 ///  Returns the creature refId.
 ///
-pub fn get_creature_ref_id(pid: u16) -> String {
+pub fn get_creature_ref_id(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetCreatureRefId(pid))
             .to_str()
@@ -6267,7 +6269,7 @@ pub fn get_creature_ref_id(pid: u16) -> String {
 ///
 ///  Returns the creature name display state.
 ///
-pub fn get_creature_name_display_state(pid: u16) -> bool {
+pub fn get_creature_name_display_state(pid: c_ushort) -> bool {
     unsafe {
         raw::rustGetCreatureNameDisplayState(pid)
     }
@@ -6284,7 +6286,7 @@ pub fn get_creature_name_display_state(pid: u16) -> bool {
 ///
 ///  Returns void
 ///
-pub fn set_scale(pid: u16, scale: f64) {
+pub fn set_scale(pid: c_ushort, scale: c_double) {
     unsafe {
         raw::rustSetScale(pid, scale)
     }
@@ -6301,7 +6303,7 @@ pub fn set_scale(pid: u16, scale: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_werewolf_state(pid: u16, is_werewolf: bool) {
+pub fn set_werewolf_state(pid: c_ushort, is_werewolf: bool) {
     unsafe {
         raw::rustSetWerewolfState(pid, is_werewolf)
     }
@@ -6320,7 +6322,7 @@ pub fn set_werewolf_state(pid: u16, is_werewolf: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_creature_ref_id(pid: u16, ref_id: &str) {
+pub fn set_creature_ref_id(pid: c_ushort, ref_id: &str) {
     unsafe {
         raw::rustSetCreatureRefId(pid, CString::new(ref_id).unwrap_or_default().as_ptr())
     }
@@ -6335,7 +6337,7 @@ pub fn set_creature_ref_id(pid: u16, ref_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_creature_name_display_state(pid: u16, display_state: bool) {
+pub fn set_creature_name_display_state(pid: c_ushort, display_state: bool) {
     unsafe {
         raw::rustSetCreatureNameDisplayState(pid, display_state)
     }
@@ -6351,7 +6353,7 @@ pub fn set_creature_name_display_state(pid: u16, display_state: bool) {
 ///
 ///  Returns void
 ///
-pub fn send_shapeshift(pid: u16) {
+pub fn send_shapeshift(pid: c_ushort) {
     unsafe {
         raw::rustSendShapeshift(pid)
     }
@@ -6368,7 +6370,7 @@ pub fn send_shapeshift(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn log_message(level: u16, message: &str) {
+pub fn log_message(level: c_ushort, message: &str) {
     unsafe {
         raw::rustLogMessage(level, CString::new(message).unwrap_or_default().as_ptr())
     }
@@ -6385,7 +6387,7 @@ pub fn log_message(level: u16, message: &str) {
 ///
 ///  Returns void
 ///
-pub fn log_append(level: u16, message: &str) {
+pub fn log_append(level: c_ushort, message: &str) {
     unsafe {
         raw::rustLogAppend(level, CString::new(message).unwrap_or_default().as_ptr())
     }
@@ -6398,7 +6400,7 @@ pub fn log_append(level: u16, message: &str) {
 ///
 ///  Returns void
 ///
-pub fn stop_server(code: i16) {
+pub fn stop_server(code: c_int) {
     unsafe {
         raw::rustStopServer(code)
     }
@@ -6411,7 +6413,7 @@ pub fn stop_server(code: i16) {
 ///
 ///  Returns void
 ///
-pub fn kick(pid: u16) {
+pub fn kick(pid: c_ushort) {
     unsafe {
         raw::rustKick(pid)
     }
@@ -6498,7 +6500,7 @@ pub fn get_data_path() -> String {
 ///
 ///  Returns the time since the server's startup in milliseconds.
 ///
-pub fn get_milliseconds_since_server_start() -> u16 {
+pub fn get_milliseconds_since_server_start() -> c_uint {
     unsafe {
         raw::rustGetMillisecondsSinceServerStart()
     }
@@ -6575,7 +6577,7 @@ pub fn get_protocol_version() -> String {
 ///
 ///  Returns the average ping.
 ///
-pub fn get_avg_ping(pid: u16) -> i16 {
+pub fn get_avg_ping(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetAvgPing(pid)
     }
@@ -6588,7 +6590,7 @@ pub fn get_avg_ping(pid: u16) -> i16 {
 ///
 ///  Returns the IP address.
 ///
-pub fn get_ip(pid: u16) -> String {
+pub fn get_ip(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetIP(pid))
             .to_str()
@@ -6603,7 +6605,7 @@ pub fn get_ip(pid: u16) -> String {
 ///
 ///  Returns max players
 ///
-pub fn get_max_players() -> u16 {
+pub fn get_max_players() -> c_uint {
     unsafe {
         raw::rustGetMaxPlayers()
     }
@@ -6615,7 +6617,7 @@ pub fn get_max_players() -> u16 {
 ///
 ///  Returns the port.
 ///
-pub fn get_port() -> u16 {
+pub fn get_port() -> c_ushort {
     unsafe {
         raw::rustGetPort()
     }
@@ -6753,7 +6755,7 @@ pub fn set_rule_string(key: &str, value: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_rule_value(key: &str, value: f64) {
+pub fn set_rule_value(key: &str, value: c_double) {
     unsafe {
         raw::rustSetRuleValue(CString::new(key).unwrap_or_default().as_ptr(), value)
     }
@@ -6821,7 +6823,7 @@ pub fn add_plugin_hash(plugin_name: &str, checksum_string: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_difficulty(pid: u16, difficulty: i16) {
+pub fn set_difficulty(pid: c_ushort, difficulty: c_int) {
     unsafe {
         raw::rustSetDifficulty(pid, difficulty)
     }
@@ -6844,7 +6846,7 @@ pub fn set_difficulty(pid: u16, difficulty: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_enforced_log_level(pid: u16, enforced_log_level: i16) {
+pub fn set_enforced_log_level(pid: c_ushort, enforced_log_level: c_int) {
     unsafe {
         raw::rustSetEnforcedLogLevel(pid, enforced_log_level)
     }
@@ -6861,7 +6863,7 @@ pub fn set_enforced_log_level(pid: u16, enforced_log_level: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_physics_framerate(pid: u16, physics_framerate: f64) {
+pub fn set_physics_framerate(pid: c_ushort, physics_framerate: c_double) {
     unsafe {
         raw::rustSetPhysicsFramerate(pid, physics_framerate)
     }
@@ -6878,7 +6880,7 @@ pub fn set_physics_framerate(pid: u16, physics_framerate: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_console_allowed(pid: u16, state: bool) {
+pub fn set_console_allowed(pid: c_ushort, state: bool) {
     unsafe {
         raw::rustSetConsoleAllowed(pid, state)
     }
@@ -6895,7 +6897,7 @@ pub fn set_console_allowed(pid: u16, state: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_bed_rest_allowed(pid: u16, state: bool) {
+pub fn set_bed_rest_allowed(pid: c_ushort, state: bool) {
     unsafe {
         raw::rustSetBedRestAllowed(pid, state)
     }
@@ -6912,7 +6914,7 @@ pub fn set_bed_rest_allowed(pid: u16, state: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_wilderness_rest_allowed(pid: u16, state: bool) {
+pub fn set_wilderness_rest_allowed(pid: c_ushort, state: bool) {
     unsafe {
         raw::rustSetWildernessRestAllowed(pid, state)
     }
@@ -6929,7 +6931,7 @@ pub fn set_wilderness_rest_allowed(pid: u16, state: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_wait_allowed(pid: u16, state: bool) {
+pub fn set_wait_allowed(pid: c_ushort, state: bool) {
     unsafe {
         raw::rustSetWaitAllowed(pid, state)
     }
@@ -6942,7 +6944,7 @@ pub fn set_wait_allowed(pid: u16, state: bool) {
 ///
 ///  Returns void
 ///
-pub fn send_settings(pid: u16) {
+pub fn send_settings(pid: c_ushort) {
     unsafe {
         raw::rustSendSettings(pid)
     }
@@ -6957,7 +6959,7 @@ pub fn send_settings(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn clear_spellbook_changes(pid: u16) {
+pub fn clear_spellbook_changes(pid: c_ushort) {
     unsafe {
         raw::rustClearSpellbookChanges(pid)
     }
@@ -6970,7 +6972,7 @@ pub fn clear_spellbook_changes(pid: u16) {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_spellbook_changes_size(pid: u16) -> u16 {
+pub fn get_spellbook_changes_size(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetSpellbookChangesSize(pid)
     }
@@ -6983,7 +6985,7 @@ pub fn get_spellbook_changes_size(pid: u16) -> u16 {
 ///
 ///  Returns the action type (0 for SET, 1 for ADD, 2 for REMOVE).
 ///
-pub fn get_spellbook_changes_action(pid: u16) -> u16 {
+pub fn get_spellbook_changes_action(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetSpellbookChangesAction(pid)
     }
@@ -6997,7 +6999,7 @@ pub fn get_spellbook_changes_action(pid: u16) -> u16 {
 ///
 ///  Returns void
 ///
-pub fn set_spellbook_changes_action(pid: u16, action: u8) {
+pub fn set_spellbook_changes_action(pid: c_ushort, action: c_uchar) {
     unsafe {
         raw::rustSetSpellbookChangesAction(pid, action)
     }
@@ -7011,7 +7013,7 @@ pub fn set_spellbook_changes_action(pid: u16, action: u8) {
 ///
 ///  Returns void
 ///
-pub fn add_spell(pid: u16, spell_id: &str) {
+pub fn add_spell(pid: c_ushort, spell_id: &str) {
     unsafe {
         raw::rustAddSpell(pid, CString::new(spell_id).unwrap_or_default().as_ptr())
     }
@@ -7025,7 +7027,7 @@ pub fn add_spell(pid: u16, spell_id: &str) {
 ///
 ///  Returns the spellId.
 ///
-pub fn get_spell_id(pid: u16, index: u16) -> String {
+pub fn get_spell_id(pid: c_ushort, index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetSpellId(pid, index))
             .to_str()
@@ -7045,13 +7047,13 @@ pub fn get_spell_id(pid: u16, index: u16) -> String {
 ///
 ///  Returns void
 ///
-pub fn send_spellbook_changes(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_spellbook_changes(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendSpellbookChanges(pid, send_to_other_players, skip_attached_player)
     }
 }
 
-pub fn initialize_spellbook_changes(pid: u16) {
+pub fn initialize_spellbook_changes(pid: c_ushort) {
     unsafe {
         raw::rustInitializeSpellbookChanges(pid)
     }
@@ -7065,7 +7067,7 @@ pub fn initialize_spellbook_changes(pid: u16) {
 ///
 ///  Returns the number of attributes.
 ///
-pub fn get_attribute_count() -> i16 {
+pub fn get_attribute_count() -> c_int {
     unsafe {
         raw::rustGetAttributeCount()
     }
@@ -7079,7 +7081,7 @@ pub fn get_attribute_count() -> i16 {
 ///
 ///  Returns the number of skills.
 ///
-pub fn get_skill_count() -> i16 {
+pub fn get_skill_count() -> c_int {
     unsafe {
         raw::rustGetSkillCount()
     }
@@ -7094,7 +7096,7 @@ pub fn get_skill_count() -> i16 {
 ///
 ///  Returns the ID of the attribute.
 ///
-pub fn get_attribute_id(name: &str) -> i16 {
+pub fn get_attribute_id(name: &str) -> c_int {
     unsafe {
         raw::rustGetAttributeId(CString::new(name).unwrap_or_default().as_ptr())
     }
@@ -7109,7 +7111,7 @@ pub fn get_attribute_id(name: &str) -> i16 {
 ///
 ///  Returns the ID of the skill.
 ///
-pub fn get_skill_id(name: &str) -> i16 {
+pub fn get_skill_id(name: &str) -> c_int {
     unsafe {
         raw::rustGetSkillId(CString::new(name).unwrap_or_default().as_ptr())
     }
@@ -7124,7 +7126,7 @@ pub fn get_skill_id(name: &str) -> i16 {
 ///
 ///  Returns the name of the attribute.
 ///
-pub fn get_attribute_name(attribute_id: u16) -> String {
+pub fn get_attribute_name(attribute_id: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetAttributeName(attribute_id))
             .to_str()
@@ -7142,7 +7144,7 @@ pub fn get_attribute_name(attribute_id: u16) -> String {
 ///
 ///  Returns the name of the skill.
 ///
-pub fn get_skill_name(skill_id: u16) -> String {
+pub fn get_skill_name(skill_id: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetSkillName(skill_id))
             .to_str()
@@ -7158,7 +7160,7 @@ pub fn get_skill_name(skill_id: u16) -> String {
 ///
 ///  Returns the name of the player.
 ///
-pub fn get_name(pid: u16) -> String {
+pub fn get_name(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetName(pid))
             .to_str()
@@ -7174,7 +7176,7 @@ pub fn get_name(pid: u16) -> String {
 ///
 ///  Returns the race of the player.
 ///
-pub fn get_race(pid: u16) -> String {
+pub fn get_race(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetRace(pid))
             .to_str()
@@ -7190,7 +7192,7 @@ pub fn get_race(pid: u16) -> String {
 ///
 ///  Returns the head mesh of the player.
 ///
-pub fn get_head(pid: u16) -> String {
+pub fn get_head(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetHead(pid))
             .to_str()
@@ -7206,7 +7208,7 @@ pub fn get_head(pid: u16) -> String {
 ///
 ///  Returns the hairstyle mesh of the player.
 ///
-pub fn get_hair(pid: u16) -> String {
+pub fn get_hair(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetHair(pid))
             .to_str()
@@ -7222,7 +7224,7 @@ pub fn get_hair(pid: u16) -> String {
 ///
 ///  Returns whether the player is male.
 ///
-pub fn get_is_male(pid: u16) -> i16 {
+pub fn get_is_male(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetIsMale(pid)
     }
@@ -7235,7 +7237,7 @@ pub fn get_is_male(pid: u16) -> i16 {
 ///
 ///  Returns the birthsign of the player.
 ///
-pub fn get_birthsign(pid: u16) -> String {
+pub fn get_birthsign(pid: c_ushort) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetBirthsign(pid))
             .to_str()
@@ -7251,7 +7253,7 @@ pub fn get_birthsign(pid: u16) -> String {
 ///
 ///  Returns the level of the player.
 ///
-pub fn get_level(pid: u16) -> i16 {
+pub fn get_level(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetLevel(pid)
     }
@@ -7264,7 +7266,7 @@ pub fn get_level(pid: u16) -> i16 {
 ///
 ///  Returns the level progress.
 ///
-pub fn get_level_progress(pid: u16) -> i16 {
+pub fn get_level_progress(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetLevelProgress(pid)
     }
@@ -7277,7 +7279,7 @@ pub fn get_level_progress(pid: u16) -> i16 {
 ///
 ///  Returns the base health.
 ///
-pub fn get_health_base(pid: u16) -> f64 {
+pub fn get_health_base(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetHealthBase(pid)
     }
@@ -7290,7 +7292,7 @@ pub fn get_health_base(pid: u16) -> f64 {
 ///
 ///  Returns the current health.
 ///
-pub fn get_health_current(pid: u16) -> f64 {
+pub fn get_health_current(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetHealthCurrent(pid)
     }
@@ -7303,7 +7305,7 @@ pub fn get_health_current(pid: u16) -> f64 {
 ///
 ///  Returns the base magicka.
 ///
-pub fn get_magicka_base(pid: u16) -> f64 {
+pub fn get_magicka_base(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetMagickaBase(pid)
     }
@@ -7316,7 +7318,7 @@ pub fn get_magicka_base(pid: u16) -> f64 {
 ///
 ///  Returns the current magicka.
 ///
-pub fn get_magicka_current(pid: u16) -> f64 {
+pub fn get_magicka_current(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetMagickaCurrent(pid)
     }
@@ -7329,7 +7331,7 @@ pub fn get_magicka_current(pid: u16) -> f64 {
 ///
 ///  Returns the base fatigue.
 ///
-pub fn get_fatigue_base(pid: u16) -> f64 {
+pub fn get_fatigue_base(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetFatigueBase(pid)
     }
@@ -7342,7 +7344,7 @@ pub fn get_fatigue_base(pid: u16) -> f64 {
 ///
 ///  Returns the current fatigue.
 ///
-pub fn get_fatigue_current(pid: u16) -> f64 {
+pub fn get_fatigue_current(pid: c_ushort) -> c_double {
     unsafe {
         raw::rustGetFatigueCurrent(pid)
     }
@@ -7356,7 +7358,7 @@ pub fn get_fatigue_current(pid: u16) -> f64 {
 ///
 ///  Returns the base value of the attribute.
 ///
-pub fn get_attribute_base(pid: u16, attribute_id: u16) -> i16 {
+pub fn get_attribute_base(pid: c_ushort, attribute_id: c_ushort) -> c_int {
     unsafe {
         raw::rustGetAttributeBase(pid, attribute_id)
     }
@@ -7370,7 +7372,7 @@ pub fn get_attribute_base(pid: u16, attribute_id: u16) -> i16 {
 ///
 ///  Returns the modifier value of the attribute.
 ///
-pub fn get_attribute_modifier(pid: u16, attribute_id: u16) -> i16 {
+pub fn get_attribute_modifier(pid: c_ushort, attribute_id: c_ushort) -> c_int {
     unsafe {
         raw::rustGetAttributeModifier(pid, attribute_id)
     }
@@ -7385,7 +7387,7 @@ pub fn get_attribute_modifier(pid: u16, attribute_id: u16) -> i16 {
 ///
 ///  Returns the amount of damage to the attribute.
 ///
-pub fn get_attribute_damage(pid: u16, attribute_id: u16) -> f64 {
+pub fn get_attribute_damage(pid: c_ushort, attribute_id: c_ushort) -> c_double {
     unsafe {
         raw::rustGetAttributeDamage(pid, attribute_id)
     }
@@ -7399,7 +7401,7 @@ pub fn get_attribute_damage(pid: u16, attribute_id: u16) -> f64 {
 ///
 ///  Returns the base value of the skill.
 ///
-pub fn get_skill_base(pid: u16, skill_id: u16) -> i16 {
+pub fn get_skill_base(pid: c_ushort, skill_id: c_ushort) -> c_int {
     unsafe {
         raw::rustGetSkillBase(pid, skill_id)
     }
@@ -7413,7 +7415,7 @@ pub fn get_skill_base(pid: u16, skill_id: u16) -> i16 {
 ///
 ///  Returns the modifier value of the skill.
 ///
-pub fn get_skill_modifier(pid: u16, skill_id: u16) -> i16 {
+pub fn get_skill_modifier(pid: c_ushort, skill_id: c_ushort) -> c_int {
     unsafe {
         raw::rustGetSkillModifier(pid, skill_id)
     }
@@ -7428,7 +7430,7 @@ pub fn get_skill_modifier(pid: u16, skill_id: u16) -> i16 {
 ///
 ///  Returns the amount of damage to the skill.
 ///
-pub fn get_skill_damage(pid: u16, skill_id: u16) -> f64 {
+pub fn get_skill_damage(pid: c_ushort, skill_id: c_ushort) -> c_double {
     unsafe {
         raw::rustGetSkillDamage(pid, skill_id)
     }
@@ -7442,7 +7444,7 @@ pub fn get_skill_damage(pid: u16, skill_id: u16) -> f64 {
 ///
 ///  Returns the skill progress.
 ///
-pub fn get_skill_progress(pid: u16, skill_id: u16) -> f64 {
+pub fn get_skill_progress(pid: c_ushort, skill_id: c_ushort) -> c_double {
     unsafe {
         raw::rustGetSkillProgress(pid, skill_id)
     }
@@ -7459,7 +7461,7 @@ pub fn get_skill_progress(pid: u16, skill_id: u16) -> f64 {
 ///
 ///  Returns the increase in the attribute caused by skills.
 ///
-pub fn get_skill_increase(pid: u16, attribute_id: u16) -> i16 {
+pub fn get_skill_increase(pid: c_ushort, attribute_id: c_uint) -> c_int {
     unsafe {
         raw::rustGetSkillIncrease(pid, attribute_id)
     }
@@ -7472,7 +7474,7 @@ pub fn get_skill_increase(pid: u16, attribute_id: u16) -> i16 {
 ///
 ///  Returns the bounty.
 ///
-pub fn get_bounty(pid: u16) -> i16 {
+pub fn get_bounty(pid: c_ushort) -> c_int {
     unsafe {
         raw::rustGetBounty(pid)
     }
@@ -7486,7 +7488,7 @@ pub fn get_bounty(pid: u16) -> i16 {
 ///
 ///  Returns void
 ///
-pub fn set_name(pid: u16, name: &str) {
+pub fn set_name(pid: c_ushort, name: &str) {
     unsafe {
         raw::rustSetName(pid, CString::new(name).unwrap_or_default().as_ptr())
     }
@@ -7500,7 +7502,7 @@ pub fn set_name(pid: u16, name: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_race(pid: u16, race: &str) {
+pub fn set_race(pid: c_ushort, race: &str) {
     unsafe {
         raw::rustSetRace(pid, CString::new(race).unwrap_or_default().as_ptr())
     }
@@ -7514,7 +7516,7 @@ pub fn set_race(pid: u16, race: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_head(pid: u16, head: &str) {
+pub fn set_head(pid: c_ushort, head: &str) {
     unsafe {
         raw::rustSetHead(pid, CString::new(head).unwrap_or_default().as_ptr())
     }
@@ -7528,7 +7530,7 @@ pub fn set_head(pid: u16, head: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_hair(pid: u16, hairstyle: &str) {
+pub fn set_hair(pid: c_ushort, hairstyle: &str) {
     unsafe {
         raw::rustSetHair(pid, CString::new(hairstyle).unwrap_or_default().as_ptr())
     }
@@ -7542,7 +7544,7 @@ pub fn set_hair(pid: u16, hairstyle: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_is_male(pid: u16, state: i16) {
+pub fn set_is_male(pid: c_ushort, state: c_int) {
     unsafe {
         raw::rustSetIsMale(pid, state)
     }
@@ -7556,7 +7558,7 @@ pub fn set_is_male(pid: u16, state: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_birthsign(pid: u16, name: &str) {
+pub fn set_birthsign(pid: c_ushort, name: &str) {
     unsafe {
         raw::rustSetBirthsign(pid, CString::new(name).unwrap_or_default().as_ptr())
     }
@@ -7574,7 +7576,7 @@ pub fn set_birthsign(pid: u16, name: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_reset_stats(pid: u16, reset_stats: bool) {
+pub fn set_reset_stats(pid: c_ushort, reset_stats: bool) {
     unsafe {
         raw::rustSetResetStats(pid, reset_stats)
     }
@@ -7588,7 +7590,7 @@ pub fn set_reset_stats(pid: u16, reset_stats: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_level(pid: u16, value: i16) {
+pub fn set_level(pid: c_ushort, value: c_int) {
     unsafe {
         raw::rustSetLevel(pid, value)
     }
@@ -7602,7 +7604,7 @@ pub fn set_level(pid: u16, value: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_level_progress(pid: u16, value: i16) {
+pub fn set_level_progress(pid: c_ushort, value: c_int) {
     unsafe {
         raw::rustSetLevelProgress(pid, value)
     }
@@ -7616,7 +7618,7 @@ pub fn set_level_progress(pid: u16, value: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_health_base(pid: u16, value: f64) {
+pub fn set_health_base(pid: c_ushort, value: c_double) {
     unsafe {
         raw::rustSetHealthBase(pid, value)
     }
@@ -7630,7 +7632,7 @@ pub fn set_health_base(pid: u16, value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_health_current(pid: u16, value: f64) {
+pub fn set_health_current(pid: c_ushort, value: c_double) {
     unsafe {
         raw::rustSetHealthCurrent(pid, value)
     }
@@ -7644,7 +7646,7 @@ pub fn set_health_current(pid: u16, value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_magicka_base(pid: u16, value: f64) {
+pub fn set_magicka_base(pid: c_ushort, value: c_double) {
     unsafe {
         raw::rustSetMagickaBase(pid, value)
     }
@@ -7658,7 +7660,7 @@ pub fn set_magicka_base(pid: u16, value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_magicka_current(pid: u16, value: f64) {
+pub fn set_magicka_current(pid: c_ushort, value: c_double) {
     unsafe {
         raw::rustSetMagickaCurrent(pid, value)
     }
@@ -7672,7 +7674,7 @@ pub fn set_magicka_current(pid: u16, value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_fatigue_base(pid: u16, value: f64) {
+pub fn set_fatigue_base(pid: c_ushort, value: c_double) {
     unsafe {
         raw::rustSetFatigueBase(pid, value)
     }
@@ -7686,7 +7688,7 @@ pub fn set_fatigue_base(pid: u16, value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_fatigue_current(pid: u16, value: f64) {
+pub fn set_fatigue_current(pid: c_ushort, value: c_double) {
     unsafe {
         raw::rustSetFatigueCurrent(pid, value)
     }
@@ -7701,7 +7703,7 @@ pub fn set_fatigue_current(pid: u16, value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_attribute_base(pid: u16, attribute_id: u16, value: i16) {
+pub fn set_attribute_base(pid: c_ushort, attribute_id: c_ushort, value: c_int) {
     unsafe {
         raw::rustSetAttributeBase(pid, attribute_id, value)
     }
@@ -7720,7 +7722,7 @@ pub fn set_attribute_base(pid: u16, attribute_id: u16, value: i16) {
 ///
 ///  Returns void
 ///
-pub fn clear_attribute_modifier(pid: u16, attribute_id: u16) {
+pub fn clear_attribute_modifier(pid: c_ushort, attribute_id: c_ushort) {
     unsafe {
         raw::rustClearAttributeModifier(pid, attribute_id)
     }
@@ -7736,7 +7738,7 @@ pub fn clear_attribute_modifier(pid: u16, attribute_id: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_attribute_damage(pid: u16, attribute_id: u16, value: f64) {
+pub fn set_attribute_damage(pid: c_ushort, attribute_id: c_ushort, value: c_double) {
     unsafe {
         raw::rustSetAttributeDamage(pid, attribute_id, value)
     }
@@ -7751,7 +7753,7 @@ pub fn set_attribute_damage(pid: u16, attribute_id: u16, value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_skill_base(pid: u16, skill_id: u16, value: i16) {
+pub fn set_skill_base(pid: c_ushort, skill_id: c_ushort, value: c_int) {
     unsafe {
         raw::rustSetSkillBase(pid, skill_id, value)
     }
@@ -7770,7 +7772,7 @@ pub fn set_skill_base(pid: u16, skill_id: u16, value: i16) {
 ///
 ///  Returns void
 ///
-pub fn clear_skill_modifier(pid: u16, skill_id: u16) {
+pub fn clear_skill_modifier(pid: c_ushort, skill_id: c_ushort) {
     unsafe {
         raw::rustClearSkillModifier(pid, skill_id)
     }
@@ -7786,7 +7788,7 @@ pub fn clear_skill_modifier(pid: u16, skill_id: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_skill_damage(pid: u16, skill_id: u16, value: f64) {
+pub fn set_skill_damage(pid: c_ushort, skill_id: c_ushort, value: c_double) {
     unsafe {
         raw::rustSetSkillDamage(pid, skill_id, value)
     }
@@ -7801,7 +7803,7 @@ pub fn set_skill_damage(pid: u16, skill_id: u16, value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_skill_progress(pid: u16, skill_id: u16, value: f64) {
+pub fn set_skill_progress(pid: c_ushort, skill_id: c_ushort, value: c_double) {
     unsafe {
         raw::rustSetSkillProgress(pid, skill_id, value)
     }
@@ -7819,7 +7821,7 @@ pub fn set_skill_progress(pid: u16, skill_id: u16, value: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_skill_increase(pid: u16, attribute_id: u16, value: i16) {
+pub fn set_skill_increase(pid: c_ushort, attribute_id: c_uint, value: c_int) {
     unsafe {
         raw::rustSetSkillIncrease(pid, attribute_id, value)
     }
@@ -7833,7 +7835,7 @@ pub fn set_skill_increase(pid: u16, attribute_id: u16, value: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_bounty(pid: u16, value: i16) {
+pub fn set_bounty(pid: c_ushort, value: c_int) {
     unsafe {
         raw::rustSetBounty(pid, value)
     }
@@ -7850,7 +7852,7 @@ pub fn set_bounty(pid: u16, value: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_char_gen_stage(pid: u16, current_stage: i16, end_stage: i16) {
+pub fn set_char_gen_stage(pid: c_ushort, current_stage: c_int, end_stage: c_int) {
     unsafe {
         raw::rustSetCharGenStage(pid, current_stage, end_stage)
     }
@@ -7866,7 +7868,7 @@ pub fn set_char_gen_stage(pid: u16, current_stage: i16, end_stage: i16) {
 ///
 ///  Returns void
 ///
-pub fn send_base_info(pid: u16) {
+pub fn send_base_info(pid: c_ushort) {
     unsafe {
         raw::rustSendBaseInfo(pid)
     }
@@ -7882,7 +7884,7 @@ pub fn send_base_info(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_stats_dynamic(pid: u16) {
+pub fn send_stats_dynamic(pid: c_ushort) {
     unsafe {
         raw::rustSendStatsDynamic(pid)
     }
@@ -7899,7 +7901,7 @@ pub fn send_stats_dynamic(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_attributes(pid: u16) {
+pub fn send_attributes(pid: c_ushort) {
     unsafe {
         raw::rustSendAttributes(pid)
     }
@@ -7914,7 +7916,7 @@ pub fn send_attributes(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_skills(pid: u16) {
+pub fn send_skills(pid: c_ushort) {
     unsafe {
         raw::rustSendSkills(pid)
     }
@@ -7930,7 +7932,7 @@ pub fn send_skills(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_level(pid: u16) {
+pub fn send_level(pid: c_ushort) {
     unsafe {
         raw::rustSendLevel(pid)
     }
@@ -7945,7 +7947,7 @@ pub fn send_level(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn send_bounty(pid: u16) {
+pub fn send_bounty(pid: c_ushort) {
     unsafe {
         raw::rustSendBounty(pid)
     }
@@ -7982,7 +7984,7 @@ pub fn clear_object_list() {
 ///
 ///  Returns void
 ///
-pub fn set_object_list_pid(pid: u16) {
+pub fn set_object_list_pid(pid: c_ushort) {
     unsafe {
         raw::rustSetObjectListPid(pid)
     }
@@ -8008,7 +8010,7 @@ pub fn copy_received_object_list_to_store() {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_object_list_size() -> u16 {
+pub fn get_object_list_size() -> c_uint {
     unsafe {
         raw::rustGetObjectListSize()
     }
@@ -8022,7 +8024,7 @@ pub fn get_object_list_size() -> u16 {
 ///  CLIENT_DIALOGUE, 3 for CLIENT_SCRIPT_LOCAL, 4 for CLIENT_SCRIPT_GLOBAL,  
 ///  5 for SERVER_SCRIPT).
 ///
-pub fn get_object_list_origin() -> u8 {
+pub fn get_object_list_origin() -> c_uchar {
     unsafe {
         raw::rustGetObjectListOrigin()
     }
@@ -8051,7 +8053,7 @@ pub fn get_object_list_client_script() -> String {
 ///
 ///  Returns the action type (0 for SET, 1 for ADD, 2 for REMOVE, 3 for REQUEST).
 ///
-pub fn get_object_list_action() -> u8 {
+pub fn get_object_list_action() -> c_uchar {
     unsafe {
         raw::rustGetObjectListAction()
     }
@@ -8063,7 +8065,7 @@ pub fn get_object_list_action() -> u8 {
 ///
 ///  Returns the action type (0 for NONE, 1 for DRAG, 2 for DROP, 3 for TAKE_ALL).
 ///
-pub fn get_object_list_container_sub_action() -> u8 {
+pub fn get_object_list_container_sub_action() -> c_uchar {
     unsafe {
         raw::rustGetObjectListContainerSubAction()
     }
@@ -8081,7 +8083,7 @@ pub fn get_object_list_container_sub_action() -> u8 {
 ///
 ///  Returns whether the object is a player.
 ///
-pub fn is_object_player(index: u16) -> bool {
+pub fn is_object_player(index: c_uint) -> bool {
     unsafe {
         raw::rustIsObjectPlayer(index)
     }
@@ -8098,7 +8100,7 @@ pub fn is_object_player(index: u16) -> bool {
 ///
 ///  Returns the player ID of the object.
 ///
-pub fn get_object_pid(index: u16) -> i16 {
+pub fn get_object_pid(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetObjectPid(index)
     }
@@ -8111,7 +8113,7 @@ pub fn get_object_pid(index: u16) -> i16 {
 ///
 ///  Returns the refId.
 ///
-pub fn get_object_ref_id(index: u16) -> String {
+pub fn get_object_ref_id(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetObjectRefId(index))
             .to_str()
@@ -8127,7 +8129,7 @@ pub fn get_object_ref_id(index: u16) -> String {
 ///
 ///  Returns the refNum.
 ///
-pub fn get_object_ref_num(index: u16) -> u16 {
+pub fn get_object_ref_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetObjectRefNum(index)
     }
@@ -8140,7 +8142,7 @@ pub fn get_object_ref_num(index: u16) -> u16 {
 ///
 ///  Returns the mpNum.
 ///
-pub fn get_object_mp_num(index: u16) -> u16 {
+pub fn get_object_mp_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetObjectMpNum(index)
     }
@@ -8153,7 +8155,7 @@ pub fn get_object_mp_num(index: u16) -> u16 {
 ///
 ///  Returns the object count.
 ///
-pub fn get_object_count(index: u16) -> i16 {
+pub fn get_object_count(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetObjectCount(index)
     }
@@ -8166,7 +8168,7 @@ pub fn get_object_count(index: u16) -> i16 {
 ///
 ///  Returns the charge.
 ///
-pub fn get_object_charge(index: u16) -> i16 {
+pub fn get_object_charge(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetObjectCharge(index)
     }
@@ -8179,7 +8181,7 @@ pub fn get_object_charge(index: u16) -> i16 {
 ///
 ///  Returns the enchantment charge.
 ///
-pub fn get_object_enchantment_charge(index: u16) -> f64 {
+pub fn get_object_enchantment_charge(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetObjectEnchantmentCharge(index)
     }
@@ -8192,7 +8194,7 @@ pub fn get_object_enchantment_charge(index: u16) -> f64 {
 ///
 ///  Returns the soul.
 ///
-pub fn get_object_soul(index: u16) -> String {
+pub fn get_object_soul(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetObjectSoul(index))
             .to_str()
@@ -8210,7 +8212,7 @@ pub fn get_object_soul(index: u16) -> String {
 ///
 ///  Returns the gold value.
 ///
-pub fn get_object_gold_value(index: u16) -> i16 {
+pub fn get_object_gold_value(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetObjectGoldValue(index)
     }
@@ -8223,7 +8225,7 @@ pub fn get_object_gold_value(index: u16) -> i16 {
 ///
 ///  Returns the object scale.
 ///
-pub fn get_object_scale(index: u16) -> f64 {
+pub fn get_object_scale(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetObjectScale(index)
     }
@@ -8236,7 +8238,7 @@ pub fn get_object_scale(index: u16) -> f64 {
 ///
 ///  Returns the object state.
 ///
-pub fn get_object_state(index: u16) -> bool {
+pub fn get_object_state(index: c_uint) -> bool {
     unsafe {
         raw::rustGetObjectState(index)
     }
@@ -8249,7 +8251,7 @@ pub fn get_object_state(index: u16) -> bool {
 ///
 ///  Returns the door state.
 ///
-pub fn get_object_door_state(index: u16) -> i16 {
+pub fn get_object_door_state(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetObjectDoorState(index)
     }
@@ -8262,7 +8264,7 @@ pub fn get_object_door_state(index: u16) -> i16 {
 ///
 ///  Returns the lock level.
 ///
-pub fn get_object_lock_level(index: u16) -> i16 {
+pub fn get_object_lock_level(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetObjectLockLevel(index)
     }
@@ -8276,7 +8278,7 @@ pub fn get_object_lock_level(index: u16) -> i16 {
 ///
 ///  Returns whether the object has been activated by a player.
 ///
-pub fn does_object_have_player_activating(index: u16) -> bool {
+pub fn does_object_have_player_activating(index: c_uint) -> bool {
     unsafe {
         raw::rustDoesObjectHavePlayerActivating(index)
     }
@@ -8290,7 +8292,7 @@ pub fn does_object_have_player_activating(index: u16) -> bool {
 ///
 ///  Returns the player ID of the activating player.
 ///
-pub fn get_object_activating_pid(index: u16) -> i16 {
+pub fn get_object_activating_pid(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetObjectActivatingPid(index)
     }
@@ -8304,7 +8306,7 @@ pub fn get_object_activating_pid(index: u16) -> i16 {
 ///
 ///  Returns the refId of the activating actor.
 ///
-pub fn get_object_activating_ref_id(index: u16) -> String {
+pub fn get_object_activating_ref_id(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetObjectActivatingRefId(index))
             .to_str()
@@ -8321,7 +8323,7 @@ pub fn get_object_activating_ref_id(index: u16) -> String {
 ///
 ///  Returns the refNum of the activating actor.
 ///
-pub fn get_object_activating_ref_num(index: u16) -> u16 {
+pub fn get_object_activating_ref_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetObjectActivatingRefNum(index)
     }
@@ -8335,7 +8337,7 @@ pub fn get_object_activating_ref_num(index: u16) -> u16 {
 ///
 ///  Returns the mpNum of the activating actor.
 ///
-pub fn get_object_activating_mp_num(index: u16) -> u16 {
+pub fn get_object_activating_mp_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetObjectActivatingMpNum(index)
     }
@@ -8349,7 +8351,7 @@ pub fn get_object_activating_mp_num(index: u16) -> u16 {
 ///
 ///  Returns the name of the activating actor.
 ///
-pub fn get_object_activating_name(index: u16) -> String {
+pub fn get_object_activating_name(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetObjectActivatingName(index))
             .to_str()
@@ -8367,7 +8369,7 @@ pub fn get_object_activating_name(index: u16) -> String {
 ///
 ///  Returns the summon state.
 ///
-pub fn get_object_summon_state(index: u16) -> bool {
+pub fn get_object_summon_state(index: c_uint) -> bool {
     unsafe {
         raw::rustGetObjectSummonState(index)
     }
@@ -8382,7 +8384,7 @@ pub fn get_object_summon_state(index: u16) -> bool {
 ///
 ///  Returns the summon duration.
 ///
-pub fn get_object_summon_duration(index: u16) -> f64 {
+pub fn get_object_summon_duration(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetObjectSummonDuration(index)
     }
@@ -8398,7 +8400,7 @@ pub fn get_object_summon_duration(index: u16) -> f64 {
 ///
 ///  Returns whether a player is the summoner of the object.
 ///
-pub fn does_object_have_player_summoner(index: u16) -> bool {
+pub fn does_object_have_player_summoner(index: c_uint) -> bool {
     unsafe {
         raw::rustDoesObjectHavePlayerSummoner(index)
     }
@@ -8412,7 +8414,7 @@ pub fn does_object_have_player_summoner(index: u16) -> bool {
 ///
 ///  Returns the player ID of the summoner.
 ///
-pub fn get_object_summoner_pid(index: u16) -> i16 {
+pub fn get_object_summoner_pid(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetObjectSummonerPid(index)
     }
@@ -8426,7 +8428,7 @@ pub fn get_object_summoner_pid(index: u16) -> i16 {
 ///
 ///  Returns the refId of the summoner.
 ///
-pub fn get_object_summoner_ref_id(index: u16) -> String {
+pub fn get_object_summoner_ref_id(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetObjectSummonerRefId(index))
             .to_str()
@@ -8443,7 +8445,7 @@ pub fn get_object_summoner_ref_id(index: u16) -> String {
 ///
 ///  Returns the refNum of the summoner.
 ///
-pub fn get_object_summoner_ref_num(index: u16) -> u16 {
+pub fn get_object_summoner_ref_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetObjectSummonerRefNum(index)
     }
@@ -8456,7 +8458,7 @@ pub fn get_object_summoner_ref_num(index: u16) -> u16 {
 ///
 ///  Returns the mpNum of the summoner.
 ///
-pub fn get_object_summoner_mp_num(index: u16) -> u16 {
+pub fn get_object_summoner_mp_num(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetObjectSummonerMpNum(index)
     }
@@ -8469,7 +8471,7 @@ pub fn get_object_summoner_mp_num(index: u16) -> u16 {
 ///
 ///  Returns the X position.
 ///
-pub fn get_object_pos_x(index: u16) -> f64 {
+pub fn get_object_pos_x(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetObjectPosX(index)
     }
@@ -8482,7 +8484,7 @@ pub fn get_object_pos_x(index: u16) -> f64 {
 ///
 ///  Returns the Y position.
 ///
-pub fn get_object_pos_y(index: u16) -> f64 {
+pub fn get_object_pos_y(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetObjectPosY(index)
     }
@@ -8495,7 +8497,7 @@ pub fn get_object_pos_y(index: u16) -> f64 {
 ///
 ///  Returns the Z position.
 ///
-pub fn get_object_pos_z(index: u16) -> f64 {
+pub fn get_object_pos_z(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetObjectPosZ(index)
     }
@@ -8508,7 +8510,7 @@ pub fn get_object_pos_z(index: u16) -> f64 {
 ///
 ///  Returns the X rotation.
 ///
-pub fn get_object_rot_x(index: u16) -> f64 {
+pub fn get_object_rot_x(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetObjectRotX(index)
     }
@@ -8521,7 +8523,7 @@ pub fn get_object_rot_x(index: u16) -> f64 {
 ///
 ///  Returns the Y rotation.
 ///
-pub fn get_object_rot_y(index: u16) -> f64 {
+pub fn get_object_rot_y(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetObjectRotY(index)
     }
@@ -8534,7 +8536,7 @@ pub fn get_object_rot_y(index: u16) -> f64 {
 ///
 ///  Returns the Z rotation.
 ///
-pub fn get_object_rot_z(index: u16) -> f64 {
+pub fn get_object_rot_z(index: c_uint) -> c_double {
     unsafe {
         raw::rustGetObjectRotZ(index)
     }
@@ -8546,7 +8548,7 @@ pub fn get_object_rot_z(index: u16) -> f64 {
 ///
 ///  Returns the videoFilename.
 ///
-pub fn get_video_filename(index: u16) -> String {
+pub fn get_video_filename(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetVideoFilename(index))
             .to_str()
@@ -8555,7 +8557,7 @@ pub fn get_video_filename(index: u16) -> String {
     }
 }
 
-pub fn get_script_variable_name(index: u16) -> String {
+pub fn get_script_variable_name(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetScriptVariableName(index))
             .to_str()
@@ -8564,7 +8566,7 @@ pub fn get_script_variable_name(index: u16) -> String {
     }
 }
 
-pub fn get_script_variable_short_value(index: u16) -> i16 {
+pub fn get_script_variable_short_value(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetScriptVariableShortValue(index)
     }
@@ -8578,7 +8580,7 @@ pub fn get_script_variable_short_value(index: u16) -> i16 {
 ///
 ///  Returns the number of container item indexes.
 ///
-pub fn get_container_changes_size(object_index: u16) -> u16 {
+pub fn get_container_changes_size(object_index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetContainerChangesSize(object_index)
     }
@@ -8593,7 +8595,7 @@ pub fn get_container_changes_size(object_index: u16) -> u16 {
 ///
 ///  Returns the refId.
 ///
-pub fn get_container_item_ref_id(object_index: u16, item_index: u16) -> String {
+pub fn get_container_item_ref_id(object_index: c_uint, item_index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetContainerItemRefId(object_index, item_index))
             .to_str()
@@ -8611,7 +8613,7 @@ pub fn get_container_item_ref_id(object_index: u16, item_index: u16) -> String {
 ///
 ///  Returns the item count.
 ///
-pub fn get_container_item_count(object_index: u16, item_index: u16) -> i16 {
+pub fn get_container_item_count(object_index: c_uint, item_index: c_uint) -> c_int {
     unsafe {
         raw::rustGetContainerItemCount(object_index, item_index)
     }
@@ -8626,7 +8628,7 @@ pub fn get_container_item_count(object_index: u16, item_index: u16) -> i16 {
 ///
 ///  Returns the charge.
 ///
-pub fn get_container_item_charge(object_index: u16, item_index: u16) -> i16 {
+pub fn get_container_item_charge(object_index: c_uint, item_index: c_uint) -> c_int {
     unsafe {
         raw::rustGetContainerItemCharge(object_index, item_index)
     }
@@ -8641,7 +8643,7 @@ pub fn get_container_item_charge(object_index: u16, item_index: u16) -> i16 {
 ///
 ///  Returns the enchantment charge.
 ///
-pub fn get_container_item_enchantment_charge(object_index: u16, item_index: u16) -> f64 {
+pub fn get_container_item_enchantment_charge(object_index: c_uint, item_index: c_uint) -> c_double {
     unsafe {
         raw::rustGetContainerItemEnchantmentCharge(object_index, item_index)
     }
@@ -8656,7 +8658,7 @@ pub fn get_container_item_enchantment_charge(object_index: u16, item_index: u16)
 ///
 ///  Returns the soul.
 ///
-pub fn get_container_item_soul(object_index: u16, item_index: u16) -> String {
+pub fn get_container_item_soul(object_index: c_uint, item_index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetContainerItemSoul(object_index, item_index))
             .to_str()
@@ -8674,7 +8676,7 @@ pub fn get_container_item_soul(object_index: u16, item_index: u16) -> String {
 ///
 ///  Returns the action count.
 ///
-pub fn get_container_item_action_count(object_index: u16, item_index: u16) -> i16 {
+pub fn get_container_item_action_count(object_index: c_uint, item_index: c_uint) -> c_int {
     unsafe {
         raw::rustGetContainerItemActionCount(object_index, item_index)
     }
@@ -8690,7 +8692,7 @@ pub fn get_container_item_action_count(object_index: u16, item_index: u16) -> i1
 ///
 ///  Returns whether the object has a container.
 ///
-pub fn does_object_have_container(index: u16) -> bool {
+pub fn does_object_have_container(index: c_uint) -> bool {
     unsafe {
         raw::rustDoesObjectHaveContainer(index)
     }
@@ -8719,7 +8721,7 @@ pub fn set_object_list_cell(cell_description: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_object_list_action(action: u8) {
+pub fn set_object_list_action(action: c_uchar) {
     unsafe {
         raw::rustSetObjectListAction(action)
     }
@@ -8767,7 +8769,7 @@ pub fn set_object_ref_id(ref_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_object_ref_num(ref_num: i16) {
+pub fn set_object_ref_num(ref_num: c_int) {
     unsafe {
         raw::rustSetObjectRefNum(ref_num)
     }
@@ -8787,7 +8789,7 @@ pub fn set_object_ref_num(ref_num: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_object_mp_num(mp_num: i16) {
+pub fn set_object_mp_num(mp_num: c_int) {
     unsafe {
         raw::rustSetObjectMpNum(mp_num)
     }
@@ -8802,7 +8804,7 @@ pub fn set_object_mp_num(mp_num: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_object_count(count: i16) {
+pub fn set_object_count(count: c_int) {
     unsafe {
         raw::rustSetObjectCount(count)
     }
@@ -8817,7 +8819,7 @@ pub fn set_object_count(count: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_object_charge(charge: i16) {
+pub fn set_object_charge(charge: c_int) {
     unsafe {
         raw::rustSetObjectCharge(charge)
     }
@@ -8832,7 +8834,7 @@ pub fn set_object_charge(charge: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_object_enchantment_charge(enchantment_charge: f64) {
+pub fn set_object_enchantment_charge(enchantment_charge: c_double) {
     unsafe {
         raw::rustSetObjectEnchantmentCharge(enchantment_charge)
     }
@@ -8860,7 +8862,7 @@ pub fn set_object_soul(soul: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_object_gold_value(gold_value: i16) {
+pub fn set_object_gold_value(gold_value: c_int) {
     unsafe {
         raw::rustSetObjectGoldValue(gold_value)
     }
@@ -8875,7 +8877,7 @@ pub fn set_object_gold_value(gold_value: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_object_scale(scale: f64) {
+pub fn set_object_scale(scale: c_double) {
     unsafe {
         raw::rustSetObjectScale(scale)
     }
@@ -8903,7 +8905,7 @@ pub fn set_object_state(object_state: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_object_lock_level(lock_level: i16) {
+pub fn set_object_lock_level(lock_level: c_int) {
     unsafe {
         raw::rustSetObjectLockLevel(lock_level)
     }
@@ -8929,7 +8931,7 @@ pub fn set_object_disarm_state(disarm_state: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_object_summon_duration(summon_duration: f32) {
+pub fn set_object_summon_duration(summon_duration: c_float) {
     unsafe {
         raw::rustSetObjectSummonDuration(summon_duration)
     }
@@ -8960,7 +8962,7 @@ pub fn set_object_summon_state(summon_state: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_object_position(x: f64, y: f64, z: f64) {
+pub fn set_object_position(x: c_double, y: c_double, z: c_double) {
     unsafe {
         raw::rustSetObjectPosition(x, y, z)
     }
@@ -8975,7 +8977,7 @@ pub fn set_object_position(x: f64, y: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_object_rotation(x: f64, y: f64, z: f64) {
+pub fn set_object_rotation(x: c_double, y: c_double, z: c_double) {
     unsafe {
         raw::rustSetObjectRotation(x, y, z)
     }
@@ -8989,7 +8991,7 @@ pub fn set_object_rotation(x: f64, y: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_object_activating_pid(pid: u16) {
+pub fn set_object_activating_pid(pid: c_ushort) {
     unsafe {
         raw::rustSetObjectActivatingPid(pid)
     }
@@ -9004,7 +9006,7 @@ pub fn set_object_activating_pid(pid: u16) {
 ///
 ///  Returns void
 ///
-pub fn set_object_door_state(door_state: i16) {
+pub fn set_object_door_state(door_state: c_int) {
     unsafe {
         raw::rustSetObjectDoorState(door_state)
     }
@@ -9051,7 +9053,7 @@ pub fn set_object_door_destination_cell(cell_description: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_object_door_destination_position(x: f64, y: f64, z: f64) {
+pub fn set_object_door_destination_position(x: c_double, y: c_double, z: c_double) {
     unsafe {
         raw::rustSetObjectDoorDestinationPosition(x, y, z)
     }
@@ -9068,7 +9070,7 @@ pub fn set_object_door_destination_position(x: f64, y: f64, z: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_object_door_destination_rotation(x: f64, z: f64) {
+pub fn set_object_door_destination_rotation(x: c_double, z: c_double) {
     unsafe {
         raw::rustSetObjectDoorDestinationRotation(x, z)
     }
@@ -9080,7 +9082,7 @@ pub fn set_script_variable_name(var_name: &str) {
     }
 }
 
-pub fn set_script_variable_short_value(short_val: i16) {
+pub fn set_script_variable_short_value(short_val: c_int) {
     unsafe {
         raw::rustSetScriptVariableShortValue(short_val)
     }
@@ -9094,7 +9096,7 @@ pub fn set_script_variable_short_value(short_val: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_player_as_object(pid: u16) {
+pub fn set_player_as_object(pid: c_ushort) {
     unsafe {
         raw::rustSetPlayerAsObject(pid)
     }
@@ -9120,7 +9122,7 @@ pub fn set_container_item_ref_id(ref_id: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_container_item_count(count: i16) {
+pub fn set_container_item_count(count: c_int) {
     unsafe {
         raw::rustSetContainerItemCount(count)
     }
@@ -9133,7 +9135,7 @@ pub fn set_container_item_count(count: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_container_item_charge(charge: i16) {
+pub fn set_container_item_charge(charge: c_int) {
     unsafe {
         raw::rustSetContainerItemCharge(charge)
     }
@@ -9146,7 +9148,7 @@ pub fn set_container_item_charge(charge: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_container_item_enchantment_charge(enchantment_charge: f64) {
+pub fn set_container_item_enchantment_charge(enchantment_charge: c_double) {
     unsafe {
         raw::rustSetContainerItemEnchantmentCharge(enchantment_charge)
     }
@@ -9179,7 +9181,7 @@ pub fn set_container_item_soul(soul: &str) {
 ///
 ///  Returns void
 ///
-pub fn set_container_item_action_count_by_index(object_index: u16, item_index: u16, action_count: i16) {
+pub fn set_container_item_action_count_by_index(object_index: c_uint, item_index: c_uint, action_count: c_int) {
     unsafe {
         raw::rustSetContainerItemActionCountByIndex(object_index, item_index, action_count)
     }
@@ -9441,13 +9443,13 @@ pub fn read_last_event() {
     }
 }
 
-pub fn initialize_object_list(pid: u16) {
+pub fn initialize_object_list(pid: c_ushort) {
     unsafe {
         raw::rustInitializeObjectList(pid)
     }
 }
 
-pub fn initialize_event(pid: u16) {
+pub fn initialize_event(pid: c_ushort) {
     unsafe {
         raw::rustInitializeEvent(pid)
     }
@@ -9459,31 +9461,31 @@ pub fn copy_last_object_list_to_store() {
     }
 }
 
-pub fn get_object_changes_size() -> u16 {
+pub fn get_object_changes_size() -> c_uint {
     unsafe {
         raw::rustGetObjectChangesSize()
     }
 }
 
-pub fn get_event_action() -> u8 {
+pub fn get_event_action() -> c_uchar {
     unsafe {
         raw::rustGetEventAction()
     }
 }
 
-pub fn get_event_container_sub_action() -> u8 {
+pub fn get_event_container_sub_action() -> c_uchar {
     unsafe {
         raw::rustGetEventContainerSubAction()
     }
 }
 
-pub fn get_object_ref_num_index(index: u16) -> u16 {
+pub fn get_object_ref_num_index(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetObjectRefNumIndex(index)
     }
 }
 
-pub fn get_object_summoner_ref_num_index(index: u16) -> u16 {
+pub fn get_object_summoner_ref_num_index(index: c_uint) -> c_uint {
     unsafe {
         raw::rustGetObjectSummonerRefNumIndex(index)
     }
@@ -9495,7 +9497,7 @@ pub fn set_event_cell(cell_description: &str) {
     }
 }
 
-pub fn set_event_action(action: u8) {
+pub fn set_event_action(action: c_uchar) {
     unsafe {
         raw::rustSetEventAction(action)
     }
@@ -9507,7 +9509,7 @@ pub fn set_event_console_command(console_command: &str) {
     }
 }
 
-pub fn set_object_ref_num_index(ref_num: i16) {
+pub fn set_object_ref_num_index(ref_num: c_int) {
     unsafe {
         raw::rustSetObjectRefNumIndex(ref_num)
     }
@@ -9579,7 +9581,7 @@ pub fn clear_map_changes() {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_kill_changes_size() -> u16 {
+pub fn get_kill_changes_size() -> c_uint {
     unsafe {
         raw::rustGetKillChangesSize()
     }
@@ -9591,7 +9593,7 @@ pub fn get_kill_changes_size() -> u16 {
 ///
 ///  Returns the number of indexes.
 ///
-pub fn get_map_changes_size() -> u16 {
+pub fn get_map_changes_size() -> c_uint {
     unsafe {
         raw::rustGetMapChangesSize()
     }
@@ -9604,7 +9606,7 @@ pub fn get_map_changes_size() -> u16 {
 ///
 ///  Returns the refId.
 ///
-pub fn get_kill_ref_id(index: u16) -> String {
+pub fn get_kill_ref_id(index: c_uint) -> String {
     unsafe {
         CStr::from_ptr(raw::rustGetKillRefId(index))
             .to_str()
@@ -9620,7 +9622,7 @@ pub fn get_kill_ref_id(index: u16) -> String {
 ///
 ///  Returns the number of kills.
 ///
-pub fn get_kill_number(index: u16) -> i16 {
+pub fn get_kill_number(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetKillNumber(index)
     }
@@ -9647,7 +9649,7 @@ pub fn get_weather_region() -> String {
 ///
 ///  Returns the current weather.
 ///
-pub fn get_weather_current() -> i16 {
+pub fn get_weather_current() -> c_int {
     unsafe {
         raw::rustGetWeatherCurrent()
     }
@@ -9659,7 +9661,7 @@ pub fn get_weather_current() -> i16 {
 ///
 ///  Returns the next weather.
 ///
-pub fn get_weather_next() -> i16 {
+pub fn get_weather_next() -> c_int {
     unsafe {
         raw::rustGetWeatherNext()
     }
@@ -9671,7 +9673,7 @@ pub fn get_weather_next() -> i16 {
 ///
 ///  Returns the queued weather.
 ///
-pub fn get_weather_queued() -> i16 {
+pub fn get_weather_queued() -> c_int {
     unsafe {
         raw::rustGetWeatherQueued()
     }
@@ -9683,7 +9685,7 @@ pub fn get_weather_queued() -> i16 {
 ///
 ///  Returns the transition factor of the weather.
 ///
-pub fn get_weather_transition_factor() -> f64 {
+pub fn get_weather_transition_factor() -> c_double {
     unsafe {
         raw::rustGetWeatherTransitionFactor()
     }
@@ -9697,7 +9699,7 @@ pub fn get_weather_transition_factor() -> f64 {
 ///
 ///  Returns the X coordinate of the cell.
 ///
-pub fn get_map_tile_cell_x(index: u16) -> i16 {
+pub fn get_map_tile_cell_x(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetMapTileCellX(index)
     }
@@ -9711,7 +9713,7 @@ pub fn get_map_tile_cell_x(index: u16) -> i16 {
 ///
 ///  Returns the Y coordinate of the cell.
 ///
-pub fn get_map_tile_cell_y(index: u16) -> i16 {
+pub fn get_map_tile_cell_y(index: c_uint) -> c_int {
     unsafe {
         raw::rustGetMapTileCellY(index)
     }
@@ -9765,7 +9767,7 @@ pub fn set_weather_force_state(force_state: bool) {
 ///
 ///  Returns void
 ///
-pub fn set_weather_current(current_weather: i16) {
+pub fn set_weather_current(current_weather: c_int) {
     unsafe {
         raw::rustSetWeatherCurrent(current_weather)
     }
@@ -9778,7 +9780,7 @@ pub fn set_weather_current(current_weather: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_weather_next(next_weather: i16) {
+pub fn set_weather_next(next_weather: c_int) {
     unsafe {
         raw::rustSetWeatherNext(next_weather)
     }
@@ -9791,7 +9793,7 @@ pub fn set_weather_next(next_weather: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_weather_queued(queued_weather: i16) {
+pub fn set_weather_queued(queued_weather: c_int) {
     unsafe {
         raw::rustSetWeatherQueued(queued_weather)
     }
@@ -9804,7 +9806,7 @@ pub fn set_weather_queued(queued_weather: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_weather_transition_factor(transition_factor: f64) {
+pub fn set_weather_transition_factor(transition_factor: c_double) {
     unsafe {
         raw::rustSetWeatherTransitionFactor(transition_factor)
     }
@@ -9817,7 +9819,7 @@ pub fn set_weather_transition_factor(transition_factor: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_hour(hour: f64) {
+pub fn set_hour(hour: c_double) {
     unsafe {
         raw::rustSetHour(hour)
     }
@@ -9830,7 +9832,7 @@ pub fn set_hour(hour: f64) {
 ///
 ///  Returns void
 ///
-pub fn set_day(day: i16) {
+pub fn set_day(day: c_int) {
     unsafe {
         raw::rustSetDay(day)
     }
@@ -9843,7 +9845,7 @@ pub fn set_day(day: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_month(month: i16) {
+pub fn set_month(month: c_int) {
     unsafe {
         raw::rustSetMonth(month)
     }
@@ -9856,7 +9858,7 @@ pub fn set_month(month: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_year(year: i16) {
+pub fn set_year(year: c_int) {
     unsafe {
         raw::rustSetYear(year)
     }
@@ -9869,7 +9871,7 @@ pub fn set_year(year: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_days_passed(days_passed: i16) {
+pub fn set_days_passed(days_passed: c_int) {
     unsafe {
         raw::rustSetDaysPassed(days_passed)
     }
@@ -9883,7 +9885,7 @@ pub fn set_days_passed(days_passed: i16) {
 ///
 ///  Returns void
 ///
-pub fn set_time_scale(time_scale: f64) {
+pub fn set_time_scale(time_scale: c_double) {
     unsafe {
         raw::rustSetTimeScale(time_scale)
     }
@@ -9953,7 +9955,7 @@ pub fn use_actor_collision_for_placed_objects(use_actor_collision: bool) {
 ///
 ///  Returns void
 ///
-pub fn add_kill(ref_id: &str, number: i16) {
+pub fn add_kill(ref_id: &str, number: c_int) {
     unsafe {
         raw::rustAddKill(CString::new(ref_id).unwrap_or_default().as_ptr(), number)
     }
@@ -10049,7 +10051,7 @@ pub fn clear_enforced_collision_ref_ids() {
 ///
 ///  Returns void
 ///
-pub fn save_map_tile_image_file(index: u16, file_path: &str) {
+pub fn save_map_tile_image_file(index: c_uint, file_path: &str) {
     unsafe {
         raw::rustSaveMapTileImageFile(index, CString::new(file_path).unwrap_or_default().as_ptr())
     }
@@ -10065,7 +10067,7 @@ pub fn save_map_tile_image_file(index: u16, file_path: &str) {
 ///
 ///  Returns void
 ///
-pub fn load_map_tile_image_file(cell_x: i16, cell_y: i16, file_path: &str) {
+pub fn load_map_tile_image_file(cell_x: c_int, cell_y: c_int, file_path: &str) {
     unsafe {
         raw::rustLoadMapTileImageFile(cell_x, cell_y, CString::new(file_path).unwrap_or_default().as_ptr())
     }
@@ -10083,7 +10085,7 @@ pub fn load_map_tile_image_file(cell_x: i16, cell_y: i16, file_path: &str) {
 ///
 ///  Returns void
 ///
-pub fn send_client_script_settings(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_client_script_settings(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendClientScriptSettings(pid, send_to_other_players, skip_attached_player)
     }
@@ -10101,7 +10103,7 @@ pub fn send_client_script_settings(pid: u16, send_to_other_players: bool, skip_a
 ///
 ///  Returns void
 ///
-pub fn send_world_kill_count(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_world_kill_count(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendWorldKillCount(pid, send_to_other_players, skip_attached_player)
     }
@@ -10117,7 +10119,7 @@ pub fn send_world_kill_count(pid: u16, send_to_other_players: bool, skip_attache
 ///
 ///  Returns void
 ///
-pub fn send_world_map(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_world_map(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendWorldMap(pid, send_to_other_players, skip_attached_player)
     }
@@ -10135,7 +10137,7 @@ pub fn send_world_map(pid: u16, send_to_other_players: bool, skip_attached_playe
 ///
 ///  Returns void
 ///
-pub fn send_world_time(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_world_time(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendWorldTime(pid, send_to_other_players, skip_attached_player)
     }
@@ -10152,7 +10154,7 @@ pub fn send_world_time(pid: u16, send_to_other_players: bool, skip_attached_play
 ///
 ///  Returns void
 ///
-pub fn send_world_weather(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_world_weather(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendWorldWeather(pid, send_to_other_players, skip_attached_player)
     }
@@ -10170,7 +10172,7 @@ pub fn send_world_weather(pid: u16, send_to_other_players: bool, skip_attached_p
 ///
 ///  Returns void
 ///
-pub fn send_world_collision_override(pid: u16, send_to_other_players: bool, skip_attached_player: bool) {
+pub fn send_world_collision_override(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
     unsafe {
         raw::rustSendWorldCollisionOverride(pid, send_to_other_players, skip_attached_player)
     }
@@ -10186,7 +10188,7 @@ pub fn send_world_collision_override(pid: u16, send_to_other_players: bool, skip
 ///
 ///  Returns void
 ///
-pub fn send_world_region_authority(pid: u16) {
+pub fn send_world_region_authority(pid: c_ushort) {
     unsafe {
         raw::rustSendWorldRegionAuthority(pid)
     }

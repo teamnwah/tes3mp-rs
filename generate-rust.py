@@ -142,17 +142,17 @@ class PrimitiveHeaderParser:
 
 
 TYPE_TRANSLATION = {
-    'const char*': '*const i8',
-    'const char *': '*const i8',
+    'const char*': '*const c_char',
+    'const char *': '*const c_char',
     'bool': 'bool',
-    'unsigned short': 'u16',
+    'unsigned short': 'c_ushort',
     'ScriptFunc': 'fn()',
-    'int': 'i16',
-    'unsigned int': 'u16',
-    'unsigned char': 'u8',
-    'char': 'i8',
-    'float': 'f32',
-    'double': 'f64',
+    'int': 'c_int',
+    'unsigned int': 'c_uint',
+    'unsigned char': 'c_uchar',
+    'char': 'c_char',
+    'float': 'c_float',
+    'double': 'c_double',
     # No good way with these 2 types yet
     'va_list': '<REMOVE>',
     'boost::any': '<REMOVE>'
@@ -195,7 +195,7 @@ def main():
         ret = ""
 
         if func.return_type in ['const char*', 'const char *']:
-            ret = " -> *const i8"
+            ret = " -> *const c_char"
         elif func.return_type != "void":
             ret = f" -> {TYPE_TRANSLATION[func.return_type]}"
 
@@ -267,8 +267,8 @@ def main():
         fancy += "    }\n"
         fancy += "}\n\n"
 
-    whole = "use std::ffi::{CStr, CString};\n\n"
-    whole += "#[allow(non_upper_case_globals)]\npub mod raw {\n"
+    whole = "use std::ffi::{CStr, CString};\nuse std::os::raw::*;\n\n"
+    whole += "#[allow(non_upper_case_globals)]\npub mod raw {\n    use std::os::raw::*;\n"
     for line in raw.splitlines():
         whole += "    " + line + "\n"
     whole += "}\n\n"
