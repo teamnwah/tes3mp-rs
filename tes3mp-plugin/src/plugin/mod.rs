@@ -56,9 +56,9 @@ pub const NPC: c_ushort = 3;
 #[macro_export]
 macro_rules! call_instance {
     ($call:tt, $($argument:expr),+) => {
-        let mut instance = unsafe {
+        let instance = unsafe {
             EVENTS_INSTANCE
-                .as_ref()
+                .as_mut()
                 .expect(format!("No events instance created: {}\n", stringify!($call)).as_str())
         };
         instance.$call($($argument),+);
@@ -66,9 +66,9 @@ macro_rules! call_instance {
     };
 
     ($call:tt) => {
-        let mut instance = unsafe {
+        let instance = unsafe {
             EVENTS_INSTANCE
-                .as_ref()
+                .as_mut()
                 .expect(format!("No events instance created: {}\n", stringify!($call)).as_str())
         };
         instance.$call();
