@@ -56,7 +56,7 @@ pub const NPC: c_ushort = 3;
 #[macro_export]
 macro_rules! call_instance {
     ($call:tt, $($argument:expr),+) => {
-        let instance = unsafe {
+        let mut instance = unsafe {
             EVENTS_INSTANCE
                 .as_ref()
                 .expect(format!("No events instance created: {}\n", stringify!($call)).as_str())
@@ -66,7 +66,7 @@ macro_rules! call_instance {
     };
 
     ($call:tt) => {
-        let instance = unsafe {
+        let mut instance = unsafe {
             EVENTS_INSTANCE
                 .as_ref()
                 .expect(format!("No events instance created: {}\n", stringify!($call)).as_str())
@@ -492,76 +492,76 @@ macro_rules! use_events {
 /// Trait implementing all known events TES3MP server can trigger
 pub trait Events: Sized {
     fn new() -> Self;
-    fn on_any(&self, event_name: &str) {}
+    fn on_any(&mut self, event_name: &str) {}
 
-    fn on_actor_ai(&self, player_id: c_ushort, description: &str) {}
-    fn on_actor_cell_change(&self, player_id: c_ushort, description: &str) {}
-    fn on_actor_death(&self, player_id: c_ushort, description: &str) {}
-    fn on_actor_equipment(&self, player_id: c_ushort, description: &str) {}
-    fn on_actor_list(&self, player_id: c_ushort, description: &str) {}
-    fn on_actor_test(&self, player_id: c_ushort, description: &str) {}
+    fn on_actor_ai(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_actor_cell_change(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_actor_death(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_actor_equipment(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_actor_list(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_actor_test(&mut self, player_id: c_ushort, description: &str) {}
 
-    fn on_cell_deletion(&self, description: &str) {}
-    fn on_cell_load(&self, description: &str) {}
-    fn on_cell_unload(&self, description: &str) {}
+    fn on_cell_deletion(&mut self, description: &str) {}
+    fn on_cell_load(&mut self, description: &str) {}
+    fn on_cell_unload(&mut self, description: &str) {}
 
-    fn on_container(&self, player_id: c_ushort, description: &str) {}
-    fn on_door_state(&self, player_id: c_ushort, description: &str) {}
+    fn on_container(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_door_state(&mut self, player_id: c_ushort, description: &str) {}
 
-    fn on_gui_action(&self, player_id: c_ushort, message_box_id: c_int, data: &str) {}
+    fn on_gui_action(&mut self, player_id: c_ushort, message_box_id: c_int, data: &str) {}
 
-    fn on_mp_num_increment(&self, current_mp_num: c_int) {}
+    fn on_mp_num_increment(&mut self, current_mp_num: c_int) {}
 
-    fn on_object_activate(&self, player_id: c_ushort, description: &str) {}
-    fn on_object_delete(&self, player_id: c_ushort, description: &str) {}
-    fn on_object_lock(&self, player_id: c_ushort, description: &str) {}
-    fn on_object_place(&self, player_id: c_ushort, description: &str) {}
-    fn on_object_scale(&self, player_id: c_ushort, description: &str) {}
-    fn on_object_spawn(&self, player_id: c_ushort, description: &str) {}
-    fn on_object_state(&self, player_id: c_ushort, description: &str) {}
-    fn on_object_trap(&self, player_id: c_ushort, description: &str) {}
+    fn on_object_activate(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_object_delete(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_object_lock(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_object_place(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_object_scale(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_object_spawn(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_object_state(&mut self, player_id: c_ushort, description: &str) {}
+    fn on_object_trap(&mut self, player_id: c_ushort, description: &str) {}
 
-    fn on_player_attribute(&self, player_id: c_ushort) {}
-    fn on_player_book(&self, player_id: c_ushort) {}
-    fn on_player_bounty(&self, player_id: c_ushort) {}
-    fn on_player_cell_change(&self, player_id: c_ushort) {}
-    fn on_player_connect(&self, player_id: c_ushort) {}
-    fn on_player_death(&self, player_id: c_ushort) {}
-    fn on_player_disconnect(&self, player_id: c_ushort) {}
-    fn on_player_disposition(&self, player_id: c_ushort) {}
-    fn on_player_end_char_gen(&self, player_id: c_ushort) {}
-    fn on_player_equipment(&self, player_id: c_ushort) {}
-    fn on_player_faction(&self, player_id: c_ushort) {}
-    fn on_player_input(&self, player_id: c_ushort) {}
-    fn on_player_inventory(&self, player_id: c_ushort) {}
-    fn on_player_item_use(&self, player_id: c_ushort) {}
-    fn on_player_journal(&self, player_id: c_ushort) {}
-    fn on_player_level(&self, player_id: c_ushort) {}
-    fn on_player_miscellaneous(&self, player_id: c_ushort) {}
-    fn on_player_quick_keys(&self, player_id: c_ushort) {}
-    fn on_player_reputation(&self, player_id: c_ushort) {}
-    fn on_player_rest(&self, player_id: c_ushort) {}
-    fn on_player_resurrect(&self, player_id: c_ushort) {}
-    fn on_player_send_message(&self, player_id: c_ushort, message: &str) {}
-    fn on_player_shapeshift(&self, player_id: c_ushort) {}
-    fn on_player_skill(&self, player_id: c_ushort) {}
-    fn on_player_spellbook(&self, player_id: c_ushort) {}
-    fn on_player_topic(&self, player_id: c_ushort) {}
+    fn on_player_attribute(&mut self, player_id: c_ushort) {}
+    fn on_player_book(&mut self, player_id: c_ushort) {}
+    fn on_player_bounty(&mut self, player_id: c_ushort) {}
+    fn on_player_cell_change(&mut self, player_id: c_ushort) {}
+    fn on_player_connect(&mut self, player_id: c_ushort) {}
+    fn on_player_death(&mut self, player_id: c_ushort) {}
+    fn on_player_disconnect(&mut self, player_id: c_ushort) {}
+    fn on_player_disposition(&mut self, player_id: c_ushort) {}
+    fn on_player_end_char_gen(&mut self, player_id: c_ushort) {}
+    fn on_player_equipment(&mut self, player_id: c_ushort) {}
+    fn on_player_faction(&mut self, player_id: c_ushort) {}
+    fn on_player_input(&mut self, player_id: c_ushort) {}
+    fn on_player_inventory(&mut self, player_id: c_ushort) {}
+    fn on_player_item_use(&mut self, player_id: c_ushort) {}
+    fn on_player_journal(&mut self, player_id: c_ushort) {}
+    fn on_player_level(&mut self, player_id: c_ushort) {}
+    fn on_player_miscellaneous(&mut self, player_id: c_ushort) {}
+    fn on_player_quick_keys(&mut self, player_id: c_ushort) {}
+    fn on_player_reputation(&mut self, player_id: c_ushort) {}
+    fn on_player_rest(&mut self, player_id: c_ushort) {}
+    fn on_player_resurrect(&mut self, player_id: c_ushort) {}
+    fn on_player_send_message(&mut self, player_id: c_ushort, message: &str) {}
+    fn on_player_shapeshift(&mut self, player_id: c_ushort) {}
+    fn on_player_skill(&mut self, player_id: c_ushort) {}
+    fn on_player_spellbook(&mut self, player_id: c_ushort) {}
+    fn on_player_topic(&mut self, player_id: c_ushort) {}
 
-    fn on_record_dynamic(&self, player_id: c_ushort) {}
+    fn on_record_dynamic(&mut self, player_id: c_ushort) {}
 
-    fn on_request_data_file_list(&self) {}
+    fn on_request_data_file_list(&mut self) {}
 
-    fn on_script_global_short(&self, player_id: c_ushort) {}
+    fn on_script_global_short(&mut self, player_id: c_ushort) {}
 
-    fn on_server_exit(&self, is_error: bool) {}
-    fn on_server_init(&self) {}
-    fn on_server_post_init(&self) {}
-    fn on_server_script_crash(&self, error: &str) {}
+    fn on_server_exit(&mut self, is_error: bool) {}
+    fn on_server_init(&mut self) {}
+    fn on_server_post_init(&mut self) {}
+    fn on_server_script_crash(&mut self, error: &str) {}
 
-    fn on_video_play(&self, player_id: c_ushort, description: &str) {}
+    fn on_video_play(&mut self, player_id: c_ushort, description: &str) {}
 
-    fn on_world_kill_count(&self, player_id: c_ushort) {}
-    fn on_world_map(&self, player_id: c_ushort) {}
-    fn on_world_weather(&self, player_id: c_ushort) {}
+    fn on_world_kill_count(&mut self, player_id: c_ushort) {}
+    fn on_world_map(&mut self, player_id: c_ushort) {}
+    fn on_world_weather(&mut self, player_id: c_ushort) {}
 }
