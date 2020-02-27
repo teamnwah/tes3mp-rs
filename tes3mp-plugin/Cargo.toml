@@ -4,7 +4,7 @@ description = "Stubs for creating a TES3MP server plugin"
 readme = "README.md"
 keywords = ["tes3mp", "morrowind"]
 homepage = "https://git.cijber.net/teamnwah/tes3mp-rs"
-version = "0.2.0"
+version = "0.7.0"
 license = "AGPL-3.0-or-later"
 authors = ["eater <=@eater.me>"]
 edition = "2018"

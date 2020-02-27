@@ -437,10 +437,6 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustGetPlayerKillerRefNumIndex: fn(c_ushort) -> c_uint = |_| { unreachable!("GetPlayerKillerRefNumIndex was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGenerateRandomString: fn(c_uint) -> *const c_char = |_| { unreachable!("GenerateRandomString was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustGetSHA256Hash: fn(*const c_char) -> *const c_char = |_| { unreachable!("GetSHA256Hash was called before set by TES3MP"); };
-    #[no_mangle]
     pub static mut rustGetLastPlayerId: fn() -> c_uint = || { unreachable!("GetLastPlayerId was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustGetCurrentMpNum: fn() -> c_int = || { unreachable!("GetCurrentMpNum was called before set by TES3MP"); };
@@ -475,13 +471,19 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustClearJournalChanges: fn(c_ushort) = |_| { unreachable!("ClearJournalChanges was called before set by TES3MP"); };
     #[no_mangle]
+    pub static mut rustClearKillChanges: fn(c_ushort) = |_| { unreachable!("ClearKillChanges was called before set by TES3MP"); };
+    #[no_mangle]
     pub static mut rustGetJournalChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetJournalChangesSize was called before set by TES3MP"); };
+    #[no_mangle]
+    pub static mut rustGetKillChangesSize: fn(c_ushort) -> c_uint = |_| { unreachable!("GetKillChangesSize was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustAddJournalEntry: fn(c_ushort, *const c_char, c_uint, *const c_char) = |_, _, _, _| { unreachable!("AddJournalEntry was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustAddJournalEntryWithTimestamp: fn(c_ushort, *const c_char, c_uint, *const c_char, c_uint, c_uint, c_uint) = |_, _, _, _, _, _, _| { unreachable!("AddJournalEntryWithTimestamp was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustAddJournalIndex: fn(c_ushort, *const c_char, c_uint) = |_, _, _| { unreachable!("AddJournalIndex was called before set by TES3MP"); };
+    #[no_mangle]
+    pub static mut rustAddKill: fn(c_ushort, *const c_char, c_int) = |_, _, _| { unreachable!("AddKill was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetReputation: fn(c_ushort, c_int) = |_, _| { unreachable!("SetReputation was called before set by TES3MP"); };
     #[no_mangle]
@@ -493,13 +495,21 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustGetJournalItemActorRefId: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetJournalItemActorRefId was called before set by TES3MP"); };
     #[no_mangle]
+    pub static mut rustGetKillRefId: fn(c_ushort, c_uint) -> *const c_char = |_, _| { unreachable!("GetKillRefId was called before set by TES3MP"); };
+    #[no_mangle]
+    pub static mut rustGetKillNumber: fn(c_ushort, c_uint) -> c_int = |_, _| { unreachable!("GetKillNumber was called before set by TES3MP"); };
+    #[no_mangle]
     pub static mut rustGetReputation: fn(c_ushort) -> c_int = |_| { unreachable!("GetReputation was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSendJournalChanges: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendJournalChanges was called before set by TES3MP"); };
     #[no_mangle]
+    pub static mut rustSendKillChanges: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendKillChanges was called before set by TES3MP"); };
+    #[no_mangle]
     pub static mut rustSendReputation: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendReputation was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustInitializeJournalChanges: fn(c_ushort) = |_| { unreachable!("InitializeJournalChanges was called before set by TES3MP"); };
+    #[no_mangle]
+    pub static mut rustInitializeKillChanges: fn(c_ushort) = |_| { unreachable!("InitializeKillChanges was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustClearRecords: fn() = || { unreachable!("ClearRecords was called before set by TES3MP"); };
     #[no_mangle]
@@ -589,16 +599,6 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustSetRecordWeight: fn(c_double) = |_| { unreachable!("SetRecordWeight was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordQuality: fn(c_double) = |_| { unreachable!("SetRecordQuality was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordUses: fn(c_int) = |_| { unreachable!("SetRecordUses was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordTime: fn(c_int) = |_| { unreachable!("SetRecordTime was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordRadius: fn(c_int) = |_| { unreachable!("SetRecordRadius was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordColor: fn(c_uint, c_uint, c_uint) = |_, _, _| { unreachable!("SetRecordColor was called before set by TES3MP"); };
-    #[no_mangle]
     pub static mut rustSetRecordArmorRating: fn(c_int) = |_| { unreachable!("SetRecordArmorRating was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetRecordHealth: fn(c_int) = |_| { unreachable!("SetRecordHealth was called before set by TES3MP"); };
@@ -633,10 +633,6 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustSetRecordFaction: fn(*const c_char) = |_| { unreachable!("SetRecordFaction was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetRecordScale: fn(c_double) = |_| { unreachable!("SetRecordScale was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordBloodType: fn(c_int) = |_| { unreachable!("SetRecordBloodType was called before set by TES3MP"); };
-    #[no_mangle]
     pub static mut rustSetRecordLevel: fn(c_int) = |_| { unreachable!("SetRecordLevel was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetRecordMagicka: fn(c_int) = |_| { unreachable!("SetRecordMagicka was called before set by TES3MP"); };
@@ -644,20 +640,6 @@ pub mod raw {
     pub static mut rustSetRecordFatigue: fn(c_int) = |_| { unreachable!("SetRecordFatigue was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetRecordAIFight: fn(c_int) = |_| { unreachable!("SetRecordAIFight was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordAIFlee: fn(c_int) = |_| { unreachable!("SetRecordAIFlee was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordAIAlarm: fn(c_int) = |_| { unreachable!("SetRecordAIAlarm was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordAIServices: fn(c_int) = |_| { unreachable!("SetRecordAIServices was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordSound: fn(*const c_char) = |_| { unreachable!("SetRecordSound was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordOpenSound: fn(*const c_char) = |_| { unreachable!("SetRecordOpenSound was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordCloseSound: fn(*const c_char) = |_| { unreachable!("SetRecordCloseSound was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetRecordScriptText: fn(*const c_char) = |_| { unreachable!("SetRecordScriptText was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetRecordIdByIndex: fn(c_uint, *const c_char) = |_, _| { unreachable!("SetRecordIdByIndex was called before set by TES3MP"); };
     #[no_mangle]
@@ -1023,10 +1005,6 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustGetVideoFilename: fn(c_uint) -> *const c_char = |_| { unreachable!("GetVideoFilename was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetScriptVariableName: fn(c_uint) -> *const c_char = |_| { unreachable!("GetScriptVariableName was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustGetScriptVariableShortValue: fn(c_uint) -> c_int = |_| { unreachable!("GetScriptVariableShortValue was called before set by TES3MP"); };
-    #[no_mangle]
     pub static mut rustGetContainerChangesSize: fn(c_uint) -> c_uint = |_| { unreachable!("GetContainerChangesSize was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustGetContainerItemRefId: fn(c_uint, c_uint) -> *const c_char = |_, _| { unreachable!("GetContainerItemRefId was called before set by TES3MP"); };
@@ -1093,10 +1071,6 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustSetObjectDoorDestinationRotation: fn(c_double, c_double) = |_, _| { unreachable!("SetObjectDoorDestinationRotation was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSetScriptVariableName: fn(*const c_char) = |_| { unreachable!("SetScriptVariableName was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSetScriptVariableShortValue: fn(c_int) = |_| { unreachable!("SetScriptVariableShortValue was called before set by TES3MP"); };
-    #[no_mangle]
     pub static mut rustSetPlayerAsObject: fn(c_ushort) = |_| { unreachable!("SetPlayerAsObject was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSetContainerItemRefId: fn(*const c_char) = |_| { unreachable!("SetContainerItemRefId was called before set by TES3MP"); };
@@ -1139,8 +1113,6 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustSendVideoPlay: fn(bool, bool) = |_, _| { unreachable!("SendVideoPlay was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustSendScriptGlobalShort: fn(bool, bool) = |_, _| { unreachable!("SendScriptGlobalShort was called before set by TES3MP"); };
-    #[no_mangle]
     pub static mut rustSendConsoleCommand: fn(bool, bool) = |_, _| { unreachable!("SendConsoleCommand was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustReadLastObjectList: fn() = || { unreachable!("ReadLastObjectList was called before set by TES3MP"); };
@@ -1177,17 +1149,9 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustCopyReceivedWorldstateToStore: fn() = || { unreachable!("CopyReceivedWorldstateToStore was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustClearKillChanges: fn() = || { unreachable!("ClearKillChanges was called before set by TES3MP"); };
-    #[no_mangle]
     pub static mut rustClearMapChanges: fn() = || { unreachable!("ClearMapChanges was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustGetKillChangesSize: fn() -> c_uint = || { unreachable!("GetKillChangesSize was called before set by TES3MP"); };
-    #[no_mangle]
     pub static mut rustGetMapChangesSize: fn() -> c_uint = || { unreachable!("GetMapChangesSize was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustGetKillRefId: fn(c_uint) -> *const c_char = |_| { unreachable!("GetKillRefId was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustGetKillNumber: fn(c_uint) -> c_int = |_| { unreachable!("GetKillNumber was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustGetWeatherRegion: fn() -> *const c_char = || { unreachable!("GetWeatherRegion was called before set by TES3MP"); };
     #[no_mangle]
@@ -1237,27 +1201,13 @@ pub mod raw {
     #[no_mangle]
     pub static mut rustUseActorCollisionForPlacedObjects: fn(bool) = |_| { unreachable!("UseActorCollisionForPlacedObjects was called before set by TES3MP"); };
     #[no_mangle]
-    pub static mut rustAddKill: fn(*const c_char, c_int) = |_, _| { unreachable!("AddKill was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustAddSynchronizedClientScriptId: fn(*const c_char) = |_| { unreachable!("AddSynchronizedClientScriptId was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustAddSynchronizedClientGlobalId: fn(*const c_char) = |_| { unreachable!("AddSynchronizedClientGlobalId was called before set by TES3MP"); };
-    #[no_mangle]
     pub static mut rustAddEnforcedCollisionRefId: fn(*const c_char) = |_| { unreachable!("AddEnforcedCollisionRefId was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustClearSynchronizedClientScriptIds: fn() = || { unreachable!("ClearSynchronizedClientScriptIds was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustClearSynchronizedClientGlobalIds: fn() = || { unreachable!("ClearSynchronizedClientGlobalIds was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustClearEnforcedCollisionRefIds: fn() = || { unreachable!("ClearEnforcedCollisionRefIds was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSaveMapTileImageFile: fn(c_uint, *const c_char) = |_, _| { unreachable!("SaveMapTileImageFile was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustLoadMapTileImageFile: fn(c_int, c_int, *const c_char) = |_, _, _| { unreachable!("LoadMapTileImageFile was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSendClientScriptSettings: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendClientScriptSettings was called before set by TES3MP"); };
-    #[no_mangle]
-    pub static mut rustSendWorldKillCount: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendWorldKillCount was called before set by TES3MP"); };
     #[no_mangle]
     pub static mut rustSendWorldMap: fn(c_ushort, bool, bool) = |_, _, _| { unreachable!("SendWorldMap was called before set by TES3MP"); };
     #[no_mangle]
@@ -3309,7 +3259,7 @@ pub fn initialize_faction_changes(pid: c_ushort) {
 ///  `pid` The player ID for whom the messagebox should appear.  
 ///  `id` The numerical ID of the messagebox.  
 ///  `label` The text in the messagebox.  
-///  \parm buttons The captions of the buttons, separated by semicolons (e.g. "Yes;No;Maybe").
+///  `buttons` The captions of the buttons, separated by semicolons (e.g. "Yes;No;Maybe").
 ///
 ///  Returns void
 ///
@@ -3325,7 +3275,7 @@ pub fn custom_message_box(pid: c_ushort, id: c_int, label: &str, buttons: &str) 
 ///  `pid` The player ID for whom the input dialog should appear.  
 ///  `id` The numerical ID of the input dialog.  
 ///  `label` The text at the top of the input dialog.  
-///  \parm note The text at the bottom of the input dialog.
+///  `note` The text at the bottom of the input dialog.
 ///
 ///  Returns void
 ///
@@ -3344,7 +3294,7 @@ pub fn input_dialog(pid: c_ushort, id: c_int, label: &str, note: &str) {
 ///  `pid` The player ID for whom the password dialog should appear.  
 ///  `id` The numerical ID of the password dialog.  
 ///  `label` The text at the top of the password dialog.  
-///  \parm note The text at the bottom of the password dialog.
+///  `note` The text at the bottom of the password dialog.
 ///
 ///  Returns void
 ///
@@ -3362,7 +3312,7 @@ pub fn password_dialog(pid: c_ushort, id: c_int, label: &str, note: &str) {
 ///  `pid` The player ID for whom the listbox should appear.  
 ///  `id` The numerical ID of the listbox.  
 ///  `label` The text at the top of the listbox.  
-///  \parm items The items in the listbox, separated by newlines (e.g. "Item 1\nItem 2").
+///  `items` The items in the listbox, separated by newlines (e.g. "Item 1\nItem 2").
 ///
 ///  Returns void
 ///
@@ -4296,39 +4246,6 @@ pub fn get_player_killer_ref_num_index(pid: c_ushort) -> c_uint {
 }
 
 ///
-///  Generate a random string of a particular length that only contains  
-///         letters and numbers.
-///
-///  `length` The length of the generated string.
-///
-///  Returns the generated string.
-///
-pub fn generate_random_string(length: c_uint) -> String {
-    unsafe {
-        CStr::from_ptr(raw::rustGenerateRandomString(length))
-            .to_str()
-            .unwrap_or_default()
-            .to_string()
-    }
-}
-
-///
-///  Get the SHA256 hash corresponding to an input string.
-///
-///  `input_string` The input string.
-///
-///  Returns the SHA256 hash.
-///
-pub fn get_sha256_hash(input_string: &str) -> String {
-    unsafe {
-        CStr::from_ptr(raw::rustGetSHA256Hash(CString::new(input_string).unwrap_or_default().as_ptr()))
-            .to_str()
-            .unwrap_or_default()
-            .to_string()
-    }
-}
-
-///
 ///  Get the last player ID currently connected to the server.
 ///
 ///  Every player receives a unique numerical index known as their player ID upon joining the  
@@ -4587,6 +4504,21 @@ pub fn clear_journal_changes(pid: c_ushort) {
 }
 
 ///
+///  Clear the last recorded kill count changes for a player.
+///
+///  This is used to initialize the sending of new WorldKillCount packets.
+///
+///  `pid` The player ID whose kill count changes should be used.
+///
+///  Returns void
+///
+pub fn clear_kill_changes(pid: c_ushort) {
+    unsafe {
+        raw::rustClearKillChanges(pid)
+    }
+}
+
+///
 ///  Get the number of indexes in a player's latest journal changes.
 ///
 ///  `pid` The player ID whose journal changes should be used.
@@ -4596,6 +4528,19 @@ pub fn clear_journal_changes(pid: c_ushort) {
 pub fn get_journal_changes_size(pid: c_ushort) -> c_uint {
     unsafe {
         raw::rustGetJournalChangesSize(pid)
+    }
+}
+
+///
+///  Get the number of indexes in a player's latest kill count changes.
+///
+///  `pid` The player ID whose kill count changes should be used.
+///
+///  Returns the number of indexes.
+///
+pub fn get_kill_changes_size(pid: c_ushort) -> c_uint {
+    unsafe {
+        raw::rustGetKillChangesSize(pid)
     }
 }
 
@@ -4648,6 +4593,21 @@ pub fn add_journal_entry_with_timestamp(pid: c_ushort, quest: &str, index: c_uin
 pub fn add_journal_index(pid: c_ushort, quest: &str, index: c_uint) {
     unsafe {
         raw::rustAddJournalIndex(pid, CString::new(quest).unwrap_or_default().as_ptr(), index)
+    }
+}
+
+///
+///  Add a new kill count to the kill count changes for a player.
+///
+///  `pid` The player ID whose kill count changes should be used.  
+///  `ref_id` The refId of the kill count.  
+///  `number` The number of kills in the kill count.
+///
+///  Returns void
+///
+pub fn add_kill(pid: c_ushort, ref_id: &str, number: c_int) {
+    unsafe {
+        raw::rustAddKill(pid, CString::new(ref_id).unwrap_or_default().as_ptr(), number)
     }
 }
 
@@ -4730,6 +4690,37 @@ pub fn get_journal_item_actor_ref_id(pid: c_ushort, index: c_uint) -> String {
 }
 
 ///
+///  Get the refId at a certain index in a player's latest kill count changes.
+///
+///  `pid` The player ID whose kill count changes should be used.  
+///  `index` The index of the kill count.
+///
+///  Returns the refId.
+///
+pub fn get_kill_ref_id(pid: c_ushort, index: c_uint) -> String {
+    unsafe {
+        CStr::from_ptr(raw::rustGetKillRefId(pid, index))
+            .to_str()
+            .unwrap_or_default()
+            .to_string()
+    }
+}
+
+///
+///  Get the number of kills at a certain index in a player's latest kill count changes.
+///
+///  `pid` The player ID whose kill count changes should be used.  
+///  `index` The index of the kill count.
+///
+///  Returns the number of kills.
+///
+pub fn get_kill_number(pid: c_ushort, index: c_uint) -> c_int {
+    unsafe {
+        raw::rustGetKillNumber(pid, index)
+    }
+}
+
+///
 ///  Get the a certain player's reputation.
 ///
 ///  `pid` The player ID.
@@ -4760,6 +4751,23 @@ pub fn send_journal_changes(pid: c_ushort, send_to_other_players: bool, skip_att
 }
 
 ///
+///  Send a WorldKillCount packet with a player's recorded kill count changes.
+///
+///  `pid` The player ID whose kill count changes should be used.  
+///  `send_to_other_players` Whether this packet should be sent to players other than the  
+///                            player attached to the packet (false by default).  
+///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
+///                            to the packet (false by default).
+///
+///  Returns void
+///
+pub fn send_kill_changes(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
+    unsafe {
+        raw::rustSendKillChanges(pid, send_to_other_players, skip_attached_player)
+    }
+}
+
+///
 ///  Send a PlayerReputation packet with a player's recorded reputation.
 ///
 ///  `pid` The player ID whose reputation should be used.  
@@ -4779,6 +4787,12 @@ pub fn send_reputation(pid: c_ushort, send_to_other_players: bool, skip_attached
 pub fn initialize_journal_changes(pid: c_ushort) {
     unsafe {
         raw::rustInitializeJournalChanges(pid)
+    }
+}
+
+pub fn initialize_kill_changes(pid: c_ushort) {
+    unsafe {
+        raw::rustInitializeKillChanges(pid)
     }
 }
 
@@ -5426,76 +5440,6 @@ pub fn set_record_weight(weight: c_double) {
 }
 
 ///
-///  Set the item quality of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `weight` The weight of the record.
-///
-///  Returns void
-///
-pub fn set_record_quality(quality: c_double) {
-    unsafe {
-        raw::rustSetRecordQuality(quality)
-    }
-}
-
-///
-///  Set the number of uses of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `uses` The number of uses of the record.
-///
-///  Returns void
-///
-pub fn set_record_uses(uses: c_int) {
-    unsafe {
-        raw::rustSetRecordUses(uses)
-    }
-}
-
-///
-///  Set the time of the temporary record stored on the server for the currently  
-///  specified record type.
-///
-///  `time` The time of the record.
-///
-///  Returns void
-///
-pub fn set_record_time(time: c_int) {
-    unsafe {
-        raw::rustSetRecordTime(time)
-    }
-}
-
-///
-///  Set the radius of the temporary record stored on the server for the currently  
-///  specified record type.
-///
-///  `uses` The radius of the record.
-///
-///  Returns void
-///
-pub fn set_record_radius(radius: c_int) {
-    unsafe {
-        raw::rustSetRecordRadius(radius)
-    }
-}
-
-///
-///  Set the color of the temporary record stored on the server for the currently  
-///  specified record type.
-///
-///  `color` The color of the record.
-///
-///  Returns void
-///
-pub fn set_record_color(red: c_uint, green: c_uint, blue: c_uint) {
-    unsafe {
-        raw::rustSetRecordColor(red, green, blue)
-    }
-}
-
-///
 ///  Set the armor rating of the temporary record stored on the server  
 ///  for the currently specified record type.
 ///
@@ -5741,34 +5685,6 @@ pub fn set_record_faction(faction: &str) {
 }
 
 ///
-///  Set the scale of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `scale` The scale of the record.
-///
-///  Returns void
-///
-pub fn set_record_scale(scale: c_double) {
-    unsafe {
-        raw::rustSetRecordScale(scale)
-    }
-}
-
-///
-///  Set the blood type of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `blood_type` The blood type of the record.
-///
-///  Returns void
-///
-pub fn set_record_blood_type(blood_type: c_int) {
-    unsafe {
-        raw::rustSetRecordBloodType(blood_type)
-    }
-}
-
-///
 ///  Set the level of the temporary record stored on the server for the  
 ///  currently specified record type.
 ///
@@ -5821,104 +5737,6 @@ pub fn set_record_fatigue(fatigue: c_int) {
 pub fn set_record_ai_fight(ai_fight: c_int) {
     unsafe {
         raw::rustSetRecordAIFight(ai_fight)
-    }
-}
-
-///
-///  Set the AI flee value of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `ai_flee` The AI flee value of the record.
-///
-///  Returns void
-///
-pub fn set_record_ai_flee(ai_flee: c_int) {
-    unsafe {
-        raw::rustSetRecordAIFlee(ai_flee)
-    }
-}
-
-///
-///  Set the AI alarm value of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `ai_alarm` The AI alarm value of the record.
-///
-///  Returns void
-///
-pub fn set_record_ai_alarm(ai_alarm: c_int) {
-    unsafe {
-        raw::rustSetRecordAIAlarm(ai_alarm)
-    }
-}
-
-///
-///  Set the AI services value of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `ai_services` The AI services value of the record.
-///
-///  Returns void
-///
-pub fn set_record_ai_services(ai_services: c_int) {
-    unsafe {
-        raw::rustSetRecordAIServices(ai_services)
-    }
-}
-
-///
-///  Set the sound of the temporary record stored on the server for the currently  
-///  specified record type.
-///
-///  `sound` The sound of the record.
-///
-///  Returns void
-///
-pub fn set_record_sound(sound: &str) {
-    unsafe {
-        raw::rustSetRecordSound(CString::new(sound).unwrap_or_default().as_ptr())
-    }
-}
-
-///
-///  Set the opening sound of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `sound` The opening sound of the record.
-///
-///  Returns void
-///
-pub fn set_record_open_sound(sound: &str) {
-    unsafe {
-        raw::rustSetRecordOpenSound(CString::new(sound).unwrap_or_default().as_ptr())
-    }
-}
-
-///
-///  Set the closing sound of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `sound` The closing sound of the record.
-///
-///  Returns void
-///
-pub fn set_record_close_sound(sound: &str) {
-    unsafe {
-        raw::rustSetRecordCloseSound(CString::new(sound).unwrap_or_default().as_ptr())
-    }
-}
-
-///
-///  Set the script text of the temporary record stored on the server for the  
-///  currently specified record type.
-///
-///  `sound` The script text of the record.
-///
-///  Returns void
-///
-pub fn set_record_script_text(script_text: &str) {
-    unsafe {
-        raw::rustSetRecordScriptText(CString::new(script_text).unwrap_or_default().as_ptr())
     }
 }
 
@@ -8557,21 +8375,6 @@ pub fn get_video_filename(index: c_uint) -> String {
     }
 }
 
-pub fn get_script_variable_name(index: c_uint) -> String {
-    unsafe {
-        CStr::from_ptr(raw::rustGetScriptVariableName(index))
-            .to_str()
-            .unwrap_or_default()
-            .to_string()
-    }
-}
-
-pub fn get_script_variable_short_value(index: c_uint) -> c_int {
-    unsafe {
-        raw::rustGetScriptVariableShortValue(index)
-    }
-}
-
 ///
 ///  Get the number of container item indexes of the object at a certain index in the  
 ///  read object list.
@@ -9076,18 +8879,6 @@ pub fn set_object_door_destination_rotation(x: c_double, z: c_double) {
     }
 }
 
-pub fn set_script_variable_name(var_name: &str) {
-    unsafe {
-        raw::rustSetScriptVariableName(CString::new(var_name).unwrap_or_default().as_ptr())
-    }
-}
-
-pub fn set_script_variable_short_value(short_val: c_int) {
-    unsafe {
-        raw::rustSetScriptVariableShortValue(short_val)
-    }
-}
-
 ///
 ///  Set a player as the object in the temporary object stored on the server.  
 ///         Currently only used for ConsoleCommand packets.
@@ -9409,12 +9200,6 @@ pub fn send_video_play(send_to_other_players: bool, skip_attached_player: bool) 
     }
 }
 
-pub fn send_script_global_short(send_to_other_players: bool, skip_attached_player: bool) {
-    unsafe {
-        raw::rustSendScriptGlobalShort(send_to_other_players, skip_attached_player)
-    }
-}
-
 ///
 ///  Send a ConsoleCommand packet.
 ///
@@ -9548,20 +9333,6 @@ pub fn copy_received_worldstate_to_store() {
 }
 
 ///
-///  Clear the kill count changes for the write-only worldstate.
-///
-///  This is used to initialize the sending of new WorldKillCount packets.
-///
-///
-///  Returns void
-///
-pub fn clear_kill_changes() {
-    unsafe {
-        raw::rustClearKillChanges()
-    }
-}
-
-///
 ///  Clear the map changes for the write-only worldstate.
 ///
 ///  This is used to initialize the sending of new WorldMap packets.
@@ -9576,18 +9347,6 @@ pub fn clear_map_changes() {
 }
 
 ///
-///  Get the number of indexes in the read worldstate's kill changes.
-///
-///
-///  Returns the number of indexes.
-///
-pub fn get_kill_changes_size() -> c_uint {
-    unsafe {
-        raw::rustGetKillChangesSize()
-    }
-}
-
-///
 ///  Get the number of indexes in the read worldstate's map changes.
 ///
 ///
@@ -9596,35 +9355,6 @@ pub fn get_kill_changes_size() -> c_uint {
 pub fn get_map_changes_size() -> c_uint {
     unsafe {
         raw::rustGetMapChangesSize()
-    }
-}
-
-///
-///  Get the refId at a certain index in the read worldstate's kill count changes.
-///
-///  `index` The index of the kill count.
-///
-///  Returns the refId.
-///
-pub fn get_kill_ref_id(index: c_uint) -> String {
-    unsafe {
-        CStr::from_ptr(raw::rustGetKillRefId(index))
-            .to_str()
-            .unwrap_or_default()
-            .to_string()
-    }
-}
-
-///
-///  Get the number of kills at a certain index in the read worldstate's kill count changes.
-///
-///  `index` The index of the kill count.
-///
-///  Returns the number of kills.
-///
-pub fn get_kill_number(index: c_uint) -> c_int {
-    unsafe {
-        raw::rustGetKillNumber(index)
     }
 }
 
@@ -9948,48 +9678,6 @@ pub fn use_actor_collision_for_placed_objects(use_actor_collision: bool) {
 }
 
 ///
-///  Add a new kill count to the kill count changes.
-///
-///  `ref_id` The refId of the kill count.  
-///  `number` The number of kills in the kill count.
-///
-///  Returns void
-///
-pub fn add_kill(ref_id: &str, number: c_int) {
-    unsafe {
-        raw::rustAddKill(CString::new(ref_id).unwrap_or_default().as_ptr(), number)
-    }
-}
-
-///
-///  Add an ID to the list of script IDs whose variable changes should be sent to the  
-///         the server by clients.
-///
-///  `script_id` The ID.
-///
-///  Returns void
-///
-pub fn add_synchronized_client_script_id(script_id: &str) {
-    unsafe {
-        raw::rustAddSynchronizedClientScriptId(CString::new(script_id).unwrap_or_default().as_ptr())
-    }
-}
-
-///
-///  Add an ID to the list of global IDs whose value changes should be sent to the  
-///         server by clients.
-///
-///  `global_id` The ID.
-///
-///  Returns void
-///
-pub fn add_synchronized_client_global_id(global_id: &str) {
-    unsafe {
-        raw::rustAddSynchronizedClientGlobalId(CString::new(global_id).unwrap_or_default().as_ptr())
-    }
-}
-
-///
 ///  Add a refId to the list of refIds for which collision should be enforced  
 ///         irrespective of other settings.
 ///
@@ -10004,33 +9692,7 @@ pub fn add_enforced_collision_ref_id(ref_id: &str) {
 }
 
 ///
-///  Clear the list of script IDs whose variable changes should be sent to the  
-///         the server by clients.
-///
-///
-///  Returns void
-///
-pub fn clear_synchronized_client_script_ids() {
-    unsafe {
-        raw::rustClearSynchronizedClientScriptIds()
-    }
-}
-
-///
-///  Clear the list of global IDs whose value changes should be sent to the  
-///         the server by clients.
-///
-///
-///  Returns void
-///
-pub fn clear_synchronized_client_global_ids() {
-    unsafe {
-        raw::rustClearSynchronizedClientGlobalIds()
-    }
-}
-
-///
-///  Clear the list of refIds for which collision should be enforced irrespective  
+///  Clear the list of refIdsd for which collision should be enforced irrespective  
 ///         of other settings.
 ///
 ///
@@ -10070,42 +9732,6 @@ pub fn save_map_tile_image_file(index: c_uint, file_path: &str) {
 pub fn load_map_tile_image_file(cell_x: c_int, cell_y: c_int, file_path: &str) {
     unsafe {
         raw::rustLoadMapTileImageFile(cell_x, cell_y, CString::new(file_path).unwrap_or_default().as_ptr())
-    }
-}
-
-///
-///  Send a ClientScriptSettings packet with the current client script settings in  
-///         the write-only worldstate.
-///
-///  `pid` The player ID attached to the packet.  
-///  `send_to_other_players` Whether this packet should be sent to players other than the  
-///                            player attached to the packet (false by default).  
-///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
-///                            to the packet (false by default).
-///
-///  Returns void
-///
-pub fn send_client_script_settings(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
-    unsafe {
-        raw::rustSendClientScriptSettings(pid, send_to_other_players, skip_attached_player)
-    }
-}
-
-///
-///  Send a WorldKillCount packet with the current set of kill count changes in the write-only  
-///         worldstate.
-///
-///  `pid` The player ID attached to the packet.  
-///  `send_to_other_players` Whether this packet should be sent to players other than the  
-///                            player attached to the packet (false by default).  
-///  `skip_attached_player` Whether the packet should skip being sent to the player attached  
-///                            to the packet (false by default).
-///
-///  Returns void
-///
-pub fn send_world_kill_count(pid: c_ushort, send_to_other_players: bool, skip_attached_player: bool) {
-    unsafe {
-        raw::rustSendWorldKillCount(pid, send_to_other_players, skip_attached_player)
     }
 }
 

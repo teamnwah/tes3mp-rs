@@ -449,12 +449,6 @@ macro_rules! use_events {
 
         #[no_mangle]
         #[allow(non_snake_case)]
-        pub fn OnScriptGlobalShort(player_id: c_ushort) {
-            call_instance!(on_script_global_short, player_id);
-        }
-
-        #[no_mangle]
-        #[allow(non_snake_case)]
         pub fn OnServerScriptCrash(error: *const i8) {
             call_instance!(on_server_script_crash, unsafe {
                 CStr::from_ptr(error).to_str().unwrap_or_default()
@@ -551,8 +545,6 @@ pub trait Events: Sized {
     fn on_record_dynamic(&mut self, player_id: c_ushort) {}
 
     fn on_request_data_file_list(&mut self) {}
-
-    fn on_script_global_short(&mut self, player_id: c_ushort) {}
 
     fn on_server_exit(&mut self, is_error: bool) {}
     fn on_server_init(&mut self) {}

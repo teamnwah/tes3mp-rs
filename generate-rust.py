@@ -161,10 +161,10 @@ TYPE_TRANSLATION = {
 PREFIX = 'rust'
 
 RE_COMMENT_PREFIX = regex.compile(r'^([\\/\*]*)(.*)')
-RE_PARAM_PREFIX = regex.compile(r'[\\@]param ([a-zA-Z_-]+)')
+RE_PARAM_PREFIX = regex.compile(r'[\\@]para?m ([a-zA-Z_-]+)')
 RE_BRIEF = regex.compile(r'\\brief\s+')
 RE_RETURN = regex.compile(r'\s+[\\@]returns? ([a-zA-Z])')
-
+RE_COMMENT_NEWLINE = regex.compile(r'([^\/])\n\/\/\/([^\n])')
 
 def main():
     os.chdir(os.path.dirname(__file__))
@@ -248,7 +248,7 @@ def main():
 
             comment = regex.sub(RE_PARAM_PREFIX, replace_param, comment)
             comment = regex.sub(RE_RETURN, replace_return, comment)
-            comment = regex.subf(r'([^\/])\n\/\/\/([^\n])', '{1}  \n///{2}', comment)
+            comment = regex.subf(RE_COMMENT_NEWLINE, '{1}  \n///{2}', comment)
             comment = comment.replace('"[Script]:"', '`[Script]:`')
 
             fancy += comment
