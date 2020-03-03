@@ -96,7 +96,9 @@ macro_rules! maybe_string {
 #[macro_export]
 macro_rules! use_events {
     ($events:ident) => {
+        #[allow(unused_imports)]
         use std::ffi::CStr;
+        #[allow(unused_imports)]
         use std::os::raw::*;
 
         static mut EVENTS_INSTANCE: Option<$events> = None;
@@ -169,14 +171,14 @@ macro_rules! use_events {
 
         #[no_mangle]
         #[allow(non_snake_case)]
-        pub fn OnCellLoad(description: *const i8) {
-            call_instance!(on_cell_load, maybe_string!(description));
+        pub fn OnCellLoad(player_id: c_ushort, description: *const i8) {
+            call_instance!(on_cell_load, player_id, maybe_string!(description));
         }
 
         #[no_mangle]
         #[allow(non_snake_case)]
-        pub fn OnCellUnload(description: *const i8) {
-            call_instance!(on_cell_unload, maybe_string!(description));
+        pub fn OnCellUnload(player_id: c_ushort, description: *const i8) {
+            call_instance!(on_cell_unload, player_id, maybe_string!(description));
         }
 
         #[no_mangle]
@@ -469,8 +471,8 @@ pub trait Events: Sized {
     fn on_actor_test(&mut self, player_id: c_ushort, description: Option<&str>) {}
 
     fn on_cell_deletion(&mut self, description: Option<&str>) {}
-    fn on_cell_load(&mut self, description: Option<&str>) {}
-    fn on_cell_unload(&mut self, description: Option<&str>) {}
+    fn on_cell_load(&mut self, player_id: c_ushort, description: Option<&str>) {}
+    fn on_cell_unload(&mut self, player_id: c_ushort, description: Option<&str>) {}
 
     fn on_container(&mut self, player_id: c_ushort, description: Option<&str>) {}
     fn on_door_state(&mut self, player_id: c_ushort, description: Option<&str>) {}
